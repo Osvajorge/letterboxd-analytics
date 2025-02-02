@@ -4,14 +4,14 @@ import pandas as pd
 import zipfile
 import io
 
-# Configuración de la página
+# Page configuration
 st.set_page_config(
     page_title="Letterboxd Analytics",
     page_icon="🎬",
     layout="wide"
 )
 
-# Estilos personalizados
+# Custom styles
 st.markdown("""
     <style>
     .main {
@@ -23,7 +23,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Funciones de validación y procesamiento
+# Validation and processing functions
 @st.cache_data
 def validate_file(file):
     try:
@@ -32,10 +32,10 @@ def validate_file(file):
         elif file.name.endswith(('.xls', '.xlsx')):
             return pd.read_excel(file)
         else:
-            st.error("Formato no soportado. Por favor, sube un archivo CSV o Excel.")
+            st.error("Unsupported format. Please upload a CSV or Excel file.")
             return None
     except Exception as e:
-        st.error(f"Error al procesar el archivo: {str(e)}")
+        st.error(f"Error processing file: {str(e)}")
         return None
 
 @st.cache_data
@@ -51,15 +51,15 @@ def process_zip(file):
                         else:
                             dfs.append(pd.read_excel(f))
             if not dfs:
-                st.error("No se encontraron archivos válidos en el ZIP")
+                st.error("No valid files found in ZIP")
                 return None
             return pd.concat(dfs, ignore_index=True)
     except Exception as e:
-        st.error(f"Error al procesar el archivo ZIP: {str(e)}")
+        st.error(f"Error processing ZIP file: {str(e)}")
         return None
 
 def display_movie_card(title: str):
-    with st.spinner('Cargando información de la película...'):
+    with st.spinner('Loading movie information...'):
         client = TMDBWrapper()
         details = client.get_movie_details(title)
         
@@ -78,9 +78,9 @@ def display_movie_card(title: str):
                     
                 with col_data:
                     st.markdown(f"### {details['title']} ({details['release_date'][:4]})")
-                    st.caption(f"⏱️ {details.get('runtime', 'N/A')} minutos")
+                    st.caption(f"⏱️ {details.get('runtime', 'N/A')} minutes")
                     if details.get('genres'):
-                        st.write(f"🎭 **Géneros:** {', '.join([g['name'] for g in details['genres']])}")
+                        st.write(f"🎭 **Genres:** {', '.join([g['name'] for g in details['genres']])}")
                     director = client.get_director(details['id'])
                     if director:
                         st.write(f"🎬 **Director:** {director}")
@@ -88,42 +88,42 @@ def display_movie_card(title: str):
                     st.progress(details.get('vote_average', 0) / 10)
                     
                     if details.get('overview'):
-                        st.markdown("### Sinopsis")
+                        st.markdown("### Overview")
                         st.write(details['overview'])
         else:
-            st.warning("Película no encontrada en TMDB")
+            st.warning("Movie not found in TMDB")
 
-# Interfaz principal
+# Main interface
 st.title("🎬 Letterboxd Analytics")
-st.write("Analiza tu historial de películas vistas en Letterboxd")
+st.write("Analyze your Letterboxd viewing history")
 
 uploaded_file = st.file_uploader(
-    "Sube tu exportación de Letterboxd (ZIP)",
+    "Upload your Letterboxd export (ZIP)",
     type=["zip"],
-    help="Exporta tus datos desde Letterboxd → Settings → Import & Export → Export Your Data"
+    help="Export your data from Letterboxd → Settings → Import & Export → Export Your Data"
 )
 
 if uploaded_file:
-    with st.spinner('Procesando archivo...'):
+    with st.spinner('Processing file...'):
         df = process_zip(uploaded_file)
         if df is not None:
-            st.success("¡Archivo procesado exitosamente!")
+            st.success("File processed successfully!")
             
-            # Métricas básicas
+            # Basic metrics
             col1, col2, col3 = st.columns(3)
             with col1:
-                st.metric("Total de películas", len(df))
+                st.metric("Total Movies", len(df))
             with col2:
-                st.metric("Películas únicas", df['Title'].nunique())
+                st.metric("Unique Movies", df['Title'].nunique())
             with col3:
-                st.metric("Calificación promedio", f"{df['Rating'].mean():.1f}⭐")
+                st.metric("Average Rating", f"{df['Rating'].mean():.1f}⭐")
             
-            # Selector de película
+            # Movie selector
             selected_movie = st.selectbox(
-                "Selecciona una película",
+                "Select a movie",
                 df['Title'].unique(),
                 index=None,
-                placeholder="Escoge una película para ver detalles..."
+                placeholder="Choose a movie to see details..."
             )
             
             if selected_movie:
