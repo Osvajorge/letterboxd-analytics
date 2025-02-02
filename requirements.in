@@ -1,0 +1,8 @@
+# requirements.in
+pandas
+streamlit
+plotly
+requests
+python-dotenv
+pytest
+tmdbsimple==2.9.1

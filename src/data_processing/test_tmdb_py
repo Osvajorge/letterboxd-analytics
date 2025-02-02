@@ -1,0 +1,39 @@
+# tests/test_tmdb.py
+import pytest
+from unittest.mock import patch
+from src.data_processing.tmdb_client import TMDBWrapper
+
+@patch('tmdbsimple.Search.movie')
+def test_movie_search(mock_search):
+    """
+    Test the movie search functionality of TMDBWrapper.
+    
+    This test mocks the TMDB API search and movie info responses to verify
+    that the TMDBWrapper correctly retrieves and processes movie details.
+    
+    Parameters:
+    mock_search (Mock): Mock object for the tmdbsimple.Search.movie method.
+    """
+    # Configure mock search response
+    mock_search.return_value = {
+        'results': [{
+            'id': 27205,
+            'title': 'Inception',
+            'release_date': '2010-07-16'
+        }]
+    }
+    
+    with patch('tmdbsimple.Movies.info') as mock_info:
+        # Configure mock movie info response
+        mock_info.return_value = {
+            'genres': [{'name': 'Science Fiction'}],
+            'runtime': 148
+        }
+        
+        client = TMDBWrapper()
+        result = client.get_movie_details("Inception", 2010)
+        
+        # Assertions to verify the correct behavior
+        assert result['title'] == 'Inception'
+        mock_search.assert_called_once()
+        mock_info.assert_called_once()
