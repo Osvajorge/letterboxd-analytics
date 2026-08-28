@@ -93,6 +93,26 @@ jobs:
           python scripts/fetch_rss.py > "${RUNNER_TEMP}/rss-entries.json"
           python scripts/merge_history.py "${RUNNER_TEMP}/rss-entries.json"
 
+      - name: Read the TMDB id of every film the merge just added
+        # data/tmdb-ids.json says which TMDB record each film is, read from the
+        # film's own Letterboxd page. The two TMDB steps below read that file and
+        # guess at nothing, so a film the file does not name downloads nothing:
+        # no runtime, no genres, no countries, no languages, no cast, no crew and
+        # no collection.
+        #
+        # Nothing fails when that happens. A film nobody has identified yet is
+        # not an error, so the run would commit the new film and leave the panel
+        # counting it and describing none of it.
+        #
+        # Every film the RSS merge above just added is a film the file does not
+        # name yet, which is why this runs weekly, and why it runs here, between
+        # the merge and the TMDB pass.
+        #
+        # It costs one page read per new film and nothing at all for a film the
+        # file already answers for, because a film's TMDB id never changes. A
+        # week with no new films sends no requests.
+        run: python scripts/resolve_tmdb_ids.py
+
       - name: Read the public watchlist
         # The watchlist is the one part of the account the RSS feed does not
         # carry, and it changes constantly, so the export snapshot goes stale
@@ -173,8 +193,10 @@ jobs:
           path: data/cache/tmdb.sqlite
           # data/cache/tmdb.sqlite is git-ignored, so the checkout cannot supply
           # it and this cache is the only thing that carries it between runs.
-          # Without it every run starts on an empty database and re-resolves all
-          # 827 films, roughly 1,600 TMDB requests for metadata it already had.
+          # Without it every run starts on an empty database and downloads all
+          # 810 films TMDB holds a record for again, plus the 200 collection
+          # sizes and the 160 director filmographies the steps below need:
+          # about 1,170 requests for metadata the job already had.
           #
           # The key carries the run id so that it can never match exactly. That
           # is deliberate: on an exact match the action treats the cache as
@@ -191,10 +213,29 @@ jobs:
         # Only films the restored database does not already hold are fetched.
         run: python scripts/enrich_tmdb.py
 
+      - name: Size the collections and the director filmographies
+        # Two modules need a fact no film payload carries: how many films a
+        # collection holds, and how many films a director has made. Without them
+        # scripts/build_stats.py emits an empty array for `collections` and for
+        # `extras.director_completeness` rather than measuring either against the
+        # films already seen, which would report every collection and every
+        # director as complete.
+        #
+        # Both facts live in data/cache/tmdb.sqlite, which is git-ignored and
+        # travels in the Actions cache above. GitHub drops a cache that has not
+        # been read for seven days, which is about the gap between two scheduled
+        # runs, so now and then a run starts with neither table. This step is the
+        # only thing that fills them again.
+        #
+        # A record already cached is never asked for a second time, so a normal
+        # week costs no requests here. The cache holds 200 collection sizes and
+        # 160 director filmographies today.
+        run: python scripts/enrich_people_and_collections.py
+
       - name: Build the site data file
         run: python scripts/build_stats.py
 
-      - name: Check the two files this run is about to commit
+      - name: Check the files this run is about to commit
         # Every step above fails the job on a non-zero exit, and nothing in this
         # file overrides that, so the commit below already cannot run after a step
         # that crashed. This step covers the other failure, the one this pipeline
@@ -202,12 +243,21 @@ jobs:
         # still exits zero. After the commit the good copy is gone, so this is the
         # last point where the difference can still be seen.
         #
-        # Only two invariants, both of them things no healthy run can break:
+        # Three invariants, all of them things no healthy run can break:
         #
         #   the stats file parses and reports at least one film
+        #   it still describes about as many films with TMDB metadata as the
+        #     checkout supplied
         #   the history holds no fewer entries than the checkout supplied
         #
-        # The second one holds because the RSS merge only adds entries and the
+        # The second one is what catches a hollow panel. A film count on its own
+        # cannot: it is counted from the history, so it stays right at 827 while
+        # every runtime, genre, country, language, cast list, crew list, studio
+        # and collection has gone. That is what a failed or skipped TMDB pass
+        # produces, and it publishes a panel that names every film and describes
+        # none of them.
+        #
+        # The third one holds because the RSS merge only adds entries and the
         # watchlist step writes a different array, so within one run the entry
         # count can rise and never fall.
         #
@@ -215,13 +265,16 @@ jobs:
         # not repeated here. They live in the scripts that read those pages, and a
         # second copy of a rule is a copy that drifts.
         run: |
-          # The very first run of a new clone has no committed history to compare
+          # The very first run of a new clone has no committed copy to compare
           # against, and starting from nothing is not a shrunken file.
           if ! git show HEAD:data/history.json > "${RUNNER_TEMP}/history-before.json"; then
             echo '{"entries": []}' > "${RUNNER_TEMP}/history-before.json"
           fi
+          if ! git show HEAD:docs/data/stats.json > "${RUNNER_TEMP}/stats-before.json"; then
+            echo '{}' > "${RUNNER_TEMP}/stats-before.json"
+          fi
 
-          python - "${RUNNER_TEMP}/history-before.json" <<'PYTHON'
+          python - "${RUNNER_TEMP}/history-before.json" "${RUNNER_TEMP}/stats-before.json" <<'PYTHON'
           import json
           import sys
           from pathlib import Path
@@ -229,6 +282,15 @@ jobs:
           stats_file = Path("docs/data/stats.json")
           history_file = Path("data/history.json")
           history_before_file = Path(sys.argv[1])
+          stats_before_file = Path(sys.argv[2])
+
+          # How much of the TMDB metadata may disappear in one week before this
+          # is damage rather than an edit. TMDB retires a record now and then, so
+          # the figure does drift down by a film or two. It does not fall by a
+          # tenth in a week, and the failure this guards against takes almost all
+          # of it at once. Ten percent is the tolerance fetch_lists.py already
+          # uses against its own caches.
+          SMALLEST_SHARE_OF_TMDB_METADATA_TO_KEEP = 0.9
 
 
           def load(path: Path) -> dict:
@@ -243,17 +305,50 @@ jobs:
                   )
 
 
+          def count(block: dict, name: str) -> int:
+              """Read one count out of a stats block, treating anything else as zero."""
+              value = block.get(name)
+              return value if isinstance(value, int) and not isinstance(value, bool) else 0
+
+
           stats = load(stats_file)
           history = load(history_file)
           history_before = load(history_before_file)
+          stats_before = load(stats_before_file)
 
-          films = stats.get("totals", {}).get("films") or 0
+          films = count(stats.get("totals", {}), "films")
           if films < 1:
               sys.exit(
                   f"{stats_file} reports {films} films, so publishing it would replace the "
                   f"panel with an empty one.\n"
                   f"Look at the build step above. Nothing was committed and the published "
                   f"site is untouched."
+              )
+
+          with_metadata = count(stats.get("coverage", {}), "films_with_tmdb_data")
+          with_metadata_before = count(stats_before.get("coverage", {}), "films_with_tmdb_data")
+          floor = int(with_metadata_before * SMALLEST_SHARE_OF_TMDB_METADATA_TO_KEEP)
+
+          if with_metadata < 1:
+              sys.exit(
+                  f"{stats_file} reports {films} films and TMDB metadata for none of them.\n"
+                  f"Runtime, genres, countries, languages, cast, crew, studios and "
+                  f"collections all come from that metadata, so this file would publish a "
+                  f"panel that names every film and describes none.\n"
+                  f"Look at the id resolver and the two TMDB steps above. Nothing was "
+                  f"committed and the published site is untouched."
+              )
+
+          if with_metadata < floor:
+              sys.exit(
+                  f"{stats_file} reports TMDB metadata for {with_metadata} of {films} films "
+                  f"and the checkout supplied {with_metadata_before}, so this run lost "
+                  f"{with_metadata_before - with_metadata} of them.\n"
+                  f"TMDB drops a record now and then, which costs a film or two. Losing "
+                  f"more than a tenth in one week means the metadata was not fetched, not "
+                  f"that it stopped existing.\n"
+                  f"Look at the id resolver and the two TMDB steps above. Nothing was "
+                  f"committed and the published site is untouched."
               )
 
           entries_now = len(history.get("entries", []))
@@ -269,8 +364,9 @@ jobs:
               )
 
           print(
-              f"Ready to commit: {films} films in the stats file, {entries_now} history "
-              f"entries against {entries_before} in the checkout."
+              f"Ready to commit: {films} films in the stats file, TMDB metadata for "
+              f"{with_metadata} of them against {with_metadata_before} in the checkout, "
+              f"{entries_now} history entries against {entries_before}."
           )
           PYTHON
 
@@ -287,15 +383,21 @@ jobs:
           # watchlist, so staging it is what makes the watchlist read above
           # survive into next week and keep its added dates.
           #
+          # data/tmdb-ids.json is staged because the id resolver adds a line to
+          # it for every film the RSS merge brought in. That file is git-tracked
+          # and it is the only thing that says which TMDB record a film is, so
+          # leaving it unstaged would drop this week's answers with the runner
+          # and buy the same page reads again every Monday.
+          #
           # data/cache/tmdb.sqlite is deliberately not staged. It is git-ignored,
           # it is large, and the Actions cache above already carries it forward.
-          git add docs/data/stats.json data/history.json data/cache/lists
+          git add docs/data/stats.json data/history.json data/tmdb-ids.json data/cache/lists
 
           # A week with no new films and no list changes is the normal case, not
           # a failure. Leave the history clean instead of adding a commit that
           # changes nothing.
           if git diff --cached --quiet; then
-            echo "The stats, the history and the curated lists are all unchanged. Nothing to commit."
+            echo "The stats, the history, the resolved ids and the curated lists are all unchanged. Nothing to commit."
             exit 0
           fi
 

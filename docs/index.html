@@ -81,9 +81,14 @@
     <section class="section" id="totals" aria-labelledby="totals-heading">
       <h3 class="section__heading" id="totals-heading">Totals</h3>
       <div class="tile-grid" id="totals-grid"></div>
-      <!-- Filled by app.js from stats.coverage. The denominators are explained
-           here once, so each section built on part of the library needs only the
-           short scope label that appears under its heading. -->
+      <!-- Which tiles above are counted from part of the library, and how many
+           films that part holds. Filled by app.js from stats.coverage, once for
+           the whole grid: the same clause on every tile ran longer than the
+           figures it qualified and buried them. -->
+      <p class="coverage-note" id="totals-scope" hidden></p>
+      <!-- The denominators themselves, explained here once, so each section
+           built on part of the library needs only the short scope label that
+           appears under its heading. -->
       <p class="notice notice--coverage" id="coverage-summary" hidden></p>
     </section>
 
@@ -216,6 +221,9 @@
       <h3 class="section__heading" id="extras-glance-heading">At a glance</h3>
       <p class="section__lede">The scalar figures, before the charts that unpack them.</p>
       <div class="tile-grid" id="extras-tiles"></div>
+      <!-- The same one-line scope as the totals grid, for the two tiles here
+           that are counted from the films with TMDB metadata. -->
+      <p class="coverage-note" id="extras-tiles-scope" hidden></p>
       <!-- Filled by app.js only when the watchlist wait is built on estimated
            dates. An unqualified wait figure would read as a measurement. -->
       <p class="notice notice--caveat" id="watchlist-dates-caveat" hidden></p>

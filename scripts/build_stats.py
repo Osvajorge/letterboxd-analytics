@@ -81,6 +81,11 @@ MINIMUM_FILMS_FOR_COMPLETENESS = 2
 
 # How many rows each ranked module keeps. The site shows fewer; these caps only
 # stop the file from carrying a long tail nobody reads.
+#
+# They are applied in build_stats_document, not inside the builders, so that the
+# builder hands over a full ranking and one place decides how much of it to
+# publish. keep_top_rows writes the length before the cut into row_totals, which
+# is the only honest source for the site's "showing the top 24 of 530" line.
 TOP_PEOPLE_SHOWN = 50
 TOP_GROUPS_SHOWN = 25
 TOP_FILMS_SHOWN = 20
@@ -1022,7 +1027,6 @@ def collect_group_members(
 def summarize_groups(
     members: dict[str, set[str]],
     rating_per_film: dict[str, float],
-    limit: int = TOP_GROUPS_SHOWN,
 ) -> dict[str, list[dict[str, Any]]]:
     """Rank one dimension twice: by films watched, and by average rating.
 
@@ -1036,7 +1040,7 @@ def summarize_groups(
     most_watched = sorted(
         ({"name": name, "count": len(slugs)} for name, slugs in members.items()),
         key=lambda row: (-row["count"], row["name"]),
-    )[:limit]
+    )
 
     rated: list[dict[str, Any]] = []
     for name, slugs in members.items():
@@ -1046,7 +1050,7 @@ def summarize_groups(
         group_average, rated_films = summary
         rated.append({"name": name, "average": rounded(group_average), "count": rated_films})
 
-    highest_rated = sorted(rated, key=lambda row: (-row["average"], row["name"]))[:limit]
+    highest_rated = sorted(rated, key=lambda row: (-row["average"], row["name"]))
 
     return {"most_watched": most_watched, "highest_rated": highest_rated}
 
@@ -1234,7 +1238,7 @@ def build_cast(
             "count": len(slugs),
             "profile_path": profiles.get(person_id),
         }
-        for person_id, slugs in ranked[:TOP_PEOPLE_SHOWN]
+        for person_id, slugs in ranked
     ]
 
 
@@ -1281,7 +1285,7 @@ def build_directors(
             ),
             "profile_path": profiles.get(person_id),
         }
-        for person_id, slugs in ranked[:TOP_PEOPLE_SHOWN]
+        for person_id, slugs in ranked
     ]
 
 
@@ -1335,7 +1339,7 @@ def build_director_completeness(
     ]
 
     rows.sort(key=lambda row: (-row["seen"] / row["filmography"], -row["seen"], row["name"]))
-    return rows[:TOP_PEOPLE_SHOWN], len(eligible) - len(rows)
+    return rows, len(eligible) - len(rows)
 
 
 def build_studios(
@@ -1361,7 +1365,7 @@ def build_studios(
                 average(rating_per_film[slug] for slug in slugs if slug in rating_per_film)
             ),
         }
-        for name, slugs in ranked[:TOP_GROUPS_SHOWN]
+        for name, slugs in ranked
     ]
 
 
@@ -1414,26 +1418,32 @@ def build_collections(
     return rows, len(seen_per_collection) - len(rows)
 
 
-def build_runtime(
-    entries: list[dict[str, Any]], runtime_per_film: dict[str, int]
-) -> dict[str, Any]:
-    """Report total minutes watched, the median film length, and the length spread.
+def build_runtime(runtime_per_film: dict[str, int]) -> dict[str, Any]:
+    """Report the runtime of the films seen, their median length, and the spread.
 
-    Total minutes counts every diary entry, because a rewatch costs the time
-    again. Median and distribution describe the films themselves, so each film
-    counts once.
+    All three numbers answer one question: how long are the films this member has
+    watched. Each film counts once, so a film logged on two days adds its runtime
+    once.
+
+    Screen time including rewatches is a defensible figure too, and it is a
+    different one. It is what total_minutes used to hold: a sum over diary
+    entries, while median, distribution and coverage.films_with_tmdb_data all
+    counted films. The panel then printed the entry based total under the film
+    based denominator, "1,519 hours across the 789 films with TMDB metadata",
+    when those 789 films run 1,512 hours and the extra 458 minutes came from
+    three films logged on two days each.
+
+    A figure that counts viewings needs a denominator that counts viewings, and
+    coverage carries no such count, so this module answers the question the
+    label already asks. Anyone who wants screen time instead has to add the
+    denominator to coverage and to the page in the same change, or the two will
+    drift apart again.
     """
-    total_minutes = sum(
-        runtime_per_film[entry["slug"]]
-        for entry in entries
-        if isinstance(entry.get("slug"), str) and entry["slug"] in runtime_per_film
-    )
-
     lengths = sorted(runtime_per_film.values())
     buckets = Counter(runtime_bucket_label(length) for length in lengths)
 
     return {
-        "total_minutes": total_minutes,
+        "total_minutes": sum(lengths),
         "median": int(median(lengths)) if lengths else None,
         "distribution": [
             {"bucket": label, "count": buckets.get(label, 0)}
@@ -1621,10 +1631,7 @@ def build_contrarian_index(
         (row for row in rows if row["delta"] < 0), key=lambda row: (row["delta"], row["title"])
     )
 
-    return {
-        "hotter_than_crowd": hotter[:TOP_FILMS_SHOWN],
-        "colder_than_crowd": colder[:TOP_FILMS_SHOWN],
-    }
+    return {"hotter_than_crowd": hotter, "colder_than_crowd": colder}
 
 
 def build_obscurity(
@@ -1665,8 +1672,8 @@ def build_obscurity(
     return {
         "median_vote_count": int(round(median(counts))),
         "quartiles": quartiles,
-        "most_obscure": rows(ordered[:TOP_FILMS_SHOWN]),
-        "most_popular": rows(list(reversed(ordered))[:TOP_FILMS_SHOWN]),
+        "most_obscure": rows(ordered),
+        "most_popular": rows(list(reversed(ordered))),
     }
 
 
@@ -1718,7 +1725,7 @@ def build_liked_but_low(
     ]
 
     rows.sort(key=lambda row: (row["rating"], row["title"]))
-    return rows[:TOP_FILMS_SHOWN]
+    return rows
 
 
 # ---------------------------------------------------------------------------
@@ -1873,13 +1880,15 @@ def build_director_luck(
     counts: a director with six watched films and one rating is a sample of one.
 
     The two ends are a partition: no director can appear in both. Sorting one
-    set of rows twice would put every director in both columns whenever fewer
-    than twice TOP_GROUPS_SHOWN of them clear the minimum sample, and a panel
-    that names the same person as best and worst rated is telling the reader
-    nothing. Each end therefore takes at most half the ranking, so a short
-    ranking yields fewer rows instead of repeated ones, and a single qualifying
-    director yields none: one row cannot be split into a top half and a bottom
-    half.
+    set of rows twice would put every director in both columns whenever the
+    ranking is short, and a panel that names the same person as best and worst
+    rated is telling the reader nothing. Each end therefore takes at most half
+    the ranking, so a short ranking yields fewer rows instead of repeated ones,
+    and a single qualifying director yields none: one row cannot be split into a
+    top half and a bottom half.
+
+    Both halves come back whole. build_stats_document applies the display cap,
+    so the count it records is the size of the half rather than the cap.
     """
     rows: list[dict[str, Any]] = []
 
@@ -1902,7 +1911,7 @@ def build_director_luck(
     # of both. Fewer than two directors leaves nothing to divide, and returning
     # here also keeps the slice below away from a count of zero, where a
     # negative index would take the whole ranking and restore the duplication.
-    rows_per_end = min(TOP_GROUPS_SHOWN, len(ranked) // 2)
+    rows_per_end = len(ranked) // 2
     if rows_per_end == 0:
         return [], []
 
@@ -1963,7 +1972,7 @@ def build_background_actor(
         )
 
     rows.sort(key=lambda row: (-row["count"], -row["median_billing"], row["name"]))
-    return rows[:TOP_PEOPLE_SHOWN]
+    return rows
 
 
 def build_crew_most_watched(
@@ -1998,7 +2007,7 @@ def build_crew_most_watched(
         order = sorted(people.items(), key=lambda item: (-len(item[1]), names.get(item[0], "")))
         return [
             {"tmdb_id": person_id, "name": names.get(person_id, ""), "count": len(slugs)}
-            for person_id, slugs in order[:TOP_PEOPLE_SHOWN]
+            for person_id, slugs in order
         ]
 
     return {role: ranked(people) for role, people in films_per_person.items()}
@@ -2010,13 +2019,14 @@ def build_crew_most_watched(
 
 
 def build_life_in_days(total_minutes: int, today: date) -> dict[str, Any] | None:
-    """State the total watch time in days, and when a marathon of it would end.
+    """State the total runtime in days, and when a marathon of it would end.
 
-    "would_end_on" answers one question: if every viewing in the history were
-    played back to back starting today, what date would the last one finish on.
-    Today comes from the caller, the same date the whole document is stamped
-    with. Date arithmetic keeps whole days, so a marathon that finishes part way
-    through a day is reported as ending on that day.
+    "would_end_on" answers one question: if every film in the history were played
+    back to back starting today, what date would the last one finish on. Each
+    film plays once, because the minutes come from extras.runtime and that module
+    counts each film once. Today comes from the caller, the same date the whole
+    document is stamped with. Date arithmetic keeps whole days, so a marathon
+    that finishes part way through a day is reported as ending on that day.
     """
     if total_minutes <= 0:
         return None
@@ -2117,12 +2127,43 @@ def build_title_words(titles: dict[str, str]) -> list[dict[str, Any]]:
                 counts[word] += 1
 
     ranked = sorted(counts.items(), key=lambda item: (-item[1], item[0]))
-    return [{"word": word, "count": count} for word, count in ranked[:TOP_WORDS_SHOWN]]
+    return [{"word": word, "count": count} for word, count in ranked]
 
 
 # ---------------------------------------------------------------------------
 # Assembly
 # ---------------------------------------------------------------------------
+
+
+def keep_top_rows(
+    rows: list[Any], limit: int | None, module: str, row_totals: dict[str, int]
+) -> list[Any]:
+    """Keep the highest `limit` rows, recording how many there were before the cut.
+
+    Pass None for a module the file carries whole; the count is still written,
+    because the site needs one number for every ranked module it shortens and
+    must never read that number back from an array this function already cut.
+
+    The site printing "showing the top 24 of 50 directors" under a tile reading
+    "530 Directors" is what this exists to stop. Fifty was the cap.
+    """
+    row_totals[module] = len(rows)
+    return rows if limit is None else rows[:limit]
+
+
+def keep_top_group_rows(
+    summary: dict[str, list[dict[str, Any]]], module: str, row_totals: dict[str, int]
+) -> dict[str, list[dict[str, Any]]]:
+    """Cut both rankings of one dimension, recording each one's length separately.
+
+    The two rankings count different sets: "most_watched" holds every group, and
+    "highest_rated" holds only the groups with enough rated films to be ranked.
+    One total cannot stand for both.
+    """
+    return {
+        ranking: keep_top_rows(rows, TOP_GROUPS_SHOWN, f"{module}.{ranking}", row_totals)
+        for ranking, rows in summary.items()
+    }
 
 
 def build_stats_document(
@@ -2233,7 +2274,7 @@ def build_stats_document(
     )
 
     world_map = build_world_map(films_by_slug)
-    runtime = build_runtime(entries, runtime_per_film)
+    runtime = build_runtime(runtime_per_film)
 
     # Both modules need a number that no film payload carries, so both can come
     # out short for a reason the rows themselves cannot show. Each builder says
@@ -2247,6 +2288,86 @@ def build_stats_document(
     rewatches = sum(1 for entry in entries if entry.get("rewatch") is True)
     luckiest_directors, unluckiest_directors = build_director_luck(
         films_per_director, director_names, rating_per_film
+    )
+
+    # Every builder above ranks its whole population. This is where the file
+    # decides how much of each ranking to carry, and writes down how long the
+    # ranking was before the cut. That length is the only honest denominator for
+    # the site's "showing the top N of M" line: the arrays below are cut, so
+    # their own lengths are caps and not measurements.
+    row_totals: dict[str, int] = {}
+
+    genres = keep_top_group_rows(genres, "genres", row_totals)
+    countries = keep_top_group_rows(countries, "countries", row_totals)
+    languages = keep_top_group_rows(languages, "languages", row_totals)
+
+    cast = keep_top_rows(build_cast(credits_by_slug), TOP_PEOPLE_SHOWN, "cast", row_totals)
+    directors = keep_top_rows(
+        build_directors(films_per_director, director_names, director_profiles, rating_per_film),
+        TOP_PEOPLE_SHOWN,
+        "directors",
+        row_totals,
+    )
+    studios = keep_top_rows(
+        build_studios(films_by_slug, rating_per_film), TOP_GROUPS_SHOWN, "studios", row_totals
+    )
+
+    # These two are carried whole. Both are already short, and totals.countries
+    # is counted from world_map, so cutting it would change a headline figure.
+    collections = keep_top_rows(collections, None, "collections", row_totals)
+    world_map = keep_top_rows(world_map, None, "world_map", row_totals)
+
+    director_completeness = keep_top_rows(
+        director_completeness, TOP_PEOPLE_SHOWN, "extras.director_completeness", row_totals
+    )
+    lucky_directors = keep_top_rows(
+        luckiest_directors, TOP_GROUPS_SHOWN, "extras.lucky_director", row_totals
+    )
+    unlucky_directors = keep_top_rows(
+        unluckiest_directors, TOP_GROUPS_SHOWN, "extras.unlucky_director", row_totals
+    )
+
+    contrarian_index = {
+        end: keep_top_rows(
+            rows, TOP_FILMS_SHOWN, f"extras.contrarian_index.{end}", row_totals
+        )
+        for end, rows in build_contrarian_index(
+            rating_per_film, films_by_slug, titles, release_year_per_film
+        ).items()
+    }
+
+    # build_obscurity returns None without a cache, and its other two members
+    # are a median and a set of quartiles rather than rows to cut.
+    obscurity = build_obscurity(films_by_slug, titles)
+    if obscurity is not None:
+        for end in ("most_obscure", "most_popular"):
+            obscurity[end] = keep_top_rows(
+                obscurity[end], TOP_FILMS_SHOWN, f"extras.obscurity.{end}", row_totals
+            )
+
+    liked_but_low = keep_top_rows(
+        build_liked_but_low(entries, rating_per_film, titles),
+        TOP_FILMS_SHOWN,
+        "extras.liked_but_low",
+        row_totals,
+    )
+    background_actor = keep_top_rows(
+        build_background_actor(credits_by_slug),
+        TOP_PEOPLE_SHOWN,
+        "extras.background_actor",
+        row_totals,
+    )
+    crew_most_watched = {
+        role: keep_top_rows(
+            people, TOP_PEOPLE_SHOWN, f"extras.crew_most_watched.{role}", row_totals
+        )
+        for role, people in build_crew_most_watched(credits_by_slug).items()
+    }
+    title_words = keep_top_rows(
+        build_title_words(titles), TOP_WORDS_SHOWN, "extras.title_words", row_totals
+    )
+    list_progress = keep_top_rows(
+        build_list_progress(cached_lists, every_history_slug), None, "list_progress", row_totals
     )
 
     audit = {
@@ -2274,6 +2395,10 @@ def build_stats_document(
         "username": history.get("username") or LETTERBOXD_USER,
         "totals": {
             "films": len(film_slugs),
+            # The runtime of the films that have TMDB metadata, each counted
+            # once, so coverage.films_with_tmdb_data is this figure's
+            # denominator and the panel can print the two together. It is not
+            # screen time: see build_runtime for why the two were confused.
             "hours": runtime["total_minutes"] // 60,
             "directors": len(films_per_director),
             "countries": len(world_map),
@@ -2297,19 +2422,22 @@ def build_stats_document(
             "films_with_a_rating": len(rating_per_film),
             "films_with_tmdb_data": len(films_by_slug),
         },
+        # How long each ranked module was before this file cut it to its top
+        # rows. The site needs these to say "showing the top 24 of 530
+        # directors" instead of reading the total back from an array it was
+        # handed already shortened, which named the cap as the measurement.
+        "row_totals": row_totals,
         "by_year": build_by_year(dated_entries),
         "decades": build_decades(release_year_per_film, rating_per_film),
         "genres": genres,
         "countries": countries,
         "languages": languages,
-        "cast": build_cast(credits_by_slug),
-        "directors": build_directors(
-            films_per_director, director_names, director_profiles, rating_per_film
-        ),
-        "studios": build_studios(films_by_slug, rating_per_film),
+        "cast": cast,
+        "directors": directors,
+        "studios": studios,
         "collections": collections,
         "world_map": world_map,
-        "list_progress": build_list_progress(cached_lists, every_history_slug),
+        "list_progress": list_progress,
         "extras": {
             "rating_bias": build_rating_bias(rating_per_film, films_by_slug),
             "rating_drift": build_rating_drift(dated_entries),
@@ -2319,25 +2447,23 @@ def build_stats_document(
             "runtime": runtime,
             "decade_gaps": build_decade_gaps(release_year_per_film, today),
             "director_completeness": director_completeness,
-            "contrarian_index": build_contrarian_index(
-                rating_per_film, films_by_slug, titles, release_year_per_film
-            ),
-            "obscurity": build_obscurity(films_by_slug, titles),
+            "contrarian_index": contrarian_index,
+            "obscurity": obscurity,
             "release_recency": build_release_recency(dated_entries, films_by_slug),
             "half_star_usage": build_half_star_usage(rating_per_film),
-            "liked_but_low": build_liked_but_low(entries, rating_per_film, titles),
+            "liked_but_low": liked_but_low,
             "longest_drought": build_longest_drought(watched_dates),
             "weekday_profile": build_weekday_profile(watched_dates),
             "month_seasonality": build_month_seasonality(watched_dates),
             "logging_lag": build_logging_lag(entries),
-            "lucky_director": luckiest_directors,
-            "unlucky_director": unluckiest_directors,
-            "background_actor": build_background_actor(credits_by_slug),
-            "crew_most_watched": build_crew_most_watched(credits_by_slug),
+            "lucky_director": lucky_directors,
+            "unlucky_director": unlucky_directors,
+            "background_actor": background_actor,
+            "crew_most_watched": crew_most_watched,
             "life_in_days": build_life_in_days(runtime["total_minutes"], today),
             "extremes": build_extremes(runtime_per_film, release_year_per_film, titles),
             "rating_vs_runtime": build_rating_vs_runtime(runtime_per_film, rating_per_film),
-            "title_words": build_title_words(titles),
+            "title_words": title_words,
         },
     }
 

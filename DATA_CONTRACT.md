@@ -52,7 +52,10 @@ Field rules:
   export row whose file has no date column. `extras.logging_lag` is the gap
   between this and `watched_date`, so it needs both.
 - `rating` is the member's own rating on the 0.5 to 5.0 scale, or null.
-- `tmdb_id` is null until `enrich_tmdb.py` resolves it.
+- `tmdb_id` is the id the RSS feed carried for that entry, or null. The export
+  carries none and nothing fills one in later, so 47 of this account's 830 entries
+  hold one. It is a weaker source than `data/tmdb-ids.json` and is bound by that
+  file's refusals.
 - `source` is `rss` or `export`. RSS wins on conflict: it is newer and richer.
 - `slug_provisional` (boolean, export entries only) marks a slug that was built from
   the title and year because the export gave a `boxd.it` short link instead of a full
@@ -80,6 +83,73 @@ make `median_age_days` meaningless.
 
 Membership itself is a snapshot, not a log: a film removed on the site disappears
 here too.
+
+## data/tmdb-ids.json
+
+Which TMDB record each film is. Nothing else in the pipeline answers that
+question, and nothing guesses at it.
+
+`scripts/resolve_tmdb_ids.py` writes this file by reading each film's own
+Letterboxd page, which states the TMDB id and type Letterboxd itself uses.
+`scripts/enrich_tmdb.py`, `scripts/enrich_people_and_collections.py` and
+`scripts/build_stats.py` read it. It is committed, because a film's TMDB id does
+not change, so a film is resolved once and never again.
+
+`scripts/enrich_tmdb.py` exits 1 when it is missing. It has nothing to download
+without it.
+
+```json
+{
+  "the-beasts-2022": { "tmdb_id": 848685, "tmdb_type": "movie" },
+  "el-compadre-mendoza": { "tmdb_id": null, "tmdb_type": null }
+}
+```
+
+One entry per film, keyed by the same `slug` as `data/history.json`. Every entry
+holds both fields: `tmdb_id` is an integer or null, and `tmdb_type` is `"movie"`
+or null.
+
+### Only `tmdb_type == "movie"` names a film
+
+That is the whole rule, and every reader applies it the same way:
+
+| The entry says | What it means |
+| --- | --- |
+| an id and `"movie"` | the TMDB film to download, and the only case that names a film |
+| an id and any other type, `null` included | TMDB does not hold this as a film. Nothing is downloaded and nothing is guessed |
+| `"tmdb_id": null` | Letterboxd names no TMDB record for this film at all |
+| no entry for the slug | nobody has resolved this film yet. Run `scripts/resolve_tmdb_ids.py` |
+
+The last two rows are different states and must not be merged. A null id is a
+settled answer that costs no request this week and none in any later week. A
+missing entry is an unanswered question, which is what every film the weekly RSS
+merge adds starts as.
+
+**Every refusal binds every weaker source.** A slug this file names no film for
+gets no id from a history entry, from the `lookups` table, or from anything else.
+Those sources hold search answers, and a search answer for a film TMDB has no
+film record for is a different film: its runtime, its cast and its country filed
+under this one. Filling a refusal from a weaker source does not close a gap, it
+publishes a wrong film, so the refusal wins.
+
+`data/manual-matches.json` is the one source that outranks this file. It maps a
+slug to a TMDB id a person has checked by hand, and a person who has opened the
+film's TMDB page outranks every automatic source. It is empty on this account.
+
+### What the file holds today
+
+827 slugs, one for every film in the history:
+
+- 810 typed `"movie"`, each with its own id, so no two films share one.
+- 17 with a null id, because Letterboxd names no TMDB record for them.
+- none of any other type.
+
+Of the 810, TMDB's film endpoint answers for 789 and holds no record for the
+other 21. Twenty of those are episodes of an anthology or a miniseries that
+Letterboxd lists as films, so the two sites disagree about what the id is rather
+than about which record it is. Only TMDB can settle that, so nothing is written
+down for those films and every run asks once more.
+`coverage.films_with_tmdb_data` reports the 789.
 
 ## data/cache/lists/<list_id>.json
 
@@ -148,14 +218,23 @@ means TMDB changed rather than that the id was ever a guess.
 ### Run order
 
 ```
+scripts/resolve_tmdb_ids.py                data/tmdb-ids.json
 scripts/enrich_tmdb.py                     films, credits, lookups
 scripts/enrich_people_and_collections.py   collections, person_credits
 scripts/build_stats.py                     docs/data/stats.json
 ```
 
-The middle step reads the film payloads and the credits to learn which
-collections and which directors the history needs, so it must run after the
-first and before the last.
+The first step is what says which TMDB record each film is, and the three steps
+under it read its answers, so it runs first and it runs every week. Every film
+the RSS merge adds is a film it has not answered for yet, and a film with no
+answer downloads nothing: no runtime, no genres, no countries, no languages, no
+cast, no crew and no collection.
+
+The third step reads the film payloads and the credits to learn which collections
+and which directors the history needs, so it must run after the second and before
+the last.
+
+`.github/workflows/update-stats.yml` runs all four every Monday.
 
 ## docs/data/stats.json
 
@@ -180,6 +259,7 @@ The single file the site reads. Nothing is computed in the browser.
     "films_with_a_rating": 999,
     "films_with_tmdb_data": 999
   },
+  "row_totals": { "directors": 999, "countries.most_watched": 99, "extras.title_words": 999 },
   "by_year": [ { "year": 2025, "films": 120, "diary": 118, "ratings": { "0.5": 1, "5.0": 9 } } ],
   "decades": [ { "decade": 1960, "films": 40, "average_rating": 4.1 } ],
   "genres":    { "most_watched": [ { "name": "Drama", "count": 210 } ], "highest_rated": [ { "name": "Drama", "average": 4.0, "count": 210 } ] },
@@ -253,6 +333,41 @@ question.
 The `coverage` block exists so the site can state the denominator next to any
 module that does not use the whole library. It is required, never absent, and its
 counts are of distinct films rather than of entries.
+
+## row_totals, and why a shortened array cannot report its own length
+
+Most ranked modules are cut before they are written. `directors` keeps the top
+50 of the 530 directors in this history, `cast` the top 50 of 31,317 actors.
+The site shows fewer still, and says so under each chart: "Showing the top 24
+of 530 directors".
+
+That second number cannot come from the array. The array was already cut, so
+its length is the cap, and printing it stated a display limit as a measurement:
+"Showing the top 24 of 50 directors" sat directly under a tile reading "530
+Directors".
+
+`row_totals` carries the missing number. It is required, never absent, and each
+key is the dotted path of a ranked module:
+
+| Key | Counts |
+| --- | --- |
+| `genres.most_watched`, `countries.most_watched`, `languages.most_watched` | groups of that kind in the history |
+| `genres.highest_rated`, `countries.highest_rated`, `languages.highest_rated` | groups with enough rated films to be ranked, which is a smaller set |
+| `cast`, `directors`, `studios` | distinct people or companies credited |
+| `collections`, `world_map`, `list_progress` | rows, for modules the file carries whole |
+| `extras.director_completeness`, `extras.background_actor`, `extras.liked_but_low`, `extras.title_words` | rows the module ranked |
+| `extras.lucky_director`, `extras.unlucky_director` | rows in that half of the ranking |
+| `extras.contrarian_index.<end>`, `extras.obscurity.<end>` | films that qualified for that end |
+| `extras.crew_most_watched.<role>` | people credited in that role |
+
+`scripts/build_stats.py` writes each entry in `keep_top_rows`, which is the one
+place a ranking is cut, so a module cannot be shortened without its full length
+being recorded. A module the file carries whole records its length too, so the
+site never has to tell the two cases apart.
+
+A site reading a file with no `row_totals`, or with no entry for a module, must
+print how many rows it is showing and no denominator. Inventing one from the
+array is the defect this block replaces.
 
 ## Rules that apply to every extras module
 

@@ -48,6 +48,7 @@ work, not a fault.
 | Export archive | full history, ratings, diary dates, rewatches, reviews, and the real date each watchlist film was added | once, by hand | your own session, on your own machine |
 | Public RSS feed | recent entries: watched date, rating, rewatch, like, review, TMDB id | weekly | none |
 | Public watchlist pages | which films are on the watchlist now, 1,044 of them | weekly | none |
+| Public film pages | which TMDB record each film is, its id and its type | weekly, one read per new film | none |
 | Curated list pages | membership of the 16 tracked lists, 5,882 films in total | weekly | none |
 | TMDB API | genres, countries, languages, runtime, cast, crew, studios, collections | weekly | free API key |
 
@@ -107,17 +108,26 @@ build one. That is why the one-time backfill exists.
 
 Reading HTML at all is the fragile part of this pipeline. A markup change breaks
 a reader silently, because the page still answers 200 and simply matches nothing.
-Both HTML readers, the watchlist and the curated lists, guard against exactly
-that. Both guards are described under
+The two readers that replace stored data, the watchlist and the curated lists,
+guard against exactly that, and both guards are described under
 [How the weekly refresh works](#how-the-weekly-refresh-works).
+
+The third reader, `resolve_tmdb_ids.py`, is guarded by its own scale rather than
+by a size check. It reads one page per new film, so a week brings a handful, and
+a page that answers without naming a TMDB id is recorded as a film TMDB has no
+record for. If Letterboxd ever stops publishing `data-tmdb-id`, that reading is
+wrong and it is written down as settled. What limits the damage is that it can
+only be written for films added since the last run, and that
+`data/tmdb-ids.json` is committed, so the answer for every film already resolved
+is in git history and a wrong batch can be reverted.
 
 ## Setup
 
 You need Python 3.11 or newer and git.
 
 Run the steps in the order below. Steps 5 and 7 are the long ones: on this
-account the whole setup takes about 25 minutes, and roughly 22 of those are the
-two passes that talk to a network.
+account the whole setup takes about 21 minutes, and almost all of that is the
+passes in those two steps that talk to a network.
 
 1. **Install the dependencies.** Under a minute.
 
@@ -167,9 +177,14 @@ two passes that talk to a network.
    permanent. Later runs resolve only films added since, and re-running it on the
    same export sends no requests at all.
 
-   For this account 2,139 of those links resolve to a film. The other 2 point at
-   a member profile, because a review's own text can link to one. All 827 watched
-   films and all 1,044 watchlist films resolve.
+   All 827 watched films and all 1,044 watchlist films resolve to a film page.
+
+   The committed `data/short-links.json` holds 2,258 entries rather than the 2,141
+   the reader now finds, of which 2,233 name a film and 25 do not. The extra 117
+   came from an earlier version that also read `comments.csv` and the liked-list
+   and liked-review files, and those are where every one of the 25 non-film links
+   came from: a comment or a liked list points at a member or a list, not a film.
+   The surplus is harmless, since a resolved link is only ever looked up by id.
 
 6. **Run the one-time backfill.** Under a second.
 
@@ -189,14 +204,16 @@ two passes that talk to a network.
    run ends by reporting how many slugs it had to invent. With step 5 done that
    number is 0, and it should stay 0.
 
-7. **Refresh the caches and build the site data.** About 11 minutes, almost all
-   of it the first TMDB pass.
+7. **Refresh the caches and build the site data.** About 8 minutes, almost all
+   of it the two TMDB passes.
 
    ```sh
-   python scripts/fetch_lists.py      # no requests on a fresh clone
-   python scripts/fetch_watchlist.py  # about 46 seconds
-   python scripts/enrich_tmdb.py      # about 10 minutes on a cold cache
-   python scripts/build_stats.py      # about a second
+   python scripts/fetch_lists.py                    # no requests on a fresh clone
+   python scripts/fetch_watchlist.py                # about 46 seconds
+   python scripts/resolve_tmdb_ids.py               # no requests on a fresh clone
+   python scripts/enrich_tmdb.py                    # about 5 minutes on a cold cache
+   python scripts/enrich_people_and_collections.py  # about 2 minutes on a cold cache
+   python scripts/build_stats.py                    # about a second
    ```
 
    `data/cache/lists/` is tracked in git rather than ignored, so a clone already
@@ -209,17 +226,35 @@ two passes that talk to a network.
    keeps the added dates the backfill has just stored, so run it after step 6 and
    not before.
 
-   The first TMDB pass is the slow one, because it fetches every film: about
-   1,600 requests, one search for each of the 780 films whose entry carries no
-   TMDB id, then one detail request per film it found. Results go into
-   `data/cache/tmdb.sqlite` as raw responses, so later runs only fetch what is
-   new, and a new statistic never means downloading anything again.
+   `resolve_tmdb_ids.py` reads each film's own Letterboxd page for the TMDB id
+   and type Letterboxd itself uses, and writes them to `data/tmdb-ids.json`. That
+   file is committed and already answers for all 827 films, so on a fresh clone
+   this step reads no pages. Run it anyway, and run it before the three steps
+   under it, because all three read that file and none of them guesses: a film
+   missing from it downloads no metadata at all. A film it has never seen costs one page read,
+   and resolving all 827 from nothing takes about 7 minutes.
 
-   A couple of dozen entries find no film at all. Those are television, which the
-   film endpoint does not carry, and they are counted rather than hidden:
-   `build_stats.py` prints them as "films with no TMDB payload" and
-   `coverage.films_with_tmdb_data` in `docs/data/stats.json` is the denominator
-   the site shows beside anything built from film details.
+   `enrich_tmdb.py` then downloads one record per film, 810 of them, one for each
+   film the id file types as `movie`. There is no search: which film a slug is was
+   settled by the step above. Results go into `data/cache/tmdb.sqlite` as raw
+   responses, so later runs only fetch what is new, and a new statistic never
+   means downloading anything again.
+
+   `enrich_people_and_collections.py` asks for the two facts no film record
+   carries: how many films each collection holds, and how many films each
+   director has made. On this account that is 200 collections and 160 directors,
+   360 requests, cached permanently, so a later run asks for none of them again.
+   Skip this pass and `collections` and `extras.director_completeness` are empty
+   arrays, because neither has an honest denominator without it.
+
+   38 of the 827 films end with no TMDB metadata, and they are counted rather
+   than hidden: 17 because Letterboxd names no TMDB record for them at all, and
+   21 because TMDB's film endpoint holds no record under the id Letterboxd names.
+   Twenty of those 21 are episodes of an anthology or a miniseries that
+   Letterboxd lists as films. `build_stats.py` prints the total as "input: films
+   with no TMDB payload", and `coverage.films_with_tmdb_data` in
+   `docs/data/stats.json`, 789, is the denominator the site shows beside anything
+   built from film details.
 
 That is the whole setup. `build_stats.py` ends by printing a summary table of
 every module it filled and every module it left empty, and under it the counts of
@@ -234,9 +269,9 @@ There is no test suite in this repository yet. `requirements.txt` installs
 `.github/workflows/update-stats.yml` runs every Monday at 06:17 UTC, and on
 demand from the Actions tab. Its steps, in the order the file lists them:
 
-1. **Check out the repository.** This is what supplies `data/history.json` and
-   the 16 list caches. `data/cache/tmdb.sqlite` is git-ignored, so it comes from
-   step 8 instead.
+1. **Check out the repository.** This is what supplies `data/history.json`,
+   `data/tmdb-ids.json` and the 16 list caches. `data/cache/tmdb.sqlite` is
+   git-ignored, so it comes from step 9 instead.
 2. **Set up Python 3.12.**
 3. **Install dependencies** from `requirements.txt`.
 4. **Confirm the TMDB key is present.** Failing here costs seconds. Failing
@@ -246,29 +281,40 @@ demand from the Actions tab. Its steps, in the order the file lists them:
    is written to a temporary file, then merged into `data/history.json`. Two
    entries are the same watch when they name the same film on the same day, so
    re-reading the same rolling window changes nothing.
-6. **Read the public watchlist** and replace the watchlist in
+6. **Read the TMDB id of every film the merge just added**, from each film's
+   own Letterboxd page, and add it to `data/tmdb-ids.json`. Steps 10 and 11 read
+   that file and neither guesses, so a film missing from it downloads no runtime,
+   no genres, no countries, no cast, no crew and no collection. No step fails
+   when that happens, which is why this one is not optional. A week with no new
+   films sends no requests.
+7. **Read the public watchlist** and replace the watchlist in
    `data/history.json`, keeping the added date already stored for every film it
    has seen before. It refuses to write a read that came back short, and fails
    the run instead. About 46 seconds, and no credential, because those pages are
    public.
-7. **Refresh membership of the curated lists.** All 16, and the refresh is
+8. **Refresh membership of the curated lists.** All 16, and the refresh is
    forced, because the checkout supplies the cache files and a run that trusted
    them would read nothing at all. That is roughly 80 page reads, about two
    minutes.
-8. **Restore the TMDB database saved by the last successful run** from the
+9. **Restore the TMDB database saved by the last successful run** from the
    GitHub Actions cache. The job's own post step saves it again under a fresh
    key.
-9. **Look up film metadata on TMDB**, fetching only the films that database does
-   not already hold.
-10. **Build the site data file**, `docs/data/stats.json`.
-11. **Check the two files it is about to commit.** See
+10. **Look up film metadata on TMDB**, fetching only the films that database does
+    not already hold. A normal week is the 21 ids TMDB no longer holds, which are
+    asked for again every time, plus one request per new film.
+11. **Size the collections and the director filmographies**, which is what gives
+    `collections` and `extras.director_completeness` a denominator. Everything
+    already in the database is skipped, so a normal week costs no requests. A run
+    that starts on a dropped cache pays for all 363 again.
+12. **Build the site data file**, `docs/data/stats.json`.
+13. **Check the files it is about to commit.** See
     [A step that exits zero can still be wrong](#a-step-that-exits-zero-can-still-be-wrong).
-12. **Commit `docs/data/stats.json`, `data/history.json` and
-    `data/cache/lists/`**, and only when at least one of them changed.
+14. **Commit `docs/data/stats.json`, `data/history.json`, `data/tmdb-ids.json`
+    and `data/cache/lists/`**, and only when at least one of them changed.
 
 ### Two steps can destroy data, and both refuse rather than guess
 
-Steps 6 and 7 replace committed data wholesale, unattended, from HTML. That is
+Steps 7 and 8 replace committed data wholesale, unattended, from HTML. That is
 the hazard. Letterboxd answers 200 whether or not its pages still carry the
 attributes the films are read from, so from inside the job a markup change is
 indistinguishable from an account that emptied overnight. Both readers therefore
@@ -283,7 +329,7 @@ full-sized result in which every following film wears the next film's title, so
 both readers refuse a page whose attributes do not pair one for one, rather than
 storing a result that no size check would ever question.
 
-**The watchlist, step 6.** `fetch_watchlist.py` refuses a read that found no
+**The watchlist, step 7.** `fetch_watchlist.py` refuses a read that found no
 films at all, that fell more than one page short of the total the watchlist pages
 themselves state, or that fell more than 10 percent short of the watchlist
 already stored. The stored watchlist is left exactly as it was and the script
@@ -308,7 +354,7 @@ state them. A film dropped from the stored watchlist and seen again next week
 comes back stamped with next week's date and flagged as an estimate, and no later
 run can undo that. Writing a broken read once loses the real dates permanently.
 
-**The curated lists, step 7.** `fetch_lists.py` refuses any refresh that comes
+**The curated lists, step 8.** `fetch_lists.py` refuses any refresh that comes
 back far smaller than the cache it would replace: nothing at all, or less than 90
 percent of what is already stored. A refused list keeps its cached copy untouched
 and the script exits non-zero. Under `--force` a list with no cached copy is
@@ -341,15 +387,23 @@ flag, because either one alone is exactly what a markup change looks like.
 
 Every step in the job fails the whole job on a non-zero exit, and nothing in the
 workflow overrides that: there is no `continue-on-error` and no `if:` condition
-anywhere in it. So the commit at step 12 can only run after every step above it
+anywhere in it. So the commit at step 14 can only run after every step above it
 succeeded. That is the protection against a script that crashes.
 
 It is not protection against a script that writes a wrong file and exits zero,
-which is the shape of failure this repository keeps producing. Step 11 is there
-for that narrow case, and it checks two things that are cheap to state and hard to
-break by accident:
+which is the shape of failure this repository keeps producing. Step 13 is there
+for that narrow case, and it checks three things that are cheap to state and hard
+to break by accident:
 
 - `docs/data/stats.json` parses as JSON and reports at least one film.
+- It still reports TMDB metadata for at least nine tenths of the films the
+  committed copy had it for, 789 today. This is the one that catches a hollow
+  panel. The film count cannot: it is counted from the history, so it stays right
+  at 827 while every runtime, genre, country, language, cast list, crew list,
+  studio and collection has gone, which is exactly what a TMDB pass that was
+  skipped or that failed halfway produces. TMDB retires a record now and then and
+  the figure drifts down by a film or two, so the check allows a tenth and no
+  more.
 - `data/history.json` parses, and holds at least as many entries as the copy the
   checkout supplied. Within one run the history can only gain entries: the RSS
   merge adds, and the watchlist step writes a different array. A history that came
@@ -365,9 +419,15 @@ rule drift apart, and those scripts are where that rule belongs.
 `data/cache/tmdb.sqlite` is git-ignored, so it travels from one run to the next
 in the GitHub Actions cache rather than in a commit. GitHub drops a cache that
 has not been read for seven days, which is about the gap between two scheduled
-runs, so now and then a run finds no cache and resolves all 827 films from
-scratch, roughly 1,600 requests. That makes the run slow. It does not change the
-result.
+runs, so now and then a run finds no cache and downloads everything again: the
+810 film ids, the 789 TMDB still holds plus the 21 it does not, plus 200 collection sizes and 160 director
+filmographies, about 1,170 requests. That makes the run slow. It does not change
+the result.
+
+`data/tmdb-ids.json` is committed instead of cached, because a film's TMDB id
+does not change and because the answer for a new film costs a Letterboxd page
+read rather than a TMDB request. The weekly job stages it with the other data
+files, so a film resolved this Monday is still resolved next Monday.
 
 One secret is involved, `TMDB_API_KEY`. Add it under Settings, then Secrets and
 variables, then Actions. There is no Letterboxd credential in this repository and
@@ -389,6 +449,7 @@ key.
 | Either HTML step fails saying the film markup changed and the attributes do not pair | a page carries more `data-item-slug` or `data-item-name` attributes than it has elements carrying both, so films can no longer be matched to their own titles | nothing was written or cached. This is not a short read and no override covers it: storing it would give films each other's titles at the right count, which nothing downstream would notice. Open the page named in the message and fix `FILM_ELEMENT_PATTERN`, `SLUG_PATTERN` and `NAME_PATTERN` in the script that named it |
 | The watchlist step fails with "Could not read the watchlist pages" | a page answered with an error or timed out | nothing was written. Run `python scripts/fetch_watchlist.py` again; a 403 or a timeout usually clears |
 | The check before the commit rejects the stats file or the history | a step wrote a file that is empty, unparseable, or smaller than the one the checkout supplied, and still exited zero | nothing was committed, so the published site keeps its last good copy. The step's message names the file and what it found. Look at the step that wrote that file, because the fault is there and not in the check |
+| The check before the commit says the stats file lost TMDB metadata | the film metadata never arrived, so the panel would name every film and describe almost none of them. Usually a TMDB pass that answered nothing, or new films that were never resolved to a TMDB id | nothing was committed. Read the logs of the id resolver and the two TMDB steps, in that order, because the earliest one that went quiet is the cause. Start the run again once TMDB answers |
 | The TMDB step fetches every film, not just the new ones | the Actions cache was dropped, which GitHub does after seven days without a read | nothing. The run rebuilds `data/cache/tmdb.sqlite` and saves it again. Only the run time changes |
 | The commit step says nothing to commit | no new films, no watchlist changes and no list changes that week | nothing. This is the normal case |
 | New films are missing from the site | more than about 50 entries were logged since the last successful run, so the rolling window moved past them | download a fresh export and re-run the backfill. Then find out why the weekly run had been failing |
@@ -414,20 +475,29 @@ names open substitutes with comparable metrics.
 
 ## Repository layout
 
-```
-scripts/resolve_short_links.py export links -> data/short-links.json (once, before the backfill)
-scripts/backfill.py       export archive   -> data/history.json   (once, on your machine)
-scripts/fetch_rss.py      public RSS feed  -> recent entries      (weekly)
-scripts/merge_history.py  recent entries   -> data/history.json   (weekly, one entry per film and watch date)
-scripts/fetch_watchlist.py watchlist pages -> data/history.json   (weekly, refuses a bad read)
-scripts/fetch_lists.py    list pages       -> data/cache/lists/   (weekly, refuses a bad read)
-scripts/enrich_tmdb.py    TMDB API         -> data/cache/tmdb.sqlite
-scripts/build_stats.py    all of the above -> docs/data/stats.json
-scripts/lib/config.py     paths, the user, and the 16 curated list URLs
+The scripts, in the order they run:
 
+```
+scripts/resolve_short_links.py  export links     -> data/short-links.json  (once, before the backfill)
+scripts/backfill.py             export archive   -> data/history.json      (once, on your machine)
+scripts/fetch_rss.py            public RSS feed  -> recent entries         (weekly)
+scripts/merge_history.py        recent entries   -> data/history.json      (weekly, one entry per film and watch date)
+scripts/resolve_tmdb_ids.py     film pages       -> data/tmdb-ids.json     (weekly, one page read per new film)
+scripts/fetch_watchlist.py      watchlist pages  -> data/history.json      (weekly, refuses a bad read)
+scripts/fetch_lists.py          list pages       -> data/cache/lists/      (weekly, refuses a bad read)
+scripts/enrich_tmdb.py          TMDB API         -> data/cache/tmdb.sqlite (weekly, one record per film)
+scripts/enrich_people_and_collections.py         -> data/cache/tmdb.sqlite (weekly, collection sizes and director filmographies)
+scripts/build_stats.py          all of the above -> docs/data/stats.json
+scripts/lib/config.py           paths, the user, and the 16 curated list URLs
+```
+
+The data they read and write:
+
+```
 data/history.json         the watch history and the watchlist, committed
+data/tmdb-ids.json        film slug -> TMDB id and type, read from each film's own page, committed
 data/short-links.json     boxd.it link -> film slug, committed, written once
-data/manual-matches.json  film slug -> TMDB id, for a film the search gets wrong
+data/manual-matches.json  film slug -> TMDB id, checked by hand, outranks data/tmdb-ids.json, empty here
 data/cache/lists/         the 16 list caches, 5,882 films, committed
 data/cache/tmdb.sqlite    raw TMDB payloads, git-ignored, carried by the Actions cache
 data/raw/                 your export archive, git-ignored

@@ -3,7 +3,7 @@
   "username": "osvajorge",
   "totals": {
     "films": 827,
-    "hours": 1519,
+    "hours": 1512,
     "directors": 530,
     "countries": 49,
     "longest_streak_weeks": 16,
@@ -14,6 +14,34 @@
     "films_with_a_date": 284,
     "films_with_a_rating": 825,
     "films_with_tmdb_data": 789
+  },
+  "row_totals": {
+    "genres.most_watched": 19,
+    "genres.highest_rated": 19,
+    "countries.most_watched": 49,
+    "countries.highest_rated": 20,
+    "languages.most_watched": 66,
+    "languages.highest_rated": 23,
+    "cast": 31317,
+    "directors": 530,
+    "studios": 1294,
+    "collections": 200,
+    "world_map": 49,
+    "extras.director_completeness": 160,
+    "extras.lucky_director": 9,
+    "extras.unlucky_director": 9,
+    "extras.contrarian_index.hotter_than_crowd": 331,
+    "extras.contrarian_index.colder_than_crowd": 452,
+    "extras.obscurity.most_obscure": 789,
+    "extras.obscurity.most_popular": 789,
+    "extras.liked_but_low": 2,
+    "extras.background_actor": 1066,
+    "extras.crew_most_watched.composer": 391,
+    "extras.crew_most_watched.cinematographer": 445,
+    "extras.crew_most_watched.editor": 614,
+    "extras.crew_most_watched.writer": 941,
+    "extras.title_words": 1120,
+    "list_progress": 16
   },
   "by_year": [
     {
@@ -3852,7 +3880,7 @@
       }
     ],
     "runtime": {
-      "total_minutes": 91185,
+      "total_minutes": 90727,
       "median": 114,
       "distribution": [
         {
@@ -6272,7 +6300,7 @@
       ]
     },
     "life_in_days": {
-      "days": 63.3,
+      "days": 63.0,
       "would_end_on": "2026-10-30"
     },
     "extremes": {

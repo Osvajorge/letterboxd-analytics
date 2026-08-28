@@ -17,7 +17,36 @@
 const STATS_URL = "./data/stats.json";
 const SVG_NAMESPACE = "http://www.w3.org/2000/svg";
 const TMDB_PROFILE_BASE = "https://image.tmdb.org/t/p/w185";
-const LETTERBOXD_FILM_BASE = "https://letterboxd.com/film/";
+const LETTERBOXD_BASE = "https://letterboxd.com/";
+
+/**
+ * Where Letterboxd files each kind of name this page prints.
+ *
+ * A film link is exact. Its slug is the path segment of the film's own
+ * Letterboxd page, and it is what this whole pipeline joins on, so a film link
+ * either works or the pipeline is joining on the wrong thing.
+ *
+ * A person or a studio link is a GUESS. Letterboxd builds those slugs from the
+ * name and nameSlug below follows the same convention, but the site also
+ * disambiguates two people who share a name and transliterates in its own way,
+ * so a link here can land on a page that does not exist. Nothing depends on one
+ * of them resolving: a wrong guess costs the reader one back button.
+ *
+ * The film, director, actor and studio paths were checked against live pages.
+ * The four crew paths follow the same shape and were not checked, because this
+ * project reads no Letterboxd page. Note that Letterboxd files a
+ * cinematographer under "cinematography", the craft rather than the job.
+ */
+const LETTERBOXD_PATHS = {
+  film: "film",
+  director: "director",
+  actor: "actor",
+  studio: "studio",
+  composer: "composer",
+  cinematographer: "cinematography",
+  editor: "editor",
+  writer: "writer",
+};
 
 /** Rows beyond this are cut from a bar chart, with a note saying so. */
 const MAXIMUM_BAR_ROWS = 20;
@@ -40,13 +69,28 @@ const MINIMUM_CHART_WIDTH = 240;
 /** Shown wherever a figure is missing, so no cell ever reads "undefined". */
 const MISSING_VALUE = "-";
 
-/** Sentences reused by empty states and caveats, so a fix is always named
-    the same way wherever the page has to ask for it. */
-const FIX_TMDB = "Run scripts/enrich_tmdb.py, then rebuild the stats.";
-const NEEDS_TMDB = `It needs TMDB metadata. ${FIX_TMDB}`;
-const FIX_EXPORT = "Import the export, then rebuild the stats.";
+/**
+ * The sentences every empty state ends with, so one fix is named one way.
+ *
+ * Each is taken from WHAT_AN_EMPTY_MODULE_IS_WAITING_FOR in
+ * scripts/build_stats.py, which is where the pipeline records what actually
+ * fills each module. Two were wrong until this pass: collections and director
+ * completeness sent the reader to scripts/enrich_tmdb.py, which writes films,
+ * credits and lookups and neither of the two tables those modules read.
+ * Dropping both tables and running that script recreated neither, and both
+ * modules stayed at zero rows.
+ */
+const FIX_TMDB = "Run scripts/enrich_tmdb.py, then rebuild the stats with scripts/build_stats.py.";
+const NEEDS_TMDB = `It needs film details cached from TMDB. ${FIX_TMDB}`;
+const NEEDS_CREDITS = `It needs film credits cached from TMDB. ${FIX_TMDB}`;
+const FIX_PEOPLE_AND_COLLECTIONS =
+  "Run scripts/enrich_tmdb.py, then scripts/enrich_people_and_collections.py, then rebuild the stats.";
+const FIX_EXPORT = "Run scripts/backfill.py on your Letterboxd export, then rebuild the stats.";
 const NEEDS_EXPORT = `It needs the one-time Letterboxd export, which the RSS feed cannot supply. ${FIX_EXPORT}`;
-const NEEDS_HISTORY = "Run scripts/fetch_rss.py, merge it with scripts/merge_history.py, then rebuild the stats.";
+const NEEDS_HISTORY =
+  "Run scripts/backfill.py once on your Letterboxd export, then scripts/fetch_rss.py and " +
+  "scripts/merge_history.py, then rebuild the stats.";
+const NEEDS_WATCH_DATES = `It needs entries that carry a watch date. ${NEEDS_HISTORY}`;
 
 /**
  * The locale for every number and date the page prints.
@@ -229,7 +273,43 @@ function initialsFor(name) {
 /** Returns the Letterboxd page for a film slug, or null when there is no slug. */
 function filmUrl(slug) {
   const text = toText(slug);
-  return text === null ? null : `${LETTERBOXD_FILM_BASE}${encodeURIComponent(text)}/`;
+  return text === null
+    ? null
+    : `${LETTERBOXD_BASE}${LETTERBOXD_PATHS.film}/${encodeURIComponent(text)}/`;
+}
+
+/**
+ * Builds the slug Letterboxd most likely files a person or a studio under.
+ *
+ * The convention is the name lowercased with its words joined by hyphens.
+ * Accents are folded and apostrophes dropped because Letterboxd's own slugs
+ * carry neither, so keeping them would miss every accented name rather than
+ * only the few the convention really misses. It stays a convention: see
+ * LETTERBOXD_PATHS for what that costs when it is wrong.
+ */
+function nameSlug(name) {
+  const text = toText(name);
+  if (text === null) {
+    return null;
+  }
+  const slug = text
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/['\u2019\u02bc`]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+  return slug === "" ? null : slug;
+}
+
+/**
+ * Returns the Letterboxd page for a person or a studio, or null when there is
+ * no page to guess at: an unknown role, or a name that leaves no slug behind.
+ */
+function personUrl(role, name) {
+  const path = LETTERBOXD_PATHS[role];
+  const slug = nameSlug(name);
+  return path === undefined || slug === null ? null : `${LETTERBOXD_BASE}${path}/${slug}/`;
 }
 
 /* ==================================================== Small DOM conveniences */
@@ -264,10 +344,44 @@ function appendNote(container, message) {
   container.append(build("p", "note", message));
 }
 
-/** Appends a note naming how many rows were left out, when any were. */
-function appendTruncationNote(container, shownCount, totalCount, plural) {
-  if (shownCount < totalCount) {
-    appendNote(container, `Showing the top ${shownCount} of ${totalCount} ${plural}.`);
+/**
+ * How long each ranked module was before the pipeline cut it, read once.
+ *
+ * Fourteen renderers need one number each, for one sentence each, so it is read
+ * at the top of render() rather than threaded through every signature. It is
+ * written once per page load. An older stats file carries none of it, and every
+ * reader treats a missing entry as "no denominator to print", never as an error.
+ */
+let rowTotals = {};
+
+/**
+ * Appends the note that says a ranking was cut, and how much was cut off.
+ *
+ * The denominator comes from stats.row_totals and never from the array. The
+ * array in the file was already cut by scripts/build_stats.py, so its length is
+ * a cap: printing it stated a display limit as a measurement, and the page read
+ * "Showing the top 24 of 50 directors" directly under a tile reading "530
+ * Directors".
+ *
+ * `rowsInFile` still matters, because a file carrying no total for this module
+ * can only say how many rows are on show. Naming no denominator is the honest
+ * answer there. Naming the array's length is not.
+ */
+function appendTruncationNote(container, shownCount, rowsInFile, moduleName, plural) {
+  const total = toNumber(rowTotals[moduleName]);
+
+  if (total !== null) {
+    if (total > shownCount) {
+      appendNote(
+        container,
+        `Showing the top ${formatCount(shownCount)} of ${formatCount(total)} ${plural}.`,
+      );
+    }
+    return;
+  }
+
+  if (rowsInFile > shownCount) {
+    appendNote(container, `Showing the top ${formatCount(shownCount)} ${plural}.`);
   }
 }
 
@@ -838,6 +952,64 @@ function comparisonBars(memberRating, crowdRating) {
   return canvas;
 }
 
+const PROPORTION_BAR_VIEW_WIDTH = 100;
+const PROPORTION_BAR_HEIGHT = 6;
+
+/** Returns a value's share of a whole, from 0 to 1, or 0 when it cannot be one. */
+function shareOf(value, total) {
+  const amount = toNumber(value);
+  const whole = toNumber(total);
+  if (amount === null || whole === null || whole <= 0) {
+    return 0;
+  }
+  return Math.max(0, Math.min(1, amount / whole));
+}
+
+/**
+ * Draws one bar showing a value against the whole it is measured against.
+ *
+ * Drawn to a fixed viewBox and stretched to its row, like comparisonBars, so a
+ * list of dozens of them needs no resize observer. It carries no text and is
+ * hidden from assistive technology, because the row above it already prints the
+ * name and the figure the bar is drawing.
+ */
+function proportionBar(value, total, className = "chart__bar") {
+  const canvas = svgNode("svg", {
+    viewBox: `0 0 ${PROPORTION_BAR_VIEW_WIDTH} ${PROPORTION_BAR_HEIGHT}`,
+    preserveAspectRatio: "none",
+    height: PROPORTION_BAR_HEIGHT,
+    "aria-hidden": "true",
+    focusable: "false",
+  });
+
+  canvas.append(
+    svgNode("rect", {
+      class: "chart__track",
+      x: 0,
+      y: 0,
+      width: PROPORTION_BAR_VIEW_WIDTH,
+      height: PROPORTION_BAR_HEIGHT,
+      rx: 1,
+    }),
+  );
+
+  const share = shareOf(value, total);
+  if (share > 0) {
+    canvas.append(
+      svgNode("rect", {
+        class: className,
+        x: 0,
+        y: 0,
+        width: Math.max(1, share * PROPORTION_BAR_VIEW_WIDTH),
+        height: PROPORTION_BAR_HEIGHT,
+        rx: 1,
+      }),
+    );
+  }
+
+  return canvas;
+}
+
 /* =================================================================== Heatmap */
 
 const HEATMAP_CELL = 12;
@@ -963,8 +1135,14 @@ function buildStatCard({ value, unit, label, note, tone }) {
 /**
  * Builds a ranked list of named rows, each with a figure on the right.
  *
- * Rows take { title, href, meta, value }. A row with an href links to the film
- * or person on Letterboxd; a row without one is plain text.
+ * Rows take { title, href, meta, value, bar }. A row with an href links to the
+ * film, person or studio on Letterboxd; a row without one is plain text. A row
+ * with a bar of { value, total, className } draws that share under the figure.
+ *
+ * The bar exists so a ranking can be a list of links and still show its
+ * proportions. An SVG chart cannot: its labels are drawn text, and turning one
+ * into a link would put a focusable link inside a drawing this page hides from
+ * assistive technology.
  *
  * The name and the figure sit in a wrapper rather than directly in the list
  * item, because a list item laid out as a grid stops being a list item and
@@ -990,6 +1168,13 @@ function buildRankedList(rows) {
     line.append(name);
     line.append(build("p", "ranked__value", row.value));
     item.append(line);
+
+    if (row.bar) {
+      const bar = build("div", "ranked__bar");
+      bar.append(proportionBar(row.bar.value, row.bar.total, row.bar.className));
+      item.append(bar);
+    }
+
     if (row.meta) {
       item.append(build("p", "ranked__meta", row.meta));
     }
@@ -1163,20 +1348,20 @@ const COVERAGE_BASES = {
   dated: {
     countOf: (coverage) => coverage.dated,
     label: "Films with a watch date",
-    withinTileNote: (count) => `among the ${formatCount(count)} films with a watch date`,
-    emptyTileNote: "not counted: no film carries a watch date",
+    countedAcross: (count) => `counted among the ${formatCount(count)} films with a watch date`,
+    notCounted: "not counted: no film carries a watch date",
   },
   rated: {
     countOf: (coverage) => coverage.rated,
     label: "Films with a rating",
-    withinTileNote: (count) => `across the ${formatCount(count)} films you have rated`,
-    emptyTileNote: "not counted: no film carries a rating",
+    countedAcross: (count) => `counted across the ${formatCount(count)} films you have rated`,
+    notCounted: "not counted: no film carries a rating",
   },
   tmdb: {
     countOf: (coverage) => coverage.tmdb,
     label: "Films with TMDB metadata",
-    withinTileNote: (count) => `across the ${formatCount(count)} films with TMDB metadata`,
-    emptyTileNote: "not counted: no film has TMDB metadata yet",
+    countedAcross: (count) => `counted across the ${formatCount(count)} films with TMDB metadata`,
+    notCounted: "not counted: no film has TMDB metadata yet",
   },
 };
 
@@ -1349,6 +1534,15 @@ function renderCoverageSummary(coverage) {
 
   const sentences = [];
 
+  // No films at all is its own case. Every sentence below reads as a
+  // measurement of a library, and there is no library to measure.
+  if (coverage.total === 0) {
+    banner.hidden = false;
+    banner.textContent =
+      `No films are recorded yet, so nothing on this page has been counted. ${NEEDS_HISTORY}`;
+    return;
+  }
+
   if (!coverageIsComplete(coverage)) {
     sentences.push(
       "This stats file does not record how many films each figure is counted from, so a figure " +
@@ -1379,10 +1573,11 @@ function renderCoverageSummary(coverage) {
           FIX_TMDB,
       );
     } else if (tmdb.state === "part") {
+      // The tiles this qualifies are named on the scope line directly above, so
+      // this sentence gives the rule rather than the list a second time.
       sentences.push(
-        `${formatCount(tmdb.count)} of the ${formatCount(tmdb.total)} films have TMDB metadata, so hours, ` +
-          "directors, countries, and every section built from a genre, a runtime, or a credit " +
-          "describe those.",
+        `${formatCount(tmdb.count)} of the ${formatCount(tmdb.total)} films have TMDB metadata, so ` +
+          "every figure built from a genre, a country, a runtime or a credit describes those.",
       );
     }
   }
@@ -1427,30 +1622,82 @@ const TOTAL_TILES = [
 ];
 
 /**
- * Narrows one tile's note to the subset that tile's figure is counted from.
+ * Narrows one tile's reading to the subset that tile's figure is counted from.
  *
- * Both tile grids on the page read this one rule, because both mix figures
- * counted from the whole library with figures counted from part of it. A figure
- * counted from part says which part, and a figure counted from an empty subset
- * is printed as unresolved: zero hours across zero resolved films is not a
- * screen time of nothing, it is a screen time nobody has worked out.
+ * A figure counted from an empty subset is printed as unresolved: zero hours
+ * across zero resolved films is not a screen time of nothing, it is a screen
+ * time nobody has worked out.
+ *
+ * A figure counted from part of the library keeps its own short note. Which
+ * part, and how many films that part holds, is stated once for the whole grid
+ * by describeTileScopes. Repeating it on every tile put the same clause under
+ * five figures in the totals grid and two more below, and the clause is longer
+ * than the figure it qualifies.
  */
 function scopeTileReading(reading, basisName, coverage) {
   if (basisName === undefined) {
     return reading;
   }
 
-  const scope = describeBasis(coverage, basisName);
-
-  if (scope.state === "empty") {
-    return { value: MISSING_VALUE, note: scope.basis.emptyTileNote, unresolved: true };
-  }
-
-  if (scope.state === "part") {
-    return { ...reading, note: `${reading.note}, ${scope.basis.withinTileNote(scope.count)}` };
+  if (describeBasis(coverage, basisName).state === "empty") {
+    return { value: MISSING_VALUE, note: "not counted yet", unresolved: true };
   }
 
   return reading;
+}
+
+/** Joins names into an English list, such as "Hours, Directors and Countries". */
+function joinNames(names) {
+  if (names.length <= 1) {
+    return names.join("");
+  }
+  return `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}`;
+}
+
+/**
+ * Writes the sentences that give one tile grid its denominators.
+ *
+ * One sentence per subset the grid draws on, naming the tiles counted from it
+ * and how many films it holds. This is what keeps the denominator on the page
+ * while taking it off every tile: a reader can still learn what any figure was
+ * counted from without leaving the page, by reading one line instead of the
+ * same clause five times.
+ */
+function describeTileScopes(tiles, coverage) {
+  const sentences = [];
+
+  // In the order the subsets first appear across the grid, so the line reads in
+  // the same order as the tiles a reader has just looked at.
+  const basisNames = [...new Set(tiles.map((tile) => tile.basis))].filter(
+    (basisName) => basisName !== undefined && basisName in COVERAGE_BASES,
+  );
+
+  for (const basisName of basisNames) {
+    const labels = tiles.filter((tile) => tile.basis === basisName).map((tile) => tile.label);
+
+    const scope = describeBasis(coverage, basisName);
+    const verb = labels.length === 1 ? "is" : "are";
+
+    if (scope.state === "part") {
+      sentences.push(`${joinNames(labels)} ${verb} ${scope.basis.countedAcross(scope.count)}.`);
+    } else if (scope.state === "empty") {
+      sentences.push(`${joinNames(labels)} ${verb} ${scope.basis.notCounted}.`);
+    }
+  }
+
+  return sentences;
+}
+
+/** Prints one tile grid's denominators under it, or hides the line when it has none. */
+function renderTileScope(id, tiles, coverage) {
+  const node = elementById(id);
+  if (node === null) {
+    return;
+  }
+
+  const sentences = describeTileScopes(tiles, coverage);
+  node.hidden = sentences.length === 0;
+  node.textContent = sentences.join(" ");
 }
 
 /**
@@ -1493,7 +1740,8 @@ function renderTotals(stats, coverage) {
 
   const totals = toObject(stats.totals);
   if (totals === null) {
-    showEmptyState(container, "No totals yet. They appear once the pipeline has run at least once.");
+    showEmptyState(container, `No totals yet. They need a watch history. ${NEEDS_HISTORY}`);
+    renderTileScope("totals-scope", [], coverage);
     return;
   }
 
@@ -1507,6 +1755,7 @@ function renderTotals(stats, coverage) {
   });
 
   container.replaceChildren(...tiles);
+  renderTileScope("totals-scope", TOTAL_TILES, coverage);
 }
 
 /** Renders films and diary entries per year, and the ratings histogram. */
@@ -1545,7 +1794,7 @@ function renderByYear(stats) {
           `Films watched each year from ${categories[0].label} to ${categories[categories.length - 1].label}.` +
           (busiest === null
             ? ""
-            : ` Busiest year: ${formatYear(busiest.year)} with ${formatCount(busiest.films)} films.`),
+            : ` Busiest year: ${formatYear(busiest.year)} with ${formatQuantity(busiest.films, "film", "films")}.`),
         draw: (width) =>
           columnChart(width, categories, { seriesClassNames: ["chart__bar", "chart__bar--secondary"] }),
         table: buildDataTable(
@@ -1613,7 +1862,7 @@ function renderRatingsHistogram(container, years) {
   replaceWithChart(container, {
     // build_by_year counts ratings on dated entries only, so the caption says so:
     // it is the text alternative to the chart and has to be true read alone.
-    caption: `${formatCount(total)} ratings given on entries with a watch date, grouped by half-star step from 0.5 to 5.`,
+    caption: `${formatQuantity(total, "rating", "ratings")} given on entries with a watch date, grouped by half-star step from 0.5 to 5.`,
     draw: (width) => columnChart(width, categories),
     table: buildDataTable(
       "Ratings given at each half-star step, on entries with a watch date",
@@ -1695,7 +1944,8 @@ function renderRankedPair(stats, key, singularNoun) {
           rows.map((row) => [row.label, row.valueText]),
         ),
       });
-      appendTruncationNote(mostWatchedContainer, shown.length, items.length, `${singularNoun}s`);
+      // The module key is already the plural, which is how "countrys" happened.
+      appendTruncationNote(mostWatchedContainer, shown.length, items.length, `${key}.most_watched`, key);
     }
   }
 
@@ -1725,7 +1975,13 @@ function renderRankedPair(stats, key, singularNoun) {
           ]),
         ),
       });
-      appendTruncationNote(highestRatedContainer, shown.length, items.length, `${singularNoun}s`);
+      appendTruncationNote(
+        highestRatedContainer,
+        shown.length,
+        items.length,
+        `${key}.highest_rated`,
+        key,
+      );
     }
   }
 }
@@ -1735,8 +1991,12 @@ function renderRankedPair(stats, key, singularNoun) {
  *
  * A person with no photo keeps the same card size and shows their initials, so
  * a missing image never leaves a hole in the grid.
+ *
+ * `role` is the Letterboxd path the names link to, one of LETTERBOXD_PATHS. A
+ * name that yields no slug is printed as plain text rather than as a link that
+ * goes nowhere.
  */
-function buildPeopleGrid(people, describeCount) {
+function buildPeopleGrid(people, describeCount, role) {
   const grid = build("ul", "people");
 
   for (const person of people) {
@@ -1762,8 +2022,19 @@ function buildPeopleGrid(people, describeCount) {
       avatar.append(photo);
     }
 
+    const nameLine = build("p", "person__name");
+    const href = personUrl(role, name);
+    if (href === null) {
+      nameLine.textContent = name;
+    } else {
+      const link = build("a", null, name);
+      link.href = href;
+      link.rel = "noopener";
+      nameLine.append(link);
+    }
+
     item.append(avatar);
-    item.append(build("p", "person__name", name));
+    item.append(nameLine);
     item.append(build("p", "person__count", describeCount(person)));
     grid.append(item);
   }
@@ -1780,15 +2051,15 @@ function renderCast(stats) {
 
   const cast = toArray(stats.cast).filter((person) => toText(person?.name) !== null);
   if (cast.length === 0) {
-    showEmptyState(container, `No cast counts yet. ${NEEDS_TMDB}`);
+    showEmptyState(container, `No cast counts yet. ${NEEDS_CREDITS}`);
     return;
   }
 
   const shown = cast.slice(0, MAXIMUM_PEOPLE_CARDS);
   container.replaceChildren(
-    buildPeopleGrid(shown, (person) => `${formatCount(person.count)} films`),
+    buildPeopleGrid(shown, (person) => formatQuantity(person.count, "film", "films"), "actor"),
   );
-  appendTruncationNote(container, shown.length, cast.length, "actors");
+  appendTruncationNote(container, shown.length, cast.length, "cast", "actors");
 }
 
 /** Renders the most watched directors, with the average rating given to each. */
@@ -1800,19 +2071,23 @@ function renderDirectors(stats) {
 
   const directors = toArray(stats.directors).filter((person) => toText(person?.name) !== null);
   if (directors.length === 0) {
-    showEmptyState(container, `No director counts yet. ${NEEDS_TMDB}`);
+    showEmptyState(container, `No director counts yet. ${NEEDS_CREDITS}`);
     return;
   }
 
   const shown = directors.slice(0, MAXIMUM_PEOPLE_CARDS);
   container.replaceChildren(
-    buildPeopleGrid(shown, (person) => {
-      const average = toNumber(person.average_rating);
-      const films = `${formatCount(person.count)} films`;
-      return average === null ? films : `${films} · ${average.toFixed(1)}`;
-    }),
+    buildPeopleGrid(
+      shown,
+      (person) => {
+        const average = toNumber(person.average_rating);
+        const films = formatQuantity(person.count, "film", "films");
+        return average === null ? films : `${films} · ${average.toFixed(1)}`;
+      },
+      "director",
+    ),
   );
-  appendTruncationNote(container, shown.length, directors.length, "directors");
+  appendTruncationNote(container, shown.length, directors.length, "directors", "directors");
 }
 
 /** Renders the studios watched most, with the average rating given to each. */
@@ -1828,27 +2103,28 @@ function renderStudios(stats) {
     return;
   }
 
+  // A list of links rather than a bar chart, because a studio name has to be
+  // clickable and an SVG label cannot be. The bar rides inside each row, so the
+  // proportions survive the change, and the names now wrap instead of being cut
+  // to fit a drawn label column.
   const shown = studios.slice(0, MAXIMUM_BAR_ROWS);
-  const rows = shown.map((studio) => ({
-    label: toText(studio.name),
-    value: toNumber(studio.count) ?? 0,
-    valueText: formatCount(studio.count),
-  }));
+  const busiest = shown.reduce((peak, studio) => Math.max(peak, toNumber(studio.count) ?? 0), 0);
 
-  replaceWithChart(container, {
-    caption: "Films watched per studio, most first.",
-    draw: (width) => horizontalBarChart(width, rows),
-    table: buildDataTable(
-      "Films and average rating per studio",
-      ["Studio", "Films", "Average rating"],
-      shown.map((studio) => [
-        toText(studio.name),
-        formatCount(studio.count),
-        formatDecimal(studio.average_rating, 2),
-      ]),
+  container.replaceChildren(
+    buildRankedList(
+      shown.map((studio) => {
+        const average = toNumber(studio.average_rating);
+        return {
+          title: toText(studio.name),
+          href: personUrl("studio", studio.name),
+          value: formatQuantity(studio.count, "film", "films"),
+          bar: { value: studio.count, total: busiest },
+          meta: average === null ? null : `Average rating ${average.toFixed(2)}`,
+        };
+      }),
     ),
-  });
-  appendTruncationNote(container, shown.length, studios.length, "studios");
+  );
+  appendTruncationNote(container, shown.length, studios.length, "studios", "studios");
 }
 
 /** Renders how much of each film collection has been watched. */
@@ -1860,7 +2136,15 @@ function renderCollections(stats) {
 
   const collections = toArray(stats.collections).filter((entry) => toText(entry?.name) !== null);
   if (collections.length === 0) {
-    showEmptyState(container, `No collections yet. ${NEEDS_TMDB}`);
+    // Not enrich_tmdb.py. How many films a collection holds is not a fact about
+    // any one film, so no film payload carries it and no number of them
+    // produces it. It comes from the collections table, which
+    // scripts/enrich_people_and_collections.py writes.
+    showEmptyState(
+      container,
+      "No collections yet. Each one needs the size TMDB reports for the whole series, " +
+        `which no film's own record carries. ${FIX_PEOPLE_AND_COLLECTIONS}`,
+    );
     return;
   }
 
@@ -1887,7 +2171,7 @@ function renderCollections(stats) {
       shown.map((entry) => [toText(entry.name), formatCount(entry.seen), formatCount(entry.total)]),
     ),
   });
-  appendTruncationNote(container, shown.length, ranked.length, "collections");
+  appendTruncationNote(container, shown.length, ranked.length, "collections", "collections");
 }
 
 /** Returns the fraction of a collection or list already seen, from 0 to 1. */
@@ -1906,7 +2190,11 @@ function renderListProgress(stats) {
 
   const lists = toArray(stats.list_progress).filter((entry) => toText(entry?.title) !== null);
   if (lists.length === 0) {
-    showEmptyState(container, "No list progress yet. Run the list fetcher, then rebuild the stats.");
+    showEmptyState(
+      container,
+      "No list progress yet. The curated lists are not cached. Run scripts/fetch_lists.py, " +
+        "then rebuild the stats.",
+    );
     return;
   }
 
@@ -1973,7 +2261,7 @@ function renderCountriesRanked(stats) {
       ]),
     ),
   });
-  appendTruncationNote(container, shown.length, ranked.length, "countries");
+  appendTruncationNote(container, shown.length, ranked.length, "world_map", "countries");
 }
 
 /* ============================================== Extras: figures at a glance */
@@ -2150,6 +2438,8 @@ function renderExtrasTiles(extras, coverage) {
     }),
   );
 
+  renderTileScope("extras-tiles-scope", tiles, coverage);
+
   // The tile note is small print. The caveat is repeated at full size below the
   // grid, because a reader who takes the median at face value is misled.
   const caveatBanner = elementById("watchlist-dates-caveat");
@@ -2173,7 +2463,7 @@ function renderExtrasTiles(extras, coverage) {
  * scale. The bars repeat what the figures line already says in words, so the
  * bars are hidden from assistive technology and the words are the alternative.
  */
-function renderContrarianColumn(container, films, emptyMessage) {
+function renderContrarianColumn(container, films, emptyMessage, moduleName) {
   if (container === null) {
     return;
   }
@@ -2233,23 +2523,25 @@ function renderContrarianColumn(container, films, emptyMessage) {
   }
 
   container.replaceChildren(list);
-  appendTruncationNote(container, shown.length, rows.length, "films");
+  appendTruncationNote(container, shown.length, rows.length, moduleName, "films");
 }
 
 /** Renders both hot takes columns, hottest disagreement first in each. */
 function renderContrarianIndex(extras) {
   const index = toObject(extras.contrarian_index);
-  const missing = `No hot takes yet. Comparing your rating with the crowd's needs TMDB vote averages. ${NEEDS_TMDB}`;
+  const missing = `No hot takes yet. Comparing your rating with the crowd's needs TMDB vote averages. ${FIX_TMDB}`;
 
   renderContrarianColumn(
     elementById("contrarian-hotter"),
     toArray(index?.hotter_than_crowd),
     missing,
+    "extras.contrarian_index.hotter_than_crowd",
   );
   renderContrarianColumn(
     elementById("contrarian-colder"),
     toArray(index?.colder_than_crowd),
     missing,
+    "extras.contrarian_index.colder_than_crowd",
   );
 
   const legendHost = elementById("contrarian-legend");
@@ -2258,8 +2550,8 @@ function renderContrarianIndex(extras) {
   }
 }
 
-/** Renders films marked as liked yet rated below the member's own average. */
-function renderLikedButLow(extras) {
+/** Renders films marked as liked yet rated low all the same. */
+function renderLikedButLow(extras, coverage) {
   const container = elementById("liked-but-low");
   if (container === null) {
     return;
@@ -2270,9 +2562,13 @@ function renderLikedButLow(extras) {
     .filter((row) => row !== null);
 
   if (rows.length === 0) {
+    // An empty library and a library where nothing qualifies both arrive here
+    // as no rows, and only the coverage block tells them apart.
     showEmptyState(
       container,
-      "No films here. Nothing you liked was also rated below your usual mark.",
+      coverage.total === 0 || coverage.total === null
+        ? `No films here yet. Your history holds no films. ${NEEDS_HISTORY}`
+        : "No films here. Nothing you gave a heart to also carries a low rating.",
     );
     return;
   }
@@ -2287,7 +2583,7 @@ function renderLikedButLow(extras) {
       })),
     ),
   );
-  appendTruncationNote(container, shown.length, rows.length, "films");
+  appendTruncationNote(container, shown.length, rows.length, "extras.liked_but_low", "films");
 }
 
 /* ================================================== Extras: viewing rhythm */
@@ -2334,7 +2630,7 @@ function renderRhythmFacts(extras) {
       buildStatCard({
         value: MISSING_VALUE,
         label: "Longest drought",
-        note: "No gap measured yet. It needs at least two entries that carry a watch date.",
+        note: `No gap measured yet. It needs at least two entries that carry a watch date. ${NEEDS_HISTORY}`,
       }),
     );
   } else {
@@ -2370,7 +2666,7 @@ function renderWeekdayProfile(extras) {
     .sort((left, right) => weekdayRank(left.weekday) - weekdayRank(right.weekday));
 
   if (rows.length === 0) {
-    showEmptyState(container, "No weekday profile yet. It needs entries that carry a watch date.");
+    showEmptyState(container, `No weekday profile yet. ${NEEDS_WATCH_DATES}`);
     return;
   }
 
@@ -2407,7 +2703,7 @@ function renderMonthSeasonality(extras) {
     .sort((left, right) => left.month - right.month);
 
   if (rows.length === 0) {
-    showEmptyState(container, "No monthly profile yet. It needs entries that carry a watch date.");
+    showEmptyState(container, `No monthly profile yet. ${NEEDS_WATCH_DATES}`);
     return;
   }
 
@@ -2496,7 +2792,10 @@ function renderHeatmap(extras) {
   }
 
   if (totalDays === 0) {
-    showEmptyState(container, "No watch dates yet, so there is nothing to plot by day.");
+    showEmptyState(
+      container,
+      `No watch dates yet, so there is nothing to plot by day. ${NEEDS_HISTORY}`,
+    );
     return;
   }
 
@@ -2582,7 +2881,7 @@ function isHalfStar(rating) {
 }
 
 /** Renders how often ratings land on a half star rather than a whole one. */
-function renderHalfStarUsage(extras) {
+function renderHalfStarUsage(extras, coverage) {
   const container = elementById("half-star-usage");
   if (container === null) {
     return;
@@ -2599,7 +2898,10 @@ function renderHalfStarUsage(extras) {
   if (share === null && rows.length === 0) {
     showEmptyState(
       container,
-      "No half-star figures yet. They need entries that carry a rating.",
+      coverage.total === 0 || coverage.total === null
+        ? `No half-star figures yet. Your history holds no films. ${NEEDS_HISTORY}`
+        : "No half-star figures yet. They need films that carry a rating, and none of yours " +
+          "does.",
     );
     return;
   }
@@ -2664,7 +2966,10 @@ function renderRatingVersusRuntime(extras) {
     .filter((bucket) => bucket !== null);
 
   if (correlation === null && buckets.length === 0) {
-    showEmptyState(container, `No runtime comparison yet. Pairing a rating with a runtime needs both. ${NEEDS_TMDB}`);
+    showEmptyState(
+      container,
+      `No runtime comparison yet. It pairs your rating with the film's runtime, and TMDB carries the runtime. ${FIX_TMDB}`,
+    );
     return;
   }
 
@@ -2727,7 +3032,7 @@ function renderObscurity(extras) {
     .filter((value) => value !== null);
 
   if (median === null && quartiles.length === 0) {
-    showEmptyState(container, `No obscurity figures yet. Vote counts are the measure. ${NEEDS_TMDB}`);
+    showEmptyState(container, `No obscurity figures yet. TMDB vote counts are the measure. ${FIX_TMDB}`);
   } else {
     const card = buildStatCard({
       value: formatCount(median),
@@ -2745,19 +3050,26 @@ function renderObscurity(extras) {
   renderFilmSideList(
     elementById("obscurity-most-obscure"),
     toArray(obscurity?.most_obscure),
-    "votes",
+    "vote",
     `No deep cuts listed yet. ${NEEDS_TMDB}`,
+    "extras.obscurity.most_obscure",
   );
   renderFilmSideList(
     elementById("obscurity-most-popular"),
     toArray(obscurity?.most_popular),
-    "votes",
+    "vote",
     `No crowd favourites listed yet. ${NEEDS_TMDB}`,
+    "extras.obscurity.most_popular",
   );
 }
 
-/** Renders a short ranked list of films with one figure beside each. */
-function renderFilmSideList(container, films, unit, emptyMessage) {
+/**
+ * Renders a short ranked list of films with one figure beside each.
+ *
+ * `unit` names the figure in the singular. A count of one keeps it; anything else
+ * is pluralised, so a film with a single TMDB vote reads "1 vote".
+ */
+function renderFilmSideList(container, films, unit, emptyMessage, moduleName) {
   if (container === null) {
     return;
   }
@@ -2774,11 +3086,11 @@ function renderFilmSideList(container, films, unit, emptyMessage) {
       shown.map((row) => ({
         title: titleWithYear(row),
         href: row.href,
-        value: row.value === null ? MISSING_VALUE : `${formatCount(row.value)} ${unit}`,
+        value: row.value === null ? MISSING_VALUE : formatQuantity(row.value, unit, `${unit}s`),
       })),
     ),
   );
-  appendTruncationNote(container, shown.length, rows.length, "films");
+  appendTruncationNote(container, shown.length, rows.length, moduleName, "films");
 }
 
 /** Renders how long after release a film is usually watched. */
@@ -2797,7 +3109,11 @@ function renderReleaseRecency(extras) {
     .sort((left, right) => left.year - right.year);
 
   if (medianDays === null && points.length === 0) {
-    showEmptyState(container, `No release dates yet, so the wait cannot be measured. ${NEEDS_TMDB}`);
+    showEmptyState(
+      container,
+      "No wait measured yet. It needs a watch date on the entry and a release date from " +
+        "TMDB. Run scripts/backfill.py and scripts/enrich_tmdb.py, then rebuild the stats.",
+    );
     return;
   }
 
@@ -2905,7 +3221,9 @@ function renderExtremes(extras) {
   if (facts.length === 0) {
     showEmptyState(
       container,
-      `No extremes yet. The shortest and longest need runtimes. ${NEEDS_TMDB}`,
+      "No extremes yet. The shortest and longest need runtimes from TMDB, the oldest and " +
+        "newest need release years from your history. Run scripts/enrich_tmdb.py and " +
+        "scripts/backfill.py, then rebuild the stats.",
     );
     return;
   }
@@ -2914,7 +3232,7 @@ function renderExtremes(extras) {
 }
 
 /** Renders the decades with no film watched, as a row of chips. */
-function renderDecadeGaps(extras) {
+function renderDecadeGaps(extras, coverage) {
   const container = elementById("decade-gaps");
   if (container === null) {
     return;
@@ -2926,7 +3244,14 @@ function renderDecadeGaps(extras) {
     .sort((left, right) => left - right);
 
   if (gaps.length === 0) {
-    showEmptyState(container, "No gaps. Every decade in the data has at least one film watched.");
+    // "No gaps" is a claim about a run of decades, and a library with no films
+    // has no such run. Both cases produce an empty list.
+    showEmptyState(
+      container,
+      coverage.total === 0 || coverage.total === null
+        ? `No decades to check yet. Your history holds no films. ${NEEDS_HISTORY}`
+        : "No gaps. Every decade from your oldest film to now has at least one film watched.",
+    );
     return;
   }
 
@@ -2940,7 +3265,7 @@ function renderDecadeGaps(extras) {
 /* ======================================================== Extras: the people */
 
 /** Renders one column of directors ranked by the average rating you give them. */
-function renderDirectorLuck(container, directors, emptyMessage, tone) {
+function renderDirectorLuck(container, directors, emptyMessage, moduleName, tone) {
   if (container === null) {
     return;
   }
@@ -2958,31 +3283,49 @@ function renderDirectorLuck(container, directors, emptyMessage, tone) {
     return;
   }
 
+  // A list of links rather than a bar chart, for the reason buildRankedList
+  // gives: a drawn SVG label cannot carry a link to the director's page.
   const shown = entries.slice(0, MAXIMUM_LIST_ROWS);
-  const rows = shown.map((entry) => ({
-    label: entry.name,
-    value: entry.average,
-    valueText: formatDecimal(entry.average, 2),
-    barClassName: tone === "secondary" ? "chart__bar--secondary" : "chart__bar",
-  }));
-
-  replaceWithChart(container, {
-    caption: "Average rating you give each director. The bar fills at five stars.",
-    draw: (width) => horizontalBarChart(width, rows, { maxValue: RATING_SCALE_MAXIMUM, showTrack: true }),
-    table: buildDataTable(
-      "Average rating per director",
-      ["Director", "Average rating", "Films rated"],
-      shown.map((entry) => [entry.name, formatDecimal(entry.average, 2), formatCount(entry.films)]),
+  container.replaceChildren(
+    buildRankedList(
+      shown.map((entry) => ({
+        title: entry.name,
+        href: personUrl("director", entry.name),
+        value: `${formatDecimal(entry.average, 2)} ★`,
+        bar: {
+          value: entry.average,
+          total: RATING_SCALE_MAXIMUM,
+          className: tone === "secondary" ? "chart__bar--secondary" : "chart__bar",
+        },
+        meta:
+          entry.films === null
+            ? null
+            : `Averaged over ${formatQuantity(entry.films, "rated film", "rated films")}.`,
+      })),
     ),
-  });
-  appendTruncationNote(container, shown.length, entries.length, "directors");
+  );
+  appendTruncationNote(container, shown.length, entries.length, moduleName, "directors");
 }
 
 /** Renders the directors you rate highest and the ones you rate lowest. */
 function renderDirectorLuckPair(extras) {
-  const missing = `No director averages yet. They need directing credits. ${NEEDS_TMDB}`;
-  renderDirectorLuck(elementById("lucky-director"), extras.lucky_director, missing, "primary");
-  renderDirectorLuck(elementById("unlucky-director"), extras.unlucky_director, missing, "secondary");
+  const missing =
+    "No director averages yet. Each one needs directing credits from TMDB and enough rated " +
+    `films behind the average to be worth ranking. ${FIX_TMDB}`;
+  renderDirectorLuck(
+    elementById("lucky-director"),
+    extras.lucky_director,
+    missing,
+    "extras.lucky_director",
+    "primary",
+  );
+  renderDirectorLuck(
+    elementById("unlucky-director"),
+    extras.unlucky_director,
+    missing,
+    "extras.unlucky_director",
+    "secondary",
+  );
 }
 
 /** Renders actors seen often but rarely near the top of the billing. */
@@ -3001,7 +3344,10 @@ function renderBackgroundActor(extras) {
     .filter((entry) => entry.name !== null);
 
   if (actors.length === 0) {
-    showEmptyState(container, `No background faces yet. They need cast credits with billing order. ${NEEDS_TMDB}`);
+    showEmptyState(
+      container,
+      `No background faces yet. They need cast credits with a billing order. ${FIX_TMDB}`,
+    );
     return;
   }
 
@@ -3010,6 +3356,7 @@ function renderBackgroundActor(extras) {
     buildRankedList(
       shown.map((entry) => ({
         title: entry.name,
+        href: personUrl("actor", entry.name),
         value: formatQuantity(entry.count, "film", "films"),
         meta:
           entry.billing === null
@@ -3018,7 +3365,7 @@ function renderBackgroundActor(extras) {
       })),
     ),
   );
-  appendTruncationNote(container, shown.length, actors.length, "actors");
+  appendTruncationNote(container, shown.length, actors.length, "extras.background_actor", "actors");
 }
 
 const CREW_ROLES = [
@@ -3053,16 +3400,23 @@ function renderCrewMostWatched(extras) {
       buildRankedList(
         shown.map((person) => ({
           title: person.name,
+          href: personUrl(key, person.name),
           value: formatQuantity(person.count, "film", "films"),
         })),
       ),
     );
-    appendTruncationNote(column, shown.length, people.length, "people");
+    appendTruncationNote(
+      column,
+      shown.length,
+      people.length,
+      `extras.crew_most_watched.${key}`,
+      label.toLowerCase(),
+    );
     groups.push(column);
   }
 
   if (groups.length === 0) {
-    showEmptyState(container, `No crew counts yet. They need crew credits. ${NEEDS_TMDB}`);
+    showEmptyState(container, `No crew counts yet. They need crew credits from TMDB. ${FIX_TMDB}`);
     return;
   }
 
@@ -3082,7 +3436,16 @@ function renderDirectorCompleteness(extras) {
     (entry) => toText(entry?.name) !== null,
   );
   if (directors.length === 0) {
-    showEmptyState(container, `No filmography counts yet. ${NEEDS_TMDB}`);
+    // Not enrich_tmdb.py. A director's whole body of work is not a fact about
+    // any one film, so no film's credits carry it. It comes from the
+    // person_credits table, which scripts/enrich_people_and_collections.py
+    // writes, and only for directors with at least two films in the history.
+    showEmptyState(
+      container,
+      "No filmography counts yet. Each one needs the director's full body of work from " +
+        "TMDB, which no film's credits carry, and it is downloaded only for directors " +
+        `with at least two films in your history. ${FIX_PEOPLE_AND_COLLECTIONS}`,
+    );
     return;
   }
 
@@ -3092,28 +3455,26 @@ function renderDirectorCompleteness(extras) {
     return rightShare - leftShare;
   });
 
+  // A list of links rather than a progress chart, for the reason buildRankedList
+  // gives: a drawn SVG label cannot carry a link to the director's page.
   const shown = ranked.slice(0, MAXIMUM_BAR_ROWS);
-  const rows = shown.map((entry) => ({
-    label: toText(entry.name),
-    value: toNumber(entry.seen) ?? 0,
-    total: toNumber(entry.filmography) ?? 0,
-    valueText: `${formatCount(entry.seen)} / ${formatCount(entry.filmography)}`,
-  }));
-
-  replaceWithChart(container, {
-    caption: "Films seen out of each director's known filmography, most complete first.",
-    draw: (width) => progressBarChart(width, rows),
-    table: buildDataTable(
-      "Films seen per director filmography",
-      ["Director", "Seen", "Filmography"],
-      shown.map((entry) => [
-        toText(entry.name),
-        formatCount(entry.seen),
-        formatCount(entry.filmography),
-      ]),
+  container.replaceChildren(
+    buildRankedList(
+      shown.map((entry) => ({
+        title: toText(entry.name),
+        href: personUrl("director", entry.name),
+        value: `${formatCount(entry.seen)} of ${formatCount(entry.filmography)}`,
+        bar: { value: entry.seen, total: entry.filmography },
+      })),
     ),
-  });
-  appendTruncationNote(container, shown.length, ranked.length, "directors");
+  );
+  appendTruncationNote(
+    container,
+    shown.length,
+    ranked.length,
+    "extras.director_completeness",
+    "directors",
+  );
 }
 
 /* ======================================================== Extras: title words */
@@ -3142,7 +3503,7 @@ function renderTitleWords(extras) {
   if (words.length === 0) {
     showEmptyState(
       container,
-      "No repeated title words yet. They appear once enough films share a word.",
+      `No title words yet. They are counted from the titles in your history. ${NEEDS_HISTORY}`,
     );
     return;
   }
@@ -3168,7 +3529,7 @@ function renderTitleWords(extras) {
     container,
     `Word size follows how often the word appears, from ${formatCount(lowest)} to ${formatCount(highest)} titles.`,
   );
-  appendTruncationNote(container, shown.length, words.length, "words");
+  appendTruncationNote(container, shown.length, words.length, "extras.title_words", "words");
 }
 
 /* ============================================================= Page assembly */
@@ -3180,7 +3541,7 @@ function renderExtras(stats, coverage) {
   renderExtrasTiles(extras, coverage);
 
   renderContrarianIndex(extras);
-  renderLikedButLow(extras);
+  renderLikedButLow(extras, coverage);
 
   renderRhythmFacts(extras);
   renderWeekdayProfile(extras);
@@ -3189,14 +3550,14 @@ function renderExtras(stats, coverage) {
   renderHeatmap(extras);
 
   renderRatingDrift(extras);
-  renderHalfStarUsage(extras);
+  renderHalfStarUsage(extras, coverage);
   renderRatingVersusRuntime(extras);
 
   renderObscurity(extras);
   renderReleaseRecency(extras);
   renderRuntimeDistribution(extras);
   renderExtremes(extras);
-  renderDecadeGaps(extras);
+  renderDecadeGaps(extras, coverage);
 
   renderDirectorLuckPair(extras);
   renderBackgroundActor(extras);
@@ -3224,7 +3585,7 @@ function renderPageHeader(stats) {
   const filmCount = toNumber(stats.totals?.films);
   const parts = [];
   if (filmCount !== null) {
-    parts.push(`${formatCount(filmCount)} films tracked`);
+    parts.push(`${formatQuantity(filmCount, "film", "films")} tracked`);
   }
   parts.push(`generated ${formatDate(stats.generated_at)}`);
 
@@ -3241,6 +3602,10 @@ function render(stats) {
   // Read once and passed down: every module that covers part of the library has
   // to state the same denominators.
   const coverage = readCoverage(stats);
+
+  // Read once and kept, for the same reason: every ranked module the page
+  // shortens has to name a total it did not measure from a shortened array.
+  rowTotals = toObject(stats.row_totals) ?? {};
 
   renderPageHeader(stats);
   renderTotals(stats, coverage);

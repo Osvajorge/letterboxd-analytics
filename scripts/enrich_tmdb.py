@@ -311,7 +311,7 @@ class Identity(Enum):
 
     A_FILM = "TMDB holds this as a film"
     NO_TMDB_RECORD = "Letterboxd has no TMDB record for this film"
-    NOT_A_FILM = "TMDB holds this as television, not as a film"
+    NOT_A_FILM = "the id map does not state that this is a film"
     UNRESOLVED = "no one has read this film's Letterboxd page yet"
 
 
@@ -368,9 +368,11 @@ class RunSummary:
     # request is spent on them now and none will be in any later run.
     no_tmdb_record_slugs: list[str] = field(default_factory=list)
 
-    # The map gives these an id of a television record. The film endpoint cannot
-    # serve one, so they are skipped rather than asked for.
-    television_slugs: list[str] = field(default_factory=list)
+    # The map gives these an id but does not state that the id is a film: it is
+    # television, or the type is null because the film page did not say. Neither
+    # is something the film endpoint can serve, so they are skipped rather than
+    # asked for.
+    not_a_film_slugs: list[str] = field(default_factory=list)
 
     # The map does not mention these at all, so nothing knows what they are yet.
     unresolved_slugs: list[str] = field(default_factory=list)
@@ -392,7 +394,7 @@ class RunSummary:
         """
         buckets = {
             Identity.NO_TMDB_RECORD: self.no_tmdb_record_slugs,
-            Identity.NOT_A_FILM: self.television_slugs,
+            Identity.NOT_A_FILM: self.not_a_film_slugs,
             Identity.UNRESOLVED: self.unresolved_slugs,
         }
         bucket = buckets.get(outcome)
@@ -629,8 +631,28 @@ def remember_identity(
 
 
 def read_cached_film_ids(connection: sqlite3.Connection) -> set[int]:
-    """Read the ids of films already downloaded, so they are not downloaded twice."""
-    rows = connection.execute("SELECT tmdb_id FROM films").fetchall()
+    """Read the ids of films fully downloaded, so they are not downloaded twice.
+
+    A film is downloaded when the cache holds both of its halves. One request
+    writes a `films` row and a `credits` row, so a film with only the first is a
+    film whose download did not finish, and asking for it again is the only thing
+    that can finish it.
+
+    The films table alone used to answer this, which made every such film
+    permanently invisible. store_film writes no credits row when the response
+    carries no credits key, so a single answer of that shape left the film
+    counted as already downloaded from then on, contributing no cast, no director
+    and no crew while every run exited 0. The same gap swallows a films row
+    restored from an Actions cache written before credits were stored, which
+    ensure_table already plans for by adding the columns an older file lacks.
+
+    The cost of asking again is one request for a film TMDB really does serve
+    without credits. That is the right way round: a wasted request is visible in
+    the run and a silently missing director is not.
+    """
+    rows = connection.execute(
+        "SELECT tmdb_id FROM films WHERE tmdb_id IN (SELECT tmdb_id FROM credits)"
+    ).fetchall()
     return {row[0] for row in rows}
 
 
@@ -806,10 +828,20 @@ def read_identity(record: dict[str, Any]) -> FilmIdentity | None:
     if not isinstance(tmdb_id, int) or isinstance(tmdb_id, bool):
         return None
 
-    tmdb_type = record.get("tmdb_type")
-    if tmdb_type is not None and tmdb_type != TMDB_FILM_TYPE:
-        # Television, or anything else TMDB does not serve from /movie. Knowing
-        # it here turns a request that could only fail into a clean skip.
+    if record.get("tmdb_type") != TMDB_FILM_TYPE:
+        # The test is positive on purpose: a film is an entry that SAYS it is a
+        # film. Television, anything else TMDB does not serve from /movie, and an
+        # id whose type is null or absent all fail it, which turns a request that
+        # could only fail into a clean skip.
+        #
+        # The null case is why the test is written this way.
+        # scripts/resolve_tmdb_ids.py writes an id with a null type whenever a
+        # film page carries data-tmdb-id and the type attribute does not match,
+        # and both scripts/build_stats.py and
+        # scripts/enrich_people_and_collections.py refuse such a slug, so its id
+        # is used nowhere else in the pipeline. Downloading it here would cache a
+        # film no later step reads: three readers of one file, disagreeing about
+        # what that file says.
         return FilmIdentity(Identity.NOT_A_FILM, tmdb_id)
 
     return FilmIdentity(Identity.A_FILM, tmdb_id)
@@ -1052,7 +1084,7 @@ def report(summary: RunSummary) -> None:
     print(f"already downloaded:    {summary.already_downloaded}")
     print(f"downloaded now:        {summary.downloaded}")
     print(f"no TMDB record:        {len(summary.no_tmdb_record_slugs)}")
-    print(f"television, not film:  {len(summary.television_slugs)}")
+    print(f"not stated as a film:  {len(summary.not_a_film_slugs)}")
     print(f"not resolved yet:      {len(summary.unresolved_slugs)}")
     print(f"id not on TMDB:        {len(summary.id_not_on_tmdb_slugs)}")
     print(f"TMDB never answered:   {len(summary.download_failed_slugs)}")
@@ -1125,15 +1157,23 @@ def report(summary: RunSummary) -> None:
                 f"  TMDB id {record.tmdb_id}, downloaded for {record.downloaded_for}"
             )
 
-    if summary.television_slugs:
+    if summary.not_a_film_slugs:
         print("")
         print(
-            "Letterboxd files these as television, and TMDB's film endpoint holds no\n"
-            "television, so no request was made for them. That is settled and needs\n"
+            "These have an id, and nothing that says the id is a film. Most are\n"
+            "television, which TMDB's film endpoint does not hold. The rest have no\n"
+            "type at all, because the Letterboxd page published an id without saying\n"
+            "what kind of record it is. No request was made for either, and\n"
+            "scripts/build_stats.py refuses the same ids, so anything downloaded for\n"
+            "one would be cached and read by nothing. That is settled and needs\n"
             "nothing. They count in the film total and carry no runtime, genres or\n"
-            "cast:"
+            "cast. If you have checked one and it is a film, set its tmdb_type to\n"
+            f"\"{TMDB_FILM_TYPE}\" in\n"
+            f"{TMDB_IDS_FILE}\n"
+            "and run this script again. Correct it there rather than in the manual\n"
+            "matches, because that file is the one every later step reads:"
         )
-        for slug in summary.television_slugs:
+        for slug in summary.not_a_film_slugs:
             print(f"  {slug}")
 
     if summary.no_tmdb_record_slugs:
