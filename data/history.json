@@ -8,11 +8,15 @@
       "title": "El compadre Mendoza",
       "year": 1934,
       "watched_date": "2026-01-04",
+      "logged_date": "2026-04-09",
       "rating": 4.5,
       "rewatch": false,
       "liked": true,
       "tmdb_id": 114626,
-      "source": "rss"
+      "review": "La clase alta mexicana sobrevivió a la revolución sin comprometerse a ella, y seguirá sobreviviendo a cualquier moviendo político que venga.\r\n\r\n Mendoza no es un cobarde ni un villano, es más bien un espejo que refleja el cinismo en el que viven los de arriba hasta hoy en día.",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/dTYggD"
     },
     {
       "guid": "letterboxd-watch-1095121097",
@@ -20,11 +24,15 @@
       "title": "Ernest & Celestine",
       "year": 2012,
       "watched_date": "2025-12-05",
+      "logged_date": "2025-12-07",
       "rating": 3.0,
       "rewatch": false,
       "liked": false,
       "tmdb_id": 126319,
-      "source": "rss"
+      "review": null,
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/bX8af1"
     },
     {
       "guid": "letterboxd-watch-1095119105",
@@ -32,11 +40,15 @@
       "title": "Late Night with the Devil",
       "year": 2023,
       "watched_date": "2025-11-27",
+      "logged_date": "2025-12-07",
       "rating": 4.0,
       "rewatch": false,
       "liked": true,
       "tmdb_id": 938614,
-      "source": "rss"
+      "review": null,
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/bX853J"
     },
     {
       "guid": "letterboxd-watch-1095117877",
@@ -44,11 +56,15 @@
       "title": "The Dictator",
       "year": 2012,
       "watched_date": "2025-11-21",
+      "logged_date": "2025-12-07",
       "rating": 2.0,
       "rewatch": false,
       "liked": false,
       "tmdb_id": 76493,
-      "source": "rss"
+      "review": null,
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/bX81RF"
     },
     {
       "guid": "letterboxd-watch-1095117002",
@@ -56,11 +72,15 @@
       "title": "It Was Just an Accident",
       "year": 2025,
       "watched_date": "2025-11-09",
+      "logged_date": "2025-12-07",
       "rating": 4.0,
       "rewatch": false,
       "liked": false,
       "tmdb_id": 1456349,
-      "source": "rss"
+      "review": null,
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/bX7ZAx"
     },
     {
       "guid": "letterboxd-watch-1095117354",
@@ -68,11 +88,15 @@
       "title": "Frankenstein",
       "year": 2025,
       "watched_date": "2025-11-08",
+      "logged_date": "2025-12-07",
       "rating": 4.5,
       "rewatch": false,
       "liked": false,
       "tmdb_id": 1062722,
-      "source": "rss"
+      "review": null,
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/bX80vj"
     },
     {
       "guid": "letterboxd-review-1046373011",
@@ -80,11 +104,15 @@
       "title": "Killer Klowns from Outer Space",
       "year": 1988,
       "watched_date": "2025-10-19",
+      "logged_date": "2025-10-20",
       "rating": 3.5,
       "rewatch": false,
       "liked": true,
       "tmdb_id": 16296,
-      "source": "rss"
+      "review": "Se necesita más gente que se anime a hacer más  mierdas de este estilo. Y si nadie se anima, me terminaré animando yo.",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/bq8Kcv"
     },
     {
       "guid": "letterboxd-watch-1046368685",
@@ -92,11 +120,15 @@
       "title": "Castle in the Sky",
       "year": 1986,
       "watched_date": "2025-10-18",
+      "logged_date": "2025-10-20",
       "rating": 4.0,
       "rewatch": false,
       "liked": false,
       "tmdb_id": 10515,
-      "source": "rss"
+      "review": null,
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/bq8yWL"
     },
     {
       "guid": "letterboxd-watch-1046368056",
@@ -104,11 +136,15 @@
       "title": "One Battle After Another",
       "year": 2025,
       "watched_date": "2025-10-16",
+      "logged_date": "2025-10-20",
       "rating": 5.0,
       "rewatch": false,
       "liked": true,
       "tmdb_id": 1054867,
-      "source": "rss"
+      "review": null,
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/bq8xjj"
     },
     {
       "guid": "letterboxd-review-1046364201",
@@ -116,11 +152,15 @@
       "title": "Dungeons & Dragons: Honor Among Thieves",
       "year": 2023,
       "watched_date": "2025-10-12",
+      "logged_date": "2025-10-20",
       "rating": 3.0,
       "rewatch": false,
       "liked": false,
       "tmdb_id": 493529,
-      "source": "rss"
+      "review": "Pa un día de cruda está con madre.",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/bq8nhx"
     },
     {
       "guid": "letterboxd-review-1046366898",
@@ -128,11 +168,15 @@
       "title": "American Psycho",
       "year": 2000,
       "watched_date": "2025-10-12",
+      "logged_date": "2025-10-20",
       "rating": 4.0,
       "rewatch": false,
       "liked": false,
       "tmdb_id": 1359,
-      "source": "rss"
+      "review": "Lo vale simplemente por <a href=\"https://youtube.com/shorts/dzyI-5Dpf10?si=uQTdCj7qhay6Fd5w\" rel=\"nofollow\">bailecito</a> de Christian Bale, lo demás es ganancia.",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/bq8uix"
     },
     {
       "guid": "letterboxd-review-1031658500",
@@ -140,11 +184,15 @@
       "title": "Novocaine",
       "year": 2025,
       "watched_date": "2025-10-01",
+      "logged_date": "2025-10-04",
       "rating": 3.0,
       "rewatch": false,
       "liked": false,
       "tmdb_id": 1195506,
-      "source": "rss"
+      "review": "Una cosa es no sentir nada y la otra es ser pinche inmortal haha",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/bgbl2h"
     },
     {
       "guid": "letterboxd-review-1025706564",
@@ -152,11 +200,15 @@
       "title": "Thunderbolts*",
       "year": 2025,
       "watched_date": "2025-09-27",
+      "logged_date": "2025-09-28",
       "rating": 3.0,
       "rewatch": false,
       "liked": false,
       "tmdb_id": 986056,
-      "source": "rss"
+      "review": "Con una buena chela en mano ya aguanta. Le faltó alma, como a todo lo de marvel últimamente (exceptuando Loki, tal vez?)",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/bc9BkB"
     },
     {
       "guid": "letterboxd-review-1025702519",
@@ -164,11 +216,15 @@
       "title": "Licorice Pizza",
       "year": 2021,
       "watched_date": "2025-09-27",
+      "logged_date": "2025-09-28",
       "rating": 3.0,
       "rewatch": false,
       "liked": false,
       "tmdb_id": 718032,
-      "source": "rss"
+      "review": "No me mamó, no me disgustó. On point.",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/bc9qOb"
     },
     {
       "guid": "letterboxd-review-1025701166",
@@ -176,11 +232,15 @@
       "title": "KPop Demon Hunters",
       "year": 2025,
       "watched_date": "2025-09-26",
+      "logged_date": "2025-09-28",
       "rating": 2.5,
       "rewatch": false,
       "liked": false,
       "tmdb_id": 803796,
-      "source": "rss"
+      "review": "Me castró que las voces hayan sido tan cabronas, pero los movimientos vocales/faciales tan apagados. Las rolas están buenas también.",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/bc9nhX"
     },
     {
       "guid": "letterboxd-review-1025697859",
@@ -188,11 +248,15 @@
       "title": "I Lost My Body",
       "year": 2019,
       "watched_date": "2025-09-25",
+      "logged_date": "2025-09-28",
       "rating": 3.5,
       "rewatch": false,
       "liked": false,
       "tmdb_id": 586940,
-      "source": "rss"
+      "review": "El destino a menudo suele ser muy cruel, pero no queda de otra que plantarle cara al muy hijo de puta.",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/bc9eGz"
     },
     {
       "guid": "letterboxd-review-1024308474",
@@ -200,11 +264,15 @@
       "title": "Fire of Love",
       "year": 2022,
       "watched_date": "2025-09-24",
+      "logged_date": "2025-09-26",
       "rating": 3.5,
       "rewatch": false,
       "liked": false,
       "tmdb_id": 913823,
-      "source": "rss"
+      "review": "Sobre el inmenso poder destructivo del amor. El ejemplo de lo que sucede cuando te entregas por completo un sueño, con todo y sus consecuencias.",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/bbcWgd"
     },
     {
       "guid": "letterboxd-review-1021312511",
@@ -212,11 +280,15 @@
       "title": "Demon Slayer: Kimetsu no Yaiba Infinity Castle",
       "year": 2025,
       "watched_date": "2025-09-22",
+      "logged_date": "2025-09-23",
       "rating": 5.0,
       "rewatch": false,
       "liked": true,
       "tmdb_id": 1311031,
-      "source": "rss"
+      "review": "La animación es una completa locura, lo demás viene por añadidura",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/b9beon"
     },
     {
       "guid": "letterboxd-review-1021121409",
@@ -224,11 +296,15 @@
       "title": "Mikey and Nicky",
       "year": 1976,
       "watched_date": "2025-09-19",
+      "logged_date": "2025-09-22",
       "rating": 4.0,
       "rewatch": false,
       "liked": false,
       "tmdb_id": 59143,
-      "source": "rss"
+      "review": "Todos hemos tenido un amigo así de castroso, el cual sabemos hace daño tanto a nosotros como a sí mismo. El problema siempre ha sido que seguimos ahí esperando disfrutar de algún atisbo de lo que solía ser, hasta que ya es demasiado tarde.",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/b93dft"
     },
     {
       "guid": "letterboxd-review-1021248045",
@@ -236,11 +312,15 @@
       "title": "Hercules",
       "year": 1997,
       "watched_date": "2025-09-19",
+      "logged_date": "2025-09-23",
       "rating": 4.0,
       "rewatch": false,
       "liked": true,
       "tmdb_id": 11970,
-      "source": "rss"
+      "review": "El amor como la fuerza más persistente y al ritmo del gospel.",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/b98wGD"
     },
     {
       "guid": "letterboxd-review-1018294868",
@@ -248,11 +328,15 @@
       "title": "Ballerina",
       "year": 2025,
       "watched_date": "2025-09-13",
+      "logged_date": "2025-09-20",
       "rating": 3.5,
       "rewatch": false,
       "liked": false,
       "tmdb_id": 541671,
-      "source": "rss"
+      "review": "Ana de armas tirando putazos para la Ruska Roma, im in",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/b78C7L"
     },
     {
       "guid": "letterboxd-review-1018292607",
@@ -260,11 +344,15 @@
       "title": "The Lord of the Rings: The Fellowship of the Ring",
       "year": 2001,
       "watched_date": "2025-09-12",
+      "logged_date": "2025-09-20",
       "rating": 4.0,
       "rewatch": false,
       "liked": false,
       "tmdb_id": 120,
-      "source": "rss"
+      "review": "Tenía vagos recuerdos de haberla visto y que me hubiera gustado. Y un chingo de años después, puedo decir que, sí me gustó y me entretuvo mucho a pesar de su duración. \r\n\r\nPa. No puede evitar comparar las batallas de la película con la de xena o las de los power rangers 😬",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/b78wf5"
     },
     {
       "guid": "letterboxd-review-1011617314",
@@ -272,11 +360,15 @@
       "title": "Shrek 2",
       "year": 2004,
       "watched_date": "2025-09-11",
+      "logged_date": "2025-09-12",
       "rating": 4.0,
       "rewatch": true,
       "liked": false,
       "tmdb_id": 809,
-      "source": "rss"
+      "review": "Nunca es un mal día para ver Sherk 2",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/b2CqKV"
     },
     {
       "guid": "letterboxd-review-1010871410",
@@ -284,11 +376,15 @@
       "title": "The Consequences of Feminism",
       "year": 1906,
       "watched_date": "2025-09-10",
+      "logged_date": "2025-09-11",
       "rating": 4.0,
       "rewatch": false,
       "liked": false,
       "tmdb_id": 120026,
-      "source": "rss"
+      "review": "Que huevotes de grabar esto hace 130 años",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/b278jP"
     },
     {
       "guid": "letterboxd-review-1010872093",
@@ -296,11 +392,15 @@
       "title": "Serpentine Dance by Mme. Bob Walter",
       "year": 1897,
       "watched_date": "2025-09-10",
+      "logged_date": "2025-09-11",
       "rating": 3.0,
       "rewatch": false,
       "liked": false,
       "tmdb_id": 119950,
-      "source": "rss"
+      "review": "Hipnotizante",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/b27a5Z"
     },
     {
       "guid": "letterboxd-watch-1010870602",
@@ -308,11 +408,15 @@
       "title": "Sallie Gardner at a Gallop",
       "year": 1878,
       "watched_date": "2025-09-10",
+      "logged_date": "2025-09-11",
       "rating": null,
       "rewatch": false,
       "liked": false,
       "tmdb_id": 194079,
-      "source": "rss"
+      "review": null,
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/b276dv"
     },
     {
       "guid": "letterboxd-review-1010872926",
@@ -320,11 +424,15 @@
       "title": "Loïe Fuller",
       "year": 1905,
       "watched_date": "2025-09-10",
+      "logged_date": "2025-09-11",
       "rating": 3.0,
       "rewatch": false,
       "liked": false,
       "tmdb_id": 205256,
-      "source": "rss"
+      "review": "Chomon dios.",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/b27cgl"
     },
     {
       "guid": "letterboxd-review-997790838",
@@ -332,11 +440,15 @@
       "title": "Weapons",
       "year": 2025,
       "watched_date": "2025-08-27",
+      "logged_date": "2025-08-29",
       "rating": 4.0,
       "rewatch": false,
       "liked": false,
       "tmdb_id": 1078605,
-      "source": "rss"
+      "review": "La idea es muy buena y la historia se entrelaza bien desde los diferentes puntos de vista. Es divertida en muchos momentos, tanto que parece que quieren disminuir el terror de las escenas con eso. Quizá por eso el final se sintió algo decepcionante, pero en general la historia está muy bien.",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/aTghM9"
     },
     {
       "guid": "letterboxd-review-993661984",
@@ -344,11 +456,15 @@
       "title": "Snatch",
       "year": 2000,
       "watched_date": "2025-08-23",
+      "logged_date": "2025-08-25",
       "rating": 3.5,
       "rewatch": false,
       "liked": false,
       "tmdb_id": 107,
-      "source": "rss"
+      "review": "Divertida. Va creando un cagadero que resuelven de manera absurda y a veces predecible, se nota el estilo que después refinaría Guy Ritchie con The Gentleman.",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/aQt2JX"
     },
     {
       "guid": "letterboxd-review-982296418",
@@ -356,11 +472,15 @@
       "title": "Freakier Friday",
       "year": 2025,
       "watched_date": "2025-08-13",
+      "logged_date": "2025-08-14",
       "rating": 3.0,
       "rewatch": false,
       "liked": false,
       "tmdb_id": 1125257,
-      "source": "rss"
+      "review": "Los mismos chistes de pastelazo gringo, con una trama un poco más rebuscada. Jaime Lee Curtis sigue brillando como en la primera, y en conjunto logran hacer una buena película dominguera, pero that's it",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/aIM9I9"
     },
     {
       "guid": "letterboxd-review-979656894",
@@ -368,11 +488,15 @@
       "title": "Freaky Friday",
       "year": 2003,
       "watched_date": "2025-08-10",
+      "logged_date": "2025-08-11",
       "rating": 3.5,
       "rewatch": false,
       "liked": false,
       "tmdb_id": 10330,
-      "source": "rss"
+      "review": "Mucho más buena y divertida de lo que recordaba. \r\nDe vez en cuando el humor es tan absurdo que repele, pero aún así se disfruta bien.",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/aGZp6t"
     },
     {
       "guid": "letterboxd-review-978702549",
@@ -380,11 +504,15 @@
       "title": "Ikiru",
       "year": 1952,
       "watched_date": "2025-08-09",
+      "logged_date": "2025-08-11",
       "rating": 5.0,
       "rewatch": false,
       "liked": true,
       "tmdb_id": 3782,
-      "source": "rss"
+      "review": "La vida es muy corta como anda andar valiendo verga en Letterboxd. Sí me movió el tapete, y para ser los 50 tiene un ritmo muy actual. Grande Kurosawa, ya veo porque lo tienen en un pedestal.",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/aGlmpR"
     },
     {
       "guid": "letterboxd-review-977334194",
@@ -392,11 +520,15 @@
       "title": "Kneecap",
       "year": 2024,
       "watched_date": "2025-08-08",
+      "logged_date": "2025-08-10",
       "rating": 4.0,
       "rewatch": false,
       "liked": true,
       "tmdb_id": 1180629,
-      "source": "rss"
+      "review": "Una  película semibiográfica y divertida, con  ritmo frenético y casi \"tiktokero\". Tiene mucha personalidad y, aunque en algunos momentos me recordó al estilo de \"How to Sell Drugs Online Fast\", logra mantener una identidad consistente que te mantiene enganchado hasta el  final.",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/aFpWHr"
     },
     {
       "guid": "letterboxd-review-977328723",
@@ -404,11 +536,15 @@
       "title": "Bring Her Back",
       "year": 2025,
       "watched_date": "2025-08-06",
+      "logged_date": "2025-08-10",
       "rating": 3.5,
       "rewatch": false,
       "liked": false,
       "tmdb_id": 1151031,
-      "source": "rss"
+      "review": "Esta hay que tomarla con calma, que va como en crescendo. El terror reside más en la incomodad y el drama de las escenas.\r\n\r\nEl inicio es medio tedioso, pero eso ayuda a que en el tercer acto todo se ponga mejor.",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/aFpIt1"
     },
     {
       "guid": "letterboxd-review-977324486",
@@ -416,11 +552,15 @@
       "title": "Pedro Páramo",
       "year": 2024,
       "watched_date": "2025-08-03",
+      "logged_date": "2025-08-10",
       "rating": 3.0,
       "rewatch": false,
       "liked": false,
       "tmdb_id": 1069387,
-      "source": "rss"
+      "review": "Claramente era cabrón adaptar uno de los mejores libros de todos los tiempos, el propio Juan Rulfo dijo que pensó la novela como para que fuera comprendida a la 3ra lectura. \r\n\r\nAun así es un logro bastante bueno, quitándole algunos efectos medio cutres lo demás se alcanza a sostener por sí solo",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/aFpxrD"
     },
     {
       "guid": "letterboxd-watch-969221939",
@@ -428,11 +568,15 @@
       "title": "Princess Mononoke",
       "year": 1997,
       "watched_date": "2025-08-02",
+      "logged_date": "2025-08-03",
       "rating": 4.0,
       "rewatch": false,
       "liked": true,
       "tmdb_id": 128,
-      "source": "rss"
+      "review": null,
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/azVz1d"
     },
     {
       "guid": "letterboxd-review-969220594",
@@ -440,11 +584,15 @@
       "title": "Made in Abyss",
       "year": 2017,
       "watched_date": "2025-07-26",
+      "logged_date": "2025-08-03",
       "rating": 2.5,
       "rewatch": false,
       "liked": false,
       "tmdb_id": null,
-      "source": "rss"
+      "review": "Mid, además me caga riko casi siempre que aparece.",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/azVvwh"
     },
     {
       "guid": "letterboxd-review-969219640",
@@ -452,11 +600,15 @@
       "title": "Call Me by Your Name",
       "year": 2017,
       "watched_date": "2025-07-25",
+      "logged_date": "2025-08-03",
       "rating": 3.0,
       "rewatch": false,
       "liked": false,
       "tmdb_id": 398818,
-      "source": "rss"
+      "review": "Yo también quisiera tener varo para pasármela valiendo en la Italia rural todo el verano",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/azVt2p"
     },
     {
       "guid": "letterboxd-review-969218406",
@@ -464,11 +616,15 @@
       "title": "Monster",
       "year": 2004,
       "watched_date": "2025-07-24",
+      "logged_date": "2025-08-03",
       "rating": 5.0,
       "rewatch": false,
       "liked": true,
       "tmdb_id": null,
-      "source": "rss"
+      "review": "Tal vez una de las historias mejor contadas y con más matices que he visto en mi vida. Esto sí merece llamarse una obra maestra",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/azVpPn"
     },
     {
       "guid": "letterboxd-review-927919981",
@@ -476,11 +632,15 @@
       "title": "The Usual Suspects",
       "year": 1995,
       "watched_date": "2025-06-24",
+      "logged_date": "2025-06-27",
       "rating": 4.0,
       "rewatch": false,
       "liked": false,
       "tmdb_id": 629,
-      "source": "rss"
+      "review": "Desde la escena inicial pude ver quién orquestaba todo, pero eso no impidió que disfrutara la película hasta el final, que aún así fue mejor de lo que había pensando que sería.",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/a7YzL5"
     },
     {
       "guid": "letterboxd-review-927917542",
@@ -488,11 +648,15 @@
       "title": "Song of the Sea",
       "year": 2014,
       "watched_date": "2025-06-23",
+      "logged_date": "2025-06-27",
       "rating": 3.0,
       "rewatch": false,
       "liked": false,
       "tmdb_id": 110416,
-      "source": "rss"
+      "review": "Caro me contó la historia de las selkies tiempo antes de toparnos con esta película, y francamente me gustó más su cuento que como narran la historia aquí. \r\n\r\nEso sí esos planos acuarelosos, son muy bonitos en sí mismos.",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/a7YtpH"
     },
     {
       "guid": "letterboxd-review-927913954",
@@ -500,11 +664,15 @@
       "title": "Portrait of a Lady on Fire",
       "year": 2019,
       "watched_date": "2025-06-21",
+      "logged_date": "2025-06-27",
       "rating": 5.0,
       "rewatch": false,
       "liked": true,
       "tmdb_id": 531428,
-      "source": "rss"
+      "review": "Si la memoria fuera clara y eterna, quizás no necesitaríamos pintar retratos. Así como el fuego, la pasión consume, solo quedando recuerdos de lo que fue, y sueños de lo que puedo haber sido.\r\n\r\nWoow, cada puesta en escena es una pintura en sí misma, me recuerda mucho a la forma en presentar las escenas de Barry Lyndon, solo que aquí la ausencia de música hace que cada escena se sienta más intima, casi como si los paisajes, los colores y las pinturas llenaran ese vacío musical.",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/a7Yk4Z"
     },
     {
       "guid": "letterboxd-review-927904574",
@@ -512,11 +680,15 @@
       "title": "Fargo",
       "year": 1996,
       "watched_date": "2025-06-20",
+      "logged_date": "2025-06-27",
       "rating": 4.0,
       "rewatch": false,
       "liked": false,
       "tmdb_id": 275,
-      "source": "rss"
+      "review": "Curiosamente la tosquedad de las escenas y la violencia desastrosa le da un toque de humor mejor que muchas comedias.\r\n\r\nLas cosas no siempre salen como quieres, por lo regular los crímenes vienen dados por una incompetencia que rara vez vemos en las películas; haha y hablando de eso, justo me pasó, hace dos días un cabrón entró a robar a mi depa, él no sabía que yo estaba en casa, en un torpe forcejeo lo golpeé, esperé a que llegara la policía y se lo llevara. Esa noche él no pudo robar lo que quería, y yo no pude dormir de la forma en que quería tampoco, las cosas no se dieron ni para él ni para mí.",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/a7XVG5"
     },
     {
       "guid": "letterboxd-review-927896770",
@@ -524,11 +696,15 @@
       "title": "Cure",
       "year": 1997,
       "watched_date": "2025-06-19",
+      "logged_date": "2025-06-27",
       "rating": 4.0,
       "rewatch": false,
       "liked": true,
       "tmdb_id": 36095,
-      "source": "rss"
+      "review": "El asesinato como forma inducida y mecanizada: cuando no hay pasión en la detrás de la violencia, nuestras propias emociones tienden a llenar ese vacío, aunque sea de manera destructiva.\r\n\r\nPor ratos me dejó al borde del sillón, y justamente como ya lo dice otra reseña, pensarías que no puedes caer en ese tipo de trampas… hasta que te pones incómodo, pero aún sigues frente al televisor.",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/a7XBnn"
     },
     {
       "guid": "letterboxd-review-927890384",
@@ -536,11 +712,15 @@
       "title": "Frieren: Beyond Journey's End",
       "year": 2023,
       "watched_date": "2025-06-18",
+      "logged_date": "2025-06-27",
       "rating": 5.0,
       "rewatch": false,
       "liked": true,
       "tmdb_id": null,
-      "source": "rss"
+      "review": "Para Frieren el pasado es muy largo y el futuro aparentemente infinito. \r\n\r\nUna obra completamente contemplativa, sobre cómo los recuerdos trascienden el tiempo hasta volverse mitos o simplemente desaparecer, sobre el amor y la amistad como arma para enfrentar el paso del tiempo y el duelo de la muerte.\r\n\r\n En una vida aparentemente infinita, la mayoría de las cosas carecen de sentido, excepto aquellas a las que decides dárselo, no tan distinto de una vida normal y mundana. \r\n\r\nRealmente me llevé una agradable sorpresa viendo esta belleza, y no tengo idea por qué está en Letterboxd, si se supone que saldrán más temporadas, pero bueno, 5/5 y corazoncito.",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/a7XkLn"
     },
     {
       "guid": "letterboxd-watch-927883227",
@@ -548,11 +728,15 @@
       "title": "Black Mirror: Bête Noire",
       "year": 2025,
       "watched_date": "2025-06-17",
+      "logged_date": "2025-06-27",
       "rating": 3.5,
       "rewatch": false,
       "liked": false,
       "tmdb_id": 1458459,
-      "source": "rss"
+      "review": null,
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/a7X291"
     },
     {
       "guid": "letterboxd-review-913655701",
@@ -560,11 +744,15 @@
       "title": "No Hard Feelings",
       "year": 2023,
       "watched_date": "2025-06-11",
+      "logged_date": "2025-06-12",
       "rating": 1.5,
       "rewatch": false,
       "liked": false,
       "tmdb_id": 884605,
-      "source": "rss"
+      "review": "Entre más pienso en lo que vi menos estrellas quiero ponerle.",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/9Yk3QL"
     },
     {
       "guid": "letterboxd-watch-886667632",
@@ -572,11 +760,15 @@
       "title": "Ocean's Eleven",
       "year": 2001,
       "watched_date": "2025-05-09",
+      "logged_date": "2025-05-13",
       "rating": 3.5,
       "rewatch": false,
       "liked": false,
       "tmdb_id": 161,
-      "source": "rss"
+      "review": null,
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/9G3Fyp"
     },
     {
       "guid": "letterboxd-review-879874381",
@@ -584,11 +776,15 @@
       "title": "The Departed",
       "year": 2006,
       "watched_date": "2025-05-02",
+      "logged_date": "2025-05-05",
       "rating": 4.5,
       "rewatch": false,
       "liked": false,
       "tmdb_id": 1422,
-      "source": "rss"
+      "review": "Martin Scorsese No sabe de finales felices",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/9BsDcL"
     },
     {
       "guid": "letterboxd-review-879872758",
@@ -596,11 +792,15 @@
       "title": "Die Hard",
       "year": 1988,
       "watched_date": "2025-05-01",
+      "logged_date": "2025-05-05",
       "rating": 4.0,
       "rewatch": false,
       "liked": false,
       "tmdb_id": 562,
-      "source": "rss"
+      "review": "Es acaso esta la mejor película navideña que he visto? Haha",
+      "source": "rss",
+      "slug_provisional": false,
+      "letterboxd_uri": "https://boxd.it/9BsyYZ"
     },
     {
       "guid": "export:conclave:2025-05-01",

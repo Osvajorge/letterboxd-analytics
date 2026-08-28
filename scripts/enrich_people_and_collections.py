@@ -32,6 +32,22 @@ A director seen once is left out on purpose. One out of thirty and one out of
 one both read as "seen once", so completeness against a single film says nothing
 and the request would be spent for nothing.
 
+What this run cannot see
+------------------------
+
+This script learns what to ask for by reading cached film payloads and cached
+credits. A film with neither names no collection here and credits no director
+here, so its collection is never sized and its director is never counted. Every
+such film is counted at the start of the run, with the step that fixes it, so a
+short pass says it is short rather than reporting that the history needed
+nothing more.
+
+Which film a slug is comes from data/tmdb-ids.json, read from each film's own
+Letterboxd page. That file also says which films have no TMDB film record at
+all, and those refusals are honoured: taking a title and year search answer for
+them is what put three collections in the panel that the member has never seen a
+film from.
+
 Why the cache is permanent
 --------------------------
 
@@ -80,7 +96,7 @@ import time
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any, Callable, Iterable
 
 import httpx
 from dotenv import load_dotenv
@@ -99,8 +115,9 @@ from lib.config import (
 TMDB_API_ROOT = "https://api.themoviedb.org/3"
 TMDB_KEY_PAGE = "https://www.themoviedb.org/settings/api"
 
-# The authoritative slug to TMDB id map, read from each film's own Letterboxd
-# page by scripts/resolve_tmdb_ids.py. Optional: without it the ids come from
+# Which TMDB record each film is, read from that film's own Letterboxd page by
+# scripts/resolve_tmdb_ids.py. It is the authority on a film's id, and on which
+# films have no TMDB film record at all. Optional: without it the ids come from
 # the history and from the cache, which is where they came from before.
 TMDB_IDS_FILE = DATA / "tmdb-ids.json"
 
@@ -215,24 +232,28 @@ class OutageDetector:
 class Job:
     """One kind of record this script caches, and where to ask TMDB for it.
 
-    `path` carries a single `{id}` placeholder. `what` names the record in every
-    message the reader sees, so one wording covers both passes.
+    `path` carries a single `{id}` placeholder. `what` and `plural` name the
+    record in every message the reader sees, so one wording covers both passes.
+    Both are spelled out because "director filmography" does not take an s.
     """
 
     table: str
     what: str
+    plural: str
     path: str
 
 
 COLLECTION_JOB = Job(
     table="collections",
     what="collection",
+    plural="collections",
     path="/collection/{id}",
 )
 
 DIRECTOR_JOB = Job(
     table="person_credits",
     what="director filmography",
+    plural="director filmographies",
     path="/person/{id}/movie_credits",
 )
 
@@ -495,12 +516,27 @@ def open_cache() -> sqlite3.Connection:
         )
         raise SystemExit(1)
 
-    connection = sqlite3.connect(TMDB_CACHE_FILE)
-    connection.row_factory = sqlite3.Row
+    try:
+        connection = sqlite3.connect(TMDB_CACHE_FILE)
+        connection.row_factory = sqlite3.Row
 
-    for table, columns in CACHE_SCHEMA.items():
-        ensure_table(connection, table, columns)
-    connection.commit()
+        for table, columns in CACHE_SCHEMA.items():
+            ensure_table(connection, table, columns)
+        connection.commit()
+    except (sqlite3.Error, OSError) as error:
+        # Nothing has been fetched yet, so stopping here costs no request. Going
+        # on would spend several hundred of them on a database that cannot store
+        # a single answer.
+        print(
+            f"The TMDB cache at {TMDB_CACHE_FILE} could not be opened for writing"
+            f" ({error}).\n"
+            "Check that the file and its directory are writable and have room. If the\n"
+            "file is damaged, delete it and run scripts/enrich_tmdb.py to download the\n"
+            "film payloads again, then run this script.\n"
+            "Nothing was fetched and nothing was written.",
+            file=sys.stderr,
+        )
+        raise SystemExit(1) from error
 
     return connection
 
@@ -514,12 +550,25 @@ def table_exists(connection: sqlite3.Connection, name: str) -> bool:
 
 
 def read_cached_ids(connection: sqlite3.Connection, table: str) -> set[int]:
-    """Read the ids one of this script's tables already holds an answer for."""
-    return {
-        row["tmdb_id"]
-        for row in connection.execute(f"SELECT tmdb_id FROM {table}")
-        if isinstance(row["tmdb_id"], int)
-    }
+    """Read the ids one of this script's tables already holds an answer for.
+
+    A table that will not list is reported and treated as empty. That costs
+    requests, because everything in it is asked for again, and it costs nothing
+    true: each answer is written back with INSERT OR REPLACE. The opposite
+    reading, treating an unreadable table as complete, would skip every record
+    and leave the panel short with nothing said.
+    """
+    try:
+        rows = connection.execute(f"SELECT tmdb_id FROM {table}").fetchall()
+    except sqlite3.DatabaseError as error:
+        print(
+            f"The cache table {table} could not be listed ({error}), so this run"
+            " asks TMDB for every record again and writes each answer back over"
+            " whatever is there."
+        )
+        return set()
+
+    return {row["tmdb_id"] for row in rows if isinstance(row["tmdb_id"], int)}
 
 
 def store_payload(
@@ -647,21 +696,27 @@ def load_history() -> dict[str, Any]:
     return history
 
 
-def film_ids_in_history(
+def tmdb_id_per_history_slug(
     history: dict[str, Any], connection: sqlite3.Connection
-) -> set[int]:
-    """Collect the TMDB id of every film in the member's history.
+) -> dict[str, int]:
+    """Say which TMDB film each slug in the member's history is.
 
-    Four sources answer the same question, in falling order of authority, and the
-    first answer for a slug wins:
+    Three sources answer, and the strongest one holding an answer wins:
 
         data/tmdb-ids.json  read from each film's own Letterboxd page, which
-                            states the id Letterboxd itself uses
+                            states the TMDB record Letterboxd itself uses
         the history entry   the id the RSS feed carried
-        the lookups table   what scripts/enrich_tmdb.py resolved
-        the films table     the slug each cached payload was fetched for
+        the lookups table   what a title and year search resolved
 
-    Restricting to slugs the history still holds is the point. The cache can
+    The map is the authority, and its refusals bind the two sources under it. A
+    slug it names no film id for has no TMDB film at all, usually because
+    Letterboxd files it as television, so an id from a weaker source does not
+    fill a gap: it puts another film's collection and another film's director on
+    this one. On this account that is eleven television records, and taking the
+    search answer for them invented three collections the member has never seen
+    a film from.
+
+    Restricting to slugs the history still holds is the other half. The cache can
     outlive an entry the member deleted, and this run should not spend requests
     on a film that is no longer in the library.
     """
@@ -671,46 +726,66 @@ def film_ids_in_history(
         if isinstance(entry, dict) and isinstance(entry.get("slug"), str)
     }
 
-    slug_to_id: dict[str, int] = {}
+    stated, refused = read_resolved_tmdb_ids()
 
-    for slug, tmdb_id in read_resolved_tmdb_ids().items():
-        if slug in slugs:
-            slug_to_id.setdefault(slug, tmdb_id)
+    slug_to_id: dict[str, int] = {
+        slug: tmdb_id for slug, tmdb_id in stated.items() if slug in slugs
+    }
 
     for entry in history.get("entries", []):
         if not isinstance(entry, dict):
             continue
         slug = entry.get("slug")
         tmdb_id = entry.get("tmdb_id")
-        if isinstance(slug, str) and isinstance(tmdb_id, int):
+        if isinstance(slug, str) and isinstance(tmdb_id, int) and slug not in refused:
             slug_to_id.setdefault(slug, tmdb_id)
 
-    for table in ("lookups", "films"):
-        if not table_exists(connection, table):
+    if not table_exists(connection, "lookups"):
+        return slug_to_id
+
+    try:
+        rows = connection.execute("SELECT slug, tmdb_id FROM lookups").fetchall()
+    except sqlite3.DatabaseError as error:
+        print(
+            f"The cache table lookups could not be read ({error}), so a film named"
+            " by it alone has no id this run and its collection and its director"
+            " are not asked for. Delete"
+            f" {TMDB_CACHE_FILE.name} and run scripts/enrich_tmdb.py to build it"
+            " again."
+        )
+        return slug_to_id
+
+    for row in rows:
+        slug = row["slug"]
+        tmdb_id = row["tmdb_id"]
+        if not isinstance(slug, str) or slug not in slugs or slug in refused:
             continue
-        try:
-            rows = connection.execute(f"SELECT slug, tmdb_id FROM {table}").fetchall()
-        except sqlite3.DatabaseError as error:
-            print(f"Could not read the cache table {table} ({error}), skipping it.")
-            continue
-        for row in rows:
-            slug = row["slug"]
-            tmdb_id = row["tmdb_id"]
-            if isinstance(slug, str) and slug in slugs and isinstance(tmdb_id, int):
-                slug_to_id.setdefault(slug, tmdb_id)
+        if isinstance(tmdb_id, int):
+            slug_to_id.setdefault(slug, tmdb_id)
 
-    return set(slug_to_id.values())
+    return slug_to_id
 
 
-def read_resolved_tmdb_ids() -> dict[str, int]:
-    """Read data/tmdb-ids.json, or return nothing when it is absent or unreadable.
+def read_resolved_tmdb_ids() -> tuple[dict[str, int], set[str]]:
+    """Read data/tmdb-ids.json: the film ids it states, and the slugs it refuses.
 
-    The file is optional. Without it the ids come from the history and the cache,
-    which is where they came from before this file existed, so a missing or
-    damaged copy narrows the answer rather than ending the run.
+    Returns the ids and the refusals separately, because a refusal is an answer.
+    A slug the file lists with no id, or with a type other than "movie", has no
+    film record in TMDB, and no weaker source may name one for it.
+
+    The file is optional. Without it both answers are empty and the ids come from
+    the history and the cache, which is where they came from before this file
+    existed, so a missing or damaged copy narrows the answer rather than ending
+    the run.
     """
     if not TMDB_IDS_FILE.exists():
-        return {}
+        print(
+            f"No resolved TMDB ids at {TMDB_IDS_FILE}. Run"
+            " scripts/resolve_tmdb_ids.py to read each film's id from its own"
+            " Letterboxd page. Until then ids come from the history and the cache,"
+            " which are search answers and can name the wrong film."
+        )
+        return {}, set()
 
     try:
         resolved = json.loads(TMDB_IDS_FILE.read_text(encoding="utf-8"))
@@ -718,24 +793,33 @@ def read_resolved_tmdb_ids() -> dict[str, int]:
         print(
             f"Could not read {TMDB_IDS_FILE} ({error}), so film ids come from the"
             " history and the cache instead. Run scripts/resolve_tmdb_ids.py to"
-            " rebuild it."
+            " build it again."
         )
-        return {}
+        return {}, set()
 
     if not isinstance(resolved, dict):
-        return {}
+        print(
+            f"{TMDB_IDS_FILE} does not hold an object keyed by slug, so it says"
+            " nothing about any film. Run scripts/resolve_tmdb_ids.py to build it"
+            " again."
+        )
+        return {}, set()
 
     ids: dict[str, int] = {}
+    refused: set[str] = set()
+
     for slug, record in resolved.items():
         if not isinstance(slug, str) or not isinstance(record, dict):
             continue
         tmdb_id = record.get("tmdb_id")
-        # Only films. A record Letterboxd files as television is not in TMDB's
-        # movie endpoint, and no film payload was ever cached for it.
+        # Only a film counts. A record Letterboxd files as television has nothing
+        # behind TMDB's movie endpoint, and no film payload was ever cached for it.
         if isinstance(tmdb_id, int) and record.get("tmdb_type") == "movie":
             ids[slug] = tmdb_id
+        else:
+            refused.add(slug)
 
-    return ids
+    return ids, refused
 
 
 def collections_to_fetch(
@@ -831,7 +915,7 @@ def run_job(
     client: httpx.Client,
     auth_params: dict[str, str],
     outage: OutageDetector,
-    is_usable: Any,
+    is_usable: Callable[[dict[str, Any]], bool],
 ) -> JobResult:
     """Fetch and cache every record one pass wants, skipping what is already cached.
 
@@ -882,6 +966,7 @@ def run_job(
 
         if not is_usable(payload):
             result.answered_with_nothing_usable.append(label)
+            print(f"  fetched {job.what} {label}, which states no usable number")
             continue
 
         print(f"  fetched {job.what} {label}")
@@ -958,34 +1043,40 @@ def report(results: list[JobResult]) -> None:
     for result in results:
         job = result.job
         print("")
-        print(f"{job.what}s the history needs: {result.wanted}")
-        print(f"  already cached:      {result.already_cached}")
-        print(f"  fetched now:         {result.fetched}")
-        print(f"  not on TMDB:         {len(result.absent)}")
-        print(f"  TMDB never answered: {len(result.unanswered)}")
-        print(f"  would not cache:     {len(result.not_stored)}")
-        print(f"  nothing usable:      {len(result.answered_with_nothing_usable)}")
+        print(f"{job.plural} the history needs: {result.wanted}")
+        print(f"  already cached:         {result.already_cached}")
+        print(f"  fetched now:            {result.fetched}")
+        print(f"  not on TMDB:            {len(result.absent)}")
+        print(f"  TMDB never answered:    {len(result.unanswered)}")
+        print(f"  would not cache:        {len(result.not_stored)}")
+        # A subset of "fetched now": the answer arrived and was cached, it just
+        # states no number the panel can use. Counting it again below the others
+        # would make the column add up to more than the pass asked for.
+        print(
+            "  of those, no usable number:"
+            f" {len(result.answered_with_nothing_usable)}"
+        )
 
         print_labels(
-            f"TMDB no longer holds these {job.what} records. Nothing was cached, so this\n"
+            f"TMDB no longer holds these {job.plural}. Nothing was cached, so this\n"
             "run asks again next time. Each one is left out of the panel rather than\n"
             "given a made up total:",
             result.absent,
         )
         print_labels(
-            f"TMDB never answered for these {job.what} records, so nothing was written\n"
+            f"TMDB never answered for these {job.plural}, so nothing was written\n"
             "down and they are left out of the panel. Run this script again to retry\n"
             "them:",
             result.unanswered,
         )
         print_labels(
-            f"These {job.what} answers arrived but would not write to"
+            f"These {job.plural} arrived but would not write to"
             f" {TMDB_CACHE_FILE.name}.\n"
             "Check that the file is writable and has room, then run this script again:",
             result.not_stored,
         )
         print_labels(
-            f"TMDB answered for these {job.what} records but stated no number the panel\n"
+            f"TMDB answered for these {job.plural} but stated no number the panel\n"
             "can use: a collection that lists no films, or a person TMDB credits as\n"
             "director on no film. The answer is cached so it is not asked for weekly,\n"
             "and the record stays out of the panel. To ask again, delete its row:\n"
@@ -1003,8 +1094,11 @@ def report(results: list[JobResult]) -> None:
         )
     else:
         print(
-            "Every collection and every director filmography the history needs is now\n"
-            "cached. Run scripts/build_stats.py to rebuild docs/data/stats.json."
+            "Every collection and every director filmography this run asked for is now\n"
+            "cached. Run scripts/build_stats.py to rebuild docs/data/stats.json.\n"
+            "If any film above was named as having no cached details, its collection and\n"
+            "its director were never asked for, so run scripts/enrich_tmdb.py and then\n"
+            "this script again before reading the two modules as complete."
         )
 
 
@@ -1013,30 +1107,88 @@ def report(results: list[JobResult]) -> None:
 # ---------------------------------------------------------------------------
 
 
+def report_films_this_pass_cannot_see(
+    tmdb_id_per_slug: dict[str, int],
+    history_slug_count: int,
+    film_payloads: dict[int, dict[str, Any]],
+    credit_payloads: dict[int, dict[str, Any]],
+) -> None:
+    """Say which films this pass could not read, and what that leaves out.
+
+    This pass learns what to ask for by reading cached film payloads and cached
+    credits. A film with neither names no collection and no director here, so its
+    collection is never sized and its director is never counted, and the panel is
+    short without a word being said about it. Saying it is the difference between
+    a panel the reader can trust and a panel that looks complete.
+    """
+    wanted_ids = set(tmdb_id_per_slug.values())
+    without_an_id = history_slug_count - len(tmdb_id_per_slug)
+    without_a_payload = len(wanted_ids - set(film_payloads))
+    without_credits = len(wanted_ids - set(credit_payloads))
+
+    if without_an_id:
+        print(
+            f"{without_an_id} films in the history have no TMDB film record, so they"
+            " belong to no\ncollection here and credit no director here. That is what"
+            " data/tmdb-ids.json\nstates for them, read from their own Letterboxd"
+            " pages, and it is usually a\ntelevision record. Nothing to run: TMDB has"
+            " no film to ask about."
+        )
+
+    if without_a_payload or without_credits:
+        print(
+            f"{without_a_payload} films have a TMDB id but no cached film details, and"
+            f" {without_credits} have no\ncached credits. A collection only they belong"
+            " to is not sized in this run, and a\ndirector only they credit is not"
+            " counted.\nRun scripts/enrich_tmdb.py, then run this script again. If it"
+            " reports those films\nas ids TMDB does not hold, nothing here can fill"
+            " them: they stay out of both\nmodules, which is short by whatever they"
+            " alone would have added rather than\nwrong."
+        )
+
+
 def main() -> None:
     """Work out what the history needs, fetch what is missing, and report the run."""
     history = load_history()
     connection = open_cache()
 
     try:
-        film_ids = film_ids_in_history(history, connection)
         film_payloads = read_film_payloads(connection)
-        credit_payloads = read_credit_payloads(connection)
 
-        collections = collections_to_fetch(film_payloads, film_ids)
-        directors_with_counts = directors_to_fetch(credit_payloads, film_ids)
-
+        # Nothing below can be worked out without these, so the run stops here
+        # rather than reporting that it needs no collections and no directors.
         if not film_payloads:
             print(
                 "The TMDB cache holds no film payloads, so there is nothing to work\n"
                 "out which collections and which directors the history needs. Run\n"
-                "scripts/enrich_tmdb.py first, then run this script again.",
+                "scripts/enrich_tmdb.py first, then run this script again.\n"
+                "Nothing was fetched and nothing was written.",
                 file=sys.stderr,
             )
             raise SystemExit(1)
 
+        credit_payloads = read_credit_payloads(connection)
+        tmdb_id_per_slug = tmdb_id_per_history_slug(history, connection)
+        film_ids = set(tmdb_id_per_slug.values())
+
+        history_slug_count = len(
+            {
+                entry["slug"]
+                for entry in history.get("entries", [])
+                if isinstance(entry, dict) and isinstance(entry.get("slug"), str)
+            }
+        )
+
+        collections = collections_to_fetch(film_payloads, film_ids)
+        directors_with_counts = directors_to_fetch(credit_payloads, film_ids)
+
         print(
-            f"{len(film_ids)} films in the history, {len(film_payloads)} of them cached."
+            f"{history_slug_count} films in the history,"
+            f" {len(film_ids)} of them with a TMDB id,"
+            f" {len(film_ids & set(film_payloads))} of those cached."
+        )
+        report_films_this_pass_cannot_see(
+            tmdb_id_per_slug, history_slug_count, film_payloads, credit_payloads
         )
         print(
             f"{len(collections)} collections to size, and"

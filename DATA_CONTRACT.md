@@ -90,13 +90,72 @@ here too.
 ## data/cache/tmdb.sqlite
 
 ```sql
-CREATE TABLE films   (tmdb_id INTEGER PRIMARY KEY, slug TEXT, payload TEXT, fetched_at TEXT);
-CREATE TABLE credits (tmdb_id INTEGER PRIMARY KEY, payload TEXT, fetched_at TEXT);
-CREATE TABLE lookups (slug TEXT PRIMARY KEY, tmdb_id INTEGER, resolved_at TEXT);
+CREATE TABLE films          (tmdb_id INTEGER PRIMARY KEY, slug TEXT, payload TEXT, fetched_at TEXT);
+CREATE TABLE credits        (tmdb_id INTEGER PRIMARY KEY, payload TEXT, fetched_at TEXT);
+CREATE TABLE lookups        (slug TEXT PRIMARY KEY, tmdb_id INTEGER, resolved_at TEXT);
+CREATE TABLE collections    (tmdb_id INTEGER PRIMARY KEY, payload TEXT, fetched_at TEXT);
+CREATE TABLE person_credits (tmdb_id INTEGER PRIMARY KEY, payload TEXT, fetched_at TEXT);
 ```
 
 `payload` holds the raw TMDB JSON response. Keeping it raw means a new stat
 never requires re-downloading anything.
+
+`tmdb_id` is the id of whatever the row is about, so it is a film id in `films`
+and `credits`, a collection id in `collections`, and a person id in
+`person_credits`. Those are separate TMDB namespaces, and no table ever joins on
+another table's ids.
+
+### The two tables that hold a fact no film payload carries
+
+`films` and `credits` answer questions about one film. Two modules ask something
+one level up, which no number of film payloads can answer:
+
+| Table | Written by | From | Answers |
+| --- | --- | --- | --- |
+| `collections` | `scripts/enrich_people_and_collections.py` | `/collection/{id}` | how many films a collection holds, so `collections` can say "seen 7 of 8" |
+| `person_credits` | `scripts/enrich_people_and_collections.py` | `/person/{id}/movie_credits` | a director's whole filmography, so `extras.director_completeness` can say "seen 12 of 30" |
+
+A film payload names the collection a film belongs to and stops there, and a
+film's credits list that film's crew and never a person's body of work. Without
+these two tables both modules emit an empty array rather than a denominator
+counted from the films already seen, which would report every collection and
+every director as complete.
+
+Which records are asked for:
+
+- one collection for every collection any film in the history belongs to.
+- one filmography for every director with at least two films in the history. A
+  director seen once is left out on purpose, because "1 of 30" and "1 of 1" both
+  read as "seen once". `scripts/build_stats.py` applies the same floor, so the
+  table and the panel hold the same set of directors.
+
+Both tables are cached permanently. A collection's size and a director's
+filmography change rarely, so a row already present is never fetched again and a
+weekly run costs no requests for either. To refresh one on purpose, delete its
+row and run the script again:
+
+```
+sqlite3 data/cache/tmdb.sqlite "DELETE FROM collections WHERE tmdb_id = 230"
+```
+
+Only an answer from TMDB is ever written. A request that got no answer records
+nothing, so the next run asks again. That matters more here than anywhere else
+in this cache: these rows are never refreshed, so a failure written down as a
+settled answer would be believed forever. A 404 is an answer, but it is not
+written either, because these ids come from TMDB's own film payloads and a 404
+means TMDB changed rather than that the id was ever a guess.
+
+### Run order
+
+```
+scripts/enrich_tmdb.py                     films, credits, lookups
+scripts/enrich_people_and_collections.py   collections, person_credits
+scripts/build_stats.py                     docs/data/stats.json
+```
+
+The middle step reads the film payloads and the credits to learn which
+collections and which directors the history needs, so it must run after the
+first and before the last.
 
 ## docs/data/stats.json
 
@@ -182,7 +241,7 @@ site renders an empty state rather than breaking.
 
 A Letterboxd account rarely has a watch date for every film. Marking a film as
 seen records no date; only a diary entry does. In the account this was built for,
-827 films are watched but only 287 carry a date.
+827 films are watched but only 284 carry a date.
 
 So the time-based modules (`by_year`, `decades`, `heatmap`, `weekday_profile`,
 `month_seasonality`, `rating_drift`, `longest_drought`, `multi_film_days`,
@@ -209,6 +268,15 @@ counts are of distinct films rather than of entries.
   still count toward `totals`.
 - `logging_lag` needs both the logged date and the watched date, which only the
   export carries. With RSS-only history it emits null.
+- `collections` and `extras.director_completeness` need a denominator that no
+  film payload carries, so a collection with no cached size and a director with
+  no cached filmography are left out of their module rather than measured
+  against the films already seen. `scripts/build_stats.py` reports how many were
+  left out, so a short module says it is short.
+- `extras.director_completeness` holds only directors with at least two films in
+  the history, the same floor
+  `scripts/enrich_people_and_collections.py` uses when it decides whose
+  filmography to download.
 - `watchlist.estimated_date_share` is the fraction of watchlist films whose
   `added_date` is a first-sighting estimate rather than the real date from the
   export. The site MUST use it to label the age figures. Before the export has

@@ -1,8 +1,10 @@
 """Build the single JSON file the site reads.
 
-Reads three local inputs, downloads nothing:
+Reads four local inputs, downloads nothing:
 
     data/history.json        every diary entry, plus the watchlist
+    data/tmdb-ids.json       which TMDB record each film is, read from its own
+                             Letterboxd page
     data/cache/tmdb.sqlite   raw TMDB payloads for the films in that history
     data/cache/lists/*.json  the sixteen curated lists, one file each
 
@@ -56,6 +58,7 @@ from typing import Any, Callable, Iterable
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from lib.config import (
     CURATED_LISTS,
+    DATA,
     HISTORY_FILE,
     LETTERBOXD_USER,
     LISTS_CACHE_DIR,
@@ -68,6 +71,13 @@ from lib.config import (
 # needs this many RATED films before it is ranked by average rating at all.
 # Films in the group that carry no rating do not count towards it.
 MINIMUM_FILMS_FOR_RATED_RANKING = 5
+
+# How many of a director's films the member must have seen before completeness
+# says anything. One out of thirty and one out of one both read as "seen once",
+# so a director seen once is left out. scripts/enrich_people_and_collections.py
+# applies the same floor when it decides whose filmography to download, so the
+# cache and the panel hold the same set of directors.
+MINIMUM_FILMS_FOR_COMPLETENESS = 2
 
 # How many rows each ranked module keeps. The site shows fewer; these caps only
 # stop the file from carrying a long tail nobody reads.
@@ -158,6 +168,11 @@ TITLE_WORD_PATTERN = re.compile(r"[^\W\d_]+")
 PERSON_CREDITS_TABLE = "person_credits"
 COLLECTIONS_TABLE = "collections"
 
+# Which TMDB record each film is, read from that film's own Letterboxd page by
+# scripts/resolve_tmdb_ids.py. This is the authority on a film's id, and
+# resolve_tmdb_ids below says why the older sources rank under it.
+TMDB_IDS_FILE = DATA / "tmdb-ids.json"
+
 
 # ---------------------------------------------------------------------------
 # Loading
@@ -226,11 +241,18 @@ def load_cached_lists(directory: Path = LISTS_CACHE_DIR) -> dict[str, dict[str, 
 # learns what an absent cache costs without any message having to repeat the
 # list or the copies drifting apart.
 #
-# The list names every module that goes empty, including the world map and
-# director completeness, which are easy to forget because they are built one
-# step away from the film payloads: the map from production countries, the
-# completeness from cached filmography sizes. Leaving them out told the operator
-# the run would show more than it does.
+# The list names every module that goes empty, including the world map, which is
+# easy to forget because it is built one step away from the film payloads, from
+# production countries. Leaving it out told the operator the run would show more
+# than it does.
+#
+# Collections and director completeness are named apart from the rest, because
+# scripts/enrich_tmdb.py does not fill them and this message used to imply that
+# it does. Neither of those two modules is about a film: one needs a
+# collection's size and the other a person's filmography, and both come from
+# scripts/enrich_people_and_collections.py. An operator who ran only the step
+# this message named would have watched both modules stay empty with nothing
+# left to try.
 #
 # extras.extremes is named separately because it is the one module that neither
 # empties nor survives. Its oldest and newest films come from release years the
@@ -243,13 +265,16 @@ def load_cached_lists(directory: Path = LISTS_CACHE_DIR) -> dict[str, dict[str, 
 # looking for a module that was never going to be complete.
 TMDB_CACHE_ABSENT_EFFECT = (
     "Until then every module built on film details stays empty: genres, "
-    "countries, languages, the world map, cast, directors, director "
-    "completeness, studios, collections, runtime, rating bias, contrarian "
-    "index, obscurity, release recency, crew, background actors, life in days "
-    "and rating against runtime. In extras.extremes the shortest and longest "
-    "films go null and the oldest and newest still report, because release "
-    "years come from the history and runtimes do not. Totals for hours, "
-    "directors and countries fall to zero for the same reason. Every other "
+    "countries, languages, the world map, cast, directors, studios, runtime, "
+    "rating bias, contrarian index, obscurity, release recency, crew, "
+    "background actors, life in days and rating against runtime. In "
+    "extras.extremes the shortest and longest films go null and the oldest and "
+    "newest still report, because release years come from the history and "
+    "runtimes do not. Totals for hours, directors and countries fall to zero "
+    "for the same reason. Collections and extras.director_completeness stay "
+    "empty too, and that step alone does not fill them: they need a "
+    "collection's size and a director's filmography, which come from "
+    "scripts/enrich_people_and_collections.py, run after it. Every other "
     "module built on the history alone reports in full."
 )
 
@@ -339,7 +364,7 @@ def table_exists(connection: sqlite3.Connection, name: str) -> bool:
 
 
 def read_payloads(
-    connection: sqlite3.Connection, table: str
+    connection: sqlite3.Connection, table: str, tmdb_ids_wanted: Iterable[int]
 ) -> tuple[dict[int, dict[str, Any]], int]:
     """Read one payload table, keyed by TMDB id, skipping any row it cannot read.
 
@@ -359,6 +384,15 @@ def read_payloads(
     Reading one row at a time is what makes it survivable. A single query over
     the whole table cannot be resumed once it has raised, so one damaged page
     also took every film stored after it.
+
+    Listing the table is the one step with no per-row equivalent, so a failed
+    listing hands off to read_payloads_one_at_a_time, which asks for the films
+    this build wants by id. That listing used to be treated as a cache miss: it
+    returned no payload and no loss, and the caller cannot tell an empty table
+    from an unreadable one. One damaged page in the credits table then emptied
+    eleven modules, printed "cache rows that would not read 0", left coverage
+    still claiming 801 films carried TMDB data above a directors count of zero,
+    and exited 0, so the workflow committed it and pushed it to the site.
     """
     payloads: dict[int, dict[str, Any]] = {}
     lost = 0
@@ -366,12 +400,7 @@ def read_payloads(
     try:
         tmdb_ids = [row[0] for row in connection.execute(f"SELECT tmdb_id FROM {table}")]
     except sqlite3.DatabaseError as error:
-        print(
-            f"The TMDB cache table {table} could not be listed ({error}), so no film "
-            f"was read from it. Delete {TMDB_CACHE_FILE.name} and run "
-            "scripts/enrich_tmdb.py to build it again."
-        )
-        return payloads, lost
+        return read_payloads_one_at_a_time(connection, table, tmdb_ids_wanted, error)
 
     for tmdb_id in tmdb_ids:
         try:
@@ -390,6 +419,79 @@ def read_payloads(
             continue
 
         payloads[tmdb_id] = payload
+
+    return payloads, lost
+
+
+def read_payloads_one_at_a_time(
+    connection: sqlite3.Connection,
+    table: str,
+    tmdb_ids_wanted: Iterable[int],
+    listing_error: sqlite3.DatabaseError,
+) -> tuple[dict[int, dict[str, Any]], int]:
+    """Read a table that will not list, one wanted film at a time.
+
+    Listing walks every page of the table, so one damaged page ends the walk and
+    takes every film with it, including the films stored on the pages that are
+    still perfectly readable. Asking for one id at a time reads only the pages
+    that hold that film, which is what turns whole-table damage back into damage
+    to the films that are actually on the broken pages.
+
+    The ids come from the caller because a table that will not list cannot say
+    which films it holds. They are the films this build wants, which is the only
+    set whose absence changes a published number.
+
+    A film the cache never held is not a loss. That query answers, it answers
+    "no such row", and coverage.films_with_tmdb_data already reports that film as
+    carrying no TMDB data. Only a query that fails, or a payload that will not
+    parse, counts as a lost row.
+
+    Recovering nothing at all ends the build, because at that point this table
+    can say nothing about any film and every module built on it would be
+    published as empty rather than as damaged. That is the failure this whole
+    function exists to stop, so it is the one case that must not exit 0.
+    """
+    wanted = sorted(set(tmdb_ids_wanted))
+    payloads: dict[int, dict[str, Any]] = {}
+    lost = 0
+
+    for tmdb_id in wanted:
+        try:
+            row = connection.execute(
+                f"SELECT payload FROM {table} WHERE tmdb_id = ?", (tmdb_id,)
+            ).fetchone()
+        except sqlite3.DatabaseError:
+            lost += 1
+            continue
+
+        if row is None:
+            continue
+
+        payload = decode_payload(row["payload"])
+        if payload is None:
+            lost += 1
+            continue
+
+        payloads[tmdb_id] = payload
+
+    if wanted and not payloads:
+        raise SystemExit(
+            f"The TMDB cache table {table} cannot be read at all. Listing it failed "
+            f"({listing_error}), and not one of the films this build wants from it, "
+            f"{len(wanted)} in all, could be read on its own either.\n"
+            f"Delete {TMDB_CACHE_FILE} and run scripts/enrich_tmdb.py to download "
+            "the payloads again.\n"
+            "No stats file was written. Publishing this run would have reported "
+            f"every module built on {table} as empty rather than as damaged."
+        )
+
+    print(
+        f"The TMDB cache table {table} could not be listed ({listing_error}), so it "
+        f"was read one film at a time instead. It answered for {len(payloads)} of "
+        f"the {len(wanted)} films this build wants from it, and {lost} could not be "
+        f"read. Delete {TMDB_CACHE_FILE.name} and run scripts/enrich_tmdb.py to "
+        "build it again, then run this script for a full panel."
+    )
 
     return payloads, lost
 
@@ -432,7 +534,7 @@ def load_payloads_by_slug(
         nonlocal lost
         if not table_exists(connection, table):
             return
-        payloads, lost_here = read_payloads(connection, table)
+        payloads, lost_here = read_payloads(connection, table, slugs_per_tmdb_id.keys())
         lost += lost_here
         for tmdb_id, payload in payloads.items():
             for slug in slugs_per_tmdb_id.get(tmdb_id, ()):
@@ -455,33 +557,128 @@ def decode_payload(raw: Any) -> dict[str, Any] | None:
     return payload if isinstance(payload, dict) else None
 
 
+def read_resolved_tmdb_ids(path: Path = TMDB_IDS_FILE) -> tuple[dict[str, int], set[str]]:
+    """Read data/tmdb-ids.json: the ids it states, and the slugs it refuses.
+
+    Every id in that file was read from the film's own Letterboxd page, which
+    names the TMDB record Letterboxd itself uses for that film. It is an answer
+    about the film rather than a guess at it, which is why it outranks every
+    other source in resolve_tmdb_ids.
+
+    A refusal is an answer too, and it is returned separately so callers can
+    honour it. A slug the file lists with no id, or with a type other than
+    "movie", is a slug that has no film record in TMDB, usually because
+    Letterboxd files it as television. Nothing else may name an id for it: the
+    title and year searches that used to do so are what put another film's
+    runtime, cast and country on eleven of this account's films.
+
+    A missing or damaged file leaves both answers empty and the older sources
+    reply instead. They are weaker, and a panel built from weaker ids is still
+    worth more than no panel.
+    """
+    if not path.exists():
+        print(
+            f"No resolved TMDB ids at {path}. "
+            "Run scripts/resolve_tmdb_ids.py to read each film's id from its own "
+            "Letterboxd page. Until then ids come from the history and the cache, "
+            "which are search answers and can name the wrong film."
+        )
+        return {}, set()
+
+    try:
+        resolved = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as error:
+        print(
+            f"Could not read {path} ({error}), so film ids come from the history "
+            "and the cache instead. Run scripts/resolve_tmdb_ids.py to build it "
+            "again."
+        )
+        return {}, set()
+
+    if not isinstance(resolved, dict):
+        print(
+            f"{path} does not hold an object keyed by slug, so it says nothing "
+            "about any film. Run scripts/resolve_tmdb_ids.py to build it again."
+        )
+        return {}, set()
+
+    ids: dict[str, int] = {}
+    refused: set[str] = set()
+
+    for slug, record in resolved.items():
+        if not isinstance(slug, str) or not isinstance(record, dict):
+            continue
+        tmdb_id = record.get("tmdb_id")
+        # Only a film counts. A record Letterboxd files as television has nothing
+        # behind TMDB's movie endpoint, so no film payload was ever cached for it.
+        if isinstance(tmdb_id, int) and record.get("tmdb_type") == "movie":
+            ids[slug] = tmdb_id
+        else:
+            refused.add(slug)
+
+    return ids, refused
+
+
 def resolve_tmdb_ids(
     entries: list[dict[str, Any]], connection: sqlite3.Connection | None
 ) -> dict[str, int]:
     """Map every film slug in the history to its TMDB id.
 
-    RSS entries carry the id already. Export rows do not, so the cache's lookups
-    table fills the gap, and the films table is the last resort.
+    Three sources answer, and the strongest one holding an answer wins:
+
+        data/tmdb-ids.json  read from the film's own Letterboxd page
+        the history entry   the id the RSS feed carried
+        the lookups table   what a title and year search resolved
+
+    The map is the authority, and its refusals bind the two sources under it. A
+    slug it names no id for has no TMDB film at all, so taking one from a weaker
+    source would not fill a gap, it would put a different film's details on this
+    one. On this account that is eleven television records, each of which the
+    search had matched to some unrelated film.
+
+    The films table used to answer here as a last resort and no longer does. It
+    records the slug each cached payload was downloaded for, which on this cache
+    is that same title and year search: it named the wrong film for 43 of 827,
+    and every id it can offer is one the map has already replaced or refused.
+    Searching for "aladdin-2019" returned 812, the 1992 animated film, where the
+    film's own page states 420817.
+
+    A cache that will not answer costs only the slugs it alone could have named.
+    It never ends the build: open_tmdb_cache promises that a cache this run
+    cannot use is treated as absent, and a query that raises later is that same
+    unusable cache arriving one step further on.
     """
-    slug_to_tmdb_id: dict[str, int] = {}
+    slug_to_tmdb_id, refused_slugs = read_resolved_tmdb_ids()
 
     for entry in entries:
         slug = entry.get("slug")
         tmdb_id = entry.get("tmdb_id")
-        if isinstance(slug, str) and isinstance(tmdb_id, int):
+        if isinstance(slug, str) and isinstance(tmdb_id, int) and slug not in refused_slugs:
             slug_to_tmdb_id.setdefault(slug, tmdb_id)
 
     if connection is None:
         return slug_to_tmdb_id
 
-    for table, slug_column in (("lookups", "slug"), ("films", "slug")):
-        if not table_exists(connection, table):
-            continue
-        for row in connection.execute(f"SELECT {slug_column}, tmdb_id FROM {table}"):
-            slug = row[slug_column]
-            tmdb_id = row["tmdb_id"]
-            if isinstance(slug, str) and isinstance(tmdb_id, int):
-                slug_to_tmdb_id.setdefault(slug, tmdb_id)
+    try:
+        if not table_exists(connection, "lookups"):
+            return slug_to_tmdb_id
+        # Read the rows out in one go, inside the guard. A cursor left to be
+        # walked outside it raises on the damaged page, past the except clause.
+        rows = connection.execute("SELECT slug, tmdb_id FROM lookups").fetchall()
+    except sqlite3.DatabaseError as error:
+        print(
+            f"The TMDB cache table lookups could not be read ({error}), so any film "
+            "named by it alone carries no id this run and reports no TMDB details. "
+            f"Delete {TMDB_CACHE_FILE.name} and run scripts/enrich_tmdb.py to build "
+            "it again."
+        )
+        return slug_to_tmdb_id
+
+    for row in rows:
+        slug = row["slug"]
+        tmdb_id = row["tmdb_id"]
+        if isinstance(slug, str) and isinstance(tmdb_id, int) and slug not in refused_slugs:
+            slug_to_tmdb_id.setdefault(slug, tmdb_id)
 
     return slug_to_tmdb_id
 
@@ -527,12 +724,27 @@ def load_director_filmography_sizes(
     table. When that table is absent the result is empty and the completeness
     module emits an empty array, which is better than comparing what was seen
     against a filmography counted only from films already seen.
+
+    A table that will not read is treated as absent for the same reason, and
+    said out loud so the empty module reads as a cache to repair. It costs one
+    module, so it is not worth ending a build that has every other module.
     """
     if connection is None or not table_exists(connection, PERSON_CREDITS_TABLE):
         return {}
 
+    try:
+        rows = connection.execute(f"SELECT * FROM {PERSON_CREDITS_TABLE}").fetchall()
+    except sqlite3.DatabaseError as error:
+        print(
+            f"The TMDB cache table {PERSON_CREDITS_TABLE} could not be read "
+            f"({error}), so extras.director_completeness is empty this run. Delete "
+            f"{TMDB_CACHE_FILE.name} and run scripts/enrich_people_and_collections.py "
+            "to build it again."
+        )
+        return {}
+
     sizes: dict[int, int] = {}
-    for row in connection.execute(f"SELECT * FROM {PERSON_CREDITS_TABLE}"):
+    for row in rows:
         keys = row.keys()
         payload = decode_payload(row["payload"]) if "payload" in keys else None
         if payload is None:
@@ -562,12 +774,27 @@ def load_collection_sizes(connection: sqlite3.Connection | None) -> dict[int, in
     Film details name the collection but not its size, so the size comes from a
     cached collection payload: either the optional collections table, or an
     expanded collection already stored inside a film payload.
+
+    A table that will not read is treated as absent, and said out loud. The
+    collections module then holds only the collections a film payload expanded
+    for itself, which is fewer rows rather than wrong ones.
     """
     if connection is None or not table_exists(connection, COLLECTIONS_TABLE):
         return {}
 
+    try:
+        rows = connection.execute(f"SELECT * FROM {COLLECTIONS_TABLE}").fetchall()
+    except sqlite3.DatabaseError as error:
+        print(
+            f"The TMDB cache table {COLLECTIONS_TABLE} could not be read ({error}), "
+            "so a collection is counted only when a film payload already carries "
+            f"its size. Delete {TMDB_CACHE_FILE.name} and run "
+            "scripts/enrich_people_and_collections.py to build it again."
+        )
+        return {}
+
     sizes: dict[int, int] = {}
-    for row in connection.execute(f"SELECT * FROM {COLLECTIONS_TABLE}"):
+    for row in rows:
         payload = decode_payload(row["payload"]) if "payload" in row.keys() else None
         if payload is None:
             continue
@@ -1062,14 +1289,40 @@ def build_director_completeness(
     films_per_director: dict[int, set[str]],
     names: dict[int, str],
     filmography_sizes: dict[int, int],
-) -> list[dict[str, Any]]:
+) -> tuple[list[dict[str, Any]], int]:
     """Compare films seen against each director's full filmography.
 
-    Without cached filmography sizes there is no honest denominator, so the
-    module emits an empty array instead of a number counted from the wrong set.
+    Returns the rows, and how many directors were left out because no filmography
+    was cached for them. That second number is what tells the operator whether
+    the module is short, and short by how much.
+
+    Two rules decide who is in the module:
+
+        seen at least MINIMUM_FILMS_FOR_COMPLETENESS films by that director,
+        because "seen 1 of 1" and "seen 1 of 30" both read as "seen once"
+
+        a cached filmography size, because that is the denominator, and
+        counting one from the films already seen would make every director
+        complete by construction
+
+    scripts/enrich_people_and_collections.py downloads filmographies under the
+    same floor, so a director below it is not a gap in the cache and is not
+    counted as one here.
+
+    A director whose seen count is higher than the filmography TMDB reports is
+    kept as it stands, with both numbers as they were measured. That happens when
+    TMDB credits a film to a different person record than the one the film's own
+    credits named, and inventing a larger denominator to hide it would replace a
+    visible oddity with an invisible one. print_summary counts these.
     """
+    eligible = {
+        person_id: slugs
+        for person_id, slugs in films_per_director.items()
+        if len(slugs) >= MINIMUM_FILMS_FOR_COMPLETENESS
+    }
+
     if not filmography_sizes:
-        return []
+        return [], len(eligible)
 
     rows = [
         {
@@ -1077,12 +1330,12 @@ def build_director_completeness(
             "seen": len(slugs),
             "filmography": filmography_sizes[person_id],
         }
-        for person_id, slugs in films_per_director.items()
+        for person_id, slugs in eligible.items()
         if person_id in filmography_sizes
     ]
 
     rows.sort(key=lambda row: (-row["seen"] / row["filmography"], -row["seen"], row["name"]))
-    return rows[:TOP_PEOPLE_SHOWN]
+    return rows[:TOP_PEOPLE_SHOWN], len(eligible) - len(rows)
 
 
 def build_studios(
@@ -1114,12 +1367,23 @@ def build_studios(
 
 def build_collections(
     films_by_slug: dict[str, dict[str, Any]], collection_sizes: dict[int, int]
-) -> list[dict[str, Any]]:
+) -> tuple[list[dict[str, Any]], int]:
     """Count how much of each TMDB collection the history covers.
 
+    Returns the rows, and how many collections were left out because no size was
+    cached for them. That second number is what tells the operator whether the
+    module is short, and short by how much.
+
     "seen" counts collection members in the history. "total" is the collection
-    size reported by TMDB, so a collection whose size was never cached is left
-    out rather than reported as complete by accident.
+    size TMDB reports, which a film payload never carries: it names the
+    collection a film belongs to and stops there. The size comes from
+    scripts/enrich_people_and_collections.py, which asks /collection/{id} once
+    per collection and caches the answer for good.
+
+    A collection with no cached size is left out. Reporting "seen 2 of 2" from
+    the two films the member happens to have seen would make every collection
+    complete by construction, which is the one answer this module must never
+    give.
     """
     sizes = dict(collection_sizes)
     seen_per_collection: Counter[int] = Counter()
@@ -1147,7 +1411,7 @@ def build_collections(
     ]
 
     rows.sort(key=lambda row: (-row["seen"] / row["total"], -row["seen"], row["name"]))
-    return rows
+    return rows, len(seen_per_collection) - len(rows)
 
 
 def build_runtime(
@@ -1970,6 +2234,16 @@ def build_stats_document(
 
     world_map = build_world_map(films_by_slug)
     runtime = build_runtime(entries, runtime_per_film)
+
+    # Both modules need a number that no film payload carries, so both can come
+    # out short for a reason the rows themselves cannot show. Each builder says
+    # how many it left out, and print_summary names the step that fills them.
+    collections, collections_without_a_size = build_collections(
+        films_by_slug, load_collection_sizes(connection)
+    )
+    director_completeness, directors_without_a_filmography = build_director_completeness(
+        films_per_director, director_names, load_director_filmography_sizes(connection)
+    )
     rewatches = sum(1 for entry in entries if entry.get("rewatch") is True)
     luckiest_directors, unluckiest_directors = build_director_luck(
         films_per_director, director_names, rating_per_film
@@ -1985,6 +2259,14 @@ def build_stats_document(
         "films_without_credits": len(film_slugs) - len(credits_by_slug),
         "unreadable_cache_rows": unreadable_cache_rows,
         "shared_tmdb_ids": shared_tmdb_ids,
+        "collections_without_a_size": collections_without_a_size,
+        "directors_without_a_filmography": directors_without_a_filmography,
+        "collections_seen_over_total": sum(
+            1 for row in collections if row["seen"] > row["total"]
+        ),
+        "directors_seen_over_filmography": sum(
+            1 for row in director_completeness if row["seen"] > row["filmography"]
+        ),
     }
 
     document = {
@@ -2025,7 +2307,7 @@ def build_stats_document(
             films_per_director, director_names, director_profiles, rating_per_film
         ),
         "studios": build_studios(films_by_slug, rating_per_film),
-        "collections": build_collections(films_by_slug, load_collection_sizes(connection)),
+        "collections": collections,
         "world_map": world_map,
         "list_progress": build_list_progress(cached_lists, every_history_slug),
         "extras": {
@@ -2036,11 +2318,7 @@ def build_stats_document(
             "heatmap": build_heatmap(dated_entries),
             "runtime": runtime,
             "decade_gaps": build_decade_gaps(release_year_per_film, today),
-            "director_completeness": build_director_completeness(
-                films_per_director,
-                director_names,
-                load_director_filmography_sizes(connection),
-            ),
+            "director_completeness": director_completeness,
             "contrarian_index": build_contrarian_index(
                 rating_per_film, films_by_slug, titles, release_year_per_film
             ),
@@ -2071,6 +2349,146 @@ def build_stats_document(
 # ---------------------------------------------------------------------------
 
 
+# The inputs a module can be waiting for, and the step that produces each.
+# Naming the step is the point: "empty" on its own is a dead end, and a reader
+# who has to guess reaches for the enrichment step they last remember.
+FILLED_BY_WATCH_DATES = (
+    "needs entries that carry a watched date: run scripts/backfill.py once for "
+    "the export, then scripts/fetch_rss.py and scripts/merge_history.py weekly"
+)
+FILLED_BY_FILM_DETAILS = "needs cached film details: run scripts/enrich_tmdb.py"
+FILLED_BY_CREDITS = "needs cached film credits: run scripts/enrich_tmdb.py"
+FILLED_BY_COLLECTION_SIZES = (
+    "needs each collection's size, which no film payload carries: run "
+    "scripts/enrich_tmdb.py, then scripts/enrich_people_and_collections.py"
+)
+FILLED_BY_FILMOGRAPHY_SIZES = (
+    "needs each director's filmography, which no film's credits carry: run "
+    "scripts/enrich_tmdb.py, then scripts/enrich_people_and_collections.py. "
+    f"A director with fewer than {MINIMUM_FILMS_FOR_COMPLETENESS} films in the "
+    "history is left out whatever is cached"
+)
+
+# What every module in the summary is waiting for when it comes out empty.
+#
+# This table exists because a message was once written before anyone knew what
+# the module needed. Collections and extras.director_completeness reported
+# "empty" beside advice to run scripts/enrich_tmdb.py, which downloads films and
+# fills neither: a collection's size and a person's filmography are not facts
+# about a film, and no number of film payloads produces them.
+#
+# Anything added to the stats document belongs here too. print_summary says so
+# out loud when a module comes out empty with no entry, rather than printing
+# "empty" and leaving the reader where this defect started.
+WHAT_AN_EMPTY_MODULE_IS_WAITING_FOR: dict[str, str] = {
+    "totals": "needs a watch history: run scripts/backfill.py",
+    "coverage": "needs a watch history: run scripts/backfill.py",
+    "by_year": FILLED_BY_WATCH_DATES,
+    "decades": "needs films with a release year: run scripts/backfill.py",
+    "genres": FILLED_BY_FILM_DETAILS,
+    "countries": FILLED_BY_FILM_DETAILS,
+    "languages": FILLED_BY_FILM_DETAILS,
+    "cast": FILLED_BY_CREDITS,
+    "directors": FILLED_BY_CREDITS,
+    "studios": FILLED_BY_FILM_DETAILS,
+    "collections": FILLED_BY_COLLECTION_SIZES,
+    "world_map": FILLED_BY_FILM_DETAILS,
+    "list_progress": "needs the cached curated lists: run scripts/fetch_lists.py",
+    "extras.rating_bias": FILLED_BY_FILM_DETAILS,
+    "extras.rating_drift": FILLED_BY_WATCH_DATES,
+    "extras.rewatch_rate": "needs diary entries: run scripts/backfill.py",
+    "extras.watchlist": "needs the watchlist: run scripts/fetch_watchlist.py",
+    "extras.heatmap": FILLED_BY_WATCH_DATES,
+    "extras.runtime": FILLED_BY_FILM_DETAILS,
+    "extras.decade_gaps": (
+        "nothing to run if the history has films: no decade between the oldest "
+        "one and now is missing. With no films at all, run scripts/backfill.py"
+    ),
+    "extras.director_completeness": FILLED_BY_FILMOGRAPHY_SIZES,
+    "extras.contrarian_index": FILLED_BY_FILM_DETAILS,
+    "extras.obscurity": FILLED_BY_FILM_DETAILS,
+    "extras.release_recency": (
+        "needs watch dates and cached film details: run scripts/backfill.py and "
+        "scripts/enrich_tmdb.py"
+    ),
+    "extras.half_star_usage": (
+        "needs films that carry a rating. If the history is empty, run "
+        "scripts/backfill.py. If it is not, this member has rated nothing and "
+        "there is nothing to run"
+    ),
+    "extras.liked_but_low": (
+        "needs a film both liked and rated "
+        f"{LIKED_BUT_LOW_MAX_RATING} or lower. If the history is empty, run "
+        "scripts/backfill.py. If it is not, no film of this member's qualifies "
+        "and there is nothing to run"
+    ),
+    "extras.longest_drought": FILLED_BY_WATCH_DATES,
+    "extras.weekday_profile": FILLED_BY_WATCH_DATES,
+    "extras.month_seasonality": FILLED_BY_WATCH_DATES,
+    "extras.logging_lag": (
+        "needs the logged date, which only the export carries: run "
+        "scripts/backfill.py"
+    ),
+    "extras.lucky_director": (
+        "needs rated films per director: run scripts/enrich_tmdb.py, and note "
+        f"that a director needs {MINIMUM_FILMS_FOR_RATED_RANKING} rated films to "
+        "be ranked"
+    ),
+    "extras.unlucky_director": (
+        "needs rated films per director: run scripts/enrich_tmdb.py, and note "
+        f"that a director needs {MINIMUM_FILMS_FOR_RATED_RANKING} rated films to "
+        "be ranked"
+    ),
+    "extras.background_actor": FILLED_BY_CREDITS,
+    "extras.crew_most_watched": FILLED_BY_CREDITS,
+    "extras.life_in_days": FILLED_BY_FILM_DETAILS,
+    "extras.extremes": (
+        "needs runtimes and release years: run scripts/enrich_tmdb.py for the "
+        "shortest and longest, scripts/backfill.py for the oldest and newest"
+    ),
+    "extras.rating_vs_runtime": FILLED_BY_FILM_DETAILS,
+    "extras.title_words": "needs diary entries: run scripts/backfill.py",
+}
+
+
+def module_is_empty(value: Any) -> bool:
+    """Report whether a module produced nothing a reader could look at.
+
+    A module is empty when it is null, when it is an empty list, or when it is an
+    object with nothing in any of its members. Two kinds of module need that last
+    rule: extras.crew_most_watched is four lists and is always present, so it
+    reads as filled in until all four are counted, and extras.watchlist and
+    extras.runtime lead with a count that reads as a measurement when it is only
+    a zero standing in for an input nobody has loaded yet.
+
+    A measured zero at the top of a module is not empty. extras.rewatch_rate is
+    0.0 for a member who has never rewatched anything, which is an answer, and
+    sending that reader off to run the backfill again would be exactly the false
+    instruction this table exists to remove.
+    """
+    if value is None:
+        return True
+    if isinstance(value, (list, str)):
+        return not value
+    if isinstance(value, dict):
+        return all(nothing_in_this_member(item) for item in value.values())
+    return False
+
+
+def nothing_in_this_member(value: Any) -> bool:
+    """Report whether one member of a module object holds nothing.
+
+    Inside an object a zero counts as nothing, because it is read together with
+    its siblings: "size 0, median null, conversion null" is an unloaded
+    watchlist, not a watchlist measured at zero.
+    """
+    if isinstance(value, bool):
+        return not value
+    if isinstance(value, (int, float)):
+        return value == 0
+    return module_is_empty(value)
+
+
 def describe_module(value: Any) -> str:
     """Describe what one module produced, in one short line."""
     if value is None:
@@ -2080,6 +2498,27 @@ def describe_module(value: Any) -> str:
     if isinstance(value, dict):
         return ", ".join(f"{key} {describe_value(item)}" for key, item in value.items())
     return str(value)
+
+
+def describe_module_with_what_it_needs(name: str, value: Any) -> str:
+    """Describe one module, and say what would fill it when it produced nothing.
+
+    A module that is full describes itself. A module that is empty is a question,
+    so it is answered here with the step that fills it, and a module missing from
+    the table says so rather than passing for one with nothing to do.
+    """
+    described = describe_module(value)
+    if not module_is_empty(value):
+        return described
+
+    waiting_for = WHAT_AN_EMPTY_MODULE_IS_WAITING_FOR.get(name)
+    if waiting_for is None:
+        return (
+            f"{described} (nothing here says what fills this module. Add it to "
+            "WHAT_AN_EMPTY_MODULE_IS_WAITING_FOR in scripts/build_stats.py)"
+        )
+
+    return f"{described} ({waiting_for})"
 
 
 def describe_value(value: Any) -> str:
@@ -2094,8 +2533,8 @@ def describe_value(value: Any) -> str:
 def print_summary(stats: dict[str, Any], audit: dict[str, Any]) -> None:
     """Print what each module produced, so a run can be checked without opening the file."""
     rows: list[tuple[str, str]] = [
-        ("totals", describe_module(stats["totals"])),
-        ("coverage", describe_module(stats["coverage"])),
+        (name, describe_module_with_what_it_needs(name, stats[name]))
+        for name in ("totals", "coverage")
     ]
 
     for name in (
@@ -2111,10 +2550,11 @@ def print_summary(stats: dict[str, Any], audit: dict[str, Any]) -> None:
         "world_map",
         "list_progress",
     ):
-        rows.append((name, describe_module(stats[name])))
+        rows.append((name, describe_module_with_what_it_needs(name, stats[name])))
 
     for name, value in stats["extras"].items():
-        rows.append((f"extras.{name}", describe_module(value)))
+        label = f"extras.{name}"
+        rows.append((label, describe_module_with_what_it_needs(label, value)))
 
     rows.append(("", ""))
     rows.append(("input: diary entries read", str(audit["entries"])))
@@ -2140,6 +2580,24 @@ def print_summary(stats: dict[str, Any], audit: dict[str, Any]) -> None:
             str(sum(len(slugs) for _, slugs in audit["shared_tmdb_ids"])),
         )
     )
+    # A row count alone cannot show a short module: 200 collections looks
+    # complete whether or not six more were dropped for want of a size. These two
+    # lines are how a partly filled module says so.
+    rows.append(
+        (
+            "input: collections with no cached size",
+            f"{audit['collections_without_a_size']} (left out of collections; "
+            "run scripts/enrich_people_and_collections.py)",
+        )
+    )
+    rows.append(
+        (
+            "input: directors with no cached filmography",
+            f"{audit['directors_without_a_filmography']} (left out of "
+            "extras.director_completeness; run "
+            "scripts/enrich_people_and_collections.py)",
+        )
+    )
 
     width = max(len(label) for label, _ in rows)
     print(f"\n{'module'.ljust(width)}  result")
@@ -2148,6 +2606,39 @@ def print_summary(stats: dict[str, Any], audit: dict[str, Any]) -> None:
         print(f"{label.ljust(width)}  {detail}".rstrip())
 
     print_shared_tmdb_ids(audit["shared_tmdb_ids"])
+    print_counts_that_cannot_be_right(audit)
+
+
+def print_counts_that_cannot_be_right(audit: dict[str, Any]) -> None:
+    """Name any row whose "seen" is larger than the total it is measured against.
+
+    Neither is possible for one film in one collection, or one director with one
+    filmography, so each one means two records that should be one. The numbers
+    are published as they were measured and named here, because a denominator
+    quietly raised to match would hide the mismatch instead of showing it.
+    """
+    over_size = audit["collections_seen_over_total"]
+    over_filmography = audit["directors_seen_over_filmography"]
+
+    if over_size:
+        print("")
+        print(
+            f"{over_size} collections report more films seen than the collection "
+            "holds. Two of the\nmember's films are being counted as members of a "
+            "collection that lists fewer,\nwhich usually means two slugs resolved "
+            "to one TMDB film. Check the shared ids\nabove, and give the wrong one "
+            "its own id in data/manual-matches.json."
+        )
+
+    if over_filmography:
+        print("")
+        print(
+            f"{over_filmography} directors report more films seen than TMDB "
+            "credits them with directing.\nTMDB is crediting some of those films "
+            "to a different person record than the one\nthe film's own credits "
+            "name, so the two counts are about two people. Both\nnumbers are "
+            "published as measured rather than adjusted to agree."
+        )
 
 
 def print_shared_tmdb_ids(shared: list[tuple[int, list[str]]]) -> None:

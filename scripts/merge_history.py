@@ -52,16 +52,49 @@ def identity(entry: dict[str, Any]) -> str:
     return str(entry.get("guid") or "")
 
 
-def wins(candidate: dict[str, Any], incumbent: dict[str, Any]) -> bool:
-    """Decide whether the candidate entry should replace the stored one."""
-    candidate_rank = SOURCE_PRIORITY.get(candidate.get("source", ""), 0)
-    incumbent_rank = SOURCE_PRIORITY.get(incumbent.get("source", ""), 0)
-    if candidate_rank != incumbent_rank:
-        return candidate_rank > incumbent_rank
+# Fields only one source knows. The feed states a watch; the export remembers what
+# else was recorded about it. Replacing one with the other throws away whichever
+# half the winner does not carry, so the merge fills instead of replacing.
+FEED_FIELDS = ("guid", "rating", "liked", "rewatch", "tmdb_id", "title", "year", "source")
+EXPORT_ONLY_FIELDS = ("logged_date", "review", "letterboxd_uri", "slug_provisional")
 
-    # Same source: prefer whichever entry knows more.
-    candidate_known = sum(1 for field in ("rating", "tmdb_id", "watched_date") if candidate.get(field) is not None)
-    incumbent_known = sum(1 for field in ("rating", "tmdb_id", "watched_date") if incumbent.get(field) is not None)
+
+def combine(feed_entry: dict[str, Any], stored: dict[str, Any]) -> dict[str, Any]:
+    """Fold a feed entry into a stored one, keeping what only the stored one knows.
+
+    Both sources describe the same watch from different angles. The feed is
+    current and carries the rating, the like, and the TMDB id. The export carries
+    the date the watch was logged, the review text, and the original link, none of
+    which the feed publishes.
+
+    Letting the feed replace the export entry destroyed those fields on every watch
+    the feed window covered, and the window advances every week, so the loss grew
+    and could not be undone without re-running the backfill.
+    """
+    merged = dict(stored)
+
+    for field in FEED_FIELDS:
+        value = feed_entry.get(field)
+        if value is not None:
+            merged[field] = value
+
+    # A field only the export knows survives unless the feed genuinely has one.
+    for field in EXPORT_ONLY_FIELDS:
+        if merged.get(field) is None and feed_entry.get(field) is not None:
+            merged[field] = feed_entry[field]
+
+    return merged
+
+
+def wins(candidate: dict[str, Any], incumbent: dict[str, Any]) -> bool:
+    """Say whether the candidate knows more than the stored entry.
+
+    Only used when neither entry can be folded into the other, which means two
+    entries from the same source describing one watch.
+    """
+    countable = ("rating", "tmdb_id", "watched_date", "review", "logged_date")
+    candidate_known = sum(1 for field in countable if candidate.get(field) is not None)
+    incumbent_known = sum(1 for field in countable if incumbent.get(field) is not None)
     return candidate_known > incumbent_known
 
 
@@ -81,6 +114,11 @@ def merge(history: dict[str, Any], incoming: list[dict[str, Any]]) -> tuple[dict
         if existing is None:
             by_identity[key] = entry
             added += 1
+        elif entry.get("source") != existing.get("source"):
+            # The two sources describe one watch from different angles, so keep both
+            # halves rather than letting either overwrite the other.
+            by_identity[key] = combine(entry, existing)
+            replaced += 1
         elif wins(entry, existing):
             by_identity[key] = entry
             replaced += 1

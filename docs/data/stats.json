@@ -3,8 +3,8 @@
   "username": "osvajorge",
   "totals": {
     "films": 827,
-    "hours": 1532,
-    "directors": 541,
+    "hours": 1519,
+    "directors": 530,
     "countries": 49,
     "longest_streak_weeks": 16,
     "multi_film_days": 40
@@ -13,7 +13,7 @@
     "films_total": 827,
     "films_with_a_date": 284,
     "films_with_a_rating": 825,
-    "films_with_tmdb_data": 801
+    "films_with_tmdb_data": 789
   },
   "by_year": [
     {
@@ -142,43 +142,43 @@
       },
       {
         "name": "Action",
-        "count": 255
+        "count": 251
       },
       {
         "name": "Adventure",
-        "count": 222
+        "count": 219
       },
       {
         "name": "Comedy",
-        "count": 193
+        "count": 190
       },
       {
         "name": "Science Fiction",
-        "count": 181
+        "count": 182
       },
       {
         "name": "Thriller",
-        "count": 178
+        "count": 179
       },
       {
         "name": "Fantasy",
-        "count": 156
+        "count": 153
       },
       {
         "name": "Animation",
-        "count": 141
+        "count": 134
       },
       {
         "name": "Horror",
-        "count": 125
-      },
-      {
-        "name": "Family",
-        "count": 121
+        "count": 126
       },
       {
         "name": "Crime",
-        "count": 120
+        "count": 119
+      },
+      {
+        "name": "Family",
+        "count": 118
       },
       {
         "name": "Mystery",
@@ -186,23 +186,23 @@
       },
       {
         "name": "Romance",
-        "count": 59
+        "count": 56
       },
       {
         "name": "History",
         "count": 29
       },
       {
-        "name": "Documentary",
-        "count": 25
+        "name": "War",
+        "count": 24
       },
       {
-        "name": "War",
-        "count": 23
+        "name": "Documentary",
+        "count": 22
       },
       {
         "name": "Music",
-        "count": 22
+        "count": 21
       },
       {
         "name": "Western",
@@ -216,8 +216,8 @@
     "highest_rated": [
       {
         "name": "War",
-        "average": 4.0,
-        "count": 23
+        "average": 3.96,
+        "count": 24
       },
       {
         "name": "Western",
@@ -226,83 +226,83 @@
       },
       {
         "name": "Documentary",
-        "average": 3.7,
-        "count": 25
-      },
-      {
-        "name": "History",
-        "average": 3.69,
-        "count": 29
+        "average": 3.66,
+        "count": 22
       },
       {
         "name": "Drama",
-        "average": 3.66,
+        "average": 3.65,
         "count": 276
       },
       {
-        "name": "Crime",
+        "name": "History",
         "average": 3.64,
-        "count": 120
+        "count": 29
+      },
+      {
+        "name": "Crime",
+        "average": 3.63,
+        "count": 119
       },
       {
         "name": "Animation",
         "average": 3.58,
-        "count": 140
+        "count": 133
       },
       {
         "name": "Thriller",
-        "average": 3.5,
-        "count": 178
+        "average": 3.51,
+        "count": 179
       },
       {
         "name": "Mystery",
-        "average": 3.35,
+        "average": 3.37,
         "count": 81
-      },
-      {
-        "name": "Romance",
-        "average": 3.34,
-        "count": 59
       },
       {
         "name": "Comedy",
         "average": 3.29,
-        "count": 192
-      },
-      {
-        "name": "Action",
-        "average": 3.28,
-        "count": 255
-      },
-      {
-        "name": "Horror",
-        "average": 3.28,
-        "count": 125
+        "count": 189
       },
       {
         "name": "Science Fiction",
+        "average": 3.29,
+        "count": 182
+      },
+      {
+        "name": "Romance",
         "average": 3.28,
-        "count": 181
+        "count": 56
+      },
+      {
+        "name": "Horror",
+        "average": 3.27,
+        "count": 126
+      },
+      {
+        "name": "Action",
+        "average": 3.26,
+        "count": 251
       },
       {
         "name": "Adventure",
-        "average": 3.27,
-        "count": 222
+        "average": 3.26,
+        "count": 219
       },
       {
         "name": "Fantasy",
-        "average": 3.23,
-        "count": 156
-      },
-      {
-        "name": "Music",
-        "average": 3.07,
-        "count": 22
+        "average": 3.21,
+        "count": 153
       },
       {
         "name": "Family",
-        "average": 3.05,
-        "count": 121
+        "average": 3.03,
+        "count": 118
+      },
+      {
+        "name": "Music",
+        "average": 2.98,
+        "count": 21
       },
       {
         "name": "TV Movie",
@@ -315,23 +315,23 @@
     "most_watched": [
       {
         "name": "United States of America",
-        "count": 633
+        "count": 632
       },
       {
         "name": "United Kingdom",
-        "count": 119
+        "count": 118
       },
       {
         "name": "France",
-        "count": 75
+        "count": 77
       },
       {
         "name": "Japan",
-        "count": 56
+        "count": 49
       },
       {
         "name": "Germany",
-        "count": 45
+        "count": 42
       },
       {
         "name": "Canada",
@@ -339,11 +339,11 @@
       },
       {
         "name": "Mexico",
-        "count": 21
+        "count": 23
       },
       {
         "name": "Australia",
-        "count": 16
+        "count": 17
       },
       {
         "name": "Spain",
@@ -375,11 +375,7 @@
       },
       {
         "name": "Denmark",
-        "count": 7
-      },
-      {
-        "name": "Luxembourg",
-        "count": 7
+        "count": 8
       },
       {
         "name": "Sweden",
@@ -387,6 +383,10 @@
       },
       {
         "name": "Ireland",
+        "count": 6
+      },
+      {
+        "name": "Luxembourg",
         "count": 6
       },
       {
@@ -426,12 +426,12 @@
         "count": 13
       },
       {
-        "name": "South Korea",
-        "average": 4.19,
+        "name": "Hong Kong",
+        "average": 4.15,
         "count": 13
       },
       {
-        "name": "Hong Kong",
+        "name": "South Korea",
         "average": 4.15,
         "count": 13
       },
@@ -441,29 +441,29 @@
         "count": 6
       },
       {
-        "name": "Japan",
-        "average": 3.77,
-        "count": 56
-      },
-      {
         "name": "Denmark",
-        "average": 3.71,
-        "count": 7
+        "average": 3.81,
+        "count": 8
       },
       {
-        "name": "Luxembourg",
-        "average": 3.71,
-        "count": 7
+        "name": "Japan",
+        "average": 3.79,
+        "count": 49
       },
       {
         "name": "France",
-        "average": 3.65,
-        "count": 75
+        "average": 3.68,
+        "count": 77
       },
       {
         "name": "Spain",
         "average": 3.6,
         "count": 15
+      },
+      {
+        "name": "Luxembourg",
+        "average": 3.58,
+        "count": 6
       },
       {
         "name": "China",
@@ -482,18 +482,8 @@
       },
       {
         "name": "United Kingdom",
-        "average": 3.49,
-        "count": 119
-      },
-      {
-        "name": "Germany",
         "average": 3.47,
-        "count": 45
-      },
-      {
-        "name": "Australia",
-        "average": 3.44,
-        "count": 16
+        "count": 118
       },
       {
         "name": "Belgium",
@@ -501,9 +491,19 @@
         "count": 14
       },
       {
+        "name": "Australia",
+        "average": 3.41,
+        "count": 17
+      },
+      {
+        "name": "Germany",
+        "average": 3.38,
+        "count": 42
+      },
+      {
         "name": "Mexico",
-        "average": 3.36,
-        "count": 21
+        "average": 3.33,
+        "count": 23
       },
       {
         "name": "Sweden",
@@ -513,7 +513,7 @@
       {
         "name": "United States of America",
         "average": 3.29,
-        "count": 632
+        "count": 631
       }
     ]
   },
@@ -521,23 +521,23 @@
     "most_watched": [
       {
         "name": "English",
-        "count": 678
+        "count": 675
       },
       {
         "name": "Spanish",
-        "count": 124
+        "count": 125
       },
       {
         "name": "French",
-        "count": 113
+        "count": 114
       },
       {
         "name": "Japanese",
-        "count": 91
+        "count": 83
       },
       {
         "name": "German",
-        "count": 56
+        "count": 57
       },
       {
         "name": "Russian",
@@ -588,12 +588,12 @@
         "count": 7
       },
       {
-        "name": "Dutch",
+        "name": "Hindi",
         "count": 6
       },
       {
-        "name": "Hindi",
-        "count": 6
+        "name": "Dutch",
+        "count": 5
       },
       {
         "name": "Romanian",
@@ -627,14 +627,14 @@
         "count": 9
       },
       {
-        "name": "Korean",
-        "average": 3.86,
-        "count": 18
-      },
-      {
         "name": "Vietnamese",
         "average": 3.86,
         "count": 7
+      },
+      {
+        "name": "Korean",
+        "average": 3.83,
+        "count": 18
       },
       {
         "name": "Turkish",
@@ -654,7 +654,7 @@
       {
         "name": "German",
         "average": 3.67,
-        "count": 56
+        "count": 57
       },
       {
         "name": "Hindi",
@@ -663,8 +663,8 @@
       },
       {
         "name": "Japanese",
-        "average": 3.67,
-        "count": 91
+        "average": 3.66,
+        "count": 83
       },
       {
         "name": "Cantonese",
@@ -674,7 +674,7 @@
       {
         "name": "French",
         "average": 3.56,
-        "count": 113
+        "count": 114
       },
       {
         "name": "Hebrew",
@@ -682,19 +682,9 @@
         "count": 10
       },
       {
-        "name": "Latin",
-        "average": 3.5,
-        "count": 15
-      },
-      {
         "name": "Romanian",
         "average": 3.5,
         "count": 5
-      },
-      {
-        "name": "Italian",
-        "average": 3.42,
-        "count": 45
       },
       {
         "name": "Russian",
@@ -702,19 +692,24 @@
         "count": 50
       },
       {
+        "name": "Italian",
+        "average": 3.39,
+        "count": 45
+      },
+      {
+        "name": "Latin",
+        "average": 3.37,
+        "count": 15
+      },
+      {
         "name": "English",
         "average": 3.31,
-        "count": 678
+        "count": 675
       },
       {
         "name": "Spanish",
         "average": 3.27,
-        "count": 124
-      },
-      {
-        "name": "Dutch",
-        "average": 3.25,
-        "count": 6
+        "count": 125
       },
       {
         "name": "Arabic",
@@ -735,6 +730,11 @@
         "name": "Portuguese",
         "average": 3.07,
         "count": 21
+      },
+      {
+        "name": "Dutch",
+        "average": 3.0,
+        "count": 5
       }
     ]
   },
@@ -776,12 +776,6 @@
       "profile_path": "/oRtDEOuIO1yDhTz5dORBdxXuLMO.jpg"
     },
     {
-      "tmdb_id": 84493,
-      "name": "Mickie McGowan",
-      "count": 17,
-      "profile_path": "/4K1HF10EvDjdaIoDAnWqFZjnmvk.jpg"
-    },
-    {
       "tmdb_id": 6968,
       "name": "Hugh Jackman",
       "count": 16,
@@ -794,16 +788,22 @@
       "profile_path": "/zQ2zg7PL3ut4JhfXMKSRV4FMnxR.jpg"
     },
     {
-      "tmdb_id": 214701,
-      "name": "Sherry Lynn",
+      "tmdb_id": 84493,
+      "name": "Mickie McGowan",
       "count": 16,
-      "profile_path": "/cp7SYig9JVbBWgc2YD4wEUNQGzh.jpg"
+      "profile_path": "/4K1HF10EvDjdaIoDAnWqFZjnmvk.jpg"
     },
     {
       "tmdb_id": 71580,
       "name": "Benedict Cumberbatch",
       "count": 15,
       "profile_path": "/wz3MRiMmoz6b5X3oSzMRC9nLxY1.jpg"
+    },
+    {
+      "tmdb_id": 214701,
+      "name": "Sherry Lynn",
+      "count": 15,
+      "profile_path": "/cp7SYig9JVbBWgc2YD4wEUNQGzh.jpg"
     },
     {
       "tmdb_id": 12835,
@@ -836,22 +836,10 @@
       "profile_path": "/pLD2XvxqHueLWOuqXoFngJU3A5H.jpg"
     },
     {
-      "tmdb_id": 19545,
-      "name": "Jack Angel",
-      "count": 14,
-      "profile_path": "/5MsVwIULYJotUSbDs61uSJff7ei.jpg"
-    },
-    {
       "tmdb_id": 21007,
       "name": "Jonah Hill",
       "count": 14,
       "profile_path": "/cymlWttB83MsAGR2EkTgANtjeRH.jpg"
-    },
-    {
-      "tmdb_id": 1256603,
-      "name": "Natsuki Hanae",
-      "count": 14,
-      "profile_path": "/alTb0DlcPIbcwM08WSmxFai58sd.jpg"
     },
     {
       "tmdb_id": 5469,
@@ -864,6 +852,12 @@
       "name": "Robert Downey Jr.",
       "count": 14,
       "profile_path": "/5qHNjhtjMD4YWH3UP0rm4tKwxCL.jpg"
+    },
+    {
+      "tmdb_id": 3063,
+      "name": "Tilda Swinton",
+      "count": 14,
+      "profile_path": "/dzjT4LKgs7eOma84GsPy78DsGNH.jpg"
     },
     {
       "tmdb_id": 11184,
@@ -902,6 +896,12 @@
       "profile_path": "/ScmKoJ9eiSUOthAt1PDNLi8Fkw.jpg"
     },
     {
+      "tmdb_id": 19545,
+      "name": "Jack Angel",
+      "count": 13,
+      "profile_path": "/5MsVwIULYJotUSbDs61uSJff7ei.jpg"
+    },
+    {
       "tmdb_id": 131,
       "name": "Jake Gyllenhaal",
       "count": 13,
@@ -914,16 +914,16 @@
       "profile_path": "/sX2etBbIkxRaCsATyw5ZpOVMPTD.jpg"
     },
     {
+      "tmdb_id": 1256603,
+      "name": "Natsuki Hanae",
+      "count": 13,
+      "profile_path": "/alTb0DlcPIbcwM08WSmxFai58sd.jpg"
+    },
+    {
       "tmdb_id": 202032,
       "name": "Ralph Ineson",
       "count": 13,
       "profile_path": "/sn3ONJw2pJxMHiCqPwvkaiWr5mc.jpg"
-    },
-    {
-      "tmdb_id": 3063,
-      "name": "Tilda Swinton",
-      "count": 13,
-      "profile_path": "/dzjT4LKgs7eOma84GsPy78DsGNH.jpg"
     },
     {
       "tmdb_id": 38673,
@@ -936,18 +936,6 @@
       "name": "Chris Hemsworth",
       "count": 12,
       "profile_path": "/piQGdoIQOF3C1EI5cbYZLAW1gfj.jpg"
-    },
-    {
-      "tmdb_id": 15831,
-      "name": "Frank Welker",
-      "count": 12,
-      "profile_path": "/aC37aQtsfZZDZN5y3paDTLJJHCi.jpg"
-    },
-    {
-      "tmdb_id": 12077,
-      "name": "Jim Cummings",
-      "count": 12,
-      "profile_path": "/c0sQPRCM5Ri3F4gVyxPr4AcPmIq.jpg"
     },
     {
       "tmdb_id": 1601441,
@@ -980,28 +968,22 @@
       "profile_path": "/dW5U5yrIIPmMjRThR9KT2xH6nTz.jpg"
     },
     {
-      "tmdb_id": 61969,
-      "name": "Phil Proctor",
-      "count": 12,
-      "profile_path": "/wAfx3qAEvcsLpEEIP0zwdhuDIcW.jpg"
-    },
-    {
       "tmdb_id": 8691,
       "name": "Zoe Saldaña",
       "count": 12,
       "profile_path": "/vQBwmsSOAd0JDaEcZ5p43J9xzsY.jpg"
     },
     {
+      "tmdb_id": 21088,
+      "name": "Alan Tudyk",
+      "count": 11,
+      "profile_path": "/jUuUbPuMGonFT5E2pcs4alfqaCN.jpg"
+    },
+    {
       "tmdb_id": 1333,
       "name": "Andy Serkis",
       "count": 11,
       "profile_path": "/eNGqhebQ4cDssjVeNFrKtUvweV5.jpg"
-    },
-    {
-      "tmdb_id": 202930,
-      "name": "Anthony Molinari",
-      "count": 11,
-      "profile_path": "/8Gl1b5Y7QLrdv5vvOwAmJk29joM.jpg"
     },
     {
       "tmdb_id": 19278,
@@ -1034,10 +1016,28 @@
       "profile_path": "/8nytsqL59SFJTVYVrN72k6qkGgJ.jpg"
     },
     {
+      "tmdb_id": 15831,
+      "name": "Frank Welker",
+      "count": 11,
+      "profile_path": "/aC37aQtsfZZDZN5y3paDTLJJHCi.jpg"
+    },
+    {
       "tmdb_id": 90633,
       "name": "Gal Gadot",
       "count": 11,
       "profile_path": "/aUyLp5QV14bfjtB6c5SDT1IGqyM.jpg"
+    },
+    {
+      "tmdb_id": 64,
+      "name": "Gary Oldman",
+      "count": 11,
+      "profile_path": "/yhaSM5habNNI1Tf4ALRwRk3VvSZ.jpg"
+    },
+    {
+      "tmdb_id": 157626,
+      "name": "Jan Rabson",
+      "count": 11,
+      "profile_path": "/8IBFupx53arTqxOYhGkGwyVSaOn.jpg"
     }
   ],
   "directors": [
@@ -1084,11 +1084,25 @@
       "profile_path": "/hAHOxR0NK4cZDumqNIpDoEdGVAh.jpg"
     },
     {
+      "tmdb_id": 956,
+      "name": "Guy Ritchie",
+      "count": 7,
+      "average_rating": 3.36,
+      "profile_path": "/9pLUnjMgIEWXi0mlHYzie9cKUTD.jpg"
+    },
+    {
       "tmdb_id": 1032,
       "name": "Martin Scorsese",
       "count": 7,
       "average_rating": 4.29,
       "profile_path": "/g3DjfKsgZQWZiw30I20hZVk1oMX.jpg"
+    },
+    {
+      "tmdb_id": 9032,
+      "name": "Bryan Singer",
+      "count": 6,
+      "average_rating": 3.5,
+      "profile_path": "/ts06thbCv9Ug2mNpcbcrmLGRL4Q.jpg"
     },
     {
       "tmdb_id": 7467,
@@ -1103,13 +1117,6 @@
       "count": 6,
       "average_rating": 4.33,
       "profile_path": "/zdDx9Xs93UIrJFWYApYR28J8M6b.jpg"
-    },
-    {
-      "tmdb_id": 956,
-      "name": "Guy Ritchie",
-      "count": 6,
-      "average_rating": 3.75,
-      "profile_path": "/9pLUnjMgIEWXi0mlHYzie9cKUTD.jpg"
     },
     {
       "tmdb_id": 15217,
@@ -1187,13 +1194,6 @@
       "count": 4,
       "average_rating": 3.25,
       "profile_path": "/xbINBnWn28YygYWUJ1aSAw0xPRv.jpg"
-    },
-    {
-      "tmdb_id": 9032,
-      "name": "Bryan Singer",
-      "count": 4,
-      "average_rating": 3.38,
-      "profile_path": "/ts06thbCv9Ug2mNpcbcrmLGRL4Q.jpg"
     },
     {
       "tmdb_id": 40644,
@@ -1357,6 +1357,13 @@
       "profile_path": "/3tJe8t90lrcQzXj9cRcpW9wmj2c.jpg"
     },
     {
+      "tmdb_id": 2036,
+      "name": "Alex Garland",
+      "count": 3,
+      "average_rating": 3.5,
+      "profile_path": "/qSWzYnDw68xm4i5xprH9BwQ6q25.jpg"
+    },
+    {
       "tmdb_id": 1071403,
       "name": "Alice Guy-Blaché",
       "count": 3,
@@ -1383,13 +1390,6 @@
       "count": 3,
       "average_rating": 3.0,
       "profile_path": "/zB9Uz0Rs1K9uwHffXRFaBwwSYI.jpg"
-    },
-    {
-      "tmdb_id": 66193,
-      "name": "Chris Sanders",
-      "count": 3,
-      "average_rating": 3.83,
-      "profile_path": "/8mKI9aPT5btPz0n0O3knHjKMDCe.jpg"
     }
   ],
   "studios": [
@@ -1400,13 +1400,13 @@
     },
     {
       "name": "Columbia Pictures",
-      "count": 47,
+      "count": 46,
       "average_rating": 3.12
     },
     {
       "name": "20th Century Fox",
-      "count": 36,
-      "average_rating": 3.1
+      "count": 37,
+      "average_rating": 3.11
     },
     {
       "name": "Universal Pictures",
@@ -1425,13 +1425,13 @@
     },
     {
       "name": "TSG Entertainment",
-      "count": 28,
-      "average_rating": 3.54
+      "count": 27,
+      "average_rating": 3.52
     },
     {
       "name": "Walt Disney Pictures",
       "count": 26,
-      "average_rating": 2.71
+      "average_rating": 2.63
     },
     {
       "name": "New Line Cinema",
@@ -1447,11 +1447,6 @@
       "name": "Marvel Entertainment",
       "count": 19,
       "average_rating": 3.42
-    },
-    {
-      "name": "TOHO",
-      "count": 18,
-      "average_rating": 4.06
     },
     {
       "name": "Village Roadshow Pictures",
@@ -1484,14 +1479,19 @@
       "average_rating": 3.19
     },
     {
+      "name": "TOHO",
+      "count": 16,
+      "average_rating": 3.97
+    },
+    {
       "name": "Lionsgate",
       "count": 15,
       "average_rating": 3.23
     },
     {
       "name": "A24",
-      "count": 13,
-      "average_rating": 3.62
+      "count": 14,
+      "average_rating": 3.57
     },
     {
       "name": "DreamWorks Pictures",
@@ -1519,32 +1519,1033 @@
       "average_rating": 3.75
     }
   ],
-  "collections": [],
+  "collections": [
+    {
+      "name": "Harry Potter Collection",
+      "seen": 8,
+      "total": 8
+    },
+    {
+      "name": "Resident Evil Collection",
+      "seen": 6,
+      "total": 6
+    },
+    {
+      "name": "Pirates of the Caribbean Collection",
+      "seen": 5,
+      "total": 5
+    },
+    {
+      "name": "John Wick Collection",
+      "seen": 4,
+      "total": 4
+    },
+    {
+      "name": "The Hunger Games Collection",
+      "seen": 4,
+      "total": 4
+    },
+    {
+      "name": "Ant-Man Collection",
+      "seen": 3,
+      "total": 3
+    },
+    {
+      "name": "Cars Collection",
+      "seen": 3,
+      "total": 3
+    },
+    {
+      "name": "Deadpool Collection",
+      "seen": 3,
+      "total": 3
+    },
+    {
+      "name": "Divergent Collection",
+      "seen": 3,
+      "total": 3
+    },
+    {
+      "name": "Fantastic Beasts Collection",
+      "seen": 3,
+      "total": 3
+    },
+    {
+      "name": "Fear Street Collection",
+      "seen": 3,
+      "total": 3
+    },
+    {
+      "name": "Guardians of the Galaxy Collection",
+      "seen": 3,
+      "total": 3
+    },
+    {
+      "name": "High School Musical Collection",
+      "seen": 3,
+      "total": 3
+    },
+    {
+      "name": "How to Train Your Dragon Collection",
+      "seen": 3,
+      "total": 3
+    },
+    {
+      "name": "Iron Man Collection",
+      "seen": 3,
+      "total": 3
+    },
+    {
+      "name": "Kingsman Collection",
+      "seen": 3,
+      "total": 3
+    },
+    {
+      "name": "Spider-Man Collection",
+      "seen": 3,
+      "total": 3
+    },
+    {
+      "name": "The Dark Knight Collection",
+      "seen": 3,
+      "total": 3
+    },
+    {
+      "name": "The Equalizer Collection",
+      "seen": 3,
+      "total": 3
+    },
+    {
+      "name": "The Hobbit Collection",
+      "seen": 3,
+      "total": 3
+    },
+    {
+      "name": "The Maze Runner Collection",
+      "seen": 3,
+      "total": 3
+    },
+    {
+      "name": "The Wolverine Collection",
+      "seen": 3,
+      "total": 3
+    },
+    {
+      "name": "Doctor Strange Collection",
+      "seen": 2,
+      "total": 2
+    },
+    {
+      "name": "Finding Nemo Collection",
+      "seen": 2,
+      "total": 2
+    },
+    {
+      "name": "Freaky Friday Collection",
+      "seen": 2,
+      "total": 2
+    },
+    {
+      "name": "Inside Out Collection",
+      "seen": 2,
+      "total": 2
+    },
+    {
+      "name": "Kick-Ass Collection",
+      "seen": 2,
+      "total": 2
+    },
+    {
+      "name": "Kill Bill Collection",
+      "seen": 2,
+      "total": 2
+    },
+    {
+      "name": "Man of Steel Collection",
+      "seen": 2,
+      "total": 2
+    },
+    {
+      "name": "Scooby-Doo Collection",
+      "seen": 2,
+      "total": 2
+    },
+    {
+      "name": "Sherlock Holmes Collection",
+      "seen": 2,
+      "total": 2
+    },
+    {
+      "name": "South Park the Streaming Wars Collection",
+      "seen": 2,
+      "total": 2
+    },
+    {
+      "name": "Suicide Squad Collection",
+      "seen": 2,
+      "total": 2
+    },
+    {
+      "name": "The Amazing Spider-Man Collection",
+      "seen": 2,
+      "total": 2
+    },
+    {
+      "name": "The Lego Movie Collection",
+      "seen": 2,
+      "total": 2
+    },
+    {
+      "name": "The Nun Collection",
+      "seen": 2,
+      "total": 2
+    },
+    {
+      "name": "The Platform Collection",
+      "seen": 2,
+      "total": 2
+    },
+    {
+      "name": "Wonder Woman Collection",
+      "seen": 2,
+      "total": 2
+    },
+    {
+      "name": "Wreck-It Ralph Collection",
+      "seen": 2,
+      "total": 2
+    },
+    {
+      "name": "Zombieland Collection",
+      "seen": 2,
+      "total": 2
+    },
+    {
+      "name": "X-Men Collection",
+      "seen": 6,
+      "total": 7
+    },
+    {
+      "name": "Demon Slayer: Kimetsu no Yaiba (Compilation) Collection",
+      "seen": 11,
+      "total": 13
+    },
+    {
+      "name": "The Purge Collection",
+      "seen": 4,
+      "total": 5
+    },
+    {
+      "name": "Toy Story Collection",
+      "seen": 4,
+      "total": 5
+    },
+    {
+      "name": "Captain America Collection",
+      "seen": 3,
+      "total": 4
+    },
+    {
+      "name": "Creed Collection",
+      "seen": 3,
+      "total": 4
+    },
+    {
+      "name": "Spider-Man (MCU) Collection",
+      "seen": 3,
+      "total": 4
+    },
+    {
+      "name": "Final Destination Collection",
+      "seen": 5,
+      "total": 7
+    },
+    {
+      "name": "The Fast and the Furious Collection",
+      "seen": 8,
+      "total": 12
+    },
+    {
+      "name": "The Avengers Collection",
+      "seen": 4,
+      "total": 6
+    },
+    {
+      "name": "A Quiet Place Collection",
+      "seen": 2,
+      "total": 3
+    },
+    {
+      "name": "Beetlejuice Collection",
+      "seen": 2,
+      "total": 3
+    },
+    {
+      "name": "Black Panther Collection",
+      "seen": 2,
+      "total": 3
+    },
+    {
+      "name": "Dune Collection",
+      "seen": 2,
+      "total": 3
+    },
+    {
+      "name": "Extraction Collection",
+      "seen": 2,
+      "total": 3
+    },
+    {
+      "name": "Jump Street Collection",
+      "seen": 2,
+      "total": 3
+    },
+    {
+      "name": "Knives Out Collection",
+      "seen": 2,
+      "total": 3
+    },
+    {
+      "name": "Spider-Man: Spider-Verse Collection",
+      "seen": 2,
+      "total": 3
+    },
+    {
+      "name": "Star Trek: Alternate Reality Collection",
+      "seen": 2,
+      "total": 3
+    },
+    {
+      "name": "The Chronicles of Narnia Collection",
+      "seen": 2,
+      "total": 3
+    },
+    {
+      "name": "The Hangover Collection",
+      "seen": 2,
+      "total": 3
+    },
+    {
+      "name": "X Collection",
+      "seen": 2,
+      "total": 3
+    },
+    {
+      "name": "Hotel Transylvania Collection",
+      "seen": 3,
+      "total": 5
+    },
+    {
+      "name": "Alvin and the Chipmunks Collection",
+      "seen": 2,
+      "total": 4
+    },
+    {
+      "name": "Demon Slayer: Kimetsu no Yaiba Collection",
+      "seen": 2,
+      "total": 4
+    },
+    {
+      "name": "Kung Fu Panda Collection",
+      "seen": 2,
+      "total": 4
+    },
+    {
+      "name": "Now You See Me Collection",
+      "seen": 2,
+      "total": 4
+    },
+    {
+      "name": "Spy Kids Collection",
+      "seen": 2,
+      "total": 4
+    },
+    {
+      "name": "Terrifier Collection",
+      "seen": 2,
+      "total": 4
+    },
+    {
+      "name": "The Mummy Collection",
+      "seen": 2,
+      "total": 4
+    },
+    {
+      "name": "Thor Collection",
+      "seen": 2,
+      "total": 4
+    },
+    {
+      "name": "101 Dalmatians (Animated) Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "30 Days of Night Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "A Goofy Movie Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "American Psycho Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Apocalipsis Z Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Army of the Dead Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "As Above, So Below Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Blade Runner Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Captain Marvel Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Carlito's Way Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Chicken Run Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Cloudy with a Chance of Meatballs Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Cocaine Bear Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Coco Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Darko Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Don't Breathe Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Fantastic Four Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Garfield Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Ghost Rider Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Ghost in the Shell Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Godzilla Minus Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Happy Feet Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Haunt Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Heat Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Hercules (Disney) Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Hoodwinked! Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "How the Grinch Stole Christmas Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "I Am Legend Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Icarus Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Intrépidos punks Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "It Follows Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Johanne Sacreblu: The Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Joker Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "KPop Demon Hunters Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Lady and the Tramp Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Lord of War Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Monsters, Inc. Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Nobody Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Once Upon a Time... in Hollywood Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Pacific Rim Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Percy Jackson Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Prometheus Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Puss in Boots Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Road House (Remake) Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Road House Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Scary Stories to Tell in the Dark Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Scooby-Doo! Zombie Island Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Sisu Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Smile Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Spirit Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Surf's Up Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Talk to Me Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Ted Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Teenage Mutant Ninja Turtles (Animated) Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "The Batman Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "The Beekeeper Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "The Black Phone Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "The Emperor's New Groove Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "The Mask Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "The Meg Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "The Mitchells vs. the Machines Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "The Polar Express Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "The Simpsons Movie Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "The Social Network Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "The Wild Robot Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Train to Busan Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Unbroken Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Weapons Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "When Evil Lurks Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "World War Z Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Zorro Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
+      "name": "Avatar Collection",
+      "seen": 2,
+      "total": 5
+    },
+    {
+      "name": "Shrek Collection",
+      "seen": 2,
+      "total": 5
+    },
+    {
+      "name": "Star Wars Collection",
+      "seen": 3,
+      "total": 9
+    },
+    {
+      "name": "Mad Max Collection",
+      "seen": 2,
+      "total": 6
+    },
+    {
+      "name": "Annabelle Collection",
+      "seen": 1,
+      "total": 3
+    },
+    {
+      "name": "Blade Collection",
+      "seen": 1,
+      "total": 3
+    },
+    {
+      "name": "Camp Rock Collection",
+      "seen": 1,
+      "total": 3
+    },
+    {
+      "name": "Casper Collection",
+      "seen": 1,
+      "total": 3
+    },
+    {
+      "name": "Cloverfield - Saga",
+      "seen": 1,
+      "total": 3
+    },
+    {
+      "name": "Evil Dead Collection",
+      "seen": 1,
+      "total": 3
+    },
+    {
+      "name": "Godzilla Collection",
+      "seen": 1,
+      "total": 3
+    },
+    {
+      "name": "Hostel Collection",
+      "seen": 1,
+      "total": 3
+    },
+    {
+      "name": "Jujutsu Kaisen Collection",
+      "seen": 1,
+      "total": 3
+    },
+    {
+      "name": "Madagascar Collection",
+      "seen": 1,
+      "total": 3
+    },
+    {
+      "name": "Night at the Museum Collection",
+      "seen": 1,
+      "total": 3
+    },
+    {
+      "name": "Ocean's Collection",
+      "seen": 1,
+      "total": 3
+    },
+    {
+      "name": "Qatsi Collection",
+      "seen": 1,
+      "total": 3
+    },
+    {
+      "name": "Sharkboy and Lavagirl Collection",
+      "seen": 1,
+      "total": 3
+    },
+    {
+      "name": "Sicario Collection",
+      "seen": 1,
+      "total": 3
+    },
+    {
+      "name": "Silent Hill Collection",
+      "seen": 1,
+      "total": 3
+    },
+    {
+      "name": "Sing Collection",
+      "seen": 1,
+      "total": 3
+    },
+    {
+      "name": "Stuart Little Collection",
+      "seen": 1,
+      "total": 3
+    },
+    {
+      "name": "TRON Collection",
+      "seen": 1,
+      "total": 3
+    },
+    {
+      "name": "Tarzan (Animation) Collection",
+      "seen": 1,
+      "total": 3
+    },
+    {
+      "name": "The Butterfly Effect Collection",
+      "seen": 1,
+      "total": 3
+    },
+    {
+      "name": "The Godfather Collection",
+      "seen": 1,
+      "total": 3
+    },
+    {
+      "name": "The Grudge Collection",
+      "seen": 1,
+      "total": 3
+    },
+    {
+      "name": "The Hannibal Lecter Collection",
+      "seen": 1,
+      "total": 3
+    },
+    {
+      "name": "The Lion King Collection",
+      "seen": 1,
+      "total": 3
+    },
+    {
+      "name": "The Lord of the Rings Collection",
+      "seen": 1,
+      "total": 3
+    },
+    {
+      "name": "Top Gun Collection",
+      "seen": 1,
+      "total": 3
+    },
+    {
+      "name": "Venom Collection",
+      "seen": 1,
+      "total": 3
+    },
+    {
+      "name": "World of Tomorrow Collection",
+      "seen": 1,
+      "total": 3
+    },
+    {
+      "name": "Zootopia Collection",
+      "seen": 1,
+      "total": 3
+    },
+    {
+      "name": "Ice Age Collection",
+      "seen": 2,
+      "total": 7
+    },
+    {
+      "name": "Jurassic Park Collection",
+      "seen": 2,
+      "total": 8
+    },
+    {
+      "name": "Blair Witch Collection",
+      "seen": 1,
+      "total": 4
+    },
+    {
+      "name": "Ernest & Celestine Collection",
+      "seen": 1,
+      "total": 4
+    },
+    {
+      "name": "Has Fallen Collection",
+      "seen": 1,
+      "total": 4
+    },
+    {
+      "name": "Home Alone Collection",
+      "seen": 1,
+      "total": 4
+    },
+    {
+      "name": "Living Dead Collection",
+      "seen": 1,
+      "total": 4
+    },
+    {
+      "name": "Paddington Collection",
+      "seen": 1,
+      "total": 4
+    },
+    {
+      "name": "SpongeBob Collection",
+      "seen": 1,
+      "total": 4
+    },
+    {
+      "name": "The Conjuring Collection",
+      "seen": 1,
+      "total": 4
+    },
+    {
+      "name": "[REC] Collection",
+      "seen": 1,
+      "total": 4
+    },
+    {
+      "name": "Attack on Titan Collection",
+      "seen": 1,
+      "total": 5
+    },
+    {
+      "name": "Die Hard Collection",
+      "seen": 1,
+      "total": 5
+    },
+    {
+      "name": "Dirty Harry Collection",
+      "seen": 1,
+      "total": 5
+    },
+    {
+      "name": "Transformers Collection",
+      "seen": 1,
+      "total": 5
+    },
+    {
+      "name": "Twilight Collection",
+      "seen": 1,
+      "total": 5
+    },
+    {
+      "name": "Asterix & Obelix (Live Action) Collection",
+      "seen": 1,
+      "total": 6
+    },
+    {
+      "name": "Herbie Collection",
+      "seen": 1,
+      "total": 6
+    },
+    {
+      "name": "Predator Collection",
+      "seen": 1,
+      "total": 6
+    },
+    {
+      "name": "Scary Movie Collection",
+      "seen": 1,
+      "total": 6
+    },
+    {
+      "name": "Paranormal Activity Collection",
+      "seen": 1,
+      "total": 7
+    },
+    {
+      "name": "Tremors Collection",
+      "seen": 1,
+      "total": 7
+    },
+    {
+      "name": "Mission: Impossible Collection",
+      "seen": 1,
+      "total": 8
+    },
+    {
+      "name": "V/H/S Collection",
+      "seen": 1,
+      "total": 10
+    }
+  ],
   "world_map": [
     {
       "iso_3166_1": "US",
       "name": "United States of America",
-      "count": 633
+      "count": 632
     },
     {
       "iso_3166_1": "GB",
       "name": "United Kingdom",
-      "count": 119
+      "count": 118
     },
     {
       "iso_3166_1": "FR",
       "name": "France",
-      "count": 75
+      "count": 77
     },
     {
       "iso_3166_1": "JP",
       "name": "Japan",
-      "count": 56
+      "count": 49
     },
     {
       "iso_3166_1": "DE",
       "name": "Germany",
-      "count": 45
+      "count": 42
     },
     {
       "iso_3166_1": "CA",
@@ -1554,12 +2555,12 @@
     {
       "iso_3166_1": "MX",
       "name": "Mexico",
-      "count": 21
+      "count": 23
     },
     {
       "iso_3166_1": "AU",
       "name": "Australia",
-      "count": 16
+      "count": 17
     },
     {
       "iso_3166_1": "ES",
@@ -1599,12 +2600,7 @@
     {
       "iso_3166_1": "DK",
       "name": "Denmark",
-      "count": 7
-    },
-    {
-      "iso_3166_1": "LU",
-      "name": "Luxembourg",
-      "count": 7
+      "count": 8
     },
     {
       "iso_3166_1": "SE",
@@ -1614,6 +2610,11 @@
     {
       "iso_3166_1": "IE",
       "name": "Ireland",
+      "count": 6
+    },
+    {
+      "iso_3166_1": "LU",
+      "name": "Luxembourg",
       "count": 6
     },
     {
@@ -1672,11 +2673,6 @@
       "count": 2
     },
     {
-      "iso_3166_1": "NL",
-      "name": "Netherlands",
-      "count": 2
-    },
-    {
       "iso_3166_1": "PT",
       "name": "Portugal",
       "count": 2
@@ -1729,6 +2725,11 @@
     {
       "iso_3166_1": "LV",
       "name": "Latvia",
+      "count": 1
+    },
+    {
+      "iso_3166_1": "NL",
+      "name": "Netherlands",
       "count": 1
     },
     {
@@ -1867,9 +2868,9 @@
   ],
   "extras": {
     "rating_bias": {
-      "member_average": 3.41,
-      "tmdb_average": 7.18,
-      "delta": -0.18
+      "member_average": 3.39,
+      "tmdb_average": 7.17,
+      "delta": -0.19
     },
     "rating_drift": [
       {
@@ -2851,20 +3852,20 @@
       }
     ],
     "runtime": {
-      "total_minutes": 91935,
-      "median": 113,
+      "total_minutes": 91185,
+      "median": 114,
       "distribution": [
         {
           "bucket": "under 60",
-          "count": 27
+          "count": 23
         },
         {
           "bucket": "60-89",
-          "count": 72
+          "count": 68
         },
         {
           "bucket": "90-119",
-          "count": 372
+          "count": 367
         },
         {
           "bucket": "120-149",
@@ -2872,7 +3873,7 @@
         },
         {
           "bucket": "150-179",
-          "count": 55
+          "count": 56
         },
         {
           "bucket": "180 and over",
@@ -2886,17 +3887,260 @@
       1920,
       1940
     ],
-    "director_completeness": [],
+    "director_completeness": [
+      {
+        "name": "Jordan Peele",
+        "seen": 3,
+        "filmography": 3
+      },
+      {
+        "name": "Haruo Sotozaki",
+        "seen": 13,
+        "filmography": 18
+      },
+      {
+        "name": "Matthew Vaughn",
+        "seen": 5,
+        "filmography": 8
+      },
+      {
+        "name": "Christopher Miller",
+        "seen": 4,
+        "filmography": 7
+      },
+      {
+        "name": "Phil Lord",
+        "seen": 4,
+        "filmography": 7
+      },
+      {
+        "name": "Quentin Tarantino",
+        "seen": 8,
+        "filmography": 15
+      },
+      {
+        "name": "Christopher Nolan",
+        "seen": 10,
+        "filmography": 19
+      },
+      {
+        "name": "Andrew Adamson",
+        "seen": 4,
+        "filmography": 8
+      },
+      {
+        "name": "Alex Garland",
+        "seen": 3,
+        "filmography": 6
+      },
+      {
+        "name": "Greta Gerwig",
+        "seen": 3,
+        "filmography": 6
+      },
+      {
+        "name": "Leigh Janiak",
+        "seen": 3,
+        "filmography": 6
+      },
+      {
+        "name": "James Wong",
+        "seen": 2,
+        "filmography": 4
+      },
+      {
+        "name": "Chad Stahelski",
+        "seen": 4,
+        "filmography": 9
+      },
+      {
+        "name": "J.J. Abrams",
+        "seen": 4,
+        "filmography": 9
+      },
+      {
+        "name": "Bryan Singer",
+        "seen": 6,
+        "filmography": 14
+      },
+      {
+        "name": "James DeMonaco",
+        "seen": 3,
+        "filmography": 7
+      },
+      {
+        "name": "Joss Whedon",
+        "seen": 3,
+        "filmography": 7
+      },
+      {
+        "name": "Rich Moore",
+        "seen": 3,
+        "filmography": 7
+      },
+      {
+        "name": "David Yates",
+        "seen": 7,
+        "filmography": 17
+      },
+      {
+        "name": "Robert Eggers",
+        "seen": 4,
+        "filmography": 10
+      },
+      {
+        "name": "Bibo Bergeron",
+        "seen": 2,
+        "filmography": 5
+      },
+      {
+        "name": "Kelly Asbury",
+        "seen": 2,
+        "filmography": 5
+      },
+      {
+        "name": "Mark Dindal",
+        "seen": 2,
+        "filmography": 5
+      },
+      {
+        "name": "Damien Chazelle",
+        "seen": 3,
+        "filmography": 8
+      },
+      {
+        "name": "Guy Ritchie",
+        "seen": 7,
+        "filmography": 21
+      },
+      {
+        "name": "Joseph Kosinski",
+        "seen": 3,
+        "filmography": 9
+      },
+      {
+        "name": "Pete Docter",
+        "seen": 3,
+        "filmography": 9
+      },
+      {
+        "name": "Chris Buck",
+        "seen": 2,
+        "filmography": 6
+      },
+      {
+        "name": "Galder Gaztelu-Urrutia",
+        "seen": 2,
+        "filmography": 6
+      },
+      {
+        "name": "Zach Cregger",
+        "seen": 2,
+        "filmography": 6
+      },
+      {
+        "name": "Wes Anderson",
+        "seen": 8,
+        "filmography": 25
+      },
+      {
+        "name": "David Fincher",
+        "seen": 6,
+        "filmography": 19
+      },
+      {
+        "name": "James Gunn",
+        "seen": 4,
+        "filmography": 13
+      },
+      {
+        "name": "Dean DeBlois",
+        "seen": 3,
+        "filmography": 10
+      },
+      {
+        "name": "Jon Favreau",
+        "seen": 3,
+        "filmography": 10
+      },
+      {
+        "name": "Marc Webb",
+        "seen": 3,
+        "filmography": 10
+      },
+      {
+        "name": "Anthony Russo",
+        "seen": 4,
+        "filmography": 14
+      },
+      {
+        "name": "Gore Verbinski",
+        "seen": 4,
+        "filmography": 14
+      },
+      {
+        "name": "Joe Russo",
+        "seen": 4,
+        "filmography": 14
+      },
+      {
+        "name": "Todd Phillips",
+        "seen": 4,
+        "filmography": 14
+      },
+      {
+        "name": "Dan Trachtenberg",
+        "seen": 2,
+        "filmography": 7
+      },
+      {
+        "name": "Danny Philippou",
+        "seen": 2,
+        "filmography": 7
+      },
+      {
+        "name": "David R. Ellis",
+        "seen": 2,
+        "filmography": 7
+      },
+      {
+        "name": "Gareth Edwards",
+        "seen": 2,
+        "filmography": 7
+      },
+      {
+        "name": "John Krasinski",
+        "seen": 2,
+        "filmography": 7
+      },
+      {
+        "name": "Julia Ducournau",
+        "seen": 2,
+        "filmography": 7
+      },
+      {
+        "name": "Michael Philippou",
+        "seen": 2,
+        "filmography": 7
+      },
+      {
+        "name": "Vicky Jenson",
+        "seen": 2,
+        "filmography": 7
+      },
+      {
+        "name": "Zack Snyder",
+        "seen": 6,
+        "filmography": 22
+      },
+      {
+        "name": "Andrew Stanton",
+        "seen": 3,
+        "filmography": 11
+      }
+    ],
     "contrarian_index": {
       "hotter_than_crowd": [
-        {
-          "slug": "berserk-1997",
-          "title": "Berserk",
-          "year": 1997,
-          "member_rating": 5.0,
-          "crowd_rating": 2.75,
-          "delta": 2.25
-        },
         {
           "slug": "johanne-sacreblu",
           "title": "Johanne Sacreblu",
@@ -2920,6 +4164,14 @@
           "member_rating": 5.0,
           "crowd_rating": 3.31,
           "delta": 1.69
+        },
+        {
+          "slug": "suspiria-2018",
+          "title": "Suspiria",
+          "year": 2018,
+          "member_rating": 5.0,
+          "crowd_rating": 3.45,
+          "delta": 1.55
         },
         {
           "slug": "the-witch-2015",
@@ -2946,28 +4198,12 @@
           "delta": 1.47
         },
         {
-          "slug": "jujutsu-kaisen",
-          "title": "JUJUTSU KAISEN",
-          "year": 2020,
-          "member_rating": 4.5,
-          "crowd_rating": 3.05,
-          "delta": 1.45
-        },
-        {
           "slug": "no-dogs-or-italians-allowed",
           "title": "No Dogs or Italians Allowed",
           "year": 2022,
           "member_rating": 5.0,
           "crowd_rating": 3.59,
           "delta": 1.41
-        },
-        {
-          "slug": "monster-2004",
-          "title": "Monster",
-          "year": 2004,
-          "member_rating": 5.0,
-          "crowd_rating": 3.6,
-          "delta": 1.4
         },
         {
           "slug": "2046",
@@ -3018,14 +4254,6 @@
           "delta": 1.27
         },
         {
-          "slug": "suspiria-2018",
-          "title": "Suspiria",
-          "year": 2018,
-          "member_rating": 5.0,
-          "crowd_rating": 3.73,
-          "delta": 1.27
-        },
-        {
           "slug": "the-banshees-of-inisherin",
           "title": "The Banshees of Inisherin",
           "year": 2022,
@@ -3048,6 +4276,30 @@
           "member_rating": 5.0,
           "crowd_rating": 3.74,
           "delta": 1.26
+        },
+        {
+          "slug": "the-revenant-2015",
+          "title": "The Revenant",
+          "year": 2015,
+          "member_rating": 5.0,
+          "crowd_rating": 3.77,
+          "delta": 1.23
+        },
+        {
+          "slug": "prometheus",
+          "title": "Prometheus",
+          "year": 2012,
+          "member_rating": 4.5,
+          "crowd_rating": 3.3,
+          "delta": 1.2
+        },
+        {
+          "slug": "the-executioner",
+          "title": "The Executioner",
+          "year": 1963,
+          "member_rating": 5.0,
+          "crowd_rating": 3.8,
+          "delta": 1.2
         }
       ],
       "colder_than_crowd": [
@@ -3082,14 +4334,6 @@
           "member_rating": 0.5,
           "crowd_rating": 3.39,
           "delta": -2.89
-        },
-        {
-          "slug": "aladdin-2019",
-          "title": "Aladdin",
-          "year": 2019,
-          "member_rating": 1.0,
-          "crowd_rating": 3.83,
-          "delta": -2.83
         },
         {
           "slug": "the-roommate-2024-1",
@@ -3148,6 +4392,14 @@
           "delta": -2.58
         },
         {
+          "slug": "aladdin-2019",
+          "title": "Aladdin",
+          "year": 2019,
+          "member_rating": 1.0,
+          "crowd_rating": 3.54,
+          "delta": -2.54
+        },
+        {
           "slug": "ghost-ship",
           "title": "Ghost Ship",
           "year": 2002,
@@ -3196,17 +4448,17 @@
           "delta": -2.31
         },
         {
+          "slug": "dive-2022",
+          "title": "DIVE",
+          "year": 2022,
+          "member_rating": 1.5,
+          "crowd_rating": 3.68,
+          "delta": -2.18
+        },
+        {
           "slug": "ant-man-and-the-wasp-quantumania",
           "title": "Ant-Man and the Wasp: Quantumania",
           "year": 2023,
-          "member_rating": 1.0,
-          "crowd_rating": 3.11,
-          "delta": -2.11
-        },
-        {
-          "slug": "percy-jackson-the-olympians-the-lightning-thief",
-          "title": "Percy Jackson & the Olympians: The Lightning Thief",
-          "year": 2010,
           "member_rating": 1.0,
           "crowd_rating": 3.11,
           "delta": -2.11
@@ -3214,11 +4466,11 @@
       ]
     },
     "obscurity": {
-      "median_vote_count": 5963,
+      "median_vote_count": 6132,
       "quartiles": [
-        2562,
-        5963,
-        12042
+        2716,
+        6132,
+        12084
       ],
       "most_obscure": [
         {
@@ -3227,19 +4479,9 @@
           "vote_count": 1
         },
         {
-          "slug": "berserk-1997",
-          "title": "Berserk",
-          "vote_count": 2
-        },
-        {
           "slug": "hidden-in-plain-sight",
           "title": "Hidden in Plain Sight",
           "vote_count": 2
-        },
-        {
-          "slug": "over-the-garden-wall-2014",
-          "title": "Over the Garden Wall",
-          "vote_count": 3
         },
         {
           "slug": "demon-slayer-kimetsu-no-yaiba-entertainment-2023",
@@ -3272,19 +4514,9 @@
           "vote_count": 9
         },
         {
-          "slug": "x2",
-          "title": "X2",
-          "vote_count": 11
-        },
-        {
           "slug": "loie-fuller",
           "title": "Loïe Fuller",
           "vote_count": 14
-        },
-        {
-          "slug": "dive-2022",
-          "title": "DIVE",
-          "vote_count": 15
         },
         {
           "slug": "intrepidos-punks",
@@ -3312,14 +4544,34 @@
           "vote_count": 47
         },
         {
-          "slug": "shogun-2024",
-          "title": "Shōgun",
-          "vote_count": 48
-        },
-        {
           "slug": "the-lady-of-silence-the-mataviejitas-murders",
           "title": "The Lady of Silence: The Mataviejitas Murders",
           "vote_count": 50
+        },
+        {
+          "slug": "que-viva-mexico",
+          "title": "¡Qué Viva México!",
+          "vote_count": 55
+        },
+        {
+          "slug": "the-red-spectre",
+          "title": "The Red Spectre",
+          "vote_count": 58
+        },
+        {
+          "slug": "manticore-2022",
+          "title": "Manticore",
+          "vote_count": 61
+        },
+        {
+          "slug": "grand-theft-hamlet",
+          "title": "Grand Theft Hamlet",
+          "vote_count": 64
+        },
+        {
+          "slug": "the-almost-legends",
+          "title": "The (Almost) Legends",
+          "vote_count": 65
         }
       ],
       "most_popular": [
@@ -3426,15 +4678,15 @@
       ]
     },
     "release_recency": {
-      "median_days_after_release": 1031,
+      "median_days_after_release": 918,
       "by_year": [
         {
           "year": 2023,
-          "median_days": 423
+          "median_days": 408
         },
         {
           "year": 2024,
-          "median_days": 1329
+          "median_days": 1114
         },
         {
           "year": 2025,
@@ -3597,19 +4849,19 @@
         },
         {
           "bucket": "1 to 2 days",
-          "count": 148
+          "count": 169
         },
         {
           "bucket": "3 to 7 days",
-          "count": 68
+          "count": 83
         },
         {
           "bucket": "8 to 30 days",
-          "count": 13
+          "count": 26
         },
         {
           "bucket": "31 days and over",
-          "count": 1
+          "count": 2
         }
       ]
     },
@@ -3653,6 +4905,11 @@
         "name": "Hayao Miyazaki",
         "films": 8,
         "average_rating": 3.94
+      },
+      {
+        "name": "Wes Anderson",
+        "films": 8,
+        "average_rating": 3.88
       }
     ],
     "unlucky_director": [
@@ -3677,6 +4934,11 @@
         "average_rating": 3.33
       },
       {
+        "name": "Guy Ritchie",
+        "films": 7,
+        "average_rating": 3.36
+      },
+      {
         "name": "John Lasseter",
         "films": 5,
         "average_rating": 3.4
@@ -3687,14 +4949,14 @@
         "average_rating": 3.4
       },
       {
-        "name": "Peter Jackson",
-        "films": 5,
+        "name": "Bryan Singer",
+        "films": 6,
         "average_rating": 3.5
       },
       {
-        "name": "Guy Ritchie",
-        "films": 6,
-        "average_rating": 3.75
+        "name": "Peter Jackson",
+        "films": 5,
+        "average_rating": 3.5
       }
     ],
     "background_actor": [
@@ -3702,13 +4964,7 @@
         "tmdb_id": 7624,
         "name": "Stan Lee",
         "count": 32,
-        "median_billing": 32
-      },
-      {
-        "tmdb_id": 84493,
-        "name": "Mickie McGowan",
-        "count": 17,
-        "median_billing": 30
+        "median_billing": 34
       },
       {
         "tmdb_id": 7907,
@@ -3723,22 +4979,22 @@
         "median_billing": 36
       },
       {
-        "tmdb_id": 214701,
-        "name": "Sherry Lynn",
+        "tmdb_id": 84493,
+        "name": "Mickie McGowan",
         "count": 16,
         "median_billing": 31
+      },
+      {
+        "tmdb_id": 214701,
+        "name": "Sherry Lynn",
+        "count": 15,
+        "median_billing": 33
       },
       {
         "tmdb_id": 84213,
         "name": "Bill Farmer",
         "count": 14,
         "median_billing": 26
-      },
-      {
-        "tmdb_id": 19545,
-        "name": "Jack Angel",
-        "count": 14,
-        "median_billing": 24
       },
       {
         "tmdb_id": 78317,
@@ -3753,6 +5009,12 @@
         "median_billing": 20
       },
       {
+        "tmdb_id": 19545,
+        "name": "Jack Angel",
+        "count": 13,
+        "median_billing": 26
+      },
+      {
         "tmdb_id": 202032,
         "name": "Ralph Ineson",
         "count": 13,
@@ -3765,34 +5027,10 @@
         "median_billing": 56
       },
       {
-        "tmdb_id": 61969,
-        "name": "Phil Proctor",
-        "count": 12,
-        "median_billing": 32
-      },
-      {
-        "tmdb_id": 15831,
-        "name": "Frank Welker",
-        "count": 12,
-        "median_billing": 18
-      },
-      {
-        "tmdb_id": 12077,
-        "name": "Jim Cummings",
-        "count": 12,
-        "median_billing": 14
-      },
-      {
         "tmdb_id": 38673,
         "name": "Channing Tatum",
         "count": 12,
         "median_billing": 10
-      },
-      {
-        "tmdb_id": 202930,
-        "name": "Anthony Molinari",
-        "count": 11,
-        "median_billing": 43
       },
       {
         "tmdb_id": 35159,
@@ -3807,10 +5045,34 @@
         "median_billing": 37
       },
       {
+        "tmdb_id": 15831,
+        "name": "Frank Welker",
+        "count": 11,
+        "median_billing": 27
+      },
+      {
         "tmdb_id": 19278,
         "name": "Bill Hader",
         "count": 11,
         "median_billing": 11
+      },
+      {
+        "tmdb_id": 21088,
+        "name": "Alan Tudyk",
+        "count": 11,
+        "median_billing": 10
+      },
+      {
+        "tmdb_id": 202930,
+        "name": "Anthony Molinari",
+        "count": 10,
+        "median_billing": 47
+      },
+      {
+        "tmdb_id": 61969,
+        "name": "Phil Proctor",
+        "count": 10,
+        "median_billing": 34
       },
       {
         "tmdb_id": 52699,
@@ -3829,6 +5091,12 @@
         "name": "David Thewlis",
         "count": 10,
         "median_billing": 16
+      },
+      {
+        "tmdb_id": 12077,
+        "name": "Jim Cummings",
+        "count": 10,
+        "median_billing": 15
       },
       {
         "tmdb_id": 11355,
@@ -3885,22 +5153,10 @@
         "median_billing": 23
       },
       {
-        "tmdb_id": 73016,
-        "name": "Debi Derryberry",
-        "count": 9,
-        "median_billing": 22
-      },
-      {
         "tmdb_id": 59784,
         "name": "Carlos Alazraqui",
         "count": 9,
         "median_billing": 19
-      },
-      {
-        "tmdb_id": 11159,
-        "name": "Cheech Marin",
-        "count": 9,
-        "median_billing": 16
       },
       {
         "tmdb_id": 477,
@@ -3927,12 +5183,6 @@
         "median_billing": 11
       },
       {
-        "tmdb_id": 543261,
-        "name": "Karen Gillan",
-        "count": 9,
-        "median_billing": 10
-      },
-      {
         "tmdb_id": 5531,
         "name": "Kiran Shah",
         "count": 8,
@@ -3955,12 +5205,6 @@
         "name": "Devon Murray",
         "count": 8,
         "median_billing": 40
-      },
-      {
-        "tmdb_id": 236696,
-        "name": "Terry Notary",
-        "count": 8,
-        "median_billing": 37
       },
       {
         "tmdb_id": 96841,
@@ -3993,10 +5237,28 @@
         "median_billing": 30
       },
       {
-        "tmdb_id": 35219,
-        "name": "Corey Burton",
+        "tmdb_id": 138,
+        "name": "Quentin Tarantino",
         "count": 8,
         "median_billing": 28
+      },
+      {
+        "tmdb_id": 73016,
+        "name": "Debi Derryberry",
+        "count": 8,
+        "median_billing": 24
+      },
+      {
+        "tmdb_id": 7882,
+        "name": "Jeff Pidgeon",
+        "count": 8,
+        "median_billing": 24
+      },
+      {
+        "tmdb_id": 15762,
+        "name": "Tara Strong",
+        "count": 8,
+        "median_billing": 24
       }
     ],
     "crew_most_watched": {
@@ -4004,7 +5266,7 @@
         {
           "tmdb_id": 947,
           "name": "Hans Zimmer",
-          "count": 32
+          "count": 31
         },
         {
           "tmdb_id": 15347,
@@ -4012,14 +5274,9 @@
           "count": 22
         },
         {
-          "tmdb_id": 11098,
-          "name": "John Powell",
-          "count": 16
-        },
-        {
           "tmdb_id": 7229,
           "name": "Marco Beltrami",
-          "count": 16
+          "count": 17
         },
         {
           "tmdb_id": 2949,
@@ -4029,6 +5286,11 @@
         {
           "tmdb_id": 227440,
           "name": "Henry Jackman",
+          "count": 15
+        },
+        {
+          "tmdb_id": 11098,
+          "name": "John Powell",
           "count": 15
         },
         {
@@ -4044,11 +5306,6 @@
         {
           "tmdb_id": 6041,
           "name": "Brian Tyler",
-          "count": 11
-        },
-        {
-          "tmdb_id": 531,
-          "name": "Danny Elfman",
           "count": 11
         },
         {
@@ -4074,6 +5331,11 @@
         {
           "tmdb_id": 23486,
           "name": "Christophe Beck",
+          "count": 10
+        },
+        {
+          "tmdb_id": 531,
+          "name": "Danny Elfman",
           "count": 10
         },
         {
@@ -4137,6 +5399,11 @@
           "count": 7
         },
         {
+          "tmdb_id": 9039,
+          "name": "John Ottman",
+          "count": 6
+        },
+        {
           "tmdb_id": 15813,
           "name": "Alan Menken",
           "count": 5
@@ -4164,11 +5431,6 @@
         {
           "tmdb_id": 1112896,
           "name": "Joel J. Richard",
-          "count": 5
-        },
-        {
-          "tmdb_id": 9039,
-          "name": "John Ottman",
           "count": 5
         },
         {
@@ -4227,6 +5489,11 @@
           "count": 4
         },
         {
+          "tmdb_id": 1533516,
+          "name": "Nicholas Britell",
+          "count": 4
+        },
+        {
           "tmdb_id": 9152,
           "name": "Patrick Doyle",
           "count": 4
@@ -4245,11 +5512,6 @@
           "tmdb_id": 996,
           "name": "Éric Serra",
           "count": 4
-        },
-        {
-          "tmdb_id": 1895790,
-          "name": "Akira Kuwahara",
-          "count": 3
         }
       ],
       "cinematographer": [
@@ -4266,6 +5528,11 @@
         {
           "tmdb_id": 7988,
           "name": "Jeremy Lasky",
+          "count": 8
+        },
+        {
+          "tmdb_id": 9040,
+          "name": "Newton Thomas Sigel",
           "count": 8
         },
         {
@@ -4324,11 +5591,6 @@
           "count": 6
         },
         {
-          "tmdb_id": 9040,
-          "name": "Newton Thomas Sigel",
-          "count": 6
-        },
-        {
           "tmdb_id": 1301,
           "name": "Philippe Rousselot",
           "count": 6
@@ -4376,11 +5638,6 @@
         {
           "tmdb_id": 23422,
           "name": "Henry Braham",
-          "count": 5
-        },
-        {
-          "tmdb_id": 492,
-          "name": "Janusz Kamiński",
           "count": 5
         },
         {
@@ -4459,6 +5716,11 @@
           "count": 4
         },
         {
+          "tmdb_id": 492,
+          "name": "Janusz Kamiński",
+          "count": 4
+        },
+        {
           "tmdb_id": 1135102,
           "name": "Jarin Blaschke",
           "count": 4
@@ -4494,13 +5756,13 @@
           "count": 4
         },
         {
-          "tmdb_id": 460,
-          "name": "Tom Stern",
+          "tmdb_id": 59667,
+          "name": "Steve Yedlin",
           "count": 4
         },
         {
-          "tmdb_id": 53331,
-          "name": "Tristan Oliver",
+          "tmdb_id": 460,
+          "name": "Tom Stern",
           "count": 4
         }
       ],
@@ -4566,6 +5828,11 @@
           "count": 7
         },
         {
+          "tmdb_id": 56917,
+          "name": "James Herbert",
+          "count": 7
+        },
+        {
           "tmdb_id": 999565,
           "name": "Joe Walker",
           "count": 7
@@ -4578,11 +5845,6 @@
         {
           "tmdb_id": 7784,
           "name": "Bob Ducsay",
-          "count": 6
-        },
-        {
-          "tmdb_id": 56917,
-          "name": "James Herbert",
           "count": 6
         },
         {
@@ -4633,6 +5895,11 @@
         {
           "tmdb_id": 1403403,
           "name": "Evan Schiff",
+          "count": 5
+        },
+        {
+          "tmdb_id": 9039,
+          "name": "John Ottman",
           "count": 5
         },
         {
@@ -4691,11 +5958,6 @@
           "count": 5
         },
         {
-          "tmdb_id": 2122,
-          "name": "William Hoy",
-          "count": 5
-        },
-        {
           "tmdb_id": 56678,
           "name": "Clare Knight",
           "count": 4
@@ -4746,13 +6008,13 @@
           "count": 4
         },
         {
-          "tmdb_id": 9039,
-          "name": "John Ottman",
+          "tmdb_id": 57638,
+          "name": "John Venzon",
           "count": 4
         },
         {
-          "tmdb_id": 57638,
-          "name": "John Venzon",
+          "tmdb_id": 62907,
+          "name": "Julian Clarke",
           "count": 4
         }
       ],
@@ -4783,16 +6045,6 @@
           "count": 8
         },
         {
-          "tmdb_id": 1705,
-          "name": "Ted Elliott",
-          "count": 8
-        },
-        {
-          "tmdb_id": 1706,
-          "name": "Terry Rossio",
-          "count": 8
-        },
-        {
           "tmdb_id": 5655,
           "name": "Wes Anderson",
           "count": 8
@@ -4815,6 +6067,16 @@
         {
           "tmdb_id": 5552,
           "name": "Stephen McFeely",
+          "count": 7
+        },
+        {
+          "tmdb_id": 1705,
+          "name": "Ted Elliott",
+          "count": 7
+        },
+        {
+          "tmdb_id": 1706,
+          "name": "Terry Rossio",
           "count": 7
         },
         {
@@ -4870,6 +6132,11 @@
         {
           "tmdb_id": 126,
           "name": "Fran Walsh",
+          "count": 5
+        },
+        {
+          "tmdb_id": 956,
+          "name": "Guy Ritchie",
           "count": 5
         },
         {
@@ -4935,11 +6202,6 @@
         {
           "tmdb_id": 1076800,
           "name": "Derek Kolstad",
-          "count": 4
-        },
-        {
-          "tmdb_id": 956,
-          "name": "Guy Ritchie",
           "count": 4
         },
         {
@@ -5010,7 +6272,7 @@
       ]
     },
     "life_in_days": {
-      "days": 63.8,
+      "days": 63.3,
       "would_end_on": "2026-10-30"
     },
     "extremes": {
@@ -5036,32 +6298,32 @@
       }
     },
     "rating_vs_runtime": {
-      "correlation": 0.09,
+      "correlation": 0.12,
       "buckets": [
         {
           "range": "under 60",
-          "films": 26,
-          "average_rating": 3.44
+          "films": 22,
+          "average_rating": 3.34
         },
         {
           "range": "60-89",
-          "films": 72,
-          "average_rating": 3.42
+          "films": 68,
+          "average_rating": 3.36
         },
         {
           "range": "90-119",
-          "films": 372,
+          "films": 367,
           "average_rating": 3.33
         },
         {
           "range": "120-149",
           "films": 261,
-          "average_rating": 3.38
+          "average_rating": 3.36
         },
         {
           "range": "150-179",
-          "films": 55,
-          "average_rating": 3.95
+          "films": 56,
+          "average_rating": 3.97
         },
         {
           "range": "180 and over",
