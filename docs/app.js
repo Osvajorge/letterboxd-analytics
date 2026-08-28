@@ -40,9 +40,12 @@ const MINIMUM_CHART_WIDTH = 240;
 /** Shown wherever a figure is missing, so no cell ever reads "undefined". */
 const MISSING_VALUE = "-";
 
-/** Sentences reused by empty states, so each one names the same fix. */
-const NEEDS_TMDB = "It needs TMDB metadata. Run scripts/enrich_tmdb.py, then rebuild the stats.";
-const NEEDS_EXPORT = "It needs the one-time Letterboxd export, which the RSS feed cannot supply. Import the export, then rebuild the stats.";
+/** Sentences reused by empty states and caveats, so a fix is always named
+    the same way wherever the page has to ask for it. */
+const FIX_TMDB = "Run scripts/enrich_tmdb.py, then rebuild the stats.";
+const NEEDS_TMDB = `It needs TMDB metadata. ${FIX_TMDB}`;
+const FIX_EXPORT = "Import the export, then rebuild the stats.";
+const NEEDS_EXPORT = `It needs the one-time Letterboxd export, which the RSS feed cannot supply. ${FIX_EXPORT}`;
 const NEEDS_HISTORY = "Run scripts/fetch_rss.py, merge it with scripts/merge_history.py, then rebuild the stats.";
 
 /**
@@ -1113,19 +1116,376 @@ function titleWithYear(row) {
   return row.year === null ? row.title : `${row.title} (${formatYear(row.year)})`;
 }
 
-/* ==================================================== Panel section renderers */
+/**
+ * Lowers the first letter, for a label reused in the middle of a sentence.
+ *
+ * A coverage label such as "Films with a rating" opens its own line, and the
+ * same words have to read as "films with a rating" when a claim names the
+ * figure first.
+ */
+function lowerCaseFirstLetter(text) {
+  return text.charAt(0).toLowerCase() + text.slice(1);
+}
 
-const TOTAL_TILES = [
-  { key: "films", label: "Films", note: "watched in total" },
-  { key: "hours", label: "Hours", note: "of screen time" },
-  { key: "directors", label: "Directors", note: "with at least one film seen" },
-  { key: "countries", label: "Countries", note: "of production" },
-  { key: "longest_streak_weeks", label: "Longest streak", note: "consecutive weeks with a film" },
-  { key: "multi_film_days", label: "Double bills", note: "days with more than one film" },
+/* ================================================================== Coverage */
+
+/**
+ * How many films each kind of figure on this page can actually see.
+ *
+ * Four denominators share one page. `totals.films` counts the whole library.
+ * Anything built from dates counts only the films with a watch date, because
+ * Letterboxd dates a diary entry and not a film simply marked as seen. Anything
+ * built from a genre, a runtime, or a credit counts only the films the TMDB
+ * cache has resolved. Anything averaged over the member's own ratings counts
+ * only the films that carry one.
+ *
+ * Reading these counts is what lets the page tell "measured none" from "not
+ * worked out yet". Both arrive as zero, and only the coverage block separates
+ * them, so no renderer may decide that question by looking at the figure.
+ */
+function readCoverage(stats) {
+  const coverage = toObject(stats?.coverage);
+  return {
+    total: toNumber(coverage?.films_total),
+    dated: toNumber(coverage?.films_with_a_date),
+    rated: toNumber(coverage?.films_with_a_rating),
+    tmdb: toNumber(coverage?.films_with_tmdb_data),
+  };
+}
+
+/**
+ * The film subsets a figure can be built from, and the words for each.
+ *
+ * The wordings live here so every module built on the same subset describes it
+ * the same way, and so a new module needs a basis name rather than new prose.
+ */
+const COVERAGE_BASES = {
+  dated: {
+    countOf: (coverage) => coverage.dated,
+    label: "Films with a watch date",
+    withinTileNote: (count) => `among the ${formatCount(count)} films with a watch date`,
+    emptyTileNote: "not counted: no film carries a watch date",
+  },
+  rated: {
+    countOf: (coverage) => coverage.rated,
+    label: "Films with a rating",
+    withinTileNote: (count) => `across the ${formatCount(count)} films you have rated`,
+    emptyTileNote: "not counted: no film carries a rating",
+  },
+  tmdb: {
+    countOf: (coverage) => coverage.tmdb,
+    label: "Films with TMDB metadata",
+    withinTileNote: (count) => `across the ${formatCount(count)} films with TMDB metadata`,
+    emptyTileNote: "not counted: no film has TMDB metadata yet",
+  },
+};
+
+/** True when the coverage block carries every count the page reads from it. */
+function coverageIsComplete(coverage) {
+  return (
+    coverage.total !== null &&
+    coverage.dated !== null &&
+    coverage.rated !== null &&
+    coverage.tmdb !== null
+  );
+}
+
+/**
+ * Says what a figure built on one subset of the library can claim.
+ *
+ * Four answers, because the page has to print each of them differently:
+ *   - "whole":   the subset is the library, so nothing needs qualifying.
+ *   - "part":    the figure is real, but its denominator is not the library and
+ *                the page has to say which one it is.
+ *   - "empty":   the subset holds no film, so any figure built on it is
+ *                unresolved. A zero here means "not worked out", never "none".
+ *   - "unknown": the file does not say, so the page must not claim either.
+ */
+function describeBasis(coverage, basisName) {
+  const basis = COVERAGE_BASES[basisName];
+  const count = basis.countOf(coverage);
+  const total = coverage.total;
+
+  if (count === null || total === null) {
+    return { state: "unknown", basis, count, total };
+  }
+  if (count === 0) {
+    return { state: "empty", basis, count, total };
+  }
+  if (count >= total) {
+    return { state: "whole", basis, count, total };
+  }
+  return { state: "part", basis, count, total };
+}
+
+/**
+ * The scope labels the page prints, and the claim each one makes.
+ *
+ * A label is a claim about the figures under it, so each one is written from
+ * what scripts/build_stats.py counts that module from, not from where the
+ * module sits on the page. A wrong denominator is worse than no denominator: it
+ * reads as a confident measurement of a set the figures were never counted over.
+ *
+ * A section may mix two subsets, so a label is a list of claims. Each claim is
+ * one of:
+ *   { basis }            every figure under the label comes from that subset.
+ *   { figures, basis }   one named figure comes from a different subset than
+ *                        the rest of the section, and says so beside its name.
+ *   { figures, scope }   the subset has no count in the coverage block, so the
+ *                        claim names it in words and gives no denominator. A
+ *                        count the stats file does not carry is never invented.
+ *
+ * The subsets themselves are explained once, in the paragraph under the totals,
+ * so a label here stays short enough to read as a label.
+ */
+const COVERAGE_NOTE_TARGETS = [
+  // build_by_year reads the entries that carry a watch date, and the ratings
+  // histogram beside it is built from the same entries.
+  { id: "by-year-coverage", claims: [{ basis: "dated" }] },
+
+  // build_decades groups films by release year, and the history carries that
+  // year even for films TMDB never resolved, so this section is not date bound
+  // at all. What it ranks by is the average rating, which needs a rating.
+  {
+    id: "decades-coverage",
+    claims: [
+      { figures: "Average rating", basis: "rated" },
+      { figures: "Film count", scope: "every film with a known release year" },
+    ],
+  },
+
+  // Everything here is counted from watch dates except the first headline
+  // figure, which totals the runtime of every film logged, dated or not.
+  {
+    id: "rhythm-coverage",
+    claims: [{ basis: "dated" }, { figures: "Days of film", basis: "tmdb" }],
+  },
+
+  { id: "rating-drift-coverage", claims: [{ basis: "dated" }] },
+
+  // build_half_star_usage counts each rated film once, whether or not it is
+  // dated, so this histogram covers far more films than the ratings histogram
+  // under "By year". Two rating charts with different totals need saying.
+  { id: "half-star-coverage", claims: [{ basis: "rated" }] },
+
+  // build_release_recency needs a watch date and a TMDB release date. The watch
+  // date is the narrower of the two, and the other is named in words because
+  // the coverage block counts films with metadata, not films with a release date.
+  {
+    id: "release-recency-coverage",
+    claims: [
+      { basis: "dated" },
+      { scope: "counted only where TMDB gives a release date" },
+    ],
+  },
 ];
 
+/**
+ * Writes one claim, or null when the file gives nothing to claim.
+ *
+ * A claim on a subset that is the whole library says nothing worth printing,
+ * and a claim on a subset the file does not count is a guess, so both come back
+ * as null and the label drops them.
+ */
+function describeClaim(coverage, claim) {
+  if (claim.basis === undefined) {
+    return claim.figures === undefined
+      ? startSentence(claim.scope)
+      : `${claim.figures}: ${claim.scope}`;
+  }
+
+  const scope = describeBasis(coverage, claim.basis);
+  if (scope.state !== "part" && scope.state !== "empty") {
+    return null;
+  }
+
+  const counted = `${formatCount(scope.count)} of ${formatCount(scope.total)}`;
+  if (claim.figures === undefined) {
+    return `${scope.basis.label}: ${counted}`;
+  }
+
+  return `${claim.figures}: ${lowerCaseFirstLetter(scope.basis.label)}, ${counted}`;
+}
+
+/** Prints the denominator beside every module counted from part of the library. */
+function renderCoverageNotes(coverage) {
+  for (const target of COVERAGE_NOTE_TARGETS) {
+    const node = elementById(target.id);
+    if (node === null) {
+      continue;
+    }
+
+    const claims = target.claims
+      .map((claim) => describeClaim(coverage, claim))
+      .filter((claim) => claim !== null);
+
+    if (claims.length === 0) {
+      node.hidden = true;
+      node.textContent = "";
+      continue;
+    }
+
+    // One claim is a label and takes no full stop. Several claims are sentences
+    // about different figures, and run together without stops they read as one
+    // muddled claim.
+    node.hidden = false;
+    node.textContent =
+      claims.length === 1 ? claims[0] : claims.map((claim) => `${claim}.`).join(" ");
+  }
+}
+
+/**
+ * Writes the one paragraph that explains every denominator on the page.
+ *
+ * Saying it once, next to the totals it qualifies, is what keeps the sections
+ * below down to a short label each instead of nine repetitions of the same
+ * caveat. It stays hidden when there is nothing to qualify.
+ */
+function renderCoverageSummary(coverage) {
+  const banner = elementById("coverage-summary");
+  if (banner === null) {
+    return;
+  }
+
+  const sentences = [];
+
+  if (!coverageIsComplete(coverage)) {
+    sentences.push(
+      "This stats file does not record how many films each figure is counted from, so a figure " +
+        `shown as "${MISSING_VALUE}" here may be missing rather than zero. Rebuild the stats with ` +
+        "scripts/build_stats.py, which writes those counts.",
+    );
+  } else {
+    const dated = describeBasis(coverage, "dated");
+    if (dated.state === "part") {
+      sentences.push(
+        `${formatCount(dated.count)} of the ${formatCount(dated.total)} films watched carry a watch date. ` +
+          "Letterboxd dates a diary entry, not a film marked as seen, so every figure built from " +
+          "dates describes that smaller set, and each section built that way states its own count.",
+      );
+    } else if (dated.state === "empty") {
+      sentences.push(
+        `None of the ${formatCount(dated.total)} films watched carries a watch date, so nothing built ` +
+          "from dates can be counted. Letterboxd dates a diary entry, not a film marked as seen, and " +
+          `only the export carries those entries. ${FIX_EXPORT}`,
+      );
+    }
+
+    const tmdb = describeBasis(coverage, "tmdb");
+    if (tmdb.state === "empty") {
+      sentences.push(
+        "Hours, directors and countries are not counted yet, and neither is any section below that " +
+          "needs a genre, a runtime, or a credit: no film has TMDB metadata. " +
+          FIX_TMDB,
+      );
+    } else if (tmdb.state === "part") {
+      sentences.push(
+        `${formatCount(tmdb.count)} of the ${formatCount(tmdb.total)} films have TMDB metadata, so hours, ` +
+          "directors, countries, and every section built from a genre, a runtime, or a credit " +
+          "describe those.",
+      );
+    }
+  }
+
+  if (sentences.length === 0) {
+    banner.hidden = true;
+    banner.replaceChildren();
+    return;
+  }
+
+  banner.hidden = false;
+  banner.textContent = sentences.join(" ");
+}
+
+/* ==================================================== Panel section renderers */
+
+/**
+ * The six header figures, and which films each one is counted from.
+ *
+ * `basis` names the subset the figure needs. A tile with no basis is counted
+ * from the whole library. The three TMDB tiles and the two date tiles are all
+ * zero both when the answer is really none and when the input has not been
+ * built yet, so their basis decides which of the two the page may print.
+ */
+const TOTAL_TILES = [
+  { key: "films", label: "Films", note: "watched in total" },
+  { key: "hours", label: "Hours", note: "of screen time", basis: "tmdb" },
+  { key: "directors", label: "Directors", note: "with at least one film seen", basis: "tmdb" },
+  { key: "countries", label: "Countries", note: "of production", basis: "tmdb" },
+  {
+    key: "longest_streak_weeks",
+    label: "Longest streak",
+    note: "consecutive weeks with a film",
+    basis: "dated",
+  },
+  {
+    key: "multi_film_days",
+    label: "Double bills",
+    note: "days with more than one film",
+    basis: "dated",
+  },
+];
+
+/**
+ * Narrows one tile's note to the subset that tile's figure is counted from.
+ *
+ * Both tile grids on the page read this one rule, because both mix figures
+ * counted from the whole library with figures counted from part of it. A figure
+ * counted from part says which part, and a figure counted from an empty subset
+ * is printed as unresolved: zero hours across zero resolved films is not a
+ * screen time of nothing, it is a screen time nobody has worked out.
+ */
+function scopeTileReading(reading, basisName, coverage) {
+  if (basisName === undefined) {
+    return reading;
+  }
+
+  const scope = describeBasis(coverage, basisName);
+
+  if (scope.state === "empty") {
+    return { value: MISSING_VALUE, note: scope.basis.emptyTileNote, unresolved: true };
+  }
+
+  if (scope.state === "part") {
+    return { ...reading, note: `${reading.note}, ${scope.basis.withinTileNote(scope.count)}` };
+  }
+
+  return reading;
+}
+
+/**
+ * Decides what one totals tile may claim, from the figure and the coverage.
+ *
+ * An unresolved figure must never reach the page as a measurement, so the
+ * decision is taken from the coverage block rather than from the figure.
+ */
+function readTotalTile(tile, totals, coverage) {
+  const reading = scopeTileReading(
+    { value: formatCount(totals[tile.key]), note: tile.note, unresolved: false },
+    tile.basis,
+    coverage,
+  );
+
+  // With no coverage to read, a zero cannot be told from an absent figure. The
+  // honest reading of an unbacked zero is that nothing was counted.
+  const unbackedZero =
+    tile.basis !== undefined &&
+    describeBasis(coverage, tile.basis).state === "unknown" &&
+    toNumber(totals[tile.key]) === 0;
+
+  if (unbackedZero) {
+    return {
+      value: MISSING_VALUE,
+      note: "not counted: this file does not record its coverage",
+      unresolved: true,
+    };
+  }
+
+  return reading;
+}
+
 /** Renders the header figures: films, hours, directors, countries, streaks. */
-function renderTotals(stats) {
+function renderTotals(stats, coverage) {
   const container = elementById("totals-grid");
   if (container === null) {
     return;
@@ -1137,12 +1497,13 @@ function renderTotals(stats) {
     return;
   }
 
-  const tiles = TOTAL_TILES.map(({ key, label, note }) => {
-    const tile = build("div", "tile");
-    tile.append(build("p", "tile__value", formatCount(totals[key])));
-    tile.append(build("p", "tile__label", label));
-    tile.append(build("p", "tile__note", note));
-    return tile;
+  const tiles = TOTAL_TILES.map((tile) => {
+    const read = readTotalTile(tile, totals, coverage);
+    const node = build("div", read.unresolved ? "tile tile--unverified" : "tile");
+    node.append(build("p", "tile__value", read.value));
+    node.append(build("p", "tile__label", tile.label));
+    node.append(build("p", "tile__note", read.note));
+    return node;
   });
 
   container.replaceChildren(...tiles);
@@ -1250,10 +1611,12 @@ function renderRatingsHistogram(container, years) {
   }));
 
   replaceWithChart(container, {
-    caption: `${formatCount(total)} ratings given, grouped by half-star step from 0.5 to 5.`,
+    // build_by_year counts ratings on dated entries only, so the caption says so:
+    // it is the text alternative to the chart and has to be true read alone.
+    caption: `${formatCount(total)} ratings given on entries with a watch date, grouped by half-star step from 0.5 to 5.`,
     draw: (width) => columnChart(width, categories),
     table: buildDataTable(
-      "Number of ratings given at each half-star step",
+      "Ratings given at each half-star step, on entries with a watch date",
       ["Rating", "Times given"],
       categories.map((category) => [category.label, formatCount(category.values[0])]),
     ),
@@ -1632,6 +1995,17 @@ function formatShareForReading(share) {
 }
 
 /**
+ * Capitalises the first letter, for a phrase that has to open a sentence.
+ *
+ * `formatShareForReading` returns a word for a share near either end of the
+ * scale, so the same value reads as "under 1%" inside a sentence and has to
+ * read as "Under 1%" at the start of one.
+ */
+function startSentence(text) {
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
+/**
  * Says how far the watchlist wait figures can be trusted, or null when fully.
  *
  * The public watchlist pages carry membership but not the date a film was
@@ -1674,7 +2048,7 @@ function describeWatchlistWaitQuality(watchlist) {
     return {
       tileNote: `days waiting, though ${estimated} of the dates are estimated`,
       caveat:
-        `${estimated} of watchlist films have no real added date. For those, the date used is ` +
+        `${startSentence(estimated)} of watchlist films have no real added date. For those, the date used is ` +
         "the day the weekly reader first saw the film, which understates how long they have " +
         "waited, so the median above is a lower bound. Load the remaining dates by running " +
         "scripts/backfill.py on your Letterboxd export, then rebuild the stats.",
@@ -1685,8 +2059,15 @@ function describeWatchlistWaitQuality(watchlist) {
   return null;
 }
 
-/** Renders the extras tiles: rating bias, rewatch rate, watchlist, runtime. */
-function renderExtrasTiles(extras) {
+/**
+ * Renders the extras tiles: rating bias, rewatch rate, watchlist, runtime.
+ *
+ * The nine figures here are counted from five different populations, so no one
+ * label can sit over the grid. Each tile carries its own scope in its own note:
+ * the two runtime tiles through the shared coverage rule, and the rest in words,
+ * because the coverage block counts films and the watchlist is not the library.
+ */
+function renderExtrasTiles(extras, coverage) {
   const container = elementById("extras-tiles");
   if (container === null) {
     return;
@@ -1705,24 +2086,26 @@ function renderExtrasTiles(extras) {
 
   const tiles = [
     {
+      // build_rating_bias averages only the films that carry both your rating
+      // and a TMDB score, which is neither the rated set nor the resolved set.
       value: formatDecimal(bias?.member_average, 2),
       label: "Your average",
-      note: "on the 0.5 to 5 scale",
+      note: "on the 0.5 to 5 scale, over the films TMDB also scores",
     },
     {
       value: formatDecimal(bias?.tmdb_average, 2),
       label: "TMDB average",
-      note: "same films, on the 0 to 10 scale",
+      note: "the same films, on the 0 to 10 scale",
     },
     {
       value: formatSignedDecimal(bias?.delta, 2),
       label: "Rating bias",
-      note: "your rating minus the crowd's, both scaled to five",
+      note: "your rating minus the crowd's on those films, both scaled to five",
     },
     {
       value: formatPercentage(extras.rewatch_rate),
       label: "Rewatch rate",
-      note: "share of entries that were rewatches",
+      note: "share of all entries that were rewatches",
     },
     {
       value: formatCount(watchlist?.size),
@@ -1733,31 +2116,36 @@ function renderExtrasTiles(extras) {
       value: formatCount(watchlist?.median_age_days),
       label: "Median wait",
       note: waitQuality === null ? "days a watchlist film has been waiting" : waitQuality.tileNote,
-      unverified: waitQuality !== null,
+      unresolved: waitQuality !== null,
     },
     {
+      // Films watched and then taken off the watchlist leave no trace here, so
+      // the denominator is the watchlist as it stands, not everything ever added.
       value: formatPercentage(watchlist?.conversion_rate),
       label: "Watchlist conversion",
-      note: "share of added films eventually watched",
+      note: "share of the films still listed that you have watched",
     },
     {
       value: daysWatched,
       label: "Days watched",
       note: "total runtime, counted as whole days",
+      basis: "tmdb",
     },
     {
       value: formatCount(runtime?.median),
       label: "Median runtime",
       note: "minutes per film",
+      basis: "tmdb",
     },
   ];
 
   container.replaceChildren(
     ...tiles.map((tile) => {
-      const node = build("div", tile.unverified === true ? "tile tile--unverified" : "tile");
-      node.append(build("p", "tile__value", tile.value));
+      const read = scopeTileReading(tile, tile.basis, coverage);
+      const node = build("div", read.unresolved === true ? "tile tile--unverified" : "tile");
+      node.append(build("p", "tile__value", read.value));
       node.append(build("p", "tile__label", tile.label));
-      node.append(build("p", "tile__note", tile.note));
+      node.append(build("p", "tile__note", read.note));
       return node;
     }),
   );
@@ -1933,8 +2321,8 @@ function renderRhythmFacts(extras) {
         tone: "primary",
         note:
           endsOn === null
-            ? "Everything you have logged, played back to back without stopping."
-            : `Played back to back from today, everything you have logged would run until ${formatDate(endsOn)}.`,
+            ? "Every film you have logged that has a known runtime, played back to back without stopping."
+            : `Played back to back from today, every film you have logged that has a known runtime would run until ${formatDate(endsOn)}.`,
       }),
     );
   }
@@ -1960,8 +2348,8 @@ function renderRhythmFacts(extras) {
         tone: "secondary",
         note:
           from === null || to === null
-            ? "Your longest run of days without logging a film."
-            : `Your longest run without a film, from ${formatDate(from)} to ${formatDate(to)}.`,
+            ? "Your longest run of days with no dated entry between two others."
+            : `Your longest run with no dated entry, from ${formatDate(from)} to ${formatDate(to)}.`,
       }),
     );
   }
@@ -2125,12 +2513,14 @@ function renderHeatmap(extras) {
     scroller.append(calendarHeatmap(year, countsByDate));
     block.append(scroller);
 
-    const filmCount = [...countsByDate.values()].reduce((sum, count) => sum + count, 0);
+    // build_heatmap counts one diary entry per square, so two viewings of the
+    // same film on one day are two entries and not one film.
+    const entryCount = [...countsByDate.values()].reduce((sum, count) => sum + count, 0);
     block.append(
       build(
         "p",
         "chart__caption",
-        `${formatCount(filmCount)} films across ${formatCount(countsByDate.size)} days in ${year}.`,
+        `${formatQuantity(entryCount, "entry", "entries")} across ${formatQuantity(countsByDate.size, "day", "days")} in ${year}.`,
       ),
     );
 
@@ -2784,10 +3174,10 @@ function renderTitleWords(extras) {
 /* ============================================================= Page assembly */
 
 /** Renders every extras block, or an empty state for each when there is none. */
-function renderExtras(stats) {
+function renderExtras(stats, coverage) {
   const extras = toObject(stats.extras) ?? {};
 
-  renderExtrasTiles(extras);
+  renderExtrasTiles(extras, coverage);
 
   renderContrarianIndex(extras);
   renderLikedButLow(extras);
@@ -2848,8 +3238,14 @@ function renderPageHeader(stats) {
 
 /** Renders every section of the page from one stats file. */
 function render(stats) {
+  // Read once and passed down: every module that covers part of the library has
+  // to state the same denominators.
+  const coverage = readCoverage(stats);
+
   renderPageHeader(stats);
-  renderTotals(stats);
+  renderTotals(stats, coverage);
+  renderCoverageSummary(coverage);
+  renderCoverageNotes(coverage);
   renderByYear(stats);
   renderDecades(stats);
   renderRankedPair(stats, "genres", "genre");
@@ -2861,7 +3257,7 @@ function render(stats) {
   renderCollections(stats);
   renderListProgress(stats);
   renderCountriesRanked(stats);
-  renderExtras(stats);
+  renderExtras(stats, coverage);
 }
 
 /**

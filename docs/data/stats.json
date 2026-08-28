@@ -2,12 +2,18 @@
   "generated_at": "2026-08-28",
   "username": "osvajorge",
   "totals": {
-    "films": 50,
-    "hours": 0,
-    "directors": 0,
-    "countries": 0,
-    "longest_streak_weeks": 6,
-    "multi_film_days": 4
+    "films": 827,
+    "hours": 1532,
+    "directors": 541,
+    "countries": 49,
+    "longest_streak_weeks": 16,
+    "multi_film_days": 40
+  },
+  "coverage": {
+    "films_total": 827,
+    "films_with_a_date": 284,
+    "films_with_a_rating": 825,
+    "films_with_tmdb_data": 801
   },
   "by_year": [
     {
@@ -20,17 +26,49 @@
     },
     {
       "year": 2025,
-      "films": 49,
-      "diary": 49,
+      "films": 74,
+      "diary": 74,
       "ratings": {
         "1.5": 1,
         "2.0": 1,
-        "2.5": 2,
-        "3.0": 11,
-        "3.5": 9,
-        "4.0": 16,
-        "4.5": 2,
-        "5.0": 6
+        "2.5": 4,
+        "3.0": 14,
+        "3.5": 16,
+        "4.0": 24,
+        "4.5": 3,
+        "5.0": 10
+      }
+    },
+    {
+      "year": 2024,
+      "films": 93,
+      "diary": 95,
+      "ratings": {
+        "1.0": 1,
+        "1.5": 2,
+        "2.0": 2,
+        "2.5": 10,
+        "3.0": 13,
+        "3.5": 14,
+        "4.0": 32,
+        "4.5": 9,
+        "5.0": 11
+      }
+    },
+    {
+      "year": 2023,
+      "films": 116,
+      "diary": 117,
+      "ratings": {
+        "1.0": 2,
+        "1.5": 1,
+        "2.0": 3,
+        "2.5": 10,
+        "3.0": 19,
+        "3.5": 31,
+        "4.0": 28,
+        "4.5": 9,
+        "5.0": 14
       }
     }
   ],
@@ -42,193 +80,2602 @@
     },
     {
       "decade": 1890,
-      "films": 1,
+      "films": 3,
       "average_rating": 3.0
     },
     {
       "decade": 1900,
-      "films": 2,
-      "average_rating": 3.5
+      "films": 6,
+      "average_rating": 3.67
     },
     {
       "decade": 1930,
-      "films": 1,
-      "average_rating": 4.5
+      "films": 2,
+      "average_rating": 4.75
     },
     {
       "decade": 1950,
-      "films": 1,
-      "average_rating": 5.0
+      "films": 2,
+      "average_rating": 4.5
+    },
+    {
+      "decade": 1960,
+      "films": 4,
+      "average_rating": 4.12
     },
     {
       "decade": 1970,
-      "films": 1,
-      "average_rating": 4.0
+      "films": 12,
+      "average_rating": 3.96
     },
     {
       "decade": 1980,
-      "films": 3,
-      "average_rating": 3.83
+      "films": 17,
+      "average_rating": 3.91
     },
     {
       "decade": 1990,
-      "films": 5,
-      "average_rating": 4.0
+      "films": 52,
+      "average_rating": 3.9
     },
     {
       "decade": 2000,
-      "films": 8,
-      "average_rating": 4.0
+      "films": 159,
+      "average_rating": 3.35
     },
     {
       "decade": 2010,
-      "films": 7,
-      "average_rating": 3.14
+      "films": 321,
+      "average_rating": 3.29
     },
     {
       "decade": 2020,
-      "films": 20,
-      "average_rating": 3.58
+      "films": 248,
+      "average_rating": 3.42
     }
   ],
   "genres": {
-    "most_watched": [],
-    "highest_rated": []
+    "most_watched": [
+      {
+        "name": "Drama",
+        "count": 276
+      },
+      {
+        "name": "Action",
+        "count": 255
+      },
+      {
+        "name": "Adventure",
+        "count": 222
+      },
+      {
+        "name": "Comedy",
+        "count": 193
+      },
+      {
+        "name": "Science Fiction",
+        "count": 181
+      },
+      {
+        "name": "Thriller",
+        "count": 178
+      },
+      {
+        "name": "Fantasy",
+        "count": 156
+      },
+      {
+        "name": "Animation",
+        "count": 141
+      },
+      {
+        "name": "Horror",
+        "count": 125
+      },
+      {
+        "name": "Family",
+        "count": 121
+      },
+      {
+        "name": "Crime",
+        "count": 120
+      },
+      {
+        "name": "Mystery",
+        "count": 81
+      },
+      {
+        "name": "Romance",
+        "count": 59
+      },
+      {
+        "name": "History",
+        "count": 29
+      },
+      {
+        "name": "Documentary",
+        "count": 25
+      },
+      {
+        "name": "War",
+        "count": 23
+      },
+      {
+        "name": "Music",
+        "count": 22
+      },
+      {
+        "name": "Western",
+        "count": 12
+      },
+      {
+        "name": "TV Movie",
+        "count": 6
+      }
+    ],
+    "highest_rated": [
+      {
+        "name": "War",
+        "average": 4.0,
+        "count": 23
+      },
+      {
+        "name": "Western",
+        "average": 3.75,
+        "count": 12
+      },
+      {
+        "name": "Documentary",
+        "average": 3.7,
+        "count": 25
+      },
+      {
+        "name": "History",
+        "average": 3.69,
+        "count": 29
+      },
+      {
+        "name": "Drama",
+        "average": 3.66,
+        "count": 276
+      },
+      {
+        "name": "Crime",
+        "average": 3.64,
+        "count": 120
+      },
+      {
+        "name": "Animation",
+        "average": 3.58,
+        "count": 140
+      },
+      {
+        "name": "Thriller",
+        "average": 3.5,
+        "count": 178
+      },
+      {
+        "name": "Mystery",
+        "average": 3.35,
+        "count": 81
+      },
+      {
+        "name": "Romance",
+        "average": 3.34,
+        "count": 59
+      },
+      {
+        "name": "Comedy",
+        "average": 3.29,
+        "count": 192
+      },
+      {
+        "name": "Action",
+        "average": 3.28,
+        "count": 255
+      },
+      {
+        "name": "Horror",
+        "average": 3.28,
+        "count": 125
+      },
+      {
+        "name": "Science Fiction",
+        "average": 3.28,
+        "count": 181
+      },
+      {
+        "name": "Adventure",
+        "average": 3.27,
+        "count": 222
+      },
+      {
+        "name": "Fantasy",
+        "average": 3.23,
+        "count": 156
+      },
+      {
+        "name": "Music",
+        "average": 3.07,
+        "count": 22
+      },
+      {
+        "name": "Family",
+        "average": 3.05,
+        "count": 121
+      },
+      {
+        "name": "TV Movie",
+        "average": 2.0,
+        "count": 6
+      }
+    ]
   },
   "countries": {
-    "most_watched": [],
-    "highest_rated": []
+    "most_watched": [
+      {
+        "name": "United States of America",
+        "count": 633
+      },
+      {
+        "name": "United Kingdom",
+        "count": 119
+      },
+      {
+        "name": "France",
+        "count": 75
+      },
+      {
+        "name": "Japan",
+        "count": 56
+      },
+      {
+        "name": "Germany",
+        "count": 45
+      },
+      {
+        "name": "Canada",
+        "count": 36
+      },
+      {
+        "name": "Mexico",
+        "count": 21
+      },
+      {
+        "name": "Australia",
+        "count": 16
+      },
+      {
+        "name": "Spain",
+        "count": 15
+      },
+      {
+        "name": "Belgium",
+        "count": 14
+      },
+      {
+        "name": "Hong Kong",
+        "count": 13
+      },
+      {
+        "name": "Italy",
+        "count": 13
+      },
+      {
+        "name": "South Korea",
+        "count": 13
+      },
+      {
+        "name": "China",
+        "count": 12
+      },
+      {
+        "name": "New Zealand",
+        "count": 10
+      },
+      {
+        "name": "Denmark",
+        "count": 7
+      },
+      {
+        "name": "Luxembourg",
+        "count": 7
+      },
+      {
+        "name": "Sweden",
+        "count": 7
+      },
+      {
+        "name": "Ireland",
+        "count": 6
+      },
+      {
+        "name": "Brazil",
+        "count": 5
+      },
+      {
+        "name": "Greece",
+        "count": 4
+      },
+      {
+        "name": "Poland",
+        "count": 4
+      },
+      {
+        "name": "Switzerland",
+        "count": 4
+      },
+      {
+        "name": "India",
+        "count": 3
+      },
+      {
+        "name": "Soviet Union",
+        "count": 3
+      }
+    ],
+    "highest_rated": [
+      {
+        "name": "Brazil",
+        "average": 4.3,
+        "count": 5
+      },
+      {
+        "name": "Italy",
+        "average": 4.27,
+        "count": 13
+      },
+      {
+        "name": "South Korea",
+        "average": 4.19,
+        "count": 13
+      },
+      {
+        "name": "Hong Kong",
+        "average": 4.15,
+        "count": 13
+      },
+      {
+        "name": "Ireland",
+        "average": 3.83,
+        "count": 6
+      },
+      {
+        "name": "Japan",
+        "average": 3.77,
+        "count": 56
+      },
+      {
+        "name": "Denmark",
+        "average": 3.71,
+        "count": 7
+      },
+      {
+        "name": "Luxembourg",
+        "average": 3.71,
+        "count": 7
+      },
+      {
+        "name": "France",
+        "average": 3.65,
+        "count": 75
+      },
+      {
+        "name": "Spain",
+        "average": 3.6,
+        "count": 15
+      },
+      {
+        "name": "China",
+        "average": 3.54,
+        "count": 12
+      },
+      {
+        "name": "Canada",
+        "average": 3.53,
+        "count": 36
+      },
+      {
+        "name": "New Zealand",
+        "average": 3.5,
+        "count": 10
+      },
+      {
+        "name": "United Kingdom",
+        "average": 3.49,
+        "count": 119
+      },
+      {
+        "name": "Germany",
+        "average": 3.47,
+        "count": 45
+      },
+      {
+        "name": "Australia",
+        "average": 3.44,
+        "count": 16
+      },
+      {
+        "name": "Belgium",
+        "average": 3.43,
+        "count": 14
+      },
+      {
+        "name": "Mexico",
+        "average": 3.36,
+        "count": 21
+      },
+      {
+        "name": "Sweden",
+        "average": 3.29,
+        "count": 7
+      },
+      {
+        "name": "United States of America",
+        "average": 3.29,
+        "count": 632
+      }
+    ]
   },
   "languages": {
-    "most_watched": [],
-    "highest_rated": []
+    "most_watched": [
+      {
+        "name": "English",
+        "count": 678
+      },
+      {
+        "name": "Spanish",
+        "count": 124
+      },
+      {
+        "name": "French",
+        "count": 113
+      },
+      {
+        "name": "Japanese",
+        "count": 91
+      },
+      {
+        "name": "German",
+        "count": 56
+      },
+      {
+        "name": "Russian",
+        "count": 50
+      },
+      {
+        "name": "Italian",
+        "count": 45
+      },
+      {
+        "name": "Mandarin",
+        "count": 30
+      },
+      {
+        "name": "Arabic",
+        "count": 21
+      },
+      {
+        "name": "Portuguese",
+        "count": 21
+      },
+      {
+        "name": "Cantonese",
+        "count": 18
+      },
+      {
+        "name": "Korean",
+        "count": 18
+      },
+      {
+        "name": "Latin",
+        "count": 15
+      },
+      {
+        "name": "No Language",
+        "count": 12
+      },
+      {
+        "name": "Hebrew",
+        "count": 10
+      },
+      {
+        "name": "Swedish",
+        "count": 9
+      },
+      {
+        "name": "Vietnamese",
+        "count": 7
+      },
+      {
+        "name": "Dutch",
+        "count": 6
+      },
+      {
+        "name": "Hindi",
+        "count": 6
+      },
+      {
+        "name": "Romanian",
+        "count": 5
+      },
+      {
+        "name": "Thai",
+        "count": 5
+      },
+      {
+        "name": "Turkish",
+        "count": 5
+      },
+      {
+        "name": "Xhosa",
+        "count": 5
+      },
+      {
+        "name": "Danish",
+        "count": 4
+      },
+      {
+        "name": "Hungarian",
+        "count": 4
+      }
+    ],
+    "highest_rated": [
+      {
+        "name": "Swedish",
+        "average": 4.06,
+        "count": 9
+      },
+      {
+        "name": "Korean",
+        "average": 3.86,
+        "count": 18
+      },
+      {
+        "name": "Vietnamese",
+        "average": 3.86,
+        "count": 7
+      },
+      {
+        "name": "Turkish",
+        "average": 3.8,
+        "count": 5
+      },
+      {
+        "name": "No Language",
+        "average": 3.75,
+        "count": 12
+      },
+      {
+        "name": "Mandarin",
+        "average": 3.68,
+        "count": 30
+      },
+      {
+        "name": "German",
+        "average": 3.67,
+        "count": 56
+      },
+      {
+        "name": "Hindi",
+        "average": 3.67,
+        "count": 6
+      },
+      {
+        "name": "Japanese",
+        "average": 3.67,
+        "count": 91
+      },
+      {
+        "name": "Cantonese",
+        "average": 3.61,
+        "count": 18
+      },
+      {
+        "name": "French",
+        "average": 3.56,
+        "count": 113
+      },
+      {
+        "name": "Hebrew",
+        "average": 3.55,
+        "count": 10
+      },
+      {
+        "name": "Latin",
+        "average": 3.5,
+        "count": 15
+      },
+      {
+        "name": "Romanian",
+        "average": 3.5,
+        "count": 5
+      },
+      {
+        "name": "Italian",
+        "average": 3.42,
+        "count": 45
+      },
+      {
+        "name": "Russian",
+        "average": 3.42,
+        "count": 50
+      },
+      {
+        "name": "English",
+        "average": 3.31,
+        "count": 678
+      },
+      {
+        "name": "Spanish",
+        "average": 3.27,
+        "count": 124
+      },
+      {
+        "name": "Dutch",
+        "average": 3.25,
+        "count": 6
+      },
+      {
+        "name": "Arabic",
+        "average": 3.21,
+        "count": 21
+      },
+      {
+        "name": "Thai",
+        "average": 3.2,
+        "count": 5
+      },
+      {
+        "name": "Xhosa",
+        "average": 3.2,
+        "count": 5
+      },
+      {
+        "name": "Portuguese",
+        "average": 3.07,
+        "count": 21
+      }
+    ]
   },
-  "cast": [],
-  "directors": [],
-  "studios": [],
+  "cast": [
+    {
+      "tmdb_id": 7624,
+      "name": "Stan Lee",
+      "count": 32,
+      "profile_path": "/kKeyWoFtTqOPsbmwylNHmuB3En9.jpg"
+    },
+    {
+      "tmdb_id": 2231,
+      "name": "Samuel L. Jackson",
+      "count": 22,
+      "profile_path": "/qdfRtvPCj51C9Uy5VEgjgj69JyV.jpg"
+    },
+    {
+      "tmdb_id": 1245,
+      "name": "Scarlett Johansson",
+      "count": 21,
+      "profile_path": "/druW5adKddizHNSoPbI0q7Mvn0K.jpg"
+    },
+    {
+      "tmdb_id": 5293,
+      "name": "Willem Dafoe",
+      "count": 20,
+      "profile_path": "/ui8e4sgZAwMPi3hzEO53jyBJF9B.jpg"
+    },
+    {
+      "tmdb_id": 16828,
+      "name": "Chris Evans",
+      "count": 17,
+      "profile_path": "/3bOGNsHlrswhyW79uvIHH1V43JI.jpg"
+    },
+    {
+      "tmdb_id": 7907,
+      "name": "John Ratzenberger",
+      "count": 17,
+      "profile_path": "/oRtDEOuIO1yDhTz5dORBdxXuLMO.jpg"
+    },
+    {
+      "tmdb_id": 84493,
+      "name": "Mickie McGowan",
+      "count": 17,
+      "profile_path": "/4K1HF10EvDjdaIoDAnWqFZjnmvk.jpg"
+    },
+    {
+      "tmdb_id": 6968,
+      "name": "Hugh Jackman",
+      "count": 16,
+      "profile_path": "/oX6CpXmnXCHLyqsa4NEed1DZAKx.jpg"
+    },
+    {
+      "tmdb_id": 84495,
+      "name": "Jess Harnell",
+      "count": 16,
+      "profile_path": "/zQ2zg7PL3ut4JhfXMKSRV4FMnxR.jpg"
+    },
+    {
+      "tmdb_id": 214701,
+      "name": "Sherry Lynn",
+      "count": 16,
+      "profile_path": "/cp7SYig9JVbBWgc2YD4wEUNQGzh.jpg"
+    },
+    {
+      "tmdb_id": 71580,
+      "name": "Benedict Cumberbatch",
+      "count": 15,
+      "profile_path": "/wz3MRiMmoz6b5X3oSzMRC9nLxY1.jpg"
+    },
+    {
+      "tmdb_id": 12835,
+      "name": "Vin Diesel",
+      "count": 15,
+      "profile_path": "/nZdVry7lnUkE24PnXakok9okvL4.jpg"
+    },
+    {
+      "tmdb_id": 84213,
+      "name": "Bill Farmer",
+      "count": 14,
+      "profile_path": "/lhezx68R12s5Bsv7d77BrQb7tWA.jpg"
+    },
+    {
+      "tmdb_id": 78317,
+      "name": "Bob Bergen",
+      "count": 14,
+      "profile_path": "/soDD1xiV3zVQWOJzVdJwfgIqzfe.jpg"
+    },
+    {
+      "tmdb_id": 287,
+      "name": "Brad Pitt",
+      "count": 14,
+      "profile_path": "/ajNaPmXVVMJFg9GWmu6MJzTaXdV.jpg"
+    },
+    {
+      "tmdb_id": 51329,
+      "name": "Bradley Cooper",
+      "count": 14,
+      "profile_path": "/pLD2XvxqHueLWOuqXoFngJU3A5H.jpg"
+    },
+    {
+      "tmdb_id": 19545,
+      "name": "Jack Angel",
+      "count": 14,
+      "profile_path": "/5MsVwIULYJotUSbDs61uSJff7ei.jpg"
+    },
+    {
+      "tmdb_id": 21007,
+      "name": "Jonah Hill",
+      "count": 14,
+      "profile_path": "/cymlWttB83MsAGR2EkTgANtjeRH.jpg"
+    },
+    {
+      "tmdb_id": 1256603,
+      "name": "Natsuki Hanae",
+      "count": 14,
+      "profile_path": "/alTb0DlcPIbcwM08WSmxFai58sd.jpg"
+    },
+    {
+      "tmdb_id": 5469,
+      "name": "Ralph Fiennes",
+      "count": 14,
+      "profile_path": "/tJr9GcmGNHhLVVEH3i7QYbj6hBi.jpg"
+    },
+    {
+      "tmdb_id": 3223,
+      "name": "Robert Downey Jr.",
+      "count": 14,
+      "profile_path": "/5qHNjhtjMD4YWH3UP0rm4tKwxCL.jpg"
+    },
+    {
+      "tmdb_id": 11184,
+      "name": "Warwick Davis",
+      "count": 14,
+      "profile_path": "/vUwjgAYcBEcCv0OVAN00qUUXX3V.jpg"
+    },
+    {
+      "tmdb_id": 57755,
+      "name": "Woody Harrelson",
+      "count": 14,
+      "profile_path": "/igxYDQBbTEdAqaJxaW6ffqswmUU.jpg"
+    },
+    {
+      "tmdb_id": 1563442,
+      "name": "Akari Kito",
+      "count": 13,
+      "profile_path": "/AoRQOZRC0yINB0WeKnM569rV1wF.jpg"
+    },
+    {
+      "tmdb_id": 73457,
+      "name": "Chris Pratt",
+      "count": 13,
+      "profile_path": "/cRH6HPAQ98PlOwwEvhYO4CM9lwu.jpg"
+    },
+    {
+      "tmdb_id": 17605,
+      "name": "Idris Elba",
+      "count": 13,
+      "profile_path": "/be1bVF7qGX91a6c5WeRPs5pKXln.jpg"
+    },
+    {
+      "tmdb_id": 18999,
+      "name": "J.K. Simmons",
+      "count": 13,
+      "profile_path": "/ScmKoJ9eiSUOthAt1PDNLi8Fkw.jpg"
+    },
+    {
+      "tmdb_id": 131,
+      "name": "Jake Gyllenhaal",
+      "count": 13,
+      "profile_path": "/ct2Gh2sJSxd4yaMrSsqSt1HpIC3.jpg"
+    },
+    {
+      "tmdb_id": 16851,
+      "name": "Josh Brolin",
+      "count": 13,
+      "profile_path": "/sX2etBbIkxRaCsATyw5ZpOVMPTD.jpg"
+    },
+    {
+      "tmdb_id": 202032,
+      "name": "Ralph Ineson",
+      "count": 13,
+      "profile_path": "/sn3ONJw2pJxMHiCqPwvkaiWr5mc.jpg"
+    },
+    {
+      "tmdb_id": 3063,
+      "name": "Tilda Swinton",
+      "count": 13,
+      "profile_path": "/dzjT4LKgs7eOma84GsPy78DsGNH.jpg"
+    },
+    {
+      "tmdb_id": 38673,
+      "name": "Channing Tatum",
+      "count": 12,
+      "profile_path": "/4TpgnS6l8YUXSne9Av9nda6mjxY.jpg"
+    },
+    {
+      "tmdb_id": 74568,
+      "name": "Chris Hemsworth",
+      "count": 12,
+      "profile_path": "/piQGdoIQOF3C1EI5cbYZLAW1gfj.jpg"
+    },
+    {
+      "tmdb_id": 15831,
+      "name": "Frank Welker",
+      "count": 12,
+      "profile_path": "/aC37aQtsfZZDZN5y3paDTLJJHCi.jpg"
+    },
+    {
+      "tmdb_id": 12077,
+      "name": "Jim Cummings",
+      "count": 12,
+      "profile_path": "/c0sQPRCM5Ri3F4gVyxPr4AcPmIq.jpg"
+    },
+    {
+      "tmdb_id": 1601441,
+      "name": "Johnny Otto",
+      "count": 12,
+      "profile_path": "/i5LOfr6GLH6hvBdCoMyKY457IQZ.jpg"
+    },
+    {
+      "tmdb_id": 119143,
+      "name": "Kana Hanazawa",
+      "count": 12,
+      "profile_path": "/9UTBlNRopSOKyoWnCm74tyHOfR1.jpg"
+    },
+    {
+      "tmdb_id": 6193,
+      "name": "Leonardo DiCaprio",
+      "count": 12,
+      "profile_path": "/wo2hJpn04vbtmh0B9utCFdsQhxM.jpg"
+    },
+    {
+      "tmdb_id": 3895,
+      "name": "Michael Caine",
+      "count": 12,
+      "profile_path": "/bVZRMlpjTAO2pJK6v90buFgVbSW.jpg"
+    },
+    {
+      "tmdb_id": 25072,
+      "name": "Oscar Isaac",
+      "count": 12,
+      "profile_path": "/dW5U5yrIIPmMjRThR9KT2xH6nTz.jpg"
+    },
+    {
+      "tmdb_id": 61969,
+      "name": "Phil Proctor",
+      "count": 12,
+      "profile_path": "/wAfx3qAEvcsLpEEIP0zwdhuDIcW.jpg"
+    },
+    {
+      "tmdb_id": 8691,
+      "name": "Zoe Saldaña",
+      "count": 12,
+      "profile_path": "/vQBwmsSOAd0JDaEcZ5p43J9xzsY.jpg"
+    },
+    {
+      "tmdb_id": 1333,
+      "name": "Andy Serkis",
+      "count": 11,
+      "profile_path": "/eNGqhebQ4cDssjVeNFrKtUvweV5.jpg"
+    },
+    {
+      "tmdb_id": 202930,
+      "name": "Anthony Molinari",
+      "count": 11,
+      "profile_path": "/8Gl1b5Y7QLrdv5vvOwAmJk29joM.jpg"
+    },
+    {
+      "tmdb_id": 19278,
+      "name": "Bill Hader",
+      "count": 11,
+      "profile_path": "/qyT50vQ9PQIEctE1IxDTEsBKstU.jpg"
+    },
+    {
+      "tmdb_id": 1532,
+      "name": "Bill Murray",
+      "count": 11,
+      "profile_path": "/nnCsJc9x3ZiG3AFyiyc3FPehppy.jpg"
+    },
+    {
+      "tmdb_id": 2037,
+      "name": "Cillian Murphy",
+      "count": 11,
+      "profile_path": "/2lKs67r7FI4bPu0AXxMUJZxmUXn.jpg"
+    },
+    {
+      "tmdb_id": 543530,
+      "name": "Dave Bautista",
+      "count": 11,
+      "profile_path": "/snk6JiXOOoRjPtHU5VMoy6qbd32.jpg"
+    },
+    {
+      "tmdb_id": 819,
+      "name": "Edward Norton",
+      "count": 11,
+      "profile_path": "/8nytsqL59SFJTVYVrN72k6qkGgJ.jpg"
+    },
+    {
+      "tmdb_id": 90633,
+      "name": "Gal Gadot",
+      "count": 11,
+      "profile_path": "/aUyLp5QV14bfjtB6c5SDT1IGqyM.jpg"
+    }
+  ],
+  "directors": [
+    {
+      "tmdb_id": 1283010,
+      "name": "Haruo Sotozaki",
+      "count": 13,
+      "average_rating": 4.27,
+      "profile_path": "/ylaWAuJB1PyAzaefqENBDEAKTLI.jpg"
+    },
+    {
+      "tmdb_id": 525,
+      "name": "Christopher Nolan",
+      "count": 10,
+      "average_rating": 4.3,
+      "profile_path": "/xuAIuYSmsUzKlUMBFGVZaWsY3DZ.jpg"
+    },
+    {
+      "tmdb_id": 608,
+      "name": "Hayao Miyazaki",
+      "count": 8,
+      "average_rating": 3.94,
+      "profile_path": "/ouhjt9KugzhWtdEyBPipihB3ic8.jpg"
+    },
+    {
+      "tmdb_id": 138,
+      "name": "Quentin Tarantino",
+      "count": 8,
+      "average_rating": 4.06,
+      "profile_path": "/1gjcpAa99FAOWGnrUvHEXXsRs7o.jpg"
+    },
+    {
+      "tmdb_id": 5655,
+      "name": "Wes Anderson",
+      "count": 8,
+      "average_rating": 3.88,
+      "profile_path": "/s03CeUeC5yAXyB1acqP0zGNo2SC.jpg"
+    },
+    {
+      "tmdb_id": 11343,
+      "name": "David Yates",
+      "count": 7,
+      "average_rating": 2.5,
+      "profile_path": "/hAHOxR0NK4cZDumqNIpDoEdGVAh.jpg"
+    },
+    {
+      "tmdb_id": 1032,
+      "name": "Martin Scorsese",
+      "count": 7,
+      "average_rating": 4.29,
+      "profile_path": "/g3DjfKsgZQWZiw30I20hZVk1oMX.jpg"
+    },
+    {
+      "tmdb_id": 7467,
+      "name": "David Fincher",
+      "count": 6,
+      "average_rating": 3.33,
+      "profile_path": "/tpEczFclQZeKAiCeKZZ0adRvtfz.jpg"
+    },
+    {
+      "tmdb_id": 137427,
+      "name": "Denis Villeneuve",
+      "count": 6,
+      "average_rating": 4.33,
+      "profile_path": "/zdDx9Xs93UIrJFWYApYR28J8M6b.jpg"
+    },
+    {
+      "tmdb_id": 956,
+      "name": "Guy Ritchie",
+      "count": 6,
+      "average_rating": 3.75,
+      "profile_path": "/9pLUnjMgIEWXi0mlHYzie9cKUTD.jpg"
+    },
+    {
+      "tmdb_id": 15217,
+      "name": "Zack Snyder",
+      "count": 6,
+      "average_rating": 3.08,
+      "profile_path": "/iD0GDqkvJXDXiNEZej198hjt3Tt.jpg"
+    },
+    {
+      "tmdb_id": 20907,
+      "name": "Antoine Fuqua",
+      "count": 5,
+      "average_rating": 3.2,
+      "profile_path": "/9zh0MmYIw1BP8V7y9N9K5Rjew4C.jpg"
+    },
+    {
+      "tmdb_id": 7879,
+      "name": "John Lasseter",
+      "count": 5,
+      "average_rating": 3.4,
+      "profile_path": "/xlrE4VD2VbZCDpaNdWCpH1ZihPS.jpg"
+    },
+    {
+      "tmdb_id": 957,
+      "name": "Matthew Vaughn",
+      "count": 5,
+      "average_rating": 4.1,
+      "profile_path": "/Dnbz3B7yy4u0abixuD5LakZgsy.jpg"
+    },
+    {
+      "tmdb_id": 108,
+      "name": "Peter Jackson",
+      "count": 5,
+      "average_rating": 3.5,
+      "profile_path": "/bNc908d59Ba8VDNr4eCcm4G1cR.jpg"
+    },
+    {
+      "tmdb_id": 7623,
+      "name": "Sam Raimi",
+      "count": 5,
+      "average_rating": 3.4,
+      "profile_path": "/8gssvwiPrFRuFRlr5ruKx68k1Jl.jpg"
+    },
+    {
+      "tmdb_id": 12453,
+      "name": "Wong Kar-Wai",
+      "count": 5,
+      "average_rating": 4.6,
+      "profile_path": "/iI4IxsIA5DMhIFHcD6C2FyZGKwc.jpg"
+    },
+    {
+      "tmdb_id": 223,
+      "name": "Alejandro G. Iñárritu",
+      "count": 4,
+      "average_rating": 4.62,
+      "profile_path": "/5Mx0RilUcVjXzmeKYAZJJ0WXZMQ.jpg"
+    },
+    {
+      "tmdb_id": 11218,
+      "name": "Alfonso Cuarón",
+      "count": 4,
+      "average_rating": 3.88,
+      "profile_path": "/gaHhrzPfxfc3cbQLkDt54gtP3n1.jpg"
+    },
+    {
+      "tmdb_id": 5524,
+      "name": "Andrew Adamson",
+      "count": 4,
+      "average_rating": 3.25,
+      "profile_path": "/qqIAVKAe5LHRbPyZUlptsqlo4Kb.jpg"
+    },
+    {
+      "tmdb_id": 19271,
+      "name": "Anthony Russo",
+      "count": 4,
+      "average_rating": 3.25,
+      "profile_path": "/xbINBnWn28YygYWUJ1aSAw0xPRv.jpg"
+    },
+    {
+      "tmdb_id": 9032,
+      "name": "Bryan Singer",
+      "count": 4,
+      "average_rating": 3.38,
+      "profile_path": "/ts06thbCv9Ug2mNpcbcrmLGRL4Q.jpg"
+    },
+    {
+      "tmdb_id": 40644,
+      "name": "Chad Stahelski",
+      "count": 4,
+      "average_rating": 4.0,
+      "profile_path": "/eRCryGwKDH4XqUlrdkERmeBWPo8.jpg"
+    },
+    {
+      "tmdb_id": 10965,
+      "name": "Chris Columbus",
+      "count": 4,
+      "average_rating": 2.38,
+      "profile_path": "/yCyEz90NqjEXKZ7HYcEhDXlLlPc.jpg"
+    },
+    {
+      "tmdb_id": 155267,
+      "name": "Christopher Miller",
+      "count": 4,
+      "average_rating": 3.12,
+      "profile_path": "/dr2yCgYtmNmO5vzjk9KNbjTpbzO.jpg"
+    },
+    {
+      "tmdb_id": 11090,
+      "name": "Edgar Wright",
+      "count": 4,
+      "average_rating": 3.75,
+      "profile_path": "/3BqgbeAkNnDcIVtrDvG6LJnEkZK.jpg"
+    },
+    {
+      "tmdb_id": 10943,
+      "name": "Francis Lawrence",
+      "count": 4,
+      "average_rating": 2.88,
+      "profile_path": "/pyGWo5mAwZ2Koe6leB2RjKd7vmc.jpg"
+    },
+    {
+      "tmdb_id": 1704,
+      "name": "Gore Verbinski",
+      "count": 4,
+      "average_rating": 4.0,
+      "profile_path": "/rSQRdmLNAwdKxrtvBSSlBmWeSsj.jpg"
+    },
+    {
+      "tmdb_id": 10828,
+      "name": "Guillermo del Toro",
+      "count": 4,
+      "average_rating": 4.0,
+      "profile_path": "/gldeyCtKcaqnK1v4Vu9vqayhzUQ.jpg"
+    },
+    {
+      "tmdb_id": 15344,
+      "name": "J.J. Abrams",
+      "count": 4,
+      "average_rating": 3.38,
+      "profile_path": "/k4IWd2RV5kY1kAL2VgKQwFvnCLP.jpg"
+    },
+    {
+      "tmdb_id": 15218,
+      "name": "James Gunn",
+      "count": 4,
+      "average_rating": 3.5,
+      "profile_path": "/pnKqZub3IlKYbyH9RRTMDOoqEn0.jpg"
+    },
+    {
+      "tmdb_id": 19272,
+      "name": "Joe Russo",
+      "count": 4,
+      "average_rating": 3.25,
+      "profile_path": "/o0OXjFzL10jCy89iAs7UzzSbyoK.jpg"
+    },
+    {
+      "tmdb_id": 58189,
+      "name": "Justin Lin",
+      "count": 4,
+      "average_rating": 2.62,
+      "profile_path": "/w0ryazdt8iS3GBrjXfv0FIwvUGY.jpg"
+    },
+    {
+      "tmdb_id": 59,
+      "name": "Luc Besson",
+      "count": 4,
+      "average_rating": 3.12,
+      "profile_path": "/bLVPnHMVFZ7wrF6ovMVF5U1UX89.jpg"
+    },
+    {
+      "tmdb_id": 74091,
+      "name": "Makoto Shinkai",
+      "count": 4,
+      "average_rating": 3.62,
+      "profile_path": "/z8TN4Nkmhem6XqcnH2jMn5Ayf97.jpg"
+    },
+    {
+      "tmdb_id": 10099,
+      "name": "Park Chan-wook",
+      "count": 4,
+      "average_rating": 4.38,
+      "profile_path": "/jsSFCVB7MhuVbSLwTgESiXEiNjt.jpg"
+    },
+    {
+      "tmdb_id": 4762,
+      "name": "Paul Thomas Anderson",
+      "count": 4,
+      "average_rating": 3.75,
+      "profile_path": "/wKAs2LtLYSUzt3ZZ8pnxMwuEWuR.jpg"
+    },
+    {
+      "tmdb_id": 4014,
+      "name": "Paul W. S. Anderson",
+      "count": 4,
+      "average_rating": 2.12,
+      "profile_path": "/3LBggv2qwBVjDi45DA0RTadgw12.jpg"
+    },
+    {
+      "tmdb_id": 107446,
+      "name": "Phil Lord",
+      "count": 4,
+      "average_rating": 3.12,
+      "profile_path": "/2MagibFHZxky3FmMubyABUnf4lw.jpg"
+    },
+    {
+      "tmdb_id": 578,
+      "name": "Ridley Scott",
+      "count": 4,
+      "average_rating": 4.12,
+      "profile_path": "/97SO7H0UlS3racqjeW5JTy8c6GM.jpg"
+    },
+    {
+      "tmdb_id": 138781,
+      "name": "Robert Eggers",
+      "count": 4,
+      "average_rating": 4.88,
+      "profile_path": "/v9ukVIUGT1vQ3KuPVLSua7FfS9s.jpg"
+    },
+    {
+      "tmdb_id": 2294,
+      "name": "Robert Rodriguez",
+      "count": 4,
+      "average_rating": 1.75,
+      "profile_path": "/4Cwsa3PqeGRGtsgKoYOyxql0uUy.jpg"
+    },
+    {
+      "tmdb_id": 488,
+      "name": "Steven Spielberg",
+      "count": 4,
+      "average_rating": 4.38,
+      "profile_path": "/tZxcg19YQ3e8fJ0pOs7hjlnmmr6.jpg"
+    },
+    {
+      "tmdb_id": 57130,
+      "name": "Todd Phillips",
+      "count": 4,
+      "average_rating": 3.62,
+      "profile_path": "/A6FPht87DiqXzp456WjakLi2AtP.jpg"
+    },
+    {
+      "tmdb_id": 34517,
+      "name": "Trey Parker",
+      "count": 4,
+      "average_rating": 2.88,
+      "profile_path": "/3tJe8t90lrcQzXj9cRcpW9wmj2c.jpg"
+    },
+    {
+      "tmdb_id": 1071403,
+      "name": "Alice Guy-Blaché",
+      "count": 3,
+      "average_rating": 3.33,
+      "profile_path": "/y1atPvIVDpS2pJR2rnQZ4VR7ULM.jpg"
+    },
+    {
+      "tmdb_id": 7,
+      "name": "Andrew Stanton",
+      "count": 3,
+      "average_rating": 3.33,
+      "profile_path": "/fo6ePCWEVB0L1sccrvB99Iaoqcg.jpg"
+    },
+    {
+      "tmdb_id": 21684,
+      "name": "Bong Joon Ho",
+      "count": 3,
+      "average_rating": 4.33,
+      "profile_path": "/stwnTvZAoD8gEJEDHpDQyLCyDy5.jpg"
+    },
+    {
+      "tmdb_id": 7087,
+      "name": "Brad Bird",
+      "count": 3,
+      "average_rating": 3.0,
+      "profile_path": "/zB9Uz0Rs1K9uwHffXRFaBwwSYI.jpg"
+    },
+    {
+      "tmdb_id": 66193,
+      "name": "Chris Sanders",
+      "count": 3,
+      "average_rating": 3.83,
+      "profile_path": "/8mKI9aPT5btPz0n0O3knHjKMDCe.jpg"
+    }
+  ],
+  "studios": [
+    {
+      "name": "Warner Bros. Pictures",
+      "count": 68,
+      "average_rating": 3.29
+    },
+    {
+      "name": "Columbia Pictures",
+      "count": 47,
+      "average_rating": 3.12
+    },
+    {
+      "name": "20th Century Fox",
+      "count": 36,
+      "average_rating": 3.1
+    },
+    {
+      "name": "Universal Pictures",
+      "count": 32,
+      "average_rating": 3.27
+    },
+    {
+      "name": "Marvel Studios",
+      "count": 30,
+      "average_rating": 3.07
+    },
+    {
+      "name": "Paramount Pictures",
+      "count": 28,
+      "average_rating": 3.32
+    },
+    {
+      "name": "TSG Entertainment",
+      "count": 28,
+      "average_rating": 3.54
+    },
+    {
+      "name": "Walt Disney Pictures",
+      "count": 26,
+      "average_rating": 2.71
+    },
+    {
+      "name": "New Line Cinema",
+      "count": 23,
+      "average_rating": 3.0
+    },
+    {
+      "name": "Pixar",
+      "count": 21,
+      "average_rating": 3.38
+    },
+    {
+      "name": "Marvel Entertainment",
+      "count": 19,
+      "average_rating": 3.42
+    },
+    {
+      "name": "TOHO",
+      "count": 18,
+      "average_rating": 4.06
+    },
+    {
+      "name": "Village Roadshow Pictures",
+      "count": 18,
+      "average_rating": 3.17
+    },
+    {
+      "name": "Legendary Pictures",
+      "count": 17,
+      "average_rating": 3.82
+    },
+    {
+      "name": "Regency Enterprises",
+      "count": 17,
+      "average_rating": 3.44
+    },
+    {
+      "name": "DreamWorks Animation",
+      "count": 16,
+      "average_rating": 3.62
+    },
+    {
+      "name": "Heyday Films",
+      "count": 16,
+      "average_rating": 2.91
+    },
+    {
+      "name": "RatPac Entertainment",
+      "count": 16,
+      "average_rating": 3.19
+    },
+    {
+      "name": "Lionsgate",
+      "count": 15,
+      "average_rating": 3.23
+    },
+    {
+      "name": "A24",
+      "count": 13,
+      "average_rating": 3.62
+    },
+    {
+      "name": "DreamWorks Pictures",
+      "count": 13,
+      "average_rating": 3.62
+    },
+    {
+      "name": "Relativity Media",
+      "count": 13,
+      "average_rating": 3.27
+    },
+    {
+      "name": "ufotable",
+      "count": 13,
+      "average_rating": 4.27
+    },
+    {
+      "name": "Blumhouse Productions",
+      "count": 12,
+      "average_rating": 3.08
+    },
+    {
+      "name": "Film4 Productions",
+      "count": 12,
+      "average_rating": 3.75
+    }
+  ],
   "collections": [],
-  "world_map": [],
+  "world_map": [
+    {
+      "iso_3166_1": "US",
+      "name": "United States of America",
+      "count": 633
+    },
+    {
+      "iso_3166_1": "GB",
+      "name": "United Kingdom",
+      "count": 119
+    },
+    {
+      "iso_3166_1": "FR",
+      "name": "France",
+      "count": 75
+    },
+    {
+      "iso_3166_1": "JP",
+      "name": "Japan",
+      "count": 56
+    },
+    {
+      "iso_3166_1": "DE",
+      "name": "Germany",
+      "count": 45
+    },
+    {
+      "iso_3166_1": "CA",
+      "name": "Canada",
+      "count": 36
+    },
+    {
+      "iso_3166_1": "MX",
+      "name": "Mexico",
+      "count": 21
+    },
+    {
+      "iso_3166_1": "AU",
+      "name": "Australia",
+      "count": 16
+    },
+    {
+      "iso_3166_1": "ES",
+      "name": "Spain",
+      "count": 15
+    },
+    {
+      "iso_3166_1": "BE",
+      "name": "Belgium",
+      "count": 14
+    },
+    {
+      "iso_3166_1": "HK",
+      "name": "Hong Kong",
+      "count": 13
+    },
+    {
+      "iso_3166_1": "IT",
+      "name": "Italy",
+      "count": 13
+    },
+    {
+      "iso_3166_1": "KR",
+      "name": "South Korea",
+      "count": 13
+    },
+    {
+      "iso_3166_1": "CN",
+      "name": "China",
+      "count": 12
+    },
+    {
+      "iso_3166_1": "NZ",
+      "name": "New Zealand",
+      "count": 10
+    },
+    {
+      "iso_3166_1": "DK",
+      "name": "Denmark",
+      "count": 7
+    },
+    {
+      "iso_3166_1": "LU",
+      "name": "Luxembourg",
+      "count": 7
+    },
+    {
+      "iso_3166_1": "SE",
+      "name": "Sweden",
+      "count": 7
+    },
+    {
+      "iso_3166_1": "IE",
+      "name": "Ireland",
+      "count": 6
+    },
+    {
+      "iso_3166_1": "BR",
+      "name": "Brazil",
+      "count": 5
+    },
+    {
+      "iso_3166_1": "CH",
+      "name": "Switzerland",
+      "count": 4
+    },
+    {
+      "iso_3166_1": "GR",
+      "name": "Greece",
+      "count": 4
+    },
+    {
+      "iso_3166_1": "PL",
+      "name": "Poland",
+      "count": 4
+    },
+    {
+      "iso_3166_1": "IN",
+      "name": "India",
+      "count": 3
+    },
+    {
+      "iso_3166_1": "SU",
+      "name": "Soviet Union",
+      "count": 3
+    },
+    {
+      "iso_3166_1": "AE",
+      "name": "United Arab Emirates",
+      "count": 2
+    },
+    {
+      "iso_3166_1": "AR",
+      "name": "Argentina",
+      "count": 2
+    },
+    {
+      "iso_3166_1": "CL",
+      "name": "Chile",
+      "count": 2
+    },
+    {
+      "iso_3166_1": "FI",
+      "name": "Finland",
+      "count": 2
+    },
+    {
+      "iso_3166_1": "IS",
+      "name": "Iceland",
+      "count": 2
+    },
+    {
+      "iso_3166_1": "NL",
+      "name": "Netherlands",
+      "count": 2
+    },
+    {
+      "iso_3166_1": "PT",
+      "name": "Portugal",
+      "count": 2
+    },
+    {
+      "iso_3166_1": "SG",
+      "name": "Singapore",
+      "count": 2
+    },
+    {
+      "iso_3166_1": "TH",
+      "name": "Thailand",
+      "count": 2
+    },
+    {
+      "iso_3166_1": "TW",
+      "name": "Taiwan",
+      "count": 2
+    },
+    {
+      "iso_3166_1": "ZA",
+      "name": "South Africa",
+      "count": 2
+    },
+    {
+      "iso_3166_1": "CZ",
+      "name": "Czech Republic",
+      "count": 1
+    },
+    {
+      "iso_3166_1": "FO",
+      "name": "Faeroe Islands",
+      "count": 1
+    },
+    {
+      "iso_3166_1": "GP",
+      "name": "Guadaloupe",
+      "count": 1
+    },
+    {
+      "iso_3166_1": "IL",
+      "name": "Israel",
+      "count": 1
+    },
+    {
+      "iso_3166_1": "IR",
+      "name": "Iran",
+      "count": 1
+    },
+    {
+      "iso_3166_1": "LV",
+      "name": "Latvia",
+      "count": 1
+    },
+    {
+      "iso_3166_1": "NO",
+      "name": "Norway",
+      "count": 1
+    },
+    {
+      "iso_3166_1": "PE",
+      "name": "Peru",
+      "count": 1
+    },
+    {
+      "iso_3166_1": "RS",
+      "name": "Serbia",
+      "count": 1
+    },
+    {
+      "iso_3166_1": "RU",
+      "name": "Russia",
+      "count": 1
+    },
+    {
+      "iso_3166_1": "TR",
+      "name": "Turkey",
+      "count": 1
+    },
+    {
+      "iso_3166_1": "UA",
+      "name": "Ukraine",
+      "count": 1
+    },
+    {
+      "iso_3166_1": "XC",
+      "name": "Czechoslovakia",
+      "count": 1
+    }
+  ],
   "list_progress": [
     {
       "id": "letterboxd-top-500",
       "title": "Letterboxd Top 500",
-      "seen": 9,
+      "seen": 93,
       "total": 500
     },
     {
       "id": "imdb-top-250",
       "title": "IMDb Top 250",
-      "seen": 9,
+      "seen": 98,
       "total": 250
     },
     {
       "id": "oscar-best-picture",
       "title": "Oscar Best Picture Winners",
-      "seen": 2,
+      "seen": 20,
       "total": 98
     },
     {
       "id": "cannes-palme-dor",
       "title": "Cannes Palme d'Or Winners",
-      "seen": 1,
+      "seen": 8,
       "total": 104
     },
     {
       "id": "billion-club",
       "title": "$1 Billion Club",
-      "seen": 0,
+      "seen": 37,
       "total": 65
     },
     {
       "id": "afi-100",
       "title": "AFI 100 Years 100 Movies",
-      "seen": 1,
+      "seen": 12,
       "total": 100
     },
     {
       "id": "sight-and-sound",
       "title": "Sight and Sound Greatest Films",
-      "seen": 2,
+      "seen": 28,
       "total": 264
     },
     {
       "id": "1001-films",
       "title": "1001 Films To See Before You Die",
-      "seen": 7,
+      "seen": 79,
       "total": 1001
     },
     {
       "id": "tspdt-all-time",
       "title": "They Shoot Pictures All Time",
-      "seen": 8,
+      "seen": 74,
       "total": 1000
     },
     {
       "id": "tspdt-21st-century",
       "title": "They Shoot Pictures 21st Century",
-      "seen": 11,
+      "seen": 154,
       "total": 1000
     },
     {
       "id": "top-250-women",
       "title": "Top 250 Women-Directed",
-      "seen": 2,
+      "seen": 17,
       "total": 250
     },
     {
       "id": "top-250-black",
       "title": "Top 250 Black-Directed",
-      "seen": 0,
+      "seen": 16,
       "total": 250
     },
     {
       "id": "top-250-most-fans",
       "title": "Top 250 Most Fans",
-      "seen": 8,
+      "seen": 125,
       "total": 250
     },
     {
       "id": "top-250-documentary",
       "title": "Top 250 Documentaries",
-      "seen": 1,
+      "seen": 9,
       "total": 250
     },
     {
       "id": "top-250-animation",
       "title": "Top 250 Animation",
-      "seen": 7,
+      "seen": 69,
       "total": 250
     },
     {
       "id": "top-250-horror",
       "title": "Top 250 Horror",
-      "seen": 4,
+      "seen": 33,
       "total": 250
     }
   ],
   "extras": {
-    "rating_bias": null,
+    "rating_bias": {
+      "member_average": 3.41,
+      "tmdb_average": 7.18,
+      "delta": -0.18
+    },
     "rating_drift": [
       {
+        "year": 2023,
+        "average": 3.61
+      },
+      {
+        "year": 2024,
+        "average": 3.66
+      },
+      {
         "year": 2025,
-        "average": 3.67
+        "average": 3.71
       },
       {
         "year": 2026,
         "average": 4.5
       }
     ],
-    "rewatch_rate": 0.02,
+    "rewatch_rate": 0.014,
     "watchlist": {
       "size": 1044,
-      "median_age_days": 0,
-      "conversion_rate": 0.0,
-      "estimated_date_share": 1.0
+      "median_age_days": 1130,
+      "conversion_rate": 0.018,
+      "estimated_date_share": 0.0
     },
     "heatmap": [
       {
-        "date": "2025-05-01",
+        "date": "2023-01-30",
         "count": 1
+      },
+      {
+        "date": "2023-02-02",
+        "count": 1
+      },
+      {
+        "date": "2023-02-06",
+        "count": 1
+      },
+      {
+        "date": "2023-02-22",
+        "count": 2
+      },
+      {
+        "date": "2023-02-26",
+        "count": 2
+      },
+      {
+        "date": "2023-03-01",
+        "count": 3
+      },
+      {
+        "date": "2023-03-02",
+        "count": 1
+      },
+      {
+        "date": "2023-03-05",
+        "count": 1
+      },
+      {
+        "date": "2023-03-11",
+        "count": 1
+      },
+      {
+        "date": "2023-03-22",
+        "count": 1
+      },
+      {
+        "date": "2023-03-23",
+        "count": 1
+      },
+      {
+        "date": "2023-03-31",
+        "count": 2
+      },
+      {
+        "date": "2023-04-05",
+        "count": 2
+      },
+      {
+        "date": "2023-04-17",
+        "count": 1
+      },
+      {
+        "date": "2023-04-19",
+        "count": 1
+      },
+      {
+        "date": "2023-04-22",
+        "count": 1
+      },
+      {
+        "date": "2023-04-28",
+        "count": 2
+      },
+      {
+        "date": "2023-05-02",
+        "count": 1
+      },
+      {
+        "date": "2023-05-03",
+        "count": 1
+      },
+      {
+        "date": "2023-05-06",
+        "count": 1
+      },
+      {
+        "date": "2023-05-09",
+        "count": 2
+      },
+      {
+        "date": "2023-05-14",
+        "count": 2
+      },
+      {
+        "date": "2023-05-25",
+        "count": 1
+      },
+      {
+        "date": "2023-05-27",
+        "count": 1
+      },
+      {
+        "date": "2023-05-28",
+        "count": 2
+      },
+      {
+        "date": "2023-06-02",
+        "count": 1
+      },
+      {
+        "date": "2023-06-04",
+        "count": 1
+      },
+      {
+        "date": "2023-06-05",
+        "count": 1
+      },
+      {
+        "date": "2023-06-08",
+        "count": 1
+      },
+      {
+        "date": "2023-06-09",
+        "count": 1
+      },
+      {
+        "date": "2023-06-13",
+        "count": 2
+      },
+      {
+        "date": "2023-06-14",
+        "count": 1
+      },
+      {
+        "date": "2023-06-16",
+        "count": 2
+      },
+      {
+        "date": "2023-06-20",
+        "count": 1
+      },
+      {
+        "date": "2023-06-21",
+        "count": 2
+      },
+      {
+        "date": "2023-06-23",
+        "count": 1
+      },
+      {
+        "date": "2023-06-25",
+        "count": 2
+      },
+      {
+        "date": "2023-06-26",
+        "count": 1
+      },
+      {
+        "date": "2023-06-28",
+        "count": 1
+      },
+      {
+        "date": "2023-06-30",
+        "count": 1
+      },
+      {
+        "date": "2023-07-01",
+        "count": 1
+      },
+      {
+        "date": "2023-07-02",
+        "count": 1
+      },
+      {
+        "date": "2023-07-03",
+        "count": 1
+      },
+      {
+        "date": "2023-07-12",
+        "count": 1
+      },
+      {
+        "date": "2023-07-14",
+        "count": 1
+      },
+      {
+        "date": "2023-07-15",
+        "count": 1
+      },
+      {
+        "date": "2023-07-18",
+        "count": 1
+      },
+      {
+        "date": "2023-07-21",
+        "count": 1
+      },
+      {
+        "date": "2023-07-22",
+        "count": 1
+      },
+      {
+        "date": "2023-07-27",
+        "count": 1
+      },
+      {
+        "date": "2023-07-29",
+        "count": 2
+      },
+      {
+        "date": "2023-08-01",
+        "count": 1
+      },
+      {
+        "date": "2023-08-02",
+        "count": 1
+      },
+      {
+        "date": "2023-08-05",
+        "count": 1
+      },
+      {
+        "date": "2023-08-09",
+        "count": 1
+      },
+      {
+        "date": "2023-08-15",
+        "count": 1
+      },
+      {
+        "date": "2023-08-19",
+        "count": 1
+      },
+      {
+        "date": "2023-08-20",
+        "count": 2
+      },
+      {
+        "date": "2023-08-22",
+        "count": 1
+      },
+      {
+        "date": "2023-08-29",
+        "count": 1
+      },
+      {
+        "date": "2023-08-30",
+        "count": 1
+      },
+      {
+        "date": "2023-09-01",
+        "count": 1
+      },
+      {
+        "date": "2023-09-03",
+        "count": 3
+      },
+      {
+        "date": "2023-09-07",
+        "count": 1
+      },
+      {
+        "date": "2023-09-10",
+        "count": 2
+      },
+      {
+        "date": "2023-09-22",
+        "count": 1
+      },
+      {
+        "date": "2023-09-23",
+        "count": 1
+      },
+      {
+        "date": "2023-09-30",
+        "count": 3
+      },
+      {
+        "date": "2023-10-01",
+        "count": 1
+      },
+      {
+        "date": "2023-10-06",
+        "count": 3
+      },
+      {
+        "date": "2023-10-08",
+        "count": 1
+      },
+      {
+        "date": "2023-10-12",
+        "count": 2
+      },
+      {
+        "date": "2023-10-14",
+        "count": 1
+      },
+      {
+        "date": "2023-10-17",
+        "count": 1
+      },
+      {
+        "date": "2023-10-21",
+        "count": 1
+      },
+      {
+        "date": "2023-10-22",
+        "count": 1
+      },
+      {
+        "date": "2023-10-23",
+        "count": 1
+      },
+      {
+        "date": "2023-10-26",
+        "count": 1
+      },
+      {
+        "date": "2023-10-29",
+        "count": 1
+      },
+      {
+        "date": "2023-11-03",
+        "count": 1
+      },
+      {
+        "date": "2023-11-04",
+        "count": 2
+      },
+      {
+        "date": "2023-11-13",
+        "count": 1
+      },
+      {
+        "date": "2023-11-19",
+        "count": 1
+      },
+      {
+        "date": "2023-11-20",
+        "count": 1
+      },
+      {
+        "date": "2023-11-24",
+        "count": 1
+      },
+      {
+        "date": "2023-11-29",
+        "count": 1
+      },
+      {
+        "date": "2023-11-30",
+        "count": 1
+      },
+      {
+        "date": "2023-12-06",
+        "count": 1
+      },
+      {
+        "date": "2023-12-08",
+        "count": 1
+      },
+      {
+        "date": "2023-12-22",
+        "count": 2
+      },
+      {
+        "date": "2023-12-23",
+        "count": 1
+      },
+      {
+        "date": "2024-01-01",
+        "count": 1
+      },
+      {
+        "date": "2024-01-04",
+        "count": 1
+      },
+      {
+        "date": "2024-01-08",
+        "count": 1
+      },
+      {
+        "date": "2024-01-11",
+        "count": 1
+      },
+      {
+        "date": "2024-01-16",
+        "count": 2
+      },
+      {
+        "date": "2024-01-22",
+        "count": 1
+      },
+      {
+        "date": "2024-01-25",
+        "count": 1
+      },
+      {
+        "date": "2024-01-26",
+        "count": 1
+      },
+      {
+        "date": "2024-01-27",
+        "count": 1
+      },
+      {
+        "date": "2024-02-05",
+        "count": 1
+      },
+      {
+        "date": "2024-02-08",
+        "count": 1
+      },
+      {
+        "date": "2024-02-10",
+        "count": 1
+      },
+      {
+        "date": "2024-02-17",
+        "count": 1
+      },
+      {
+        "date": "2024-02-26",
+        "count": 1
+      },
+      {
+        "date": "2024-03-05",
+        "count": 1
+      },
+      {
+        "date": "2024-03-06",
+        "count": 2
+      },
+      {
+        "date": "2024-03-07",
+        "count": 1
+      },
+      {
+        "date": "2024-03-09",
+        "count": 2
+      },
+      {
+        "date": "2024-03-12",
+        "count": 1
+      },
+      {
+        "date": "2024-03-13",
+        "count": 1
+      },
+      {
+        "date": "2024-03-16",
+        "count": 4
+      },
+      {
+        "date": "2024-03-17",
+        "count": 1
+      },
+      {
+        "date": "2024-03-24",
+        "count": 1
+      },
+      {
+        "date": "2024-03-27",
+        "count": 1
+      },
+      {
+        "date": "2024-03-30",
+        "count": 2
+      },
+      {
+        "date": "2024-03-31",
+        "count": 1
+      },
+      {
+        "date": "2024-04-05",
+        "count": 2
+      },
+      {
+        "date": "2024-04-06",
+        "count": 1
+      },
+      {
+        "date": "2024-04-11",
+        "count": 1
+      },
+      {
+        "date": "2024-04-17",
+        "count": 1
+      },
+      {
+        "date": "2024-04-19",
+        "count": 1
+      },
+      {
+        "date": "2024-04-21",
+        "count": 1
+      },
+      {
+        "date": "2024-04-24",
+        "count": 1
+      },
+      {
+        "date": "2024-04-26",
+        "count": 1
+      },
+      {
+        "date": "2024-04-27",
+        "count": 2
+      },
+      {
+        "date": "2024-04-28",
+        "count": 1
+      },
+      {
+        "date": "2024-05-06",
+        "count": 1
+      },
+      {
+        "date": "2024-05-14",
+        "count": 1
+      },
+      {
+        "date": "2024-05-27",
+        "count": 1
+      },
+      {
+        "date": "2024-05-28",
+        "count": 1
+      },
+      {
+        "date": "2024-05-29",
+        "count": 1
+      },
+      {
+        "date": "2024-05-31",
+        "count": 1
+      },
+      {
+        "date": "2024-06-02",
+        "count": 1
+      },
+      {
+        "date": "2024-06-06",
+        "count": 1
+      },
+      {
+        "date": "2024-07-12",
+        "count": 1
+      },
+      {
+        "date": "2024-07-15",
+        "count": 1
+      },
+      {
+        "date": "2024-07-18",
+        "count": 1
+      },
+      {
+        "date": "2024-07-21",
+        "count": 1
+      },
+      {
+        "date": "2024-07-22",
+        "count": 1
+      },
+      {
+        "date": "2024-07-25",
+        "count": 1
+      },
+      {
+        "date": "2024-07-26",
+        "count": 1
+      },
+      {
+        "date": "2024-07-28",
+        "count": 1
+      },
+      {
+        "date": "2024-08-03",
+        "count": 1
+      },
+      {
+        "date": "2024-08-11",
+        "count": 2
+      },
+      {
+        "date": "2024-08-21",
+        "count": 2
+      },
+      {
+        "date": "2024-08-22",
+        "count": 1
+      },
+      {
+        "date": "2024-08-30",
+        "count": 1
+      },
+      {
+        "date": "2024-09-01",
+        "count": 1
+      },
+      {
+        "date": "2024-09-17",
+        "count": 1
+      },
+      {
+        "date": "2024-09-20",
+        "count": 2
+      },
+      {
+        "date": "2024-09-23",
+        "count": 1
+      },
+      {
+        "date": "2024-10-01",
+        "count": 1
+      },
+      {
+        "date": "2024-10-10",
+        "count": 1
+      },
+      {
+        "date": "2024-10-13",
+        "count": 1
+      },
+      {
+        "date": "2024-10-17",
+        "count": 1
+      },
+      {
+        "date": "2024-10-20",
+        "count": 1
+      },
+      {
+        "date": "2024-11-03",
+        "count": 1
+      },
+      {
+        "date": "2024-11-08",
+        "count": 2
+      },
+      {
+        "date": "2024-11-10",
+        "count": 1
+      },
+      {
+        "date": "2024-11-17",
+        "count": 1
+      },
+      {
+        "date": "2024-11-18",
+        "count": 1
+      },
+      {
+        "date": "2024-11-23",
+        "count": 1
+      },
+      {
+        "date": "2024-11-30",
+        "count": 1
+      },
+      {
+        "date": "2024-12-01",
+        "count": 3
+      },
+      {
+        "date": "2024-12-10",
+        "count": 1
+      },
+      {
+        "date": "2024-12-15",
+        "count": 2
+      },
+      {
+        "date": "2024-12-24",
+        "count": 1
+      },
+      {
+        "date": "2024-12-25",
+        "count": 1
+      },
+      {
+        "date": "2024-12-27",
+        "count": 1
+      },
+      {
+        "date": "2025-01-09",
+        "count": 1
+      },
+      {
+        "date": "2025-01-21",
+        "count": 1
+      },
+      {
+        "date": "2025-01-27",
+        "count": 1
+      },
+      {
+        "date": "2025-02-01",
+        "count": 1
+      },
+      {
+        "date": "2025-02-02",
+        "count": 1
+      },
+      {
+        "date": "2025-02-07",
+        "count": 1
+      },
+      {
+        "date": "2025-02-22",
+        "count": 1
+      },
+      {
+        "date": "2025-02-23",
+        "count": 1
+      },
+      {
+        "date": "2025-02-24",
+        "count": 1
+      },
+      {
+        "date": "2025-02-25",
+        "count": 1
+      },
+      {
+        "date": "2025-02-26",
+        "count": 1
+      },
+      {
+        "date": "2025-02-27",
+        "count": 1
+      },
+      {
+        "date": "2025-02-28",
+        "count": 1
+      },
+      {
+        "date": "2025-03-01",
+        "count": 1
+      },
+      {
+        "date": "2025-03-02",
+        "count": 1
+      },
+      {
+        "date": "2025-03-04",
+        "count": 1
+      },
+      {
+        "date": "2025-03-14",
+        "count": 1
+      },
+      {
+        "date": "2025-04-05",
+        "count": 1
+      },
+      {
+        "date": "2025-04-07",
+        "count": 1
+      },
+      {
+        "date": "2025-04-09",
+        "count": 1
+      },
+      {
+        "date": "2025-04-15",
+        "count": 1
+      },
+      {
+        "date": "2025-04-19",
+        "count": 1
+      },
+      {
+        "date": "2025-04-22",
+        "count": 1
+      },
+      {
+        "date": "2025-04-23",
+        "count": 1
+      },
+      {
+        "date": "2025-05-01",
+        "count": 2
       },
       {
         "date": "2025-05-02",
@@ -404,169 +2851,2179 @@
       }
     ],
     "runtime": {
-      "total_minutes": 0,
-      "median": null,
-      "distribution": []
+      "total_minutes": 91935,
+      "median": 113,
+      "distribution": [
+        {
+          "bucket": "under 60",
+          "count": 27
+        },
+        {
+          "bucket": "60-89",
+          "count": 72
+        },
+        {
+          "bucket": "90-119",
+          "count": 372
+        },
+        {
+          "bucket": "120-149",
+          "count": 261
+        },
+        {
+          "bucket": "150-179",
+          "count": 55
+        },
+        {
+          "bucket": "180 and over",
+          "count": 14
+        }
+      ]
     },
     "decade_gaps": [
       1880,
       1910,
       1920,
-      1940,
-      1960
+      1940
     ],
     "director_completeness": [],
     "contrarian_index": {
-      "hotter_than_crowd": [],
-      "colder_than_crowd": []
-    },
-    "obscurity": null,
-    "release_recency": null,
-    "half_star_usage": {
-      "half_star_share": 0.306,
-      "distribution": [
+      "hotter_than_crowd": [
         {
-          "rating": 0.5,
-          "count": 0
+          "slug": "berserk-1997",
+          "title": "Berserk",
+          "year": 1997,
+          "member_rating": 5.0,
+          "crowd_rating": 2.75,
+          "delta": 2.25
         },
         {
-          "rating": 1.0,
-          "count": 0
+          "slug": "johanne-sacreblu",
+          "title": "Johanne Sacreblu",
+          "year": 2025,
+          "member_rating": 5.0,
+          "crowd_rating": 3.25,
+          "delta": 1.75
         },
         {
-          "rating": 1.5,
-          "count": 1
+          "slug": "athena-2022-1",
+          "title": "Athena",
+          "year": 2022,
+          "member_rating": 5.0,
+          "crowd_rating": 3.3,
+          "delta": 1.7
         },
         {
-          "rating": 2.0,
-          "count": 1
+          "slug": "the-bewitched-house-1907",
+          "title": "The Bewitched House",
+          "year": 1907,
+          "member_rating": 5.0,
+          "crowd_rating": 3.31,
+          "delta": 1.69
         },
         {
-          "rating": 2.5,
-          "count": 2
+          "slug": "the-witch-2015",
+          "title": "The Witch",
+          "year": 2015,
+          "member_rating": 5.0,
+          "crowd_rating": 3.5,
+          "delta": 1.5
         },
         {
-          "rating": 3.0,
-          "count": 11
+          "slug": "the-northman",
+          "title": "The Northman",
+          "year": 2022,
+          "member_rating": 5.0,
+          "crowd_rating": 3.51,
+          "delta": 1.49
         },
         {
-          "rating": 3.5,
-          "count": 9
+          "slug": "a-ghost-story-2017",
+          "title": "A Ghost Story",
+          "year": 2017,
+          "member_rating": 5.0,
+          "crowd_rating": 3.53,
+          "delta": 1.47
         },
         {
-          "rating": 4.0,
-          "count": 16
+          "slug": "jujutsu-kaisen",
+          "title": "JUJUTSU KAISEN",
+          "year": 2020,
+          "member_rating": 4.5,
+          "crowd_rating": 3.05,
+          "delta": 1.45
         },
         {
-          "rating": 4.5,
-          "count": 3
+          "slug": "no-dogs-or-italians-allowed",
+          "title": "No Dogs or Italians Allowed",
+          "year": 2022,
+          "member_rating": 5.0,
+          "crowd_rating": 3.59,
+          "delta": 1.41
         },
         {
-          "rating": 5.0,
-          "count": 6
+          "slug": "monster-2004",
+          "title": "Monster",
+          "year": 2004,
+          "member_rating": 5.0,
+          "crowd_rating": 3.6,
+          "delta": 1.4
+        },
+        {
+          "slug": "2046",
+          "title": "2046",
+          "year": 2004,
+          "member_rating": 5.0,
+          "crowd_rating": 3.62,
+          "delta": 1.38
+        },
+        {
+          "slug": "demon-slayer-kimetsu-no-yaiba-to-the-swordsmith-village",
+          "title": "Demon Slayer: Kimetsu no Yaiba -To the Swordsmith Village-",
+          "year": 2023,
+          "member_rating": 5.0,
+          "crowd_rating": 3.66,
+          "delta": 1.34
+        },
+        {
+          "slug": "titane",
+          "title": "Titane",
+          "year": 2021,
+          "member_rating": 4.5,
+          "crowd_rating": 3.16,
+          "delta": 1.34
+        },
+        {
+          "slug": "one-battle-after-another",
+          "title": "One Battle After Another",
+          "year": 2025,
+          "member_rating": 5.0,
+          "crowd_rating": 3.67,
+          "delta": 1.33
+        },
+        {
+          "slug": "birdman-or-the-unexpected-virtue-of-ignorance",
+          "title": "Birdman or (The Unexpected Virtue of Ignorance)",
+          "year": 2014,
+          "member_rating": 5.0,
+          "crowd_rating": 3.7,
+          "delta": 1.3
+        },
+        {
+          "slug": "dunkirk-2017",
+          "title": "Dunkirk",
+          "year": 2017,
+          "member_rating": 5.0,
+          "crowd_rating": 3.73,
+          "delta": 1.27
+        },
+        {
+          "slug": "suspiria-2018",
+          "title": "Suspiria",
+          "year": 2018,
+          "member_rating": 5.0,
+          "crowd_rating": 3.73,
+          "delta": 1.27
+        },
+        {
+          "slug": "the-banshees-of-inisherin",
+          "title": "The Banshees of Inisherin",
+          "year": 2022,
+          "member_rating": 5.0,
+          "crowd_rating": 3.73,
+          "delta": 1.27
+        },
+        {
+          "slug": "the-lighthouse-2019",
+          "title": "The Lighthouse",
+          "year": 2019,
+          "member_rating": 5.0,
+          "crowd_rating": 3.73,
+          "delta": 1.27
+        },
+        {
+          "slug": "the-beasts-2022",
+          "title": "The Beasts",
+          "year": 2022,
+          "member_rating": 5.0,
+          "crowd_rating": 3.74,
+          "delta": 1.26
+        }
+      ],
+      "colder_than_crowd": [
+        {
+          "slug": "sound-of-freedom",
+          "title": "Sound of Freedom",
+          "year": 2023,
+          "member_rating": 0.5,
+          "crowd_rating": 3.97,
+          "delta": -3.47
+        },
+        {
+          "slug": "coda-2021",
+          "title": "CODA",
+          "year": 2021,
+          "member_rating": 1.0,
+          "crowd_rating": 3.95,
+          "delta": -2.95
+        },
+        {
+          "slug": "little-women-2019",
+          "title": "Little Women",
+          "year": 2019,
+          "member_rating": 1.0,
+          "crowd_rating": 3.9,
+          "delta": -2.9
+        },
+        {
+          "slug": "captain-marvel",
+          "title": "Captain Marvel",
+          "year": 2019,
+          "member_rating": 0.5,
+          "crowd_rating": 3.39,
+          "delta": -2.89
+        },
+        {
+          "slug": "aladdin-2019",
+          "title": "Aladdin",
+          "year": 2019,
+          "member_rating": 1.0,
+          "crowd_rating": 3.83,
+          "delta": -2.83
+        },
+        {
+          "slug": "the-roommate-2024-1",
+          "title": "The Roommate",
+          "year": 2024,
+          "member_rating": 1.0,
+          "crowd_rating": 3.81,
+          "delta": -2.81
+        },
+        {
+          "slug": "high-school-musical-3-senior-year",
+          "title": "High School Musical 3: Senior Year",
+          "year": 2008,
+          "member_rating": 0.5,
+          "crowd_rating": 3.27,
+          "delta": -2.77
+        },
+        {
+          "slug": "high-school-musical",
+          "title": "High School Musical",
+          "year": 2006,
+          "member_rating": 0.5,
+          "crowd_rating": 3.25,
+          "delta": -2.75
+        },
+        {
+          "slug": "high-school-musical-2",
+          "title": "High School Musical 2",
+          "year": 2007,
+          "member_rating": 0.5,
+          "crowd_rating": 3.25,
+          "delta": -2.75
+        },
+        {
+          "slug": "emilia-perez",
+          "title": "Emilia Pérez",
+          "year": 2024,
+          "member_rating": 0.5,
+          "crowd_rating": 3.21,
+          "delta": -2.71
+        },
+        {
+          "slug": "the-little-mermaid-2023",
+          "title": "The Little Mermaid",
+          "year": 2023,
+          "member_rating": 0.5,
+          "crowd_rating": 3.15,
+          "delta": -2.65
+        },
+        {
+          "slug": "final-destination-5",
+          "title": "Final Destination 5",
+          "year": 2011,
+          "member_rating": 0.5,
+          "crowd_rating": 3.08,
+          "delta": -2.58
+        },
+        {
+          "slug": "ghost-ship",
+          "title": "Ghost Ship",
+          "year": 2002,
+          "member_rating": 0.5,
+          "crowd_rating": 3.0,
+          "delta": -2.5
+        },
+        {
+          "slug": "spotlight",
+          "title": "Spotlight",
+          "year": 2015,
+          "member_rating": 1.5,
+          "crowd_rating": 3.91,
+          "delta": -2.41
+        },
+        {
+          "slug": "the-dark-tower",
+          "title": "The Dark Tower",
+          "year": 2017,
+          "member_rating": 0.5,
+          "crowd_rating": 2.9,
+          "delta": -2.4
+        },
+        {
+          "slug": "alvin-and-the-chipmunks-the-squeakquel",
+          "title": "Alvin and the Chipmunks: The Squeakquel",
+          "year": 2009,
+          "member_rating": 0.5,
+          "crowd_rating": 2.83,
+          "delta": -2.33
+        },
+        {
+          "slug": "in-fabric",
+          "title": "In Fabric",
+          "year": 2018,
+          "member_rating": 0.5,
+          "crowd_rating": 2.81,
+          "delta": -2.31
+        },
+        {
+          "slug": "the-nun-ii",
+          "title": "The Nun II",
+          "year": 2023,
+          "member_rating": 1.0,
+          "crowd_rating": 3.31,
+          "delta": -2.31
+        },
+        {
+          "slug": "ant-man-and-the-wasp-quantumania",
+          "title": "Ant-Man and the Wasp: Quantumania",
+          "year": 2023,
+          "member_rating": 1.0,
+          "crowd_rating": 3.11,
+          "delta": -2.11
+        },
+        {
+          "slug": "percy-jackson-the-olympians-the-lightning-thief",
+          "title": "Percy Jackson & the Olympians: The Lightning Thief",
+          "year": 2010,
+          "member_rating": 1.0,
+          "crowd_rating": 3.11,
+          "delta": -2.11
         }
       ]
     },
-    "liked_but_low": [],
+    "obscurity": {
+      "median_vote_count": 5963,
+      "quartiles": [
+        2562,
+        5963,
+        12042
+      ],
+      "most_obscure": [
+        {
+          "slug": "humpty-dumpty-circus",
+          "title": "Humpty Dumpty Circus",
+          "vote_count": 1
+        },
+        {
+          "slug": "berserk-1997",
+          "title": "Berserk",
+          "vote_count": 2
+        },
+        {
+          "slug": "hidden-in-plain-sight",
+          "title": "Hidden in Plain Sight",
+          "vote_count": 2
+        },
+        {
+          "slug": "over-the-garden-wall-2014",
+          "title": "Over the Garden Wall",
+          "vote_count": 3
+        },
+        {
+          "slug": "demon-slayer-kimetsu-no-yaiba-entertainment-2023",
+          "title": "Demon Slayer: Kimetsu no Yaiba Entertainment District Infiltration Arc",
+          "vote_count": 4
+        },
+        {
+          "slug": "demon-slayer-kimetsu-no-yaiba-special-edition",
+          "title": "Demon Slayer: Kimetsu no Yaiba Special Edition Swordsmith Village Arc Part 1",
+          "vote_count": 4
+        },
+        {
+          "slug": "demon-slayer-kimetsu-no-yaiba-special-edition-2024",
+          "title": "Demon Slayer: Kimetsu no Yaiba Special Edition Swordsmith Village Arc Part 2",
+          "vote_count": 4
+        },
+        {
+          "slug": "johanne-sacreblu",
+          "title": "Johanne Sacreblu",
+          "vote_count": 5
+        },
+        {
+          "slug": "demon-slayer-kimetsu-no-yaiba-entertainment",
+          "title": "Demon Slayer: Kimetsu no Yaiba - Entertainment District Decisive Battle Arc",
+          "vote_count": 7
+        },
+        {
+          "slug": "shrooms-2023",
+          "title": "Shrooms",
+          "vote_count": 9
+        },
+        {
+          "slug": "x2",
+          "title": "X2",
+          "vote_count": 11
+        },
+        {
+          "slug": "loie-fuller",
+          "title": "Loïe Fuller",
+          "vote_count": 14
+        },
+        {
+          "slug": "dive-2022",
+          "title": "DIVE",
+          "vote_count": 15
+        },
+        {
+          "slug": "intrepidos-punks",
+          "title": "Intrépidos Punks",
+          "vote_count": 19
+        },
+        {
+          "slug": "serpentine-dance-by-mme-bob-walter",
+          "title": "Serpentine Dance by Mme. Bob Walter",
+          "vote_count": 22
+        },
+        {
+          "slug": "faust-and-mephistopheles",
+          "title": "Faust and Mephistopheles",
+          "vote_count": 23
+        },
+        {
+          "slug": "el-compadre-mendoza",
+          "title": "El compadre Mendoza",
+          "vote_count": 26
+        },
+        {
+          "slug": "the-hand-2020-1",
+          "title": "The Hand",
+          "vote_count": 47
+        },
+        {
+          "slug": "shogun-2024",
+          "title": "Shōgun",
+          "vote_count": 48
+        },
+        {
+          "slug": "the-lady-of-silence-the-mataviejitas-murders",
+          "title": "The Lady of Silence: The Mataviejitas Murders",
+          "vote_count": 50
+        }
+      ],
+      "most_popular": [
+        {
+          "slug": "interstellar",
+          "title": "Interstellar",
+          "vote_count": 40922
+        },
+        {
+          "slug": "inception",
+          "title": "Inception",
+          "vote_count": 40005
+        },
+        {
+          "slug": "the-avengers-2012",
+          "title": "The Avengers",
+          "vote_count": 39463
+        },
+        {
+          "slug": "the-dark-knight",
+          "title": "The Dark Knight",
+          "vote_count": 36521
+        },
+        {
+          "slug": "avatar",
+          "title": "Avatar",
+          "vote_count": 34528
+        },
+        {
+          "slug": "deadpool",
+          "title": "Deadpool",
+          "vote_count": 33188
+        },
+        {
+          "slug": "avengers-infinity-war",
+          "title": "Avengers: Infinity War",
+          "vote_count": 32729
+        },
+        {
+          "slug": "fight-club",
+          "title": "Fight Club",
+          "vote_count": 32715
+        },
+        {
+          "slug": "pulp-fiction",
+          "title": "Pulp Fiction",
+          "vote_count": 30731
+        },
+        {
+          "slug": "guardians-of-the-galaxy",
+          "title": "Guardians of the Galaxy",
+          "vote_count": 30193
+        },
+        {
+          "slug": "harry-potter-and-the-philosophers-stone",
+          "title": "Harry Potter and the Philosopher's Stone",
+          "vote_count": 30088
+        },
+        {
+          "slug": "iron-man-2008",
+          "title": "Iron Man",
+          "vote_count": 28672
+        },
+        {
+          "slug": "django-unchained",
+          "title": "Django Unchained",
+          "vote_count": 28487
+        },
+        {
+          "slug": "avengers-endgame",
+          "title": "Avengers: Endgame",
+          "vote_count": 28465
+        },
+        {
+          "slug": "the-lord-of-the-rings-the-fellowship-of-the-ring",
+          "title": "The Lord of the Rings: The Fellowship of the Ring",
+          "vote_count": 28209
+        },
+        {
+          "slug": "joker-2019",
+          "title": "Joker",
+          "vote_count": 28186
+        },
+        {
+          "slug": "the-wolf-of-wall-street",
+          "title": "The Wolf of Wall Street",
+          "vote_count": 26391
+        },
+        {
+          "slug": "shutter-island",
+          "title": "Shutter Island",
+          "vote_count": 26309
+        },
+        {
+          "slug": "avengers-age-of-ultron",
+          "title": "Avengers: Age of Ultron",
+          "vote_count": 24907
+        },
+        {
+          "slug": "the-dark-knight-rises",
+          "title": "The Dark Knight Rises",
+          "vote_count": 24809
+        }
+      ]
+    },
+    "release_recency": {
+      "median_days_after_release": 1031,
+      "by_year": [
+        {
+          "year": 2023,
+          "median_days": 423
+        },
+        {
+          "year": 2024,
+          "median_days": 1329
+        },
+        {
+          "year": 2025,
+          "median_days": 3905
+        },
+        {
+          "year": 2026,
+          "median_days": 33512
+        }
+      ]
+    },
+    "half_star_usage": {
+      "half_star_share": 0.406,
+      "distribution": [
+        {
+          "rating": 0.5,
+          "count": 13
+        },
+        {
+          "rating": 1.0,
+          "count": 14
+        },
+        {
+          "rating": 1.5,
+          "count": 13
+        },
+        {
+          "rating": 2.0,
+          "count": 38
+        },
+        {
+          "rating": 2.5,
+          "count": 67
+        },
+        {
+          "rating": 3.0,
+          "count": 189
+        },
+        {
+          "rating": 3.5,
+          "count": 188
+        },
+        {
+          "rating": 4.0,
+          "count": 180
+        },
+        {
+          "rating": 4.5,
+          "count": 54
+        },
+        {
+          "rating": 5.0,
+          "count": 69
+        }
+      ]
+    },
+    "liked_but_low": [
+      {
+        "slug": "planet-terror",
+        "title": "Planet Terror",
+        "rating": 2.5
+      },
+      {
+        "slug": "le-manoir-du-diable",
+        "title": "Le manoir du diable",
+        "rating": 3.0
+      }
+    ],
     "longest_drought": {
-      "days": 33,
-      "from": "2025-05-09",
-      "to": "2025-06-11"
+      "days": 36,
+      "from": "2024-06-06",
+      "to": "2024-07-12"
     },
     "weekday_profile": [
       {
         "weekday": "Monday",
-        "count": 2
+        "count": 25
       },
       {
         "weekday": "Tuesday",
-        "count": 2
+        "count": 29
       },
       {
         "weekday": "Wednesday",
-        "count": 11
+        "count": 44
       },
       {
         "weekday": "Thursday",
-        "count": 7
+        "count": 33
       },
       {
         "weekday": "Friday",
-        "count": 11
+        "count": 50
       },
       {
         "weekday": "Saturday",
-        "count": 10
+        "count": 52
       },
       {
         "weekday": "Sunday",
-        "count": 7
+        "count": 54
       }
     ],
     "month_seasonality": [
       {
         "month": 1,
-        "count": 1
-      },
-      {
-        "month": 2,
-        "count": 0
-      },
-      {
-        "month": 3,
-        "count": 0
-      },
-      {
-        "month": 4,
-        "count": 0
-      },
-      {
-        "month": 5,
-        "count": 3
-      },
-      {
-        "month": 6,
-        "count": 8
-      },
-      {
-        "month": 7,
-        "count": 3
-      },
-      {
-        "month": 8,
-        "count": 9
-      },
-      {
-        "month": 9,
         "count": 15
       },
       {
+        "month": 2,
+        "count": 21
+      },
+      {
+        "month": 3,
+        "count": 32
+      },
+      {
+        "month": 4,
+        "count": 26
+      },
+      {
+        "month": 5,
+        "count": 21
+      },
+      {
+        "month": 6,
+        "count": 29
+      },
+      {
+        "month": 7,
+        "count": 23
+      },
+      {
+        "month": 8,
+        "count": 27
+      },
+      {
+        "month": 9,
+        "count": 32
+      },
+      {
         "month": 10,
-        "count": 6
+        "count": 25
       },
       {
         "month": 11,
-        "count": 4
+        "count": 21
       },
       {
         "month": 12,
-        "count": 1
+        "count": 15
       }
     ],
-    "logging_lag": null,
-    "lucky_director": [],
-    "unlucky_director": [],
-    "background_actor": [],
-    "crew_most_watched": {
-      "composer": [],
-      "cinematographer": [],
-      "editor": [],
-      "writer": []
+    "logging_lag": {
+      "median_days": 2,
+      "distribution": [
+        {
+          "bucket": "same day",
+          "count": 7
+        },
+        {
+          "bucket": "1 to 2 days",
+          "count": 148
+        },
+        {
+          "bucket": "3 to 7 days",
+          "count": 68
+        },
+        {
+          "bucket": "8 to 30 days",
+          "count": 13
+        },
+        {
+          "bucket": "31 days and over",
+          "count": 1
+        }
+      ]
     },
-    "life_in_days": null,
+    "lucky_director": [
+      {
+        "name": "Wong Kar-Wai",
+        "films": 5,
+        "average_rating": 4.6
+      },
+      {
+        "name": "Denis Villeneuve",
+        "films": 6,
+        "average_rating": 4.33
+      },
+      {
+        "name": "Christopher Nolan",
+        "films": 10,
+        "average_rating": 4.3
+      },
+      {
+        "name": "Martin Scorsese",
+        "films": 7,
+        "average_rating": 4.29
+      },
+      {
+        "name": "Haruo Sotozaki",
+        "films": 13,
+        "average_rating": 4.27
+      },
+      {
+        "name": "Matthew Vaughn",
+        "films": 5,
+        "average_rating": 4.1
+      },
+      {
+        "name": "Quentin Tarantino",
+        "films": 8,
+        "average_rating": 4.06
+      },
+      {
+        "name": "Hayao Miyazaki",
+        "films": 8,
+        "average_rating": 3.94
+      }
+    ],
+    "unlucky_director": [
+      {
+        "name": "David Yates",
+        "films": 7,
+        "average_rating": 2.5
+      },
+      {
+        "name": "Zack Snyder",
+        "films": 6,
+        "average_rating": 3.08
+      },
+      {
+        "name": "Antoine Fuqua",
+        "films": 5,
+        "average_rating": 3.2
+      },
+      {
+        "name": "David Fincher",
+        "films": 6,
+        "average_rating": 3.33
+      },
+      {
+        "name": "John Lasseter",
+        "films": 5,
+        "average_rating": 3.4
+      },
+      {
+        "name": "Sam Raimi",
+        "films": 5,
+        "average_rating": 3.4
+      },
+      {
+        "name": "Peter Jackson",
+        "films": 5,
+        "average_rating": 3.5
+      },
+      {
+        "name": "Guy Ritchie",
+        "films": 6,
+        "average_rating": 3.75
+      }
+    ],
+    "background_actor": [
+      {
+        "tmdb_id": 7624,
+        "name": "Stan Lee",
+        "count": 32,
+        "median_billing": 32
+      },
+      {
+        "tmdb_id": 84493,
+        "name": "Mickie McGowan",
+        "count": 17,
+        "median_billing": 30
+      },
+      {
+        "tmdb_id": 7907,
+        "name": "John Ratzenberger",
+        "count": 17,
+        "median_billing": 13
+      },
+      {
+        "tmdb_id": 84495,
+        "name": "Jess Harnell",
+        "count": 16,
+        "median_billing": 36
+      },
+      {
+        "tmdb_id": 214701,
+        "name": "Sherry Lynn",
+        "count": 16,
+        "median_billing": 31
+      },
+      {
+        "tmdb_id": 84213,
+        "name": "Bill Farmer",
+        "count": 14,
+        "median_billing": 26
+      },
+      {
+        "tmdb_id": 19545,
+        "name": "Jack Angel",
+        "count": 14,
+        "median_billing": 24
+      },
+      {
+        "tmdb_id": 78317,
+        "name": "Bob Bergen",
+        "count": 14,
+        "median_billing": 20
+      },
+      {
+        "tmdb_id": 11184,
+        "name": "Warwick Davis",
+        "count": 14,
+        "median_billing": 20
+      },
+      {
+        "tmdb_id": 202032,
+        "name": "Ralph Ineson",
+        "count": 13,
+        "median_billing": 22
+      },
+      {
+        "tmdb_id": 1601441,
+        "name": "Johnny Otto",
+        "count": 12,
+        "median_billing": 56
+      },
+      {
+        "tmdb_id": 61969,
+        "name": "Phil Proctor",
+        "count": 12,
+        "median_billing": 32
+      },
+      {
+        "tmdb_id": 15831,
+        "name": "Frank Welker",
+        "count": 12,
+        "median_billing": 18
+      },
+      {
+        "tmdb_id": 12077,
+        "name": "Jim Cummings",
+        "count": 12,
+        "median_billing": 14
+      },
+      {
+        "tmdb_id": 38673,
+        "name": "Channing Tatum",
+        "count": 12,
+        "median_billing": 10
+      },
+      {
+        "tmdb_id": 202930,
+        "name": "Anthony Molinari",
+        "count": 11,
+        "median_billing": 43
+      },
+      {
+        "tmdb_id": 35159,
+        "name": "Laraine Newman",
+        "count": 11,
+        "median_billing": 41
+      },
+      {
+        "tmdb_id": 157626,
+        "name": "Jan Rabson",
+        "count": 11,
+        "median_billing": 37
+      },
+      {
+        "tmdb_id": 19278,
+        "name": "Bill Hader",
+        "count": 11,
+        "median_billing": 11
+      },
+      {
+        "tmdb_id": 52699,
+        "name": "Danny Mann",
+        "count": 10,
+        "median_billing": 32
+      },
+      {
+        "tmdb_id": 11180,
+        "name": "David Bradley",
+        "count": 10,
+        "median_billing": 17
+      },
+      {
+        "tmdb_id": 11207,
+        "name": "David Thewlis",
+        "count": 10,
+        "median_billing": 16
+      },
+      {
+        "tmdb_id": 11355,
+        "name": "Jason Isaacs",
+        "count": 10,
+        "median_billing": 14
+      },
+      {
+        "tmdb_id": 83854,
+        "name": "David Dastmalchian",
+        "count": 10,
+        "median_billing": 11
+      },
+      {
+        "tmdb_id": 60279,
+        "name": "Fred Tatasciore",
+        "count": 9,
+        "median_billing": 60
+      },
+      {
+        "tmdb_id": 1366,
+        "name": "Sala Baker",
+        "count": 9,
+        "median_billing": 49
+      },
+      {
+        "tmdb_id": 60232,
+        "name": "David Cowgill",
+        "count": 9,
+        "median_billing": 40
+      },
+      {
+        "tmdb_id": 23680,
+        "name": "Dee Bradley Baker",
+        "count": 9,
+        "median_billing": 33
+      },
+      {
+        "tmdb_id": 96851,
+        "name": "James Phelps",
+        "count": 9,
+        "median_billing": 27
+      },
+      {
+        "tmdb_id": 140368,
+        "name": "Oliver Phelps",
+        "count": 9,
+        "median_billing": 27
+      },
+      {
+        "tmdb_id": 70615,
+        "name": "Rodger Bumpass",
+        "count": 9,
+        "median_billing": 23
+      },
+      {
+        "tmdb_id": 73016,
+        "name": "Debi Derryberry",
+        "count": 9,
+        "median_billing": 22
+      },
+      {
+        "tmdb_id": 59784,
+        "name": "Carlos Alazraqui",
+        "count": 9,
+        "median_billing": 19
+      },
+      {
+        "tmdb_id": 11159,
+        "name": "Cheech Marin",
+        "count": 9,
+        "median_billing": 16
+      },
+      {
+        "tmdb_id": 477,
+        "name": "Julie Walters",
+        "count": 9,
+        "median_billing": 16
+      },
+      {
+        "tmdb_id": 4030,
+        "name": "Martin Klebba",
+        "count": 9,
+        "median_billing": 14
+      },
+      {
+        "tmdb_id": 20089,
+        "name": "Jena Malone",
+        "count": 9,
+        "median_billing": 12
+      },
+      {
+        "tmdb_id": 887,
+        "name": "Owen Wilson",
+        "count": 9,
+        "median_billing": 11
+      },
+      {
+        "tmdb_id": 543261,
+        "name": "Karen Gillan",
+        "count": 9,
+        "median_billing": 10
+      },
+      {
+        "tmdb_id": 5531,
+        "name": "Kiran Shah",
+        "count": 8,
+        "median_billing": 47
+      },
+      {
+        "tmdb_id": 11212,
+        "name": "Josh Herdman",
+        "count": 8,
+        "median_billing": 43
+      },
+      {
+        "tmdb_id": 168875,
+        "name": "Gary Weeks",
+        "count": 8,
+        "median_billing": 41
+      },
+      {
+        "tmdb_id": 234922,
+        "name": "Devon Murray",
+        "count": 8,
+        "median_billing": 40
+      },
+      {
+        "tmdb_id": 236696,
+        "name": "Terry Notary",
+        "count": 8,
+        "median_billing": 37
+      },
+      {
+        "tmdb_id": 96841,
+        "name": "Matthew Lewis",
+        "count": 8,
+        "median_billing": 36
+      },
+      {
+        "tmdb_id": 111466,
+        "name": "Mona Marshall",
+        "count": 8,
+        "median_billing": 34
+      },
+      {
+        "tmdb_id": 10988,
+        "name": "Geraldine Somerville",
+        "count": 8,
+        "median_billing": 32
+      },
+      {
+        "tmdb_id": 10991,
+        "name": "Bonnie Wright",
+        "count": 8,
+        "median_billing": 30
+      },
+      {
+        "tmdb_id": 20582,
+        "name": "Michael Papajohn",
+        "count": 8,
+        "median_billing": 30
+      },
+      {
+        "tmdb_id": 35219,
+        "name": "Corey Burton",
+        "count": 8,
+        "median_billing": 28
+      }
+    ],
+    "crew_most_watched": {
+      "composer": [
+        {
+          "tmdb_id": 947,
+          "name": "Hans Zimmer",
+          "count": 32
+        },
+        {
+          "tmdb_id": 15347,
+          "name": "Michael Giacchino",
+          "count": 22
+        },
+        {
+          "tmdb_id": 11098,
+          "name": "John Powell",
+          "count": 16
+        },
+        {
+          "tmdb_id": 7229,
+          "name": "Marco Beltrami",
+          "count": 16
+        },
+        {
+          "tmdb_id": 2949,
+          "name": "Alexandre Desplat",
+          "count": 15
+        },
+        {
+          "tmdb_id": 227440,
+          "name": "Henry Jackman",
+          "count": 15
+        },
+        {
+          "tmdb_id": 1213,
+          "name": "James Newton Howard",
+          "count": 13
+        },
+        {
+          "tmdb_id": 5553,
+          "name": "Harry Gregson-Williams",
+          "count": 12
+        },
+        {
+          "tmdb_id": 6041,
+          "name": "Brian Tyler",
+          "count": 11
+        },
+        {
+          "tmdb_id": 531,
+          "name": "Danny Elfman",
+          "count": 11
+        },
+        {
+          "tmdb_id": 491,
+          "name": "John Williams",
+          "count": 11
+        },
+        {
+          "tmdb_id": 5666,
+          "name": "Mark Mothersbaugh",
+          "count": 11
+        },
+        {
+          "tmdb_id": 15221,
+          "name": "Tyler Bates",
+          "count": 11
+        },
+        {
+          "tmdb_id": 37,
+          "name": "Alan Silvestri",
+          "count": 10
+        },
+        {
+          "tmdb_id": 23486,
+          "name": "Christophe Beck",
+          "count": 10
+        },
+        {
+          "tmdb_id": 117,
+          "name": "Howard Shore",
+          "count": 9
+        },
+        {
+          "tmdb_id": 929145,
+          "name": "Lorne Balfe",
+          "count": 9
+        },
+        {
+          "tmdb_id": 56827,
+          "name": "Tom Holkenborg",
+          "count": 9
+        },
+        {
+          "tmdb_id": 1225,
+          "name": "Carter Burwell",
+          "count": 8
+        },
+        {
+          "tmdb_id": 636,
+          "name": "Joe Hisaishi",
+          "count": 8
+        },
+        {
+          "tmdb_id": 7885,
+          "name": "Randy Newman",
+          "count": 8
+        },
+        {
+          "tmdb_id": 142391,
+          "name": "Atticus Ross",
+          "count": 7
+        },
+        {
+          "tmdb_id": 1729,
+          "name": "James Horner",
+          "count": 7
+        },
+        {
+          "tmdb_id": 4500,
+          "name": "John Debney",
+          "count": 7
+        },
+        {
+          "tmdb_id": 928158,
+          "name": "Ludwig Göransson",
+          "count": 7
+        },
+        {
+          "tmdb_id": 153,
+          "name": "Thomas Newman",
+          "count": 7
+        },
+        {
+          "tmdb_id": 3186,
+          "name": "Trent Reznor",
+          "count": 7
+        },
+        {
+          "tmdb_id": 15813,
+          "name": "Alan Menken",
+          "count": 5
+        },
+        {
+          "tmdb_id": 40825,
+          "name": "Benjamin Wallfisch",
+          "count": 5
+        },
+        {
+          "tmdb_id": 582922,
+          "name": "Daniel Pemberton",
+          "count": 5
+        },
+        {
+          "tmdb_id": 3393,
+          "name": "David Newman",
+          "count": 5
+        },
+        {
+          "tmdb_id": 1433681,
+          "name": "Go Shiina",
+          "count": 5
+        },
+        {
+          "tmdb_id": 1112896,
+          "name": "Joel J. Richard",
+          "count": 5
+        },
+        {
+          "tmdb_id": 9039,
+          "name": "John Ottman",
+          "count": 5
+        },
+        {
+          "tmdb_id": 74333,
+          "name": "Jonny Greenwood",
+          "count": 5
+        },
+        {
+          "tmdb_id": 1098740,
+          "name": "Joseph Trapanese",
+          "count": 5
+        },
+        {
+          "tmdb_id": 117992,
+          "name": "Jóhann Jóhannsson",
+          "count": 5
+        },
+        {
+          "tmdb_id": 2294,
+          "name": "Robert Rodriguez",
+          "count": 5
+        },
+        {
+          "tmdb_id": 16368,
+          "name": "Steven Price",
+          "count": 5
+        },
+        {
+          "tmdb_id": 89839,
+          "name": "Yuki Kajiura",
+          "count": 5
+        },
+        {
+          "tmdb_id": 54420,
+          "name": "David Sardy",
+          "count": 4
+        },
+        {
+          "tmdb_id": 37930,
+          "name": "Jo Yeong-wook",
+          "count": 4
+        },
+        {
+          "tmdb_id": 960,
+          "name": "John Murphy",
+          "count": 4
+        },
+        {
+          "tmdb_id": 5907,
+          "name": "Mark Korven",
+          "count": 4
+        },
+        {
+          "tmdb_id": 969021,
+          "name": "Matthew Margeson",
+          "count": 4
+        },
+        {
+          "tmdb_id": 9152,
+          "name": "Patrick Doyle",
+          "count": 4
+        },
+        {
+          "tmdb_id": 1483629,
+          "name": "Richard Vreeland",
+          "count": 4
+        },
+        {
+          "tmdb_id": 2593,
+          "name": "Rupert Gregson-Williams",
+          "count": 4
+        },
+        {
+          "tmdb_id": 996,
+          "name": "Éric Serra",
+          "count": 4
+        },
+        {
+          "tmdb_id": 1895790,
+          "name": "Akira Kuwahara",
+          "count": 3
+        }
+      ],
+      "cinematographer": [
+        {
+          "tmdb_id": 149,
+          "name": "Robert Richardson",
+          "count": 10
+        },
+        {
+          "tmdb_id": 22161,
+          "name": "Ben Davis",
+          "count": 8
+        },
+        {
+          "tmdb_id": 7988,
+          "name": "Jeremy Lasky",
+          "count": 8
+        },
+        {
+          "tmdb_id": 151,
+          "name": "Roger Deakins",
+          "count": 8
+        },
+        {
+          "tmdb_id": 1313,
+          "name": "Andrew Lesnie",
+          "count": 7
+        },
+        {
+          "tmdb_id": 120,
+          "name": "Dariusz Wolski",
+          "count": 7
+        },
+        {
+          "tmdb_id": 5387,
+          "name": "Lawrence Sher",
+          "count": 7
+        },
+        {
+          "tmdb_id": 4867,
+          "name": "Matthew Libatique",
+          "count": 7
+        },
+        {
+          "tmdb_id": 275,
+          "name": "Rodrigo Prieto",
+          "count": 7
+        },
+        {
+          "tmdb_id": 967026,
+          "name": "Trent Opaloch",
+          "count": 7
+        },
+        {
+          "tmdb_id": 19596,
+          "name": "Atsushi Okui",
+          "count": 6
+        },
+        {
+          "tmdb_id": 9341,
+          "name": "Bill Pope",
+          "count": 6
+        },
+        {
+          "tmdb_id": 40268,
+          "name": "Dan Laustsen",
+          "count": 6
+        },
+        {
+          "tmdb_id": 74401,
+          "name": "Hoyte van Hoytema",
+          "count": 6
+        },
+        {
+          "tmdb_id": 9040,
+          "name": "Newton Thomas Sigel",
+          "count": 6
+        },
+        {
+          "tmdb_id": 1301,
+          "name": "Philippe Rousselot",
+          "count": 6
+        },
+        {
+          "tmdb_id": 5667,
+          "name": "Robert D. Yeoman",
+          "count": 6
+        },
+        {
+          "tmdb_id": 559,
+          "name": "Wally Pfister",
+          "count": 6
+        },
+        {
+          "tmdb_id": 54164,
+          "name": "Barry Peterson",
+          "count": 5
+        },
+        {
+          "tmdb_id": 1357,
+          "name": "Christopher Doyle",
+          "count": 5
+        },
+        {
+          "tmdb_id": 10107,
+          "name": "Chung Chung-hoon",
+          "count": 5
+        },
+        {
+          "tmdb_id": 15348,
+          "name": "Dan Mindel",
+          "count": 5
+        },
+        {
+          "tmdb_id": 1060,
+          "name": "Dean Cundey",
+          "count": 5
+        },
+        {
+          "tmdb_id": 67113,
+          "name": "Greig Fraser",
+          "count": 5
+        },
+        {
+          "tmdb_id": 23422,
+          "name": "Henry Braham",
+          "count": 5
+        },
+        {
+          "tmdb_id": 492,
+          "name": "Janusz Kamiński",
+          "count": 5
+        },
+        {
+          "tmdb_id": 27576,
+          "name": "Jo Willems",
+          "count": 5
+        },
+        {
+          "tmdb_id": 943,
+          "name": "John Mathieson",
+          "count": 5
+        },
+        {
+          "tmdb_id": 12912,
+          "name": "Sharon Calahan",
+          "count": 5
+        },
+        {
+          "tmdb_id": 58192,
+          "name": "Stephen F. Windon",
+          "count": 5
+        },
+        {
+          "tmdb_id": 1918514,
+          "name": "Yuichi Terao",
+          "count": 5
+        },
+        {
+          "tmdb_id": 1106693,
+          "name": "Andrew Droz Palermo",
+          "count": 4
+        },
+        {
+          "tmdb_id": 51333,
+          "name": "Claudio Miranda",
+          "count": 4
+        },
+        {
+          "tmdb_id": 647,
+          "name": "Dion Beebe",
+          "count": 4
+        },
+        {
+          "tmdb_id": 4185,
+          "name": "Emmanuel Lubezki",
+          "count": 4
+        },
+        {
+          "tmdb_id": 10573,
+          "name": "Florian Ballhaus",
+          "count": 4
+        },
+        {
+          "tmdb_id": 1017789,
+          "name": "George Richmond",
+          "count": 4
+        },
+        {
+          "tmdb_id": 1726870,
+          "name": "Gil Zimmerman",
+          "count": 4
+        },
+        {
+          "tmdb_id": 22818,
+          "name": "Glen MacPherson",
+          "count": 4
+        },
+        {
+          "tmdb_id": 3113,
+          "name": "Guillermo Navarro",
+          "count": 4
+        },
+        {
+          "tmdb_id": 1186279,
+          "name": "Jacques Jouffret",
+          "count": 4
+        },
+        {
+          "tmdb_id": 1135102,
+          "name": "Jarin Blaschke",
+          "count": 4
+        },
+        {
+          "tmdb_id": 17284,
+          "name": "Larry Fong",
+          "count": 4
+        },
+        {
+          "tmdb_id": 18265,
+          "name": "Mauro Fiore",
+          "count": 4
+        },
+        {
+          "tmdb_id": 463602,
+          "name": "Mike Gioulakis",
+          "count": 4
+        },
+        {
+          "tmdb_id": 11409,
+          "name": "Oliver Wood",
+          "count": 4
+        },
+        {
+          "tmdb_id": 2950,
+          "name": "Robert Elswit",
+          "count": 4
+        },
+        {
+          "tmdb_id": 12382,
+          "name": "Simon Duggan",
+          "count": 4
+        },
+        {
+          "tmdb_id": 460,
+          "name": "Tom Stern",
+          "count": 4
+        },
+        {
+          "tmdb_id": 53331,
+          "name": "Tristan Oliver",
+          "count": 4
+        }
+      ],
+      "editor": [
+        {
+          "tmdb_id": 3904,
+          "name": "Lee Smith",
+          "count": 12
+        },
+        {
+          "tmdb_id": 58194,
+          "name": "Fred Raskin",
+          "count": 10
+        },
+        {
+          "tmdb_id": 35176,
+          "name": "Jeffrey Ford",
+          "count": 9
+        },
+        {
+          "tmdb_id": 950,
+          "name": "Pietro Scalia",
+          "count": 9
+        },
+        {
+          "tmdb_id": 1697,
+          "name": "Takeshi Seyama",
+          "count": 9
+        },
+        {
+          "tmdb_id": 6668,
+          "name": "Christian Wagner",
+          "count": 8
+        },
+        {
+          "tmdb_id": 6051,
+          "name": "David Brenner",
+          "count": 8
+        },
+        {
+          "tmdb_id": 11345,
+          "name": "Mark Day",
+          "count": 8
+        },
+        {
+          "tmdb_id": 15349,
+          "name": "Maryann Brandon",
+          "count": 8
+        },
+        {
+          "tmdb_id": 1722,
+          "name": "Craig Wood",
+          "count": 7
+        },
+        {
+          "tmdb_id": 11455,
+          "name": "Dan Lebental",
+          "count": 7
+        },
+        {
+          "tmdb_id": 49809,
+          "name": "Eddie Hamilton",
+          "count": 7
+        },
+        {
+          "tmdb_id": 999565,
+          "name": "Joe Walker",
+          "count": 7
+        },
+        {
+          "tmdb_id": 71534,
+          "name": "Barney Pilling",
+          "count": 6
+        },
+        {
+          "tmdb_id": 7784,
+          "name": "Bob Ducsay",
+          "count": 6
+        },
+        {
+          "tmdb_id": 56917,
+          "name": "James Herbert",
+          "count": 6
+        },
+        {
+          "tmdb_id": 493,
+          "name": "Michael Kahn",
+          "count": 6
+        },
+        {
+          "tmdb_id": 433,
+          "name": "Michael McCusker",
+          "count": 6
+        },
+        {
+          "tmdb_id": 156,
+          "name": "Sally Menke",
+          "count": 6
+        },
+        {
+          "tmdb_id": 1721,
+          "name": "Stephen E. Rivkin",
+          "count": 6
+        },
+        {
+          "tmdb_id": 3661,
+          "name": "Thelma Schoonmaker",
+          "count": 6
+        },
+        {
+          "tmdb_id": 15841,
+          "name": "William Goldenberg",
+          "count": 6
+        },
+        {
+          "tmdb_id": 66519,
+          "name": "Alan Edward Bell",
+          "count": 5
+        },
+        {
+          "tmdb_id": 38805,
+          "name": "Andrew Weisblum",
+          "count": 5
+        },
+        {
+          "tmdb_id": 7712,
+          "name": "Bob Murawski",
+          "count": 5
+        },
+        {
+          "tmdb_id": 1403403,
+          "name": "Evan Schiff",
+          "count": 5
+        },
+        {
+          "tmdb_id": 58871,
+          "name": "John Refoua",
+          "count": 5
+        },
+        {
+          "tmdb_id": 58193,
+          "name": "Kelly Matsumoto",
+          "count": 5
+        },
+        {
+          "tmdb_id": 1204244,
+          "name": "Leigh Folsom Boyd",
+          "count": 5
+        },
+        {
+          "tmdb_id": 1397777,
+          "name": "Louise Ford",
+          "count": 5
+        },
+        {
+          "tmdb_id": 1918520,
+          "name": "Manabu Kamino",
+          "count": 5
+        },
+        {
+          "tmdb_id": 969705,
+          "name": "Paul Machliss",
+          "count": 5
+        },
+        {
+          "tmdb_id": 10816,
+          "name": "Paul Rubell",
+          "count": 5
+        },
+        {
+          "tmdb_id": 6581,
+          "name": "Richard Francis-Bruce",
+          "count": 5
+        },
+        {
+          "tmdb_id": 9646,
+          "name": "Richard Pearson",
+          "count": 5
+        },
+        {
+          "tmdb_id": 10123,
+          "name": "Roger Barton",
+          "count": 5
+        },
+        {
+          "tmdb_id": 45818,
+          "name": "William Chang Suk-Ping",
+          "count": 5
+        },
+        {
+          "tmdb_id": 2122,
+          "name": "William Hoy",
+          "count": 5
+        },
+        {
+          "tmdb_id": 56678,
+          "name": "Clare Knight",
+          "count": 4
+        },
+        {
+          "tmdb_id": 6043,
+          "name": "Dan Zimmerman",
+          "count": 4
+        },
+        {
+          "tmdb_id": 71148,
+          "name": "Dirk Westervelt",
+          "count": 4
+        },
+        {
+          "tmdb_id": 3190,
+          "name": "Hank Corwin",
+          "count": 4
+        },
+        {
+          "tmdb_id": 1377,
+          "name": "Jabez Olssen",
+          "count": 4
+        },
+        {
+          "tmdb_id": 59930,
+          "name": "Jason Ballantine",
+          "count": 4
+        },
+        {
+          "tmdb_id": 961610,
+          "name": "Jeff Groth",
+          "count": 4
+        },
+        {
+          "tmdb_id": 1113553,
+          "name": "Jennifer Lame",
+          "count": 4
+        },
+        {
+          "tmdb_id": 13245,
+          "name": "Joel Negron",
+          "count": 4
+        },
+        {
+          "tmdb_id": 67810,
+          "name": "John Gilroy",
+          "count": 4
+        },
+        {
+          "tmdb_id": 9039,
+          "name": "John Ottman",
+          "count": 4
+        },
+        {
+          "tmdb_id": 57638,
+          "name": "John Venzon",
+          "count": 4
+        }
+      ],
+      "writer": [
+        {
+          "tmdb_id": 525,
+          "name": "Christopher Nolan",
+          "count": 10
+        },
+        {
+          "tmdb_id": 10967,
+          "name": "Steve Kloves",
+          "count": 9
+        },
+        {
+          "tmdb_id": 7,
+          "name": "Andrew Stanton",
+          "count": 8
+        },
+        {
+          "tmdb_id": 608,
+          "name": "Hayao Miyazaki",
+          "count": 8
+        },
+        {
+          "tmdb_id": 138,
+          "name": "Quentin Tarantino",
+          "count": 8
+        },
+        {
+          "tmdb_id": 1705,
+          "name": "Ted Elliott",
+          "count": 8
+        },
+        {
+          "tmdb_id": 1706,
+          "name": "Terry Rossio",
+          "count": 8
+        },
+        {
+          "tmdb_id": 5655,
+          "name": "Wes Anderson",
+          "count": 8
+        },
+        {
+          "tmdb_id": 5551,
+          "name": "Christopher Markus",
+          "count": 7
+        },
+        {
+          "tmdb_id": 10828,
+          "name": "Guillermo del Toro",
+          "count": 7
+        },
+        {
+          "tmdb_id": 15218,
+          "name": "James Gunn",
+          "count": 7
+        },
+        {
+          "tmdb_id": 5552,
+          "name": "Stephen McFeely",
+          "count": 7
+        },
+        {
+          "tmdb_id": 58191,
+          "name": "Chris Morgan",
+          "count": 6
+        },
+        {
+          "tmdb_id": 4014,
+          "name": "Paul W. S. Anderson",
+          "count": 6
+        },
+        {
+          "tmdb_id": 91269,
+          "name": "Paul Wernick",
+          "count": 6
+        },
+        {
+          "tmdb_id": 7932,
+          "name": "Rhett Reese",
+          "count": 6
+        },
+        {
+          "tmdb_id": 11092,
+          "name": "Simon Kinberg",
+          "count": 6
+        },
+        {
+          "tmdb_id": 1246890,
+          "name": "Chris McKenna",
+          "count": 5
+        },
+        {
+          "tmdb_id": 131680,
+          "name": "Chris Terrio",
+          "count": 5
+        },
+        {
+          "tmdb_id": 3893,
+          "name": "David S. Goyer",
+          "count": 5
+        },
+        {
+          "tmdb_id": 11090,
+          "name": "Edgar Wright",
+          "count": 5
+        },
+        {
+          "tmdb_id": 1350918,
+          "name": "Erik Sommers",
+          "count": 5
+        },
+        {
+          "tmdb_id": 126,
+          "name": "Fran Walsh",
+          "count": 5
+        },
+        {
+          "tmdb_id": 564940,
+          "name": "Jon Spaihts",
+          "count": 5
+        },
+        {
+          "tmdb_id": 957,
+          "name": "Matthew Vaughn",
+          "count": 5
+        },
+        {
+          "tmdb_id": 108,
+          "name": "Peter Jackson",
+          "count": 5
+        },
+        {
+          "tmdb_id": 107446,
+          "name": "Phil Lord",
+          "count": 5
+        },
+        {
+          "tmdb_id": 128,
+          "name": "Philippa Boyens",
+          "count": 5
+        },
+        {
+          "tmdb_id": 12453,
+          "name": "Wong Kar-Wai",
+          "count": 5
+        },
+        {
+          "tmdb_id": 5575,
+          "name": "Akiva Goldsman",
+          "count": 4
+        },
+        {
+          "tmdb_id": 15345,
+          "name": "Alex Kurtzman",
+          "count": 4
+        },
+        {
+          "tmdb_id": 155267,
+          "name": "Christopher Miller",
+          "count": 4
+        },
+        {
+          "tmdb_id": 136495,
+          "name": "Damien Chazelle",
+          "count": 4
+        },
+        {
+          "tmdb_id": 28974,
+          "name": "Damon Lindelof",
+          "count": 4
+        },
+        {
+          "tmdb_id": 1020013,
+          "name": "Derek Connolly",
+          "count": 4
+        },
+        {
+          "tmdb_id": 1076800,
+          "name": "Derek Kolstad",
+          "count": 4
+        },
+        {
+          "tmdb_id": 956,
+          "name": "Guy Ritchie",
+          "count": 4
+        },
+        {
+          "tmdb_id": 53120,
+          "name": "James DeMonaco",
+          "count": 4
+        },
+        {
+          "tmdb_id": 23447,
+          "name": "Jane Goldman",
+          "count": 4
+        },
+        {
+          "tmdb_id": 527,
+          "name": "Jonathan Nolan",
+          "count": 4
+        },
+        {
+          "tmdb_id": 12891,
+          "name": "Joss Whedon",
+          "count": 4
+        },
+        {
+          "tmdb_id": 59,
+          "name": "Luc Besson",
+          "count": 4
+        },
+        {
+          "tmdb_id": 11614,
+          "name": "M. Night Shyamalan",
+          "count": 4
+        },
+        {
+          "tmdb_id": 74091,
+          "name": "Makoto Shinkai",
+          "count": 4
+        },
+        {
+          "tmdb_id": 16961,
+          "name": "Michael Arndt",
+          "count": 4
+        },
+        {
+          "tmdb_id": 58744,
+          "name": "Michael Bacall",
+          "count": 4
+        },
+        {
+          "tmdb_id": 10099,
+          "name": "Park Chan-wook",
+          "count": 4
+        },
+        {
+          "tmdb_id": 4762,
+          "name": "Paul Thomas Anderson",
+          "count": 4
+        },
+        {
+          "tmdb_id": 138781,
+          "name": "Robert Eggers",
+          "count": 4
+        },
+        {
+          "tmdb_id": 2294,
+          "name": "Robert Rodriguez",
+          "count": 4
+        }
+      ]
+    },
+    "life_in_days": {
+      "days": 63.8,
+      "would_end_on": "2026-10-30"
+    },
     "extremes": {
-      "shortest": null,
-      "longest": null,
+      "shortest": {
+        "slug": "faust-and-mephistopheles",
+        "title": "Faust and Mephistopheles",
+        "runtime": 2
+      },
+      "longest": {
+        "slug": "zack-snyders-justice-league",
+        "title": "Zack Snyder's Justice League",
+        "runtime": 242
+      },
       "oldest": {
         "slug": "sallie-gardner-at-a-gallop",
         "title": "Sallie Gardner at a Gallop",
@@ -579,169 +5036,200 @@
       }
     },
     "rating_vs_runtime": {
-      "correlation": null,
-      "buckets": []
+      "correlation": 0.09,
+      "buckets": [
+        {
+          "range": "under 60",
+          "films": 26,
+          "average_rating": 3.44
+        },
+        {
+          "range": "60-89",
+          "films": 72,
+          "average_rating": 3.42
+        },
+        {
+          "range": "90-119",
+          "films": 372,
+          "average_rating": 3.33
+        },
+        {
+          "range": "120-149",
+          "films": 261,
+          "average_rating": 3.38
+        },
+        {
+          "range": "150-179",
+          "films": 55,
+          "average_rating": 3.95
+        },
+        {
+          "range": "180 and over",
+          "films": 14,
+          "average_rating": 3.82
+        }
+      ]
     },
     "title_words": [
       {
-        "word": "castle",
-        "count": 2
+        "word": "man",
+        "count": 23
       },
       {
         "word": "demon",
-        "count": 2
-      },
-      {
-        "word": "fire",
-        "count": 2
-      },
-      {
-        "word": "friday",
-        "count": 2
-      },
-      {
-        "word": "hard",
-        "count": 2
-      },
-      {
-        "word": "abyss",
-        "count": 1
-      },
-      {
-        "word": "accident",
-        "count": 1
-      },
-      {
-        "word": "after",
-        "count": 1
-      },
-      {
-        "word": "american",
-        "count": 1
-      },
-      {
-        "word": "among",
-        "count": 1
-      },
-      {
-        "word": "another",
-        "count": 1
-      },
-      {
-        "word": "back",
-        "count": 1
-      },
-      {
-        "word": "ballerina",
-        "count": 1
-      },
-      {
-        "word": "battle",
-        "count": 1
-      },
-      {
-        "word": "beyond",
-        "count": 1
+        "count": 17
       },
       {
         "word": "black",
-        "count": 1
+        "count": 14
       },
       {
-        "word": "bob",
-        "count": 1
+        "word": "kimetsu",
+        "count": 14
       },
       {
-        "word": "body",
-        "count": 1
+        "word": "slayer",
+        "count": 14
       },
       {
-        "word": "bring",
-        "count": 1
+        "word": "yaiba",
+        "count": 14
       },
       {
-        "word": "bête",
-        "count": 1
+        "word": "love",
+        "count": 12
       },
       {
-        "word": "call",
-        "count": 1
+        "word": "robots",
+        "count": 12
       },
       {
-        "word": "celestine",
-        "count": 1
+        "word": "spider",
+        "count": 12
       },
       {
-        "word": "compadre",
-        "count": 1
+        "word": "death",
+        "count": 11
       },
       {
-        "word": "consequences",
-        "count": 1
+        "word": "part",
+        "count": 11
       },
       {
-        "word": "cure",
-        "count": 1
+        "word": "dead",
+        "count": 10
       },
       {
-        "word": "dance",
-        "count": 1
+        "word": "movie",
+        "count": 10
       },
       {
-        "word": "departed",
-        "count": 1
+        "word": "harry",
+        "count": 9
       },
       {
-        "word": "devil",
-        "count": 1
+        "word": "men",
+        "count": 9
       },
       {
-        "word": "dictator",
-        "count": 1
+        "word": "mirror",
+        "count": 9
       },
       {
-        "word": "dragons",
-        "count": 1
+        "word": "world",
+        "count": 9
       },
       {
-        "word": "dungeons",
-        "count": 1
+        "word": "arc",
+        "count": 8
       },
       {
-        "word": "eleven",
-        "count": 1
+        "word": "evil",
+        "count": 8
       },
       {
-        "word": "end",
-        "count": 1
+        "word": "final",
+        "count": 8
       },
       {
-        "word": "ernest",
-        "count": 1
+        "word": "one",
+        "count": 8
       },
       {
-        "word": "fargo",
-        "count": 1
+        "word": "potter",
+        "count": 8
       },
       {
-        "word": "feelings",
-        "count": 1
+        "word": "story",
+        "count": 8
       },
       {
-        "word": "fellowship",
-        "count": 1
+        "word": "fantastic",
+        "count": 7
       },
       {
-        "word": "feminism",
-        "count": 1
+        "word": "furious",
+        "count": 7
       },
       {
-        "word": "frankenstein",
-        "count": 1
+        "word": "how",
+        "count": 7
       },
       {
-        "word": "freakier",
-        "count": 1
+        "word": "star",
+        "count": 7
+      },
+      {
+        "word": "train",
+        "count": 7
+      },
+      {
+        "word": "war",
+        "count": 7
+      },
+      {
+        "word": "wars",
+        "count": 7
+      },
+      {
+        "word": "you",
+        "count": 7
+      },
+      {
+        "word": "fast",
+        "count": 6
+      },
+      {
+        "word": "ghost",
+        "count": 6
+      },
+      {
+        "word": "life",
+        "count": 6
+      },
+      {
+        "word": "night",
+        "count": 6
+      },
+      {
+        "word": "resident",
+        "count": 6
+      },
+      {
+        "word": "street",
+        "count": 6
+      },
+      {
+        "word": "your",
+        "count": 6
+      },
+      {
+        "word": "american",
+        "count": 5
+      },
+      {
+        "word": "beasts",
+        "count": 5
       }
     ]
   }

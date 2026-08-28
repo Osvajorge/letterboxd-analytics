@@ -27,18 +27,44 @@ Merge order, richest source first:
 5. watchlist.csv becomes the watchlist array, never an entry.
 6. likes/films.csv, when present, sets the liked flag on entries already built.
 
-Two keys appear on export entries that the data contract does not list:
-slug_provisional and letterboxd_uri. Some export rows carry a boxd.it short
-link instead of a film URL, and a short link does not contain the slug. Those
-rows get a slug built from the title and year, flagged as provisional, with the
-original link kept so a later step can resolve it against Letterboxd. A title
-that yields no letters or digits falls back to the boxd.it id in the row's own
-link, because two different films under one slug merge into one entry and one
-of the two films disappears.
+Where a film's slug comes from:
+
+Every Letterboxd URI in a real export is a boxd.it short link, and a short link
+carries an opaque id rather than the slug. The whole pipeline joins on slug, so
+the export on its own cannot say which film a row is about. data/short-links.json
+is the answer: scripts/resolve_short_links.py follows each short link once and
+records the film slug it lands on. This script reads that map and uses it as the
+first source of a slug, ahead of anything built from a title.
+
+Without the map, every film in the export gets an invented slug. None of them
+match the RSS feed or the curated lists, so every film appears twice and list
+progress collapses to near zero. That is why the run reports how many slugs it
+had to invent, and why that number should be zero.
+
+A row the map does not cover keeps the older behaviour, and this is where the two
+keys the data contract does not list come from. The row gets a slug built from
+its title and year, flagged with slug_provisional, and its original link is kept
+in letterboxd_uri so a later run can resolve it. A title that yields no letters
+or digits falls back to the boxd.it id in the row's own link, because two
+different films under one slug merge into one entry and one of the two films
+disappears.
+
+Which files are read, and which are refused:
 
 Files are recognised by where they sit inside the export, never by file name
-alone. The likes folder holds other people's reviews and lists that the member
-liked, so likes/reviews.csv must never be read as the member's own reviews.csv.
+alone. The member's own diary.csv, reviews.csv, ratings.csv, watched.csv and
+watchlist.csv are read only at the export root, and films.csv only at the exact
+path likes/films.csv. Every other file is refused and named in the run summary.
+
+That rule is what keeps three sets of lookalikes out of the history. A real
+export holds deleted/ and orphaned/ folders whose diary.csv and reviews.csv have
+headers identical to the member's own, and a likes/ folder holding other people's
+reviews and lists. Reading any of them writes activity that was deleted, was
+orphaned, or belongs to somebody else into the history as if the member had
+watched it.
+
+profile.csv is refused by name and its bytes are never read, because it holds the
+member's email address and a published stats panel has no use for it.
 
 Every row the run does not keep is counted and printed: rows that named no
 film, rows that merged into an entry already built, and rows that repeated
@@ -68,30 +94,57 @@ from pathlib import Path
 from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from lib.config import HISTORY_FILE, LETTERBOXD_USER, ensure_dirs
+from lib.config import DATA, HISTORY_FILE, LETTERBOXD_USER, ensure_dirs
 
 # --------------------------------------------------------------------------
 # What the export looks like
 # --------------------------------------------------------------------------
 
-# Which source each file at the top level of the export belongs to. Position
-# inside the export decides this, never the bare file name: likes/reviews.csv is
-# other people's reviews that the member liked, and reading it as the member's
-# own reviews.csv writes other people's writing into this history.
-SOURCE_BY_TOP_LEVEL_FILE = {
+# The member's own files, each at the exact path it has inside the export, and
+# the source it feeds. The whole path decides this, never the bare file name,
+# because an export holds several files that carry the member's headers without
+# holding the member's current activity:
+#
+#   deleted/diary.csv     entries the member deleted
+#   orphaned/diary.csv    entries whose film Letterboxd no longer has
+#   likes/reviews.csv     other people's reviews that the member liked
+#
+# Their headers are identical to the files at the root. A parser that matched on
+# the file name would write deleted, orphaned, or other people's activity into
+# this history as if the member had watched it.
+SOURCE_BY_EXPORT_PATH = {
     "diary.csv": "diary",
     "reviews.csv": "reviews",
     "ratings.csv": "ratings",
     "watched.csv": "watched",
     "watchlist.csv": "watchlist",
+    "likes/films.csv": "likes",
 }
 
-# The only file below the top level that belongs to the member.
-LIKED_FILMS_PATH = "likes/films.csv"
+# The bare names of those files. A refused path that ends in one of them is a
+# lookalike, and the run names it separately from a file that merely went unread,
+# so the reader can see the refusal was deliberate rather than accidental.
+MEMBER_FILE_NAMES = frozenset(path.rsplit("/", 1)[-1] for path in SOURCE_BY_EXPORT_PATH)
 
-# Folders the export gives a meaning to. None of them is the dated folder the
-# export is wrapped in, so removing shared folders stops at one of these.
-NON_WRAPPER_FOLDERS = frozenset({"likes", "lists", "deleted"})
+# Files this parser must never read, whatever else changes. profile.csv holds the
+# member's email address next to their account settings, and this pipeline
+# publishes a public web page. Refusing it by name, before its bytes are read,
+# means nobody can start reading it by accident later: adding an entry to
+# SOURCE_BY_EXPORT_PATH is not enough to open it.
+PRIVATE_FILE_NAMES = frozenset({"profile.csv"})
+
+# Every folder the export itself gives a meaning to. None of them is the dated
+# folder the export is wrapped in, so removing the shared wrapper folders stops
+# at one of these. A folder missing from this set can be stripped away as if it
+# were a wrapper, and its diary.csv then reads as the member's own. That is why
+# "orphaned" belongs here beside "deleted".
+NON_WRAPPER_FOLDERS = frozenset({"likes", "lists", "deleted", "orphaned"})
+
+# Where scripts/resolve_short_links.py stores the boxd.it short id to film slug
+# map. The path is spelled out here rather than imported from that script,
+# because reading a JSON file needs no HTTP client and this script should not
+# pull one in.
+SHORT_LINKS_FILE = DATA / "short-links.json"
 
 # Accepted header spellings, already normalized. Order is preference order.
 FILM_URI_HEADERS = ("letterboxd uri", "letterboxd url", "film uri", "film url", "uri", "url")
@@ -112,6 +165,15 @@ TRUTHY_VALUES = {"yes", "true", "1", "y"}
 # its title. The run reports how many of these it had to fall back on.
 ROW_IDENTITY_SLUG_PREFIXES = ("boxd-", "untitled-")
 
+# Where a row's slug came from. The run reports these per file, because a slug
+# invented from a title matches nothing else in the pipeline, and the count of
+# invented slugs is the quickest way to see whether the short-link map covered
+# this export.
+SLUG_FROM_FILM_URL = "film url"
+SLUG_FROM_SHORT_LINK_MAP = "short link map"
+SLUG_FROM_ANOTHER_EXPORT_FILE = "another file in the export"
+SLUG_INVENTED_FROM_TITLE = "title"
+
 
 class BackfillError(Exception):
     """Something about the export stops the run and needs a human decision."""
@@ -127,13 +189,24 @@ class ExportColumnMissing(BackfillError):
 
 @dataclass(frozen=True)
 class FilmReference:
-    """One film as a single export row identifies it."""
+    """One film as a single export row identifies it.
+
+    slug_source records where the slug came from, so the run can say how many
+    slugs it had to invent. Only a slug invented from a title is provisional. A
+    slug read from a film URL, looked up in the short-link map, or borrowed from
+    another file in the same export is the film's real slug.
+    """
 
     slug: str
-    slug_is_provisional: bool
+    slug_source: str
     letterboxd_uri: str | None
     title: str | None
     year: int | None
+
+    @property
+    def slug_is_provisional(self) -> bool:
+        """Say whether this slug was invented here instead of read from a source."""
+        return self.slug_source == SLUG_INVENTED_FROM_TITLE
 
 
 @dataclass(frozen=True)
@@ -143,11 +216,19 @@ class ExportContents:
     The unread files are carried out of here so the run can report them. A file
     this parser does not use is normal, but the reader still gets to see that it
     was seen and passed over.
+
+    They are split by why they went unread. refused_lookalikes holds the files
+    that carry the member's headers without being the member's current activity,
+    such as deleted/diary.csv. private_files holds the files that must never be
+    read at all. Both are named in the run summary, because a refusal nobody can
+    see is a refusal nobody can check.
     """
 
     tables: dict[str, SourceTable]
     ignored_files: list[str]
     duplicate_files: list[tuple[str, str]]
+    refused_lookalikes: list[str]
+    private_files: list[str]
 
 
 @dataclass(frozen=True)
@@ -251,6 +332,20 @@ def is_export_file(member_path: str) -> bool:
     return normalize_member_path(member_path).endswith(".csv")
 
 
+def is_private_file(member_path: str) -> bool:
+    """Say whether a file must never be read, wherever in the export it sits.
+
+    profile.csv holds the member's email address alongside their account
+    settings, and this pipeline publishes a public web page. An address that is
+    never read cannot be written out by mistake, so the readers list this file
+    instead of opening it, and its bytes never enter the process.
+
+    The bare file name is matched rather than the full path, so a copy of it in
+    any folder of the export is refused too.
+    """
+    return normalize_member_path(member_path).rsplit("/", 1)[-1] in PRIVATE_FILE_NAMES
+
+
 def wrapper_depth(normalized_paths: Sequence[str]) -> int:
     """Count the leading folders every file in the export shares.
 
@@ -285,19 +380,16 @@ def classify_member(relative_path: str) -> str | None:
     """Name the source a file belongs to, or None when it is not a source.
 
     relative_path is the path inside the export's wrapper folder, normalized by
-    normalize_member_path and shortened by strip_wrapper. The folder a file sits
-    in decides the answer, because several file names appear twice in an export
-    under different owners: reviews.csv at the top level is the member's own
-    writing, while likes/reviews.csv is other people's reviews the member liked.
+    normalize_member_path and shortened by strip_wrapper. The whole path has to
+    match, because the folder a file sits in is what tells the member's own files
+    from the lookalikes: reviews.csv at the root is the member's own writing,
+    likes/reviews.csv is other people's reviews the member liked, and
+    orphaned/reviews.csv is writing about films Letterboxd no longer has.
 
-    The export also holds comments.csv, profile.csv, and a lists folder. None of
-    those feed the watch history, so they return None and the run counts them.
+    Everything else returns None: comments.csv, profile.csv, the lists folder,
+    and the whole of the deleted and orphaned folders. The run names them.
     """
-    if relative_path == LIKED_FILMS_PATH:
-        return "likes"
-    if "/" in relative_path:
-        return None
-    return SOURCE_BY_TOP_LEVEL_FILE.get(relative_path)
+    return SOURCE_BY_EXPORT_PATH.get(relative_path)
 
 
 def _member_sort_key(member_path: str) -> tuple[int, str]:
@@ -306,23 +398,47 @@ def _member_sort_key(member_path: str) -> tuple[int, str]:
     return (normalized.count("/"), normalized)
 
 
-def _read_zip(archive_path: Path) -> list[tuple[str, bytes]]:
-    """Read the export files out of a ZIP, shallowest path first."""
+def _read_zip(archive_path: Path) -> tuple[list[tuple[str, bytes]], list[str]]:
+    """Read the export files out of a ZIP, shallowest path first.
+
+    Returns the files that were read, and the paths of the files that were
+    refused unread by is_private_file. The refused paths come back rather than
+    disappearing, because the run has to name them and because they still count
+    towards the shared wrapper folder that strip_wrapper removes.
+    """
     with zipfile.ZipFile(archive_path) as archive:
         names = sorted(
             (name for name in archive.namelist() if is_export_file(name)),
             key=_member_sort_key,
         )
-        return [(name, archive.read(name)) for name in names]
+        opened: list[tuple[str, bytes]] = []
+        refused: list[str] = []
+        for name in names:
+            if is_private_file(name):
+                refused.append(name)
+            else:
+                opened.append((name, archive.read(name)))
+        return opened, refused
 
 
-def _read_directory(directory: Path) -> list[tuple[str, bytes]]:
-    """Read the export files out of an unpacked export, shallowest path first."""
+def _read_directory(directory: Path) -> tuple[list[tuple[str, bytes]], list[str]]:
+    """Read the export files out of an unpacked export, shallowest path first.
+
+    Returns the same two lists as _read_zip, for the same reasons.
+    """
     files = sorted(
         (path for path in directory.rglob("*") if path.is_file() and is_export_file(str(path))),
         key=lambda path: _member_sort_key(str(path.relative_to(directory))),
     )
-    return [(str(path.relative_to(directory)), path.read_bytes()) for path in files]
+    opened: list[tuple[str, bytes]] = []
+    refused: list[str] = []
+    for path in files:
+        member_path = str(path.relative_to(directory))
+        if is_private_file(str(path)):
+            refused.append(member_path)
+        else:
+            opened.append((member_path, path.read_bytes()))
+    return opened, refused
 
 
 def decode_csv(raw: bytes, member_path: str) -> str:
@@ -381,10 +497,30 @@ def read_export(export_path: Path) -> ExportContents:
             f"or to the directory you unzipped it into."
         )
 
+    # Pointing this script at one folder inside the export would make that
+    # folder look like the export's root, and orphaned/diary.csv would then read
+    # as the member's own diary. Nothing inside the file listing can tell the two
+    # apart, so the folder's own name is checked here.
+    #
+    # The name is read from the resolved path, never from the path as it was
+    # typed. Path(".").name is the empty string, so "backfill.py ." run from
+    # inside orphaned/ used to walk straight past this check, and that is the
+    # likeliest way to reach the failure the check exists to stop. Path("..")
+    # and a trailing slash have the same problem.
+    folder_name = export_path.resolve().name.lower() if export_path.is_dir() else ""
+    if folder_name in NON_WRAPPER_FOLDERS:
+        raise ExportNotReadable(
+            f"{export_path.resolve()} is the export's {folder_name} folder, not the export "
+            f"itself.\n"
+            f"  Files in there are not the member's current activity: deleted and orphaned hold "
+            f"entries Letterboxd removed, likes and lists hold other people's work.\n"
+            f"  What to do: pass the folder that holds diary.csv and watched.csv."
+        )
+
     if export_path.is_dir():
-        members = _read_directory(export_path)
+        members, refused_members = _read_directory(export_path)
     elif zipfile.is_zipfile(export_path):
-        members = _read_zip(export_path)
+        members, refused_members = _read_zip(export_path)
     else:
         raise ExportNotReadable(
             f"{export_path} is neither a ZIP archive nor a directory.\n"
@@ -399,16 +535,35 @@ def read_export(export_path: Path) -> ExportContents:
         normalized = normalize_member_path(member_path)
         if not is_archive_noise(normalized):
             export_files.append((member_path, normalized, raw))
-    depth = wrapper_depth([normalized for _, normalized, _ in export_files])
+
+    # A refused file is still one of the export's files, so it is measured with
+    # the rest. Leaving it out would let its absence change the shared wrapper
+    # depth, and one folder of difference is enough to leave every CSV
+    # unrecognised.
+    refused_paths = [
+        normalized
+        for normalized in (normalize_member_path(path) for path in refused_members)
+        if not is_archive_noise(normalized)
+    ]
+    depth = wrapper_depth([normalized for _, normalized, _ in export_files] + refused_paths)
+    private_files = [strip_wrapper(normalized, depth) for normalized in refused_paths]
 
     tables: dict[str, SourceTable] = {}
     ignored_files: list[str] = []
+    refused_lookalikes: list[str] = []
     duplicate_files: list[tuple[str, str]] = []
     for member_path, normalized, raw in export_files:
         relative_path = strip_wrapper(normalized, depth)
         source = classify_member(relative_path)
         if source is None:
-            ignored_files.append(relative_path)
+            # A refused file that carries a member file's name is reported on its
+            # own line, because it is the one a reader would expect to have been
+            # read: deleted/diary.csv and orphaned/diary.csv have exactly the
+            # headers of the diary.csv beside them.
+            if relative_path.rsplit("/", 1)[-1] in MEMBER_FILE_NAMES:
+                refused_lookalikes.append(relative_path)
+            else:
+                ignored_files.append(relative_path)
             continue
         if source in tables:
             # Named as it is written in the export, because the shortened path
@@ -418,20 +573,72 @@ def read_export(export_path: Path) -> ExportContents:
         tables[source] = parse_csv(source, relative_path, decode_csv(raw, member_path))
 
     if not tables:
-        found = ", ".join(ignored_files[:8]) or "(no files at all)"
+        seen = refused_lookalikes + ignored_files + private_files
+        found = ", ".join(seen[:8]) or "(no files at all)"
         raise ExportNotReadable(
             f"{export_path} holds no file this parser recognises.\n"
-            f"  Looked for: {', '.join(sorted(SOURCE_BY_TOP_LEVEL_FILE))}, {LIKED_FILMS_PATH}\n"
+            f"  Looked for: {', '.join(sorted(SOURCE_BY_EXPORT_PATH))}\n"
             f"  Found instead: {found}\n"
             f"  What to do: check that you passed the Letterboxd export and not another archive. "
-            f"If the path holds more than one export, pass one export folder rather than the "
-            f"folder containing them, so the files can be told apart."
+            f"A file such as deleted/diary.csv is refused on purpose, so pass the folder that "
+            f"holds diary.csv rather than a folder inside it. If the path holds more than one "
+            f"export, pass one export folder rather than the folder containing them."
         )
     return ExportContents(
         tables=tables,
         ignored_files=ignored_files,
         duplicate_files=duplicate_files,
+        refused_lookalikes=refused_lookalikes,
+        private_files=private_files,
     )
+
+
+def load_short_link_slugs(path: Path = SHORT_LINKS_FILE) -> dict[str, str]:
+    """Read the boxd.it short id to film slug map, or an empty map if there is none.
+
+    Every Letterboxd URI in a real export is a boxd.it short link, and a short
+    link carries an opaque id rather than the slug. This map is how the export's
+    films get their real slugs, which is what lets them match the RSS feed and
+    the curated lists. scripts/resolve_short_links.py writes it.
+
+    Short ids are base62 and case-sensitive, so they are read exactly as written.
+    One real export holds both boxd.it/1JzG, which is Inglourious Basterds, and
+    boxd.it/1jzg, which is Paris Is Burning.
+
+    Ids stored as null are dropped. They are short links that point at a list or
+    a member page rather than at a film, so they name no slug.
+
+    A missing file is not fatal: the run still produces a history and reports
+    every slug it had to invent. A file that exists but cannot be read is fatal,
+    because carrying on would invent every slug in the export without the reader
+    having asked for that.
+    """
+    if not path.exists():
+        return {}
+
+    try:
+        stored = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as error:
+        raise BackfillError(
+            f"{path} exists but could not be read as JSON ({error}).\n"
+            f"  Without it every film in the export gets a slug invented from its title, and "
+            f"an invented slug matches nothing in the RSS feed or the curated lists.\n"
+            f"  What to do: restore the file from git, or delete it and run "
+            f"scripts/resolve_short_links.py against this export to rebuild it."
+        ) from error
+
+    if not isinstance(stored, dict):
+        raise BackfillError(
+            f"{path} is not a JSON object mapping a short id to a film slug.\n"
+            f"  What to do: delete it and run scripts/resolve_short_links.py against this "
+            f"export to rebuild it."
+        )
+
+    return {
+        short_id: slug
+        for short_id, slug in stored.items()
+        if isinstance(short_id, str) and isinstance(slug, str) and slug
+    }
 
 
 # --------------------------------------------------------------------------
@@ -587,12 +794,18 @@ def film_reference(
     uri_header: str | None,
     title_header: str | None,
     year_header: str | None,
+    short_link_slugs: dict[str, str],
 ) -> FilmReference | None:
     """Identify the film one row is about, or None when the row names no film.
 
-    The Letterboxd URL is the only trustworthy identifier, because the whole
-    pipeline joins on slug. When the row carries a short link instead, the slug
-    is built from the title and marked provisional.
+    The slug is looked for in three places, best answer first:
+
+    1. the row's own link, when it is a full film URL that spells the slug out;
+    2. the short-link map, which is where a real export's slugs come from,
+       because every URI a real export carries is a boxd.it short link;
+    3. the title and year, which only invents a slug shaped like a Letterboxd
+       one. Nothing else in the pipeline joins on it, so this is a last resort
+       and the run reports how often it was needed.
     """
     uri = cell(row, uri_header)
     title = cell(row, title_header)
@@ -600,11 +813,19 @@ def film_reference(
 
     slug = slug_from_uri(uri)
     if slug is not None:
-        return FilmReference(slug, False, uri, title, year)
+        return FilmReference(slug, SLUG_FROM_FILM_URL, uri, title, year)
+
+    short_id = boxd_id(uri)
+    if short_id is not None:
+        resolved = short_link_slugs.get(short_id)
+        if resolved is not None:
+            return FilmReference(resolved, SLUG_FROM_SHORT_LINK_MAP, uri, title, year)
 
     if title is None:
         return None
-    return FilmReference(provisional_slug(title, year, uri), True, uri, title, year)
+    return FilmReference(
+        provisional_slug(title, year, uri), SLUG_INVENTED_FROM_TITLE, uri, title, year
+    )
 
 
 # --------------------------------------------------------------------------
@@ -612,8 +833,15 @@ def film_reference(
 # --------------------------------------------------------------------------
 
 
-def parse_rows(table: SourceTable) -> tuple[list[ParsedRow], dict[str, int]]:
+def parse_rows(
+    table: SourceTable,
+    short_link_slugs: dict[str, str],
+) -> tuple[list[ParsedRow], dict[str, int]]:
     """Read one source table into rows the merge step can use.
+
+    short_link_slugs turns this file's boxd.it links into real film slugs. The
+    counters returned say how many rows it answered for and how many rows were
+    left with an invented slug, because an invented slug joins to nothing.
 
     Raises ExportColumnMissing when the table lacks a column its source needs:
     a film identity everywhere, a watched date in diary.csv, a rating in
@@ -629,6 +857,8 @@ def parse_rows(table: SourceTable) -> tuple[list[ParsedRow], dict[str, int]]:
             "blank_rows": table.blank_rows,
             "rows_without_a_film": 0,
             "unreadable_dates": 0,
+            "slugs_from_the_short_link_map": 0,
+            "slugs_invented_from_a_title": 0,
         }
 
     uri_header = table.header_for("the film URL", FILM_URI_HEADERS, required=False)
@@ -669,13 +899,20 @@ def parse_rows(table: SourceTable) -> tuple[list[ParsedRow], dict[str, int]]:
         "blank_rows": table.blank_rows,
         "rows_without_a_film": 0,
         "unreadable_dates": 0,
+        "slugs_from_the_short_link_map": 0,
+        "slugs_invented_from_a_title": 0,
     }
 
     for row in table.rows:
-        film = film_reference(row, uri_header, title_header, year_header)
+        film = film_reference(row, uri_header, title_header, year_header, short_link_slugs)
         if film is None:
             counters["rows_without_a_film"] += 1
             continue
+
+        if film.slug_source == SLUG_FROM_SHORT_LINK_MAP:
+            counters["slugs_from_the_short_link_map"] += 1
+        elif film.slug_source == SLUG_INVENTED_FROM_TITLE:
+            counters["slugs_invented_from_a_title"] += 1
 
         raw_watched = cell(row, watched_header)
         watched_date = parse_date(raw_watched)
@@ -699,10 +936,10 @@ def parse_rows(table: SourceTable) -> tuple[list[ParsedRow], dict[str, int]]:
 def index_real_slugs(rows: Iterable[ParsedRow]) -> dict[tuple[str, int | None], str]:
     """Map title and year to the real slug, for rows that carried a film URL.
 
-    An export can mix the two link styles: ratings.csv with full film URLs and
-    diary.csv with short links, for example. This index lets a short-link row
-    borrow the real slug of the same film rather than opening a second entry
-    under a provisional one.
+    This is the last chance for a row the short-link map did not cover. An
+    export can mix link styles, and one file may spell out a slug that another
+    file gives only as an unresolved short link. The index lets that row borrow
+    the real slug rather than opening a second entry under an invented one.
     """
     index: dict[tuple[str, int | None], str] = {}
     for row in rows:
@@ -723,7 +960,9 @@ def resolve_slug(row: ParsedRow, index: dict[tuple[str, int | None], str]) -> Pa
     real_slug = index.get(key) or index.get((key[0], None))
     if real_slug is None:
         return row
-    return replace(row, film=replace(film, slug=real_slug, slug_is_provisional=False))
+    return replace(
+        row, film=replace(film, slug=real_slug, slug_source=SLUG_FROM_ANOTHER_EXPORT_FILE)
+    )
 
 
 # --------------------------------------------------------------------------
@@ -889,26 +1128,35 @@ def build_watchlist(rows: Iterable[ParsedRow]) -> tuple[list[dict[str, Any]], di
     """Turn watchlist rows into the watchlist array, one record per film.
 
     The export is the only source that records when a film was added to the
-    watchlist, so every date written here is the real one and
-    added_date_estimated is false. The weekly reader of the public watchlist
-    pages keeps any date it already has, so these real dates survive it, and it
-    marks a film it sees for the first time as estimated instead.
+    watchlist, so a date read from it is the real one and added_date_estimated
+    is false. The weekly reader of the public watchlist pages keeps any date it
+    already has, so these real dates survive it, and it marks a film it sees for
+    the first time as estimated instead.
+
+    A row whose date cell is blank or unreadable gets no date, and it must not
+    claim one: added_date_estimated is false only when a real date was read.
+    Writing false beside a missing date would publish "added on nothing" as a
+    measurement, and extras.watchlist.estimated_date_share is what the site uses
+    to say how much of the watchlist age figure is guesswork.
 
     Returns the watchlist and a count of the repeated rows it dropped, so a film
-    listed twice is reported rather than quietly halving the row count.
+    listed twice is reported rather than quietly halving the row count, and a
+    count of the rows that carried no readable date.
     """
     watchlist: dict[str, dict[str, Any]] = {}
-    counters = {"repeated_watchlist_rows": 0}
+    counters = {"repeated_watchlist_rows": 0, "watchlist_rows_without_a_date": 0}
     for row in rows:
         if row.film.slug in watchlist:
             counters["repeated_watchlist_rows"] += 1
             continue
+        if row.logged_date is None:
+            counters["watchlist_rows_without_a_date"] += 1
         watchlist[row.film.slug] = {
             "slug": row.film.slug,
             "title": row.film.title,
             "year": row.film.year,
             "added_date": row.logged_date,
-            "added_date_estimated": False,
+            "added_date_estimated": row.logged_date is None,
         }
     ordered = sorted(
         watchlist.values(),
@@ -917,8 +1165,15 @@ def build_watchlist(rows: Iterable[ParsedRow]) -> tuple[list[dict[str, Any]], di
     return ordered, counters
 
 
-def build_history(contents: ExportContents) -> tuple[dict[str, Any], dict[str, Any]]:
+def build_history(
+    contents: ExportContents,
+    short_link_slugs: dict[str, str],
+) -> tuple[dict[str, Any], dict[str, Any]]:
     """Read every table and return the history document and a run summary.
+
+    short_link_slugs is passed in rather than read here, so that this function
+    stays a pure reading of what it was given and a caller can build a history
+    from a map it chose. load_short_link_slugs reads the committed one.
 
     The summary accounts for every row: the ones that became entries, and the
     ones that did not, each under the reason it did not.
@@ -927,7 +1182,7 @@ def build_history(contents: ExportContents) -> tuple[dict[str, Any], dict[str, A
     per_source_counters: dict[str, dict[str, Any]] = {}
 
     for source, table in contents.tables.items():
-        rows, counters = parse_rows(table)
+        rows, counters = parse_rows(table, short_link_slugs)
         rows_by_source[source] = rows
         per_source_counters[source] = {"file": table.member_path, **counters}
 
@@ -974,7 +1229,24 @@ def build_history(contents: ExportContents) -> tuple[dict[str, Any], dict[str, A
         "sources": per_source_counters,
         "ignored_files": contents.ignored_files,
         "duplicate_files": contents.duplicate_files,
+        "refused_lookalikes": contents.refused_lookalikes,
+        "private_files": contents.private_files,
         "rows_not_kept": rows_not_kept,
+        "short_link_map_films": len(short_link_slugs),
+        "rows_with_a_slug_from_the_short_link_map": sum(
+            counters["slugs_from_the_short_link_map"] for counters in per_source_counters.values()
+        ),
+        "rows_with_a_slug_invented_from_a_title": sum(
+            counters["slugs_invented_from_a_title"] for counters in per_source_counters.values()
+        ),
+        "films_with_a_slug_from_the_short_link_map": len(
+            {
+                row.film.slug
+                for rows in rows_by_source.values()
+                for row in rows
+                if row.film.slug_source == SLUG_FROM_SHORT_LINK_MAP
+            }
+        ),
         "entries": len(entries),
         "with_a_date": sum(1 for entry in entries if entry["watched_date"]),
         "with_a_rating": sum(1 for entry in entries if entry["rating"] is not None),
@@ -984,6 +1256,7 @@ def build_history(contents: ExportContents) -> tuple[dict[str, Any], dict[str, A
             1 for entry in entries if slug_is_from_row_identity(entry["slug"])
         ),
         "watchlist": len(watchlist),
+        "watchlist_films_without_a_date": watchlist_counters["watchlist_rows_without_a_date"],
     }
     return history, summary
 
@@ -1023,7 +1296,20 @@ def print_summary(export_path: Path, summary: dict[str, Any], target: Path) -> N
             line += f", {counters['rows_without_a_film']} named no film"
         if counters["unreadable_dates"]:
             line += f", {counters['unreadable_dates']} dates unreadable"
+        if counters["slugs_from_the_short_link_map"]:
+            line += f", {counters['slugs_from_the_short_link_map']} slugs from the short-link map"
+        if counters["slugs_invented_from_a_title"]:
+            line += f", {counters['slugs_invented_from_a_title']} slugs invented from a title"
         print(line)
+
+    for path in summary["private_files"]:
+        print(f"  {path} was refused unread: it holds the member's email address")
+    for path in summary["refused_lookalikes"]:
+        member_file = path.rsplit("/", 1)[-1]
+        print(
+            f"  {path} was refused: it has the headers of {member_file} but is not the "
+            f"member's own, which is only read at the export root"
+        )
 
     ignored = summary["ignored_files"]
     if ignored:
@@ -1044,6 +1330,33 @@ def print_summary(export_path: Path, summary: dict[str, Any], target: Path) -> N
     else:
         print("  none, every row either became an entry or added to one")
 
+    # The slug is what the RSS feed, the curated lists, and the TMDB cache all
+    # join on, so how many slugs were read and how many were invented is the one
+    # number that says whether this history can be matched to anything.
+    known = summary["short_link_map_films"]
+    rows_resolved = summary["rows_with_a_slug_from_the_short_link_map"]
+    films_resolved = summary["films_with_a_slug_from_the_short_link_map"]
+    made_up = summary["rows_with_a_slug_invented_from_a_title"]
+    print("\nSlugs, which are what the rest of the pipeline joins on:")
+    print(f"  short links the map knows:     {known:>6}")
+    print(f"  rows the map answered for:     {rows_resolved:>6}")
+    print(f"  distinct films it named:       {films_resolved:>6}")
+    print(f"  rows left with a made-up slug: {made_up:>6}")
+    if known == 0:
+        print(
+            f"  {SHORT_LINKS_FILE} named no film, so every slug here was invented from a "
+            f"title and matches nothing in the RSS feed or the curated lists.\n"
+            f"  What to do: run scripts/resolve_short_links.py against this export first, "
+            f"then run this script again."
+        )
+    elif made_up:
+        print(
+            f"  Those rows match nothing in the RSS feed or the curated lists, so their films "
+            f"will appear twice and count for nothing in list progress.\n"
+            f"  What to do: run scripts/resolve_short_links.py against this export to add the "
+            f"missing short links to {SHORT_LINKS_FILE}, then run this script again."
+        )
+
     print(f"\nEntries: {summary['entries']}")
     print(f"  with a watched date: {summary['with_a_date']}")
     print(f"  with a rating:       {summary['with_a_rating']}")
@@ -1051,14 +1364,25 @@ def print_summary(export_path: Path, summary: dict[str, Any], target: Path) -> N
     if summary["provisional_slugs"]:
         print(
             f"  provisional slugs:   {summary['provisional_slugs']} "
-            f"(built from the title, still to be resolved)"
+            f"(invented from the title, still to be resolved)"
         )
     if summary["slugs_from_the_row_itself"]:
         print(
             f"  of those, {summary['slugs_from_the_row_itself']} had no usable title and are "
             f"keyed on the row's own link instead"
         )
-    print(f"Watchlist: {summary['watchlist']} films")
+    undated_watchlist = summary["watchlist_films_without_a_date"]
+    if undated_watchlist:
+        print(
+            f"Watchlist: {summary['watchlist']} films, "
+            f"{summary['watchlist'] - undated_watchlist} with an added date read from the export"
+        )
+        print(
+            f"  {undated_watchlist} rows had no readable date, so those films are marked as "
+            f"having no real added date and the weekly watchlist run will estimate one"
+        )
+    else:
+        print(f"Watchlist: {summary['watchlist']} films, every added date read from the export")
     print(f"\nWrote {target}")
 
 
@@ -1092,7 +1416,7 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     try:
         contents = read_export(arguments.export)
-        history, summary = build_history(contents)
+        history, summary = build_history(contents, load_short_link_slugs())
     except BackfillError as error:
         print(error, file=sys.stderr)
         return 1

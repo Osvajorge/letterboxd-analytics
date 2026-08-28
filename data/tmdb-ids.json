@@ -1,0 +1,3310 @@
+{
+  "10-cloverfield-lane": {
+    "tmdb_id": 333371,
+    "tmdb_type": "movie"
+  },
+  "12-years-a-slave": {
+    "tmdb_id": 76203,
+    "tmdb_type": "movie"
+  },
+  "13-hours-the-secret-soldiers-of-benghazi": {
+    "tmdb_id": 300671,
+    "tmdb_type": "movie"
+  },
+  "14-peaks-nothing-is-impossible": {
+    "tmdb_id": 890825,
+    "tmdb_type": "movie"
+  },
+  "1917": {
+    "tmdb_id": 530915,
+    "tmdb_type": "movie"
+  },
+  "2-fast-2-furious": {
+    "tmdb_id": 584,
+    "tmdb_type": "movie"
+  },
+  "2012": {
+    "tmdb_id": 14161,
+    "tmdb_type": "movie"
+  },
+  "2046": {
+    "tmdb_id": 844,
+    "tmdb_type": "movie"
+  },
+  "21": {
+    "tmdb_id": 8065,
+    "tmdb_type": "movie"
+  },
+  "21-jump-street": {
+    "tmdb_id": 64688,
+    "tmdb_type": "movie"
+  },
+  "22-jump-street": {
+    "tmdb_id": 187017,
+    "tmdb_type": "movie"
+  },
+  "30-days-of-night": {
+    "tmdb_id": 4513,
+    "tmdb_type": "movie"
+  },
+  "71": {
+    "tmdb_id": 252178,
+    "tmdb_type": "movie"
+  },
+  "a-bugs-life": {
+    "tmdb_id": 9487,
+    "tmdb_type": "movie"
+  },
+  "a-clockwork-orange": {
+    "tmdb_id": 185,
+    "tmdb_type": "movie"
+  },
+  "a-cure-for-wellness": {
+    "tmdb_id": 340837,
+    "tmdb_type": "movie"
+  },
+  "a-ghost-story-2017": {
+    "tmdb_id": 428449,
+    "tmdb_type": "movie"
+  },
+  "a-goofy-movie": {
+    "tmdb_id": 15789,
+    "tmdb_type": "movie"
+  },
+  "a-monster-calls": {
+    "tmdb_id": 258230,
+    "tmdb_type": "movie"
+  },
+  "a-quiet-place-2018": {
+    "tmdb_id": 447332,
+    "tmdb_type": "movie"
+  },
+  "a-quiet-place-part-ii": {
+    "tmdb_id": 520763,
+    "tmdb_type": "movie"
+  },
+  "a-short-film-about-killing": {
+    "tmdb_id": 10754,
+    "tmdb_type": "movie"
+  },
+  "a-trip-to-the-moon": {
+    "tmdb_id": 775,
+    "tmdb_type": "movie"
+  },
+  "aftersun": {
+    "tmdb_id": 965150,
+    "tmdb_type": "movie"
+  },
+  "akira": {
+    "tmdb_id": 149,
+    "tmdb_type": "movie"
+  },
+  "aladdin-2019": {
+    "tmdb_id": 420817,
+    "tmdb_type": "movie"
+  },
+  "alcarras": {
+    "tmdb_id": 804251,
+    "tmdb_type": "movie"
+  },
+  "all-quiet-on-the-western-front-2022": {
+    "tmdb_id": 49046,
+    "tmdb_type": "movie"
+  },
+  "allegiant": {
+    "tmdb_id": 262504,
+    "tmdb_type": "movie"
+  },
+  "alvin-and-the-chipmunks": {
+    "tmdb_id": 6477,
+    "tmdb_type": "movie"
+  },
+  "alvin-and-the-chipmunks-the-squeakquel": {
+    "tmdb_id": 23398,
+    "tmdb_type": "movie"
+  },
+  "ambulance-2022": {
+    "tmdb_id": 763285,
+    "tmdb_type": "movie"
+  },
+  "amelie": {
+    "tmdb_id": 194,
+    "tmdb_type": "movie"
+  },
+  "american-beauty": {
+    "tmdb_id": 14,
+    "tmdb_type": "movie"
+  },
+  "american-gangster": {
+    "tmdb_id": 4982,
+    "tmdb_type": "movie"
+  },
+  "american-history-x": {
+    "tmdb_id": 73,
+    "tmdb_type": "movie"
+  },
+  "american-psycho": {
+    "tmdb_id": 1359,
+    "tmdb_type": "movie"
+  },
+  "american-sniper": {
+    "tmdb_id": 190859,
+    "tmdb_type": "movie"
+  },
+  "amores-perros": {
+    "tmdb_id": 55,
+    "tmdb_type": "movie"
+  },
+  "anatomy-of-a-fall": {
+    "tmdb_id": 915935,
+    "tmdb_type": "movie"
+  },
+  "anna-2019": {
+    "tmdb_id": 484641,
+    "tmdb_type": "movie"
+  },
+  "annabelle": {
+    "tmdb_id": 250546,
+    "tmdb_type": "movie"
+  },
+  "annette": {
+    "tmdb_id": 424277,
+    "tmdb_type": "movie"
+  },
+  "annihilation": {
+    "tmdb_id": 300668,
+    "tmdb_type": "movie"
+  },
+  "anora": {
+    "tmdb_id": 1064213,
+    "tmdb_type": "movie"
+  },
+  "another-round": {
+    "tmdb_id": 580175,
+    "tmdb_type": "movie"
+  },
+  "ant-man": {
+    "tmdb_id": 102899,
+    "tmdb_type": "movie"
+  },
+  "ant-man-and-the-wasp": {
+    "tmdb_id": 363088,
+    "tmdb_type": "movie"
+  },
+  "ant-man-and-the-wasp-quantumania": {
+    "tmdb_id": 640146,
+    "tmdb_type": "movie"
+  },
+  "apocalypse-now": {
+    "tmdb_id": 28,
+    "tmdb_type": "movie"
+  },
+  "apocalypse-z-the-beginning-of-the-end": {
+    "tmdb_id": 1118031,
+    "tmdb_type": "movie"
+  },
+  "apostle-2018": {
+    "tmdb_id": 424121,
+    "tmdb_type": "movie"
+  },
+  "argo": {
+    "tmdb_id": 68734,
+    "tmdb_type": "movie"
+  },
+  "army-of-shadows": {
+    "tmdb_id": 15383,
+    "tmdb_type": "movie"
+  },
+  "army-of-the-dead-2021": {
+    "tmdb_id": 503736,
+    "tmdb_type": "movie"
+  },
+  "arrival-2016": {
+    "tmdb_id": 329865,
+    "tmdb_type": "movie"
+  },
+  "as-above-so-below-2014": {
+    "tmdb_id": 256274,
+    "tmdb_type": "movie"
+  },
+  "asterix-obelix-mission-cleopatra": {
+    "tmdb_id": 2899,
+    "tmdb_type": "movie"
+  },
+  "asteroid-city": {
+    "tmdb_id": 747188,
+    "tmdb_type": "movie"
+  },
+  "athena-2022-1": {
+    "tmdb_id": 852046,
+    "tmdb_type": "movie"
+  },
+  "attack-on-titan-chronicle": {
+    "tmdb_id": 714194,
+    "tmdb_type": "movie"
+  },
+  "attack-on-titan-the-final-chapters-special-1-2023": {
+    "tmdb_id": 1200954,
+    "tmdb_type": "movie"
+  },
+  "attack-on-titan-the-final-chapters-special-2": {
+    "tmdb_id": 1201102,
+    "tmdb_type": "movie"
+  },
+  "avatar": {
+    "tmdb_id": 19995,
+    "tmdb_type": "movie"
+  },
+  "avatar-the-way-of-water": {
+    "tmdb_id": 76600,
+    "tmdb_type": "movie"
+  },
+  "avengers-age-of-ultron": {
+    "tmdb_id": 99861,
+    "tmdb_type": "movie"
+  },
+  "avengers-endgame": {
+    "tmdb_id": 299534,
+    "tmdb_type": "movie"
+  },
+  "avengers-infinity-war": {
+    "tmdb_id": 299536,
+    "tmdb_type": "movie"
+  },
+  "baby-driver": {
+    "tmdb_id": 339403,
+    "tmdb_type": "movie"
+  },
+  "babylon-2022": {
+    "tmdb_id": 615777,
+    "tmdb_type": "movie"
+  },
+  "ballerina-2025": {
+    "tmdb_id": 541671,
+    "tmdb_type": "movie"
+  },
+  "barbarian-2022": {
+    "tmdb_id": 913290,
+    "tmdb_type": "movie"
+  },
+  "barbie": {
+    "tmdb_id": 346698,
+    "tmdb_type": "movie"
+  },
+  "bardo-false-chronicle-of-a-handful-of-truths": {
+    "tmdb_id": 685691,
+    "tmdb_type": "movie"
+  },
+  "barry-lyndon": {
+    "tmdb_id": 3175,
+    "tmdb_type": "movie"
+  },
+  "batman-begins": {
+    "tmdb_id": 272,
+    "tmdb_type": "movie"
+  },
+  "batman-v-superman-dawn-of-justice": {
+    "tmdb_id": 209112,
+    "tmdb_type": "movie"
+  },
+  "beau-travail": {
+    "tmdb_id": 14626,
+    "tmdb_type": "movie"
+  },
+  "bee-movie": {
+    "tmdb_id": 5559,
+    "tmdb_type": "movie"
+  },
+  "beef-2023": {
+    "tmdb_id": null,
+    "tmdb_type": null
+  },
+  "beetlejuice": {
+    "tmdb_id": 4011,
+    "tmdb_type": "movie"
+  },
+  "beetlejuice-beetlejuice": {
+    "tmdb_id": 917496,
+    "tmdb_type": "movie"
+  },
+  "belle-2021": {
+    "tmdb_id": 776305,
+    "tmdb_type": "movie"
+  },
+  "berserk-1997": {
+    "tmdb_id": null,
+    "tmdb_type": null
+  },
+  "big-hero-6": {
+    "tmdb_id": 177572,
+    "tmdb_type": "movie"
+  },
+  "birdman-or-the-unexpected-virtue-of-ignorance": {
+    "tmdb_id": 194662,
+    "tmdb_type": "movie"
+  },
+  "birds-of-prey-and-the-fantabulous-emancipation-of-one-harley-quinn": {
+    "tmdb_id": 495764,
+    "tmdb_type": "movie"
+  },
+  "black-adam": {
+    "tmdb_id": 436270,
+    "tmdb_type": "movie"
+  },
+  "black-mirror-bandersnatch": {
+    "tmdb_id": 569547,
+    "tmdb_type": "movie"
+  },
+  "black-mirror-bete-noire": {
+    "tmdb_id": 1458459,
+    "tmdb_type": "movie"
+  },
+  "black-mirror-beyond-the-sea": {
+    "tmdb_id": 1140628,
+    "tmdb_type": "movie"
+  },
+  "black-mirror-common-people": {
+    "tmdb_id": 1458458,
+    "tmdb_type": "movie"
+  },
+  "black-mirror-demon-79": {
+    "tmdb_id": 1140631,
+    "tmdb_type": "movie"
+  },
+  "black-mirror-fifteen-million-merits": {
+    "tmdb_id": 495319,
+    "tmdb_type": "movie"
+  },
+  "black-mirror-joan-is-awful": {
+    "tmdb_id": 1135539,
+    "tmdb_type": "movie"
+  },
+  "black-mirror-loch-henry": {
+    "tmdb_id": 1140595,
+    "tmdb_type": "movie"
+  },
+  "black-mirror-mazey-day": {
+    "tmdb_id": 1140630,
+    "tmdb_type": "movie"
+  },
+  "black-panther": {
+    "tmdb_id": 284054,
+    "tmdb_type": "movie"
+  },
+  "black-panther-wakanda-forever": {
+    "tmdb_id": 505642,
+    "tmdb_type": "movie"
+  },
+  "blade": {
+    "tmdb_id": 36647,
+    "tmdb_type": "movie"
+  },
+  "blade-runner-2049": {
+    "tmdb_id": 335984,
+    "tmdb_type": "movie"
+  },
+  "bo-burnham-inside": {
+    "tmdb_id": 823754,
+    "tmdb_type": "movie"
+  },
+  "bodies-bodies-bodies": {
+    "tmdb_id": 520023,
+    "tmdb_type": "movie"
+  },
+  "bohemian-rhapsody": {
+    "tmdb_id": 424694,
+    "tmdb_type": "movie"
+  },
+  "bones-and-all": {
+    "tmdb_id": 791177,
+    "tmdb_type": "movie"
+  },
+  "boyhood": {
+    "tmdb_id": 85350,
+    "tmdb_type": "movie"
+  },
+  "brave-2012": {
+    "tmdb_id": 62177,
+    "tmdb_type": "movie"
+  },
+  "bridge-to-terabithia": {
+    "tmdb_id": 1265,
+    "tmdb_type": "movie"
+  },
+  "bring-her-back": {
+    "tmdb_id": 1151031,
+    "tmdb_type": "movie"
+  },
+  "broker-2022": {
+    "tmdb_id": 736732,
+    "tmdb_type": "movie"
+  },
+  "bullet-train": {
+    "tmdb_id": 718930,
+    "tmdb_type": "movie"
+  },
+  "call-me-by-your-name": {
+    "tmdb_id": 398818,
+    "tmdb_type": "movie"
+  },
+  "camp-rock": {
+    "tmdb_id": 13655,
+    "tmdb_type": "movie"
+  },
+  "captain-america-civil-war": {
+    "tmdb_id": 271110,
+    "tmdb_type": "movie"
+  },
+  "captain-america-the-first-avenger": {
+    "tmdb_id": 1771,
+    "tmdb_type": "movie"
+  },
+  "captain-america-the-winter-soldier": {
+    "tmdb_id": 100402,
+    "tmdb_type": "movie"
+  },
+  "captain-marvel": {
+    "tmdb_id": 299537,
+    "tmdb_type": "movie"
+  },
+  "carlitos-way": {
+    "tmdb_id": 6075,
+    "tmdb_type": "movie"
+  },
+  "carls-date": {
+    "tmdb_id": 1076364,
+    "tmdb_type": "movie"
+  },
+  "carrie-2013": {
+    "tmdb_id": 133805,
+    "tmdb_type": "movie"
+  },
+  "cars": {
+    "tmdb_id": 920,
+    "tmdb_type": "movie"
+  },
+  "cars-2": {
+    "tmdb_id": 49013,
+    "tmdb_type": "movie"
+  },
+  "cars-3": {
+    "tmdb_id": 260514,
+    "tmdb_type": "movie"
+  },
+  "casino": {
+    "tmdb_id": 524,
+    "tmdb_type": "movie"
+  },
+  "casper": {
+    "tmdb_id": 8839,
+    "tmdb_type": "movie"
+  },
+  "castle-in-the-sky": {
+    "tmdb_id": 10515,
+    "tmdb_type": "movie"
+  },
+  "catch-me-if-you-can-2002": {
+    "tmdb_id": 640,
+    "tmdb_type": "movie"
+  },
+  "chainsaw-man-2022": {
+    "tmdb_id": null,
+    "tmdb_type": null
+  },
+  "chappie": {
+    "tmdb_id": 198184,
+    "tmdb_type": "movie"
+  },
+  "charlie-and-the-chocolate-factory": {
+    "tmdb_id": 118,
+    "tmdb_type": "movie"
+  },
+  "chicken-little-2005": {
+    "tmdb_id": 9982,
+    "tmdb_type": "movie"
+  },
+  "chicken-run": {
+    "tmdb_id": 7443,
+    "tmdb_type": "movie"
+  },
+  "chicuarotes": {
+    "tmdb_id": 571391,
+    "tmdb_type": "movie"
+  },
+  "chungking-express": {
+    "tmdb_id": 11104,
+    "tmdb_type": "movie"
+  },
+  "climax-2018": {
+    "tmdb_id": 507076,
+    "tmdb_type": "movie"
+  },
+  "cloud-atlas": {
+    "tmdb_id": 83542,
+    "tmdb_type": "movie"
+  },
+  "cloudy-with-a-chance-of-meatballs": {
+    "tmdb_id": 22794,
+    "tmdb_type": "movie"
+  },
+  "cocaine-bear": {
+    "tmdb_id": 804150,
+    "tmdb_type": "movie"
+  },
+  "coco-2017": {
+    "tmdb_id": 354912,
+    "tmdb_type": "movie"
+  },
+  "coda-2021": {
+    "tmdb_id": 776503,
+    "tmdb_type": "movie"
+  },
+  "come-and-see": {
+    "tmdb_id": 25237,
+    "tmdb_type": "movie"
+  },
+  "conclave": {
+    "tmdb_id": 974576,
+    "tmdb_type": "movie"
+  },
+  "cowboy-bebop": {
+    "tmdb_id": null,
+    "tmdb_type": null
+  },
+  "creed": {
+    "tmdb_id": 312221,
+    "tmdb_type": "movie"
+  },
+  "creed-ii": {
+    "tmdb_id": 480530,
+    "tmdb_type": "movie"
+  },
+  "creed-iii": {
+    "tmdb_id": 677179,
+    "tmdb_type": "movie"
+  },
+  "crimes-of-the-future-2022": {
+    "tmdb_id": 819876,
+    "tmdb_type": "movie"
+  },
+  "cure": {
+    "tmdb_id": 36095,
+    "tmdb_type": "movie"
+  },
+  "cyberpunk-edgerunners": {
+    "tmdb_id": null,
+    "tmdb_type": null
+  },
+  "dawn-of-the-dead-2004": {
+    "tmdb_id": 924,
+    "tmdb_type": "movie"
+  },
+  "dead-silence": {
+    "tmdb_id": 14001,
+    "tmdb_type": "movie"
+  },
+  "deadpool": {
+    "tmdb_id": 293660,
+    "tmdb_type": "movie"
+  },
+  "deadpool-2": {
+    "tmdb_id": 383498,
+    "tmdb_type": "movie"
+  },
+  "deadpool-wolverine": {
+    "tmdb_id": 533535,
+    "tmdb_type": "movie"
+  },
+  "death-note-2006": {
+    "tmdb_id": null,
+    "tmdb_type": null
+  },
+  "decision-to-leave": {
+    "tmdb_id": 705996,
+    "tmdb_type": "movie"
+  },
+  "demon-slayer-kimetsu-no-yaiba": {
+    "tmdb_id": null,
+    "tmdb_type": null
+  },
+  "demon-slayer-kimetsu-no-yaiba-asakusa-arc": {
+    "tmdb_id": 895003,
+    "tmdb_type": "movie"
+  },
+  "demon-slayer-kimetsu-no-yaiba-entertainment": {
+    "tmdb_id": 1490213,
+    "tmdb_type": "movie"
+  },
+  "demon-slayer-kimetsu-no-yaiba-entertainment-2023": {
+    "tmdb_id": 1519421,
+    "tmdb_type": "movie"
+  },
+  "demon-slayer-kimetsu-no-yaiba-infinity-castle": {
+    "tmdb_id": 1311031,
+    "tmdb_type": "movie"
+  },
+  "demon-slayer-kimetsu-no-yaiba-mt-natagumo-arc": {
+    "tmdb_id": 802401,
+    "tmdb_type": "movie"
+  },
+  "demon-slayer-kimetsu-no-yaiba-siblings-bond": {
+    "tmdb_id": 820232,
+    "tmdb_type": "movie"
+  },
+  "demon-slayer-kimetsu-no-yaiba-special-edition": {
+    "tmdb_id": 1519438,
+    "tmdb_type": "movie"
+  },
+  "demon-slayer-kimetsu-no-yaiba-special-edition-2024": {
+    "tmdb_id": 1519448,
+    "tmdb_type": "movie"
+  },
+  "demon-slayer-kimetsu-no-yaiba-the-hashira": {
+    "tmdb_id": 811948,
+    "tmdb_type": "movie"
+  },
+  "demon-slayer-kimetsu-no-yaiba-the-movie-mugen": {
+    "tmdb_id": 635302,
+    "tmdb_type": "movie"
+  },
+  "demon-slayer-kimetsu-no-yaiba-to-the-hashira-training": {
+    "tmdb_id": 1216221,
+    "tmdb_type": "movie"
+  },
+  "demon-slayer-kimetsu-no-yaiba-to-the-swordsmith-village": {
+    "tmdb_id": 1067282,
+    "tmdb_type": "movie"
+  },
+  "demon-slayer-kimetsu-no-yaiba-tsuzumi-mansion-arc": {
+    "tmdb_id": 895006,
+    "tmdb_type": "movie"
+  },
+  "die-hard": {
+    "tmdb_id": 562,
+    "tmdb_type": "movie"
+  },
+  "dirty-harry": {
+    "tmdb_id": 984,
+    "tmdb_type": "movie"
+  },
+  "district-9": {
+    "tmdb_id": 17654,
+    "tmdb_type": "movie"
+  },
+  "dive-2022": {
+    "tmdb_id": 1037603,
+    "tmdb_type": "movie"
+  },
+  "divergent": {
+    "tmdb_id": 157350,
+    "tmdb_type": "movie"
+  },
+  "django-unchained": {
+    "tmdb_id": 68718,
+    "tmdb_type": "movie"
+  },
+  "doctor-strange-2016": {
+    "tmdb_id": 284052,
+    "tmdb_type": "movie"
+  },
+  "doctor-strange-in-the-multiverse-of-madness": {
+    "tmdb_id": 453395,
+    "tmdb_type": "movie"
+  },
+  "dogman-2023": {
+    "tmdb_id": 944401,
+    "tmdb_type": "movie"
+  },
+  "don-jon": {
+    "tmdb_id": 138697,
+    "tmdb_type": "movie"
+  },
+  "donnie-darko": {
+    "tmdb_id": 141,
+    "tmdb_type": "movie"
+  },
+  "dont-breathe-2016": {
+    "tmdb_id": 300669,
+    "tmdb_type": "movie"
+  },
+  "dont-look-up-2021": {
+    "tmdb_id": 646380,
+    "tmdb_type": "movie"
+  },
+  "dream-scenario": {
+    "tmdb_id": 823482,
+    "tmdb_type": "movie"
+  },
+  "drive-2011": {
+    "tmdb_id": 64690,
+    "tmdb_type": "movie"
+  },
+  "drive-my-car": {
+    "tmdb_id": 758866,
+    "tmdb_type": "movie"
+  },
+  "dune-2021": {
+    "tmdb_id": 438631,
+    "tmdb_type": "movie"
+  },
+  "dune-part-two": {
+    "tmdb_id": 693134,
+    "tmdb_type": "movie"
+  },
+  "dungeons-dragons-honor-among-thieves": {
+    "tmdb_id": 493529,
+    "tmdb_type": "movie"
+  },
+  "dunkirk-2017": {
+    "tmdb_id": 374720,
+    "tmdb_type": "movie"
+  },
+  "edge-of-tomorrow": {
+    "tmdb_id": 137113,
+    "tmdb_type": "movie"
+  },
+  "el-camino-a-breaking-bad-movie": {
+    "tmdb_id": 559969,
+    "tmdb_type": "movie"
+  },
+  "el-compadre-mendoza": {
+    "tmdb_id": 114626,
+    "tmdb_type": "movie"
+  },
+  "el-conde": {
+    "tmdb_id": 991708,
+    "tmdb_type": "movie"
+  },
+  "el-infierno": {
+    "tmdb_id": 52629,
+    "tmdb_type": "movie"
+  },
+  "elemental-2023": {
+    "tmdb_id": 976573,
+    "tmdb_type": "movie"
+  },
+  "elysium-2013": {
+    "tmdb_id": 68724,
+    "tmdb_type": "movie"
+  },
+  "emilia-perez": {
+    "tmdb_id": 974950,
+    "tmdb_type": "movie"
+  },
+  "enders-game": {
+    "tmdb_id": 80274,
+    "tmdb_type": "movie"
+  },
+  "eraserhead": {
+    "tmdb_id": 985,
+    "tmdb_type": "movie"
+  },
+  "ernest-celestine": {
+    "tmdb_id": 126319,
+    "tmdb_type": "movie"
+  },
+  "everything-everywhere-all-at-once": {
+    "tmdb_id": 545611,
+    "tmdb_type": "movie"
+  },
+  "ex-machina-2015": {
+    "tmdb_id": 264660,
+    "tmdb_type": "movie"
+  },
+  "extraction-2": {
+    "tmdb_id": 697843,
+    "tmdb_type": "movie"
+  },
+  "extraction-2020": {
+    "tmdb_id": 545609,
+    "tmdb_type": "movie"
+  },
+  "fallen-angels": {
+    "tmdb_id": 11220,
+    "tmdb_type": "movie"
+  },
+  "fallen-leaves-2023": {
+    "tmdb_id": 986280,
+    "tmdb_type": "movie"
+  },
+  "fantastic-beasts-and-where-to-find-them": {
+    "tmdb_id": 259316,
+    "tmdb_type": "movie"
+  },
+  "fantastic-beasts-the-crimes-of-grindelwald": {
+    "tmdb_id": 338952,
+    "tmdb_type": "movie"
+  },
+  "fantastic-beasts-the-secrets-of-dumbledore": {
+    "tmdb_id": 338953,
+    "tmdb_type": "movie"
+  },
+  "fantastic-four": {
+    "tmdb_id": 166424,
+    "tmdb_type": "movie"
+  },
+  "fantastic-four-2005": {
+    "tmdb_id": 9738,
+    "tmdb_type": "movie"
+  },
+  "fantastic-mr-fox": {
+    "tmdb_id": 10315,
+    "tmdb_type": "movie"
+  },
+  "fantastic-planet": {
+    "tmdb_id": 16306,
+    "tmdb_type": "movie"
+  },
+  "fargo": {
+    "tmdb_id": 275,
+    "tmdb_type": "movie"
+  },
+  "fast-five": {
+    "tmdb_id": 51497,
+    "tmdb_type": "movie"
+  },
+  "fast-furious": {
+    "tmdb_id": 13804,
+    "tmdb_type": "movie"
+  },
+  "fast-furious-6": {
+    "tmdb_id": 82992,
+    "tmdb_type": "movie"
+  },
+  "faust-and-mephistopheles": {
+    "tmdb_id": 119984,
+    "tmdb_type": "movie"
+  },
+  "fear-street-1666": {
+    "tmdb_id": 591275,
+    "tmdb_type": "movie"
+  },
+  "fear-street-1978": {
+    "tmdb_id": 591274,
+    "tmdb_type": "movie"
+  },
+  "fear-street-1994": {
+    "tmdb_id": 591273,
+    "tmdb_type": "movie"
+  },
+  "fight-club": {
+    "tmdb_id": 550,
+    "tmdb_type": "movie"
+  },
+  "final-destination": {
+    "tmdb_id": 9532,
+    "tmdb_type": "movie"
+  },
+  "final-destination-2": {
+    "tmdb_id": 9358,
+    "tmdb_type": "movie"
+  },
+  "final-destination-3": {
+    "tmdb_id": 9286,
+    "tmdb_type": "movie"
+  },
+  "final-destination-5": {
+    "tmdb_id": 55779,
+    "tmdb_type": "movie"
+  },
+  "finding-dory": {
+    "tmdb_id": 127380,
+    "tmdb_type": "movie"
+  },
+  "finding-nemo": {
+    "tmdb_id": 12,
+    "tmdb_type": "movie"
+  },
+  "fire-of-love-2022": {
+    "tmdb_id": 913823,
+    "tmdb_type": "movie"
+  },
+  "flightplan": {
+    "tmdb_id": 9315,
+    "tmdb_type": "movie"
+  },
+  "flow-2024": {
+    "tmdb_id": 823219,
+    "tmdb_type": "movie"
+  },
+  "flushed-away": {
+    "tmdb_id": 11619,
+    "tmdb_type": "movie"
+  },
+  "focus-2015": {
+    "tmdb_id": 256591,
+    "tmdb_type": "movie"
+  },
+  "ford-v-ferrari": {
+    "tmdb_id": 359724,
+    "tmdb_type": "movie"
+  },
+  "frankenstein-2025": {
+    "tmdb_id": 1062722,
+    "tmdb_type": "movie"
+  },
+  "freakier-friday": {
+    "tmdb_id": 1125257,
+    "tmdb_type": "movie"
+  },
+  "freaky-friday-2003": {
+    "tmdb_id": 10330,
+    "tmdb_type": "movie"
+  },
+  "free-solo": {
+    "tmdb_id": 515042,
+    "tmdb_type": "movie"
+  },
+  "frieren-beyond-journeys-end": {
+    "tmdb_id": null,
+    "tmdb_type": null
+  },
+  "full-metal-jacket": {
+    "tmdb_id": 600,
+    "tmdb_type": "movie"
+  },
+  "furiosa-a-mad-max-saga": {
+    "tmdb_id": 786892,
+    "tmdb_type": "movie"
+  },
+  "furious-7": {
+    "tmdb_id": 168259,
+    "tmdb_type": "movie"
+  },
+  "fury-2014": {
+    "tmdb_id": 228150,
+    "tmdb_type": "movie"
+  },
+  "garfield": {
+    "tmdb_id": 8920,
+    "tmdb_type": "movie"
+  },
+  "get-out-2017": {
+    "tmdb_id": 419430,
+    "tmdb_type": "movie"
+  },
+  "ghost-in-the-shell": {
+    "tmdb_id": 9323,
+    "tmdb_type": "movie"
+  },
+  "ghost-in-the-shell-2017": {
+    "tmdb_id": 315837,
+    "tmdb_type": "movie"
+  },
+  "ghost-rider": {
+    "tmdb_id": 1250,
+    "tmdb_type": "movie"
+  },
+  "ghost-ship": {
+    "tmdb_id": 9645,
+    "tmdb_type": "movie"
+  },
+  "glass-2019": {
+    "tmdb_id": 450465,
+    "tmdb_type": "movie"
+  },
+  "glass-onion": {
+    "tmdb_id": 661374,
+    "tmdb_type": "movie"
+  },
+  "godzilla-king-of-the-monsters-2019": {
+    "tmdb_id": 373571,
+    "tmdb_type": "movie"
+  },
+  "godzilla-minus-one": {
+    "tmdb_id": 940721,
+    "tmdb_type": "movie"
+  },
+  "gone-girl": {
+    "tmdb_id": 210577,
+    "tmdb_type": "movie"
+  },
+  "good-luck-to-you-leo-grande": {
+    "tmdb_id": 758330,
+    "tmdb_type": "movie"
+  },
+  "goodfellas": {
+    "tmdb_id": 769,
+    "tmdb_type": "movie"
+  },
+  "grand-theft-hamlet": {
+    "tmdb_id": 1234397,
+    "tmdb_type": "movie"
+  },
+  "gravity-2013": {
+    "tmdb_id": 49047,
+    "tmdb_type": "movie"
+  },
+  "green-book": {
+    "tmdb_id": 490132,
+    "tmdb_type": "movie"
+  },
+  "gretel-hansel": {
+    "tmdb_id": 542224,
+    "tmdb_type": "movie"
+  },
+  "guardians-of-the-galaxy": {
+    "tmdb_id": 118340,
+    "tmdb_type": "movie"
+  },
+  "guardians-of-the-galaxy-vol-2": {
+    "tmdb_id": 283995,
+    "tmdb_type": "movie"
+  },
+  "guardians-of-the-galaxy-vol-3": {
+    "tmdb_id": 447365,
+    "tmdb_type": "movie"
+  },
+  "guillermo-del-toros-pinocchio": {
+    "tmdb_id": 555604,
+    "tmdb_type": "movie"
+  },
+  "guy-ritchies-the-covenant": {
+    "tmdb_id": 882569,
+    "tmdb_type": "movie"
+  },
+  "hachi-a-dogs-tale": {
+    "tmdb_id": 28178,
+    "tmdb_type": "movie"
+  },
+  "hacksaw-ridge": {
+    "tmdb_id": 324786,
+    "tmdb_type": "movie"
+  },
+  "hancock": {
+    "tmdb_id": 8960,
+    "tmdb_type": "movie"
+  },
+  "happy-feet": {
+    "tmdb_id": 9836,
+    "tmdb_type": "movie"
+  },
+  "harry-potter-and-the-chamber-of-secrets": {
+    "tmdb_id": 672,
+    "tmdb_type": "movie"
+  },
+  "harry-potter-and-the-deathly-hallows-part-1": {
+    "tmdb_id": 12444,
+    "tmdb_type": "movie"
+  },
+  "harry-potter-and-the-deathly-hallows-part-2": {
+    "tmdb_id": 12445,
+    "tmdb_type": "movie"
+  },
+  "harry-potter-and-the-goblet-of-fire": {
+    "tmdb_id": 674,
+    "tmdb_type": "movie"
+  },
+  "harry-potter-and-the-half-blood-prince": {
+    "tmdb_id": 767,
+    "tmdb_type": "movie"
+  },
+  "harry-potter-and-the-order-of-the-phoenix": {
+    "tmdb_id": 675,
+    "tmdb_type": "movie"
+  },
+  "harry-potter-and-the-philosophers-stone": {
+    "tmdb_id": 671,
+    "tmdb_type": "movie"
+  },
+  "harry-potter-and-the-prisoner-of-azkaban": {
+    "tmdb_id": 673,
+    "tmdb_type": "movie"
+  },
+  "haunt-2019": {
+    "tmdb_id": 517116,
+    "tmdb_type": "movie"
+  },
+  "heat-1995": {
+    "tmdb_id": 949,
+    "tmdb_type": "movie"
+  },
+  "hell-or-high-water": {
+    "tmdb_id": 338766,
+    "tmdb_type": "movie"
+  },
+  "her": {
+    "tmdb_id": 152601,
+    "tmdb_type": "movie"
+  },
+  "herbie-fully-loaded": {
+    "tmdb_id": 11451,
+    "tmdb_type": "movie"
+  },
+  "hercules-1997": {
+    "tmdb_id": 11970,
+    "tmdb_type": "movie"
+  },
+  "hereditary": {
+    "tmdb_id": 493922,
+    "tmdb_type": "movie"
+  },
+  "hidden-figures": {
+    "tmdb_id": 381284,
+    "tmdb_type": "movie"
+  },
+  "hidden-in-plain-sight": {
+    "tmdb_id": 288793,
+    "tmdb_type": "movie"
+  },
+  "high-life-2018": {
+    "tmdb_id": 376865,
+    "tmdb_type": "movie"
+  },
+  "high-school-musical": {
+    "tmdb_id": 10947,
+    "tmdb_type": "movie"
+  },
+  "high-school-musical-2": {
+    "tmdb_id": 13649,
+    "tmdb_type": "movie"
+  },
+  "high-school-musical-3-senior-year": {
+    "tmdb_id": 11887,
+    "tmdb_type": "movie"
+  },
+  "home-alone": {
+    "tmdb_id": 771,
+    "tmdb_type": "movie"
+  },
+  "home-on-the-range": {
+    "tmdb_id": 13700,
+    "tmdb_type": "movie"
+  },
+  "hoodwinked": {
+    "tmdb_id": 10982,
+    "tmdb_type": "movie"
+  },
+  "horns": {
+    "tmdb_id": 149509,
+    "tmdb_type": "movie"
+  },
+  "hostel": {
+    "tmdb_id": 1690,
+    "tmdb_type": "movie"
+  },
+  "hotel-transylvania": {
+    "tmdb_id": 76492,
+    "tmdb_type": "movie"
+  },
+  "hotel-transylvania-2": {
+    "tmdb_id": 159824,
+    "tmdb_type": "movie"
+  },
+  "hotel-transylvania-3-summer-vacation": {
+    "tmdb_id": 400155,
+    "tmdb_type": "movie"
+  },
+  "how-the-grinch-stole-christmas-2000": {
+    "tmdb_id": 8871,
+    "tmdb_type": "movie"
+  },
+  "how-to-change-your-mind": {
+    "tmdb_id": null,
+    "tmdb_type": null
+  },
+  "how-to-have-sex": {
+    "tmdb_id": 1075175,
+    "tmdb_type": "movie"
+  },
+  "how-to-make-millions-before-grandma-dies": {
+    "tmdb_id": 1103621,
+    "tmdb_type": "movie"
+  },
+  "how-to-train-your-dragon": {
+    "tmdb_id": 10191,
+    "tmdb_type": "movie"
+  },
+  "how-to-train-your-dragon-2": {
+    "tmdb_id": 82702,
+    "tmdb_type": "movie"
+  },
+  "how-to-train-your-dragon-the-hidden-world": {
+    "tmdb_id": 166428,
+    "tmdb_type": "movie"
+  },
+  "howls-moving-castle": {
+    "tmdb_id": 4935,
+    "tmdb_type": "movie"
+  },
+  "huesera-the-bone-woman": {
+    "tmdb_id": 772515,
+    "tmdb_type": "movie"
+  },
+  "humpty-dumpty-circus": {
+    "tmdb_id": 595561,
+    "tmdb_type": "movie"
+  },
+  "hypernormalisation": {
+    "tmdb_id": 419546,
+    "tmdb_type": "movie"
+  },
+  "i-am-legend": {
+    "tmdb_id": 6479,
+    "tmdb_type": "movie"
+  },
+  "i-care-a-lot": {
+    "tmdb_id": 601666,
+    "tmdb_type": "movie"
+  },
+  "i-lost-my-body": {
+    "tmdb_id": 586940,
+    "tmdb_type": "movie"
+  },
+  "i-origins": {
+    "tmdb_id": 244267,
+    "tmdb_type": "movie"
+  },
+  "i-robot": {
+    "tmdb_id": 2048,
+    "tmdb_type": "movie"
+  },
+  "i-saw-the-devil": {
+    "tmdb_id": 49797,
+    "tmdb_type": "movie"
+  },
+  "icarus-2017": {
+    "tmdb_id": 432976,
+    "tmdb_type": "movie"
+  },
+  "ice-age": {
+    "tmdb_id": 425,
+    "tmdb_type": "movie"
+  },
+  "ice-age-the-meltdown": {
+    "tmdb_id": 950,
+    "tmdb_type": "movie"
+  },
+  "identifying-features": {
+    "tmdb_id": 653658,
+    "tmdb_type": "movie"
+  },
+  "ikiru": {
+    "tmdb_id": 3782,
+    "tmdb_type": "movie"
+  },
+  "im-no-longer-here": {
+    "tmdb_id": 582927,
+    "tmdb_type": "movie"
+  },
+  "in-fabric": {
+    "tmdb_id": 475220,
+    "tmdb_type": "movie"
+  },
+  "in-his-shadow": {
+    "tmdb_id": 948050,
+    "tmdb_type": "movie"
+  },
+  "in-the-mood-for-love": {
+    "tmdb_id": 843,
+    "tmdb_type": "movie"
+  },
+  "in-the-tall-grass-2019": {
+    "tmdb_id": 523139,
+    "tmdb_type": "movie"
+  },
+  "in-time": {
+    "tmdb_id": 49530,
+    "tmdb_type": "movie"
+  },
+  "incantation-2022": {
+    "tmdb_id": 864370,
+    "tmdb_type": "movie"
+  },
+  "inception": {
+    "tmdb_id": 27205,
+    "tmdb_type": "movie"
+  },
+  "inglourious-basterds": {
+    "tmdb_id": 16869,
+    "tmdb_type": "movie"
+  },
+  "inherent-vice": {
+    "tmdb_id": 171274,
+    "tmdb_type": "movie"
+  },
+  "inside-out-2-2024": {
+    "tmdb_id": 1022789,
+    "tmdb_type": "movie"
+  },
+  "inside-out-2015": {
+    "tmdb_id": 150540,
+    "tmdb_type": "movie"
+  },
+  "insurgent": {
+    "tmdb_id": 262500,
+    "tmdb_type": "movie"
+  },
+  "interstella-5555-the-5tory-of-the-5ecret-5tar-5ystem": {
+    "tmdb_id": 11049,
+    "tmdb_type": "movie"
+  },
+  "interstellar": {
+    "tmdb_id": 157336,
+    "tmdb_type": "movie"
+  },
+  "into-the-wild": {
+    "tmdb_id": 5915,
+    "tmdb_type": "movie"
+  },
+  "into-the-woods-2014": {
+    "tmdb_id": 224141,
+    "tmdb_type": "movie"
+  },
+  "intrepidos-punks": {
+    "tmdb_id": 103604,
+    "tmdb_type": "movie"
+  },
+  "irma-vep": {
+    "tmdb_id": 25355,
+    "tmdb_type": "movie"
+  },
+  "iron-man-2": {
+    "tmdb_id": 10138,
+    "tmdb_type": "movie"
+  },
+  "iron-man-2008": {
+    "tmdb_id": 1726,
+    "tmdb_type": "movie"
+  },
+  "iron-man-3": {
+    "tmdb_id": 68721,
+    "tmdb_type": "movie"
+  },
+  "isle-of-dogs-2018": {
+    "tmdb_id": 399174,
+    "tmdb_type": "movie"
+  },
+  "it-follows": {
+    "tmdb_id": 270303,
+    "tmdb_type": "movie"
+  },
+  "it-was-just-an-accident": {
+    "tmdb_id": 1456349,
+    "tmdb_type": "movie"
+  },
+  "jiro-dreams-of-sushi": {
+    "tmdb_id": 80767,
+    "tmdb_type": "movie"
+  },
+  "johanne-sacreblu": {
+    "tmdb_id": 1442011,
+    "tmdb_type": "movie"
+  },
+  "john-wick": {
+    "tmdb_id": 245891,
+    "tmdb_type": "movie"
+  },
+  "john-wick-chapter-2": {
+    "tmdb_id": 324552,
+    "tmdb_type": "movie"
+  },
+  "john-wick-chapter-3-parabellum": {
+    "tmdb_id": 458156,
+    "tmdb_type": "movie"
+  },
+  "john-wick-chapter-4": {
+    "tmdb_id": 603692,
+    "tmdb_type": "movie"
+  },
+  "jojo-rabbit": {
+    "tmdb_id": 515001,
+    "tmdb_type": "movie"
+  },
+  "joker-2019": {
+    "tmdb_id": 475557,
+    "tmdb_type": "movie"
+  },
+  "jujutsu-kaisen": {
+    "tmdb_id": null,
+    "tmdb_type": null
+  },
+  "jujutsu-kaisen-0": {
+    "tmdb_id": 810693,
+    "tmdb_type": "movie"
+  },
+  "jumper": {
+    "tmdb_id": 8247,
+    "tmdb_type": "movie"
+  },
+  "jupiter-ascending": {
+    "tmdb_id": 76757,
+    "tmdb_type": "movie"
+  },
+  "jurassic-world": {
+    "tmdb_id": 135397,
+    "tmdb_type": "movie"
+  },
+  "jurassic-world-fallen-kingdom": {
+    "tmdb_id": 351286,
+    "tmdb_type": "movie"
+  },
+  "justice-league": {
+    "tmdb_id": 141052,
+    "tmdb_type": "movie"
+  },
+  "kick-ass": {
+    "tmdb_id": 23483,
+    "tmdb_type": "movie"
+  },
+  "kick-ass-2": {
+    "tmdb_id": 59859,
+    "tmdb_type": "movie"
+  },
+  "kill-bill-vol-1": {
+    "tmdb_id": 24,
+    "tmdb_type": "movie"
+  },
+  "kill-bill-vol-2": {
+    "tmdb_id": 393,
+    "tmdb_type": "movie"
+  },
+  "killer-klowns-from-outer-space": {
+    "tmdb_id": 16296,
+    "tmdb_type": "movie"
+  },
+  "killers-of-the-flower-moon": {
+    "tmdb_id": 466420,
+    "tmdb_type": "movie"
+  },
+  "king-kong-2005": {
+    "tmdb_id": 254,
+    "tmdb_type": "movie"
+  },
+  "kingsman-the-golden-circle": {
+    "tmdb_id": 343668,
+    "tmdb_type": "movie"
+  },
+  "kingsman-the-secret-service": {
+    "tmdb_id": 207703,
+    "tmdb_type": "movie"
+  },
+  "klaus": {
+    "tmdb_id": 508965,
+    "tmdb_type": "movie"
+  },
+  "kneecap": {
+    "tmdb_id": 1180629,
+    "tmdb_type": "movie"
+  },
+  "knives-out-2019": {
+    "tmdb_id": 546554,
+    "tmdb_type": "movie"
+  },
+  "kong-skull-island": {
+    "tmdb_id": 293167,
+    "tmdb_type": "movie"
+  },
+  "koyaanisqatsi": {
+    "tmdb_id": 11314,
+    "tmdb_type": "movie"
+  },
+  "kpop-demon-hunters": {
+    "tmdb_id": 803796,
+    "tmdb_type": "movie"
+  },
+  "kung-fu-panda": {
+    "tmdb_id": 9502,
+    "tmdb_type": "movie"
+  },
+  "kung-fu-panda-2": {
+    "tmdb_id": 49444,
+    "tmdb_type": "movie"
+  },
+  "la-chimera": {
+    "tmdb_id": 837335,
+    "tmdb_type": "movie"
+  },
+  "la-haine": {
+    "tmdb_id": 406,
+    "tmdb_type": "movie"
+  },
+  "la-la-land": {
+    "tmdb_id": 313369,
+    "tmdb_type": "movie"
+  },
+  "lady-and-the-tramp": {
+    "tmdb_id": 10340,
+    "tmdb_type": "movie"
+  },
+  "lady-bird": {
+    "tmdb_id": 391713,
+    "tmdb_type": "movie"
+  },
+  "lady-vengeance": {
+    "tmdb_id": 4550,
+    "tmdb_type": "movie"
+  },
+  "lamb-2021": {
+    "tmdb_id": 788929,
+    "tmdb_type": "movie"
+  },
+  "last-night-in-soho": {
+    "tmdb_id": 576845,
+    "tmdb_type": "movie"
+  },
+  "late-night-with-the-devil": {
+    "tmdb_id": 938614,
+    "tmdb_type": "movie"
+  },
+  "le-manoir-du-diable": {
+    "tmdb_id": 133063,
+    "tmdb_type": "movie"
+  },
+  "leave-the-world-behind-2023": {
+    "tmdb_id": 726209,
+    "tmdb_type": "movie"
+  },
+  "legend-2015": {
+    "tmdb_id": 276907,
+    "tmdb_type": "movie"
+  },
+  "leon-the-professional": {
+    "tmdb_id": 101,
+    "tmdb_type": "movie"
+  },
+  "les-miserables-2019": {
+    "tmdb_id": 586863,
+    "tmdb_type": "movie"
+  },
+  "licorice-pizza": {
+    "tmdb_id": 718032,
+    "tmdb_type": "movie"
+  },
+  "life-2017": {
+    "tmdb_id": 395992,
+    "tmdb_type": "movie"
+  },
+  "lightyear-2022": {
+    "tmdb_id": 718789,
+    "tmdb_type": "movie"
+  },
+  "limitless": {
+    "tmdb_id": 51876,
+    "tmdb_type": "movie"
+  },
+  "little-women-2019": {
+    "tmdb_id": 331482,
+    "tmdb_type": "movie"
+  },
+  "logan-2017": {
+    "tmdb_id": 263115,
+    "tmdb_type": "movie"
+  },
+  "loie-fuller": {
+    "tmdb_id": 205256,
+    "tmdb_type": "movie"
+  },
+  "look-back-2024": {
+    "tmdb_id": 1244492,
+    "tmdb_type": "movie"
+  },
+  "lord-of-war": {
+    "tmdb_id": 1830,
+    "tmdb_type": "movie"
+  },
+  "lost-in-translation": {
+    "tmdb_id": 153,
+    "tmdb_type": "movie"
+  },
+  "love-death-robots-bad-travelling": {
+    "tmdb_id": 993792,
+    "tmdb_type": "movie"
+  },
+  "love-death-robots-ice-age": {
+    "tmdb_id": 590542,
+    "tmdb_type": "movie"
+  },
+  "love-death-robots-jibaro-2022": {
+    "tmdb_id": 1068644,
+    "tmdb_type": "movie"
+  },
+  "love-death-robots-night-of-the-mini-dead": {
+    "tmdb_id": 978068,
+    "tmdb_type": "movie"
+  },
+  "love-death-robots-the-very-pulse-of-the-machine": {
+    "tmdb_id": 978049,
+    "tmdb_type": "movie"
+  },
+  "love-death-robots-three-robots": {
+    "tmdb_id": 588439,
+    "tmdb_type": "movie"
+  },
+  "love-death-robots-three-robots-exit-strategies": {
+    "tmdb_id": 977591,
+    "tmdb_type": "movie"
+  },
+  "love-death-robots-when-the-yogurt-took-over": {
+    "tmdb_id": 588948,
+    "tmdb_type": "movie"
+  },
+  "love-death-robots-zima-blue": {
+    "tmdb_id": 590540,
+    "tmdb_type": "movie"
+  },
+  "lucy-2014": {
+    "tmdb_id": 240832,
+    "tmdb_type": "movie"
+  },
+  "m": {
+    "tmdb_id": 832,
+    "tmdb_type": "movie"
+  },
+  "mad-max-fury-road": {
+    "tmdb_id": 76341,
+    "tmdb_type": "movie"
+  },
+  "madagascar": {
+    "tmdb_id": 953,
+    "tmdb_type": "movie"
+  },
+  "made-in-abyss": {
+    "tmdb_id": null,
+    "tmdb_type": null
+  },
+  "man-of-steel": {
+    "tmdb_id": 49521,
+    "tmdb_type": "movie"
+  },
+  "mandy-2018": {
+    "tmdb_id": 460885,
+    "tmdb_type": "movie"
+  },
+  "mank": {
+    "tmdb_id": 614560,
+    "tmdb_type": "movie"
+  },
+  "manticore-2022": {
+    "tmdb_id": 760158,
+    "tmdb_type": "movie"
+  },
+  "marcel-the-shell-with-shoes-on-2021": {
+    "tmdb_id": 869626,
+    "tmdb_type": "movie"
+  },
+  "matilda": {
+    "tmdb_id": 10830,
+    "tmdb_type": "movie"
+  },
+  "maze-runner-the-death-cure": {
+    "tmdb_id": 336843,
+    "tmdb_type": "movie"
+  },
+  "maze-runner-the-scorch-trials": {
+    "tmdb_id": 294254,
+    "tmdb_type": "movie"
+  },
+  "megalopolis-2024": {
+    "tmdb_id": 592831,
+    "tmdb_type": "movie"
+  },
+  "memento": {
+    "tmdb_id": 77,
+    "tmdb_type": "movie"
+  },
+  "memories-of-murder": {
+    "tmdb_id": 11423,
+    "tmdb_type": "movie"
+  },
+  "men-2022": {
+    "tmdb_id": 780609,
+    "tmdb_type": "movie"
+  },
+  "midsommar": {
+    "tmdb_id": 530385,
+    "tmdb_type": "movie"
+  },
+  "mikey-and-nicky": {
+    "tmdb_id": 59143,
+    "tmdb_type": "movie"
+  },
+  "mission-impossible-ghost-protocol": {
+    "tmdb_id": 56292,
+    "tmdb_type": "movie"
+  },
+  "monkey-man": {
+    "tmdb_id": 560016,
+    "tmdb_type": "movie"
+  },
+  "monster-2004": {
+    "tmdb_id": null,
+    "tmdb_type": null
+  },
+  "monster-2023": {
+    "tmdb_id": 1050035,
+    "tmdb_type": "movie"
+  },
+  "monster-house": {
+    "tmdb_id": 9297,
+    "tmdb_type": "movie"
+  },
+  "monsters-inc": {
+    "tmdb_id": 585,
+    "tmdb_type": "movie"
+  },
+  "moonlight-2016": {
+    "tmdb_id": 376867,
+    "tmdb_type": "movie"
+  },
+  "mr-nobody": {
+    "tmdb_id": 31011,
+    "tmdb_type": "movie"
+  },
+  "mulholland-drive": {
+    "tmdb_id": 1018,
+    "tmdb_type": "movie"
+  },
+  "my-neighbor-totoro": {
+    "tmdb_id": 8392,
+    "tmdb_type": "movie"
+  },
+  "my-octopus-teacher": {
+    "tmdb_id": 682110,
+    "tmdb_type": "movie"
+  },
+  "mystic-river": {
+    "tmdb_id": 322,
+    "tmdb_type": "movie"
+  },
+  "napoleon-2023": {
+    "tmdb_id": 753342,
+    "tmdb_type": "movie"
+  },
+  "natural-born-killers": {
+    "tmdb_id": 241,
+    "tmdb_type": "movie"
+  },
+  "nerve-2016": {
+    "tmdb_id": 328387,
+    "tmdb_type": "movie"
+  },
+  "night-at-the-museum": {
+    "tmdb_id": 1593,
+    "tmdb_type": "movie"
+  },
+  "night-of-the-living-dead": {
+    "tmdb_id": 10331,
+    "tmdb_type": "movie"
+  },
+  "nightcrawler": {
+    "tmdb_id": 242582,
+    "tmdb_type": "movie"
+  },
+  "nimona-2023": {
+    "tmdb_id": 961323,
+    "tmdb_type": "movie"
+  },
+  "no-country-for-old-men": {
+    "tmdb_id": 6977,
+    "tmdb_type": "movie"
+  },
+  "no-dogs-or-italians-allowed": {
+    "tmdb_id": 715385,
+    "tmdb_type": "movie"
+  },
+  "no-hard-feelings-2023": {
+    "tmdb_id": 884605,
+    "tmdb_type": "movie"
+  },
+  "no-one-will-save-you": {
+    "tmdb_id": 820609,
+    "tmdb_type": "movie"
+  },
+  "nobody-2021": {
+    "tmdb_id": 615457,
+    "tmdb_type": "movie"
+  },
+  "nocturnal-animals": {
+    "tmdb_id": 340666,
+    "tmdb_type": "movie"
+  },
+  "nomadland": {
+    "tmdb_id": 581734,
+    "tmdb_type": "movie"
+  },
+  "nope": {
+    "tmdb_id": 762504,
+    "tmdb_type": "movie"
+  },
+  "nosferatu-2024": {
+    "tmdb_id": 426063,
+    "tmdb_type": "movie"
+  },
+  "novocaine-2025": {
+    "tmdb_id": 1195506,
+    "tmdb_type": "movie"
+  },
+  "now-you-see-me": {
+    "tmdb_id": 75656,
+    "tmdb_type": "movie"
+  },
+  "now-you-see-me-2": {
+    "tmdb_id": 291805,
+    "tmdb_type": "movie"
+  },
+  "oblivion-2013": {
+    "tmdb_id": 75612,
+    "tmdb_type": "movie"
+  },
+  "oceans-eleven-2001": {
+    "tmdb_id": 161,
+    "tmdb_type": "movie"
+  },
+  "oldboy": {
+    "tmdb_id": 670,
+    "tmdb_type": "movie"
+  },
+  "olympus-has-fallen": {
+    "tmdb_id": 117263,
+    "tmdb_type": "movie"
+  },
+  "once-upon-a-time-in-america": {
+    "tmdb_id": 311,
+    "tmdb_type": "movie"
+  },
+  "once-upon-a-time-in-hollywood": {
+    "tmdb_id": 466272,
+    "tmdb_type": "movie"
+  },
+  "one-battle-after-another": {
+    "tmdb_id": 1054867,
+    "tmdb_type": "movie"
+  },
+  "one-hundred-and-one-dalmatians": {
+    "tmdb_id": 12230,
+    "tmdb_type": "movie"
+  },
+  "oppenheimer-2023": {
+    "tmdb_id": 872585,
+    "tmdb_type": "movie"
+  },
+  "our-oceans-2024": {
+    "tmdb_id": null,
+    "tmdb_type": null
+  },
+  "over-the-garden-wall-2014": {
+    "tmdb_id": 409696,
+    "tmdb_type": "movie"
+  },
+  "pacific-rim": {
+    "tmdb_id": 68726,
+    "tmdb_type": "movie"
+  },
+  "paddington": {
+    "tmdb_id": 116149,
+    "tmdb_type": "movie"
+  },
+  "paprika-2006": {
+    "tmdb_id": 4977,
+    "tmdb_type": "movie"
+  },
+  "paranormal-activity": {
+    "tmdb_id": 23827,
+    "tmdb_type": "movie"
+  },
+  "parasite-2019": {
+    "tmdb_id": 496243,
+    "tmdb_type": "movie"
+  },
+  "paris-2024-olympic-opening-ceremony": {
+    "tmdb_id": 1311546,
+    "tmdb_type": "movie"
+  },
+  "paris-is-burning": {
+    "tmdb_id": 31225,
+    "tmdb_type": "movie"
+  },
+  "passages-2023": {
+    "tmdb_id": 898673,
+    "tmdb_type": "movie"
+  },
+  "passengers-2016": {
+    "tmdb_id": 274870,
+    "tmdb_type": "movie"
+  },
+  "past-lives": {
+    "tmdb_id": 666277,
+    "tmdb_type": "movie"
+  },
+  "pearl-2022": {
+    "tmdb_id": 949423,
+    "tmdb_type": "movie"
+  },
+  "pedro-paramo-2024": {
+    "tmdb_id": 1069387,
+    "tmdb_type": "movie"
+  },
+  "percy-jackson-the-olympians-the-lightning-thief": {
+    "tmdb_id": 32657,
+    "tmdb_type": "movie"
+  },
+  "perfect-days-2023": {
+    "tmdb_id": 976893,
+    "tmdb_type": "movie"
+  },
+  "pirates-of-the-caribbean-at-worlds-end": {
+    "tmdb_id": 285,
+    "tmdb_type": "movie"
+  },
+  "pirates-of-the-caribbean-dead-mans-chest": {
+    "tmdb_id": 58,
+    "tmdb_type": "movie"
+  },
+  "pirates-of-the-caribbean-dead-men-tell-no-tales": {
+    "tmdb_id": 166426,
+    "tmdb_type": "movie"
+  },
+  "pirates-of-the-caribbean-on-stranger-tides": {
+    "tmdb_id": 1865,
+    "tmdb_type": "movie"
+  },
+  "pirates-of-the-caribbean-the-curse-of-the-black-pearl": {
+    "tmdb_id": 22,
+    "tmdb_type": "movie"
+  },
+  "planet-terror": {
+    "tmdb_id": 1992,
+    "tmdb_type": "movie"
+  },
+  "poison-2023": {
+    "tmdb_id": 1172676,
+    "tmdb_type": "movie"
+  },
+  "pokemon-detective-pikachu": {
+    "tmdb_id": 447404,
+    "tmdb_type": "movie"
+  },
+  "ponyo": {
+    "tmdb_id": 12429,
+    "tmdb_type": "movie"
+  },
+  "poor-things-2023": {
+    "tmdb_id": 792307,
+    "tmdb_type": "movie"
+  },
+  "porco-rosso": {
+    "tmdb_id": 11621,
+    "tmdb_type": "movie"
+  },
+  "portrait-of-a-lady-on-fire": {
+    "tmdb_id": 531428,
+    "tmdb_type": "movie"
+  },
+  "possessor": {
+    "tmdb_id": 435615,
+    "tmdb_type": "movie"
+  },
+  "predestination": {
+    "tmdb_id": 206487,
+    "tmdb_type": "movie"
+  },
+  "prey-2022": {
+    "tmdb_id": 766507,
+    "tmdb_type": "movie"
+  },
+  "prince-of-persia-the-sands-of-time": {
+    "tmdb_id": 9543,
+    "tmdb_type": "movie"
+  },
+  "princess-mononoke": {
+    "tmdb_id": 128,
+    "tmdb_type": "movie"
+  },
+  "prisoners": {
+    "tmdb_id": 146233,
+    "tmdb_type": "movie"
+  },
+  "project-x-2012": {
+    "tmdb_id": 57214,
+    "tmdb_type": "movie"
+  },
+  "prometheus": {
+    "tmdb_id": 70981,
+    "tmdb_type": "movie"
+  },
+  "pulp-fiction": {
+    "tmdb_id": 680,
+    "tmdb_type": "movie"
+  },
+  "puss-in-boots-the-last-wish": {
+    "tmdb_id": 315162,
+    "tmdb_type": "movie"
+  },
+  "que-viva-mexico": {
+    "tmdb_id": 63107,
+    "tmdb_type": "movie"
+  },
+  "ralph-breaks-the-internet": {
+    "tmdb_id": 404368,
+    "tmdb_type": "movie"
+  },
+  "ratatouille": {
+    "tmdb_id": 2062,
+    "tmdb_type": "movie"
+  },
+  "raw-2016": {
+    "tmdb_id": 393519,
+    "tmdb_type": "movie"
+  },
+  "ready-player-one": {
+    "tmdb_id": 333339,
+    "tmdb_type": "movie"
+  },
+  "rec": {
+    "tmdb_id": 8329,
+    "tmdb_type": "movie"
+  },
+  "requiem-for-a-dream": {
+    "tmdb_id": 641,
+    "tmdb_type": "movie"
+  },
+  "reservoir-dogs": {
+    "tmdb_id": 500,
+    "tmdb_type": "movie"
+  },
+  "resident-evil": {
+    "tmdb_id": 1576,
+    "tmdb_type": "movie"
+  },
+  "resident-evil-afterlife": {
+    "tmdb_id": 35791,
+    "tmdb_type": "movie"
+  },
+  "resident-evil-apocalypse": {
+    "tmdb_id": 1577,
+    "tmdb_type": "movie"
+  },
+  "resident-evil-extinction": {
+    "tmdb_id": 7737,
+    "tmdb_type": "movie"
+  },
+  "resident-evil-retribution": {
+    "tmdb_id": 71679,
+    "tmdb_type": "movie"
+  },
+  "resident-evil-the-final-chapter": {
+    "tmdb_id": 173897,
+    "tmdb_type": "movie"
+  },
+  "road-house": {
+    "tmdb_id": 10135,
+    "tmdb_type": "movie"
+  },
+  "road-house-2024": {
+    "tmdb_id": 359410,
+    "tmdb_type": "movie"
+  },
+  "robot-dreams": {
+    "tmdb_id": 838240,
+    "tmdb_type": "movie"
+  },
+  "robots": {
+    "tmdb_id": 9928,
+    "tmdb_type": "movie"
+  },
+  "rogue-one-a-star-wars-story": {
+    "tmdb_id": 330459,
+    "tmdb_type": "movie"
+  },
+  "roma-2018": {
+    "tmdb_id": 426426,
+    "tmdb_type": "movie"
+  },
+  "rush-2013": {
+    "tmdb_id": 96721,
+    "tmdb_type": "movie"
+  },
+  "sallie-gardner-at-a-gallop": {
+    "tmdb_id": 194079,
+    "tmdb_type": "movie"
+  },
+  "santa-sangre": {
+    "tmdb_id": 19236,
+    "tmdb_type": "movie"
+  },
+  "sausage-party": {
+    "tmdb_id": 223702,
+    "tmdb_type": "movie"
+  },
+  "saving-private-ryan": {
+    "tmdb_id": 857,
+    "tmdb_type": "movie"
+  },
+  "scary-movie-2000": {
+    "tmdb_id": 4247,
+    "tmdb_type": "movie"
+  },
+  "scary-stories-to-tell-in-the-dark-2019": {
+    "tmdb_id": 417384,
+    "tmdb_type": "movie"
+  },
+  "schindlers-list": {
+    "tmdb_id": 424,
+    "tmdb_type": "movie"
+  },
+  "school-of-rock": {
+    "tmdb_id": 1584,
+    "tmdb_type": "movie"
+  },
+  "scooby-doo": {
+    "tmdb_id": 9637,
+    "tmdb_type": "movie"
+  },
+  "scooby-doo-2-monsters-unleashed": {
+    "tmdb_id": 11024,
+    "tmdb_type": "movie"
+  },
+  "scooby-doo-on-zombie-island": {
+    "tmdb_id": 13151,
+    "tmdb_type": "movie"
+  },
+  "scott-pilgrim-vs-the-world": {
+    "tmdb_id": 22538,
+    "tmdb_type": "movie"
+  },
+  "se7en": {
+    "tmdb_id": 807,
+    "tmdb_type": "movie"
+  },
+  "seaspiracy": {
+    "tmdb_id": 801058,
+    "tmdb_type": "movie"
+  },
+  "serpentine-dance-by-mme-bob-walter": {
+    "tmdb_id": 119950,
+    "tmdb_type": "movie"
+  },
+  "shark-tale": {
+    "tmdb_id": 10555,
+    "tmdb_type": "movie"
+  },
+  "shaun-of-the-dead": {
+    "tmdb_id": 747,
+    "tmdb_type": "movie"
+  },
+  "sherlock-holmes-2009": {
+    "tmdb_id": 10528,
+    "tmdb_type": "movie"
+  },
+  "sherlock-holmes-a-game-of-shadows": {
+    "tmdb_id": 58574,
+    "tmdb_type": "movie"
+  },
+  "shogun-2024": {
+    "tmdb_id": null,
+    "tmdb_type": null
+  },
+  "shrek": {
+    "tmdb_id": 808,
+    "tmdb_type": "movie"
+  },
+  "shrek-2": {
+    "tmdb_id": 809,
+    "tmdb_type": "movie"
+  },
+  "shrooms-2023": {
+    "tmdb_id": 1128872,
+    "tmdb_type": "movie"
+  },
+  "shutter-island": {
+    "tmdb_id": 11324,
+    "tmdb_type": "movie"
+  },
+  "sicario-2015": {
+    "tmdb_id": 273481,
+    "tmdb_type": "movie"
+  },
+  "sick-of-myself": {
+    "tmdb_id": 788734,
+    "tmdb_type": "movie"
+  },
+  "silent-hill": {
+    "tmdb_id": 588,
+    "tmdb_type": "movie"
+  },
+  "sing-2016": {
+    "tmdb_id": 335797,
+    "tmdb_type": "movie"
+  },
+  "sisu-2022": {
+    "tmdb_id": 840326,
+    "tmdb_type": "movie"
+  },
+  "smile-2022": {
+    "tmdb_id": 882598,
+    "tmdb_type": "movie"
+  },
+  "snatch": {
+    "tmdb_id": 107,
+    "tmdb_type": "movie"
+  },
+  "snow-white-2025": {
+    "tmdb_id": 447273,
+    "tmdb_type": "movie"
+  },
+  "snowden": {
+    "tmdb_id": 302401,
+    "tmdb_type": "movie"
+  },
+  "snowpiercer": {
+    "tmdb_id": 110415,
+    "tmdb_type": "movie"
+  },
+  "society-of-the-snow": {
+    "tmdb_id": 906126,
+    "tmdb_type": "movie"
+  },
+  "solaris": {
+    "tmdb_id": 593,
+    "tmdb_type": "movie"
+  },
+  "solo-a-star-wars-story": {
+    "tmdb_id": 348350,
+    "tmdb_type": "movie"
+  },
+  "song-of-the-sea": {
+    "tmdb_id": 110416,
+    "tmdb_type": "movie"
+  },
+  "soul-2020": {
+    "tmdb_id": 508442,
+    "tmdb_type": "movie"
+  },
+  "sound-of-freedom": {
+    "tmdb_id": 678512,
+    "tmdb_type": "movie"
+  },
+  "sound-of-metal": {
+    "tmdb_id": 502033,
+    "tmdb_type": "movie"
+  },
+  "south-park-bigger-longer-uncut": {
+    "tmdb_id": 9473,
+    "tmdb_type": "movie"
+  },
+  "south-park-the-end-of-obesity": {
+    "tmdb_id": 1290938,
+    "tmdb_type": "movie"
+  },
+  "south-park-the-streaming-wars": {
+    "tmdb_id": 974691,
+    "tmdb_type": "movie"
+  },
+  "south-park-the-streaming-wars-part-2": {
+    "tmdb_id": 993729,
+    "tmdb_type": "movie"
+  },
+  "southpaw-2015": {
+    "tmdb_id": 307081,
+    "tmdb_type": "movie"
+  },
+  "spider-man": {
+    "tmdb_id": 557,
+    "tmdb_type": "movie"
+  },
+  "spider-man-2": {
+    "tmdb_id": 558,
+    "tmdb_type": "movie"
+  },
+  "spider-man-3": {
+    "tmdb_id": 559,
+    "tmdb_type": "movie"
+  },
+  "spider-man-across-the-spider-verse": {
+    "tmdb_id": 569094,
+    "tmdb_type": "movie"
+  },
+  "spider-man-far-from-home": {
+    "tmdb_id": 429617,
+    "tmdb_type": "movie"
+  },
+  "spider-man-homecoming": {
+    "tmdb_id": 315635,
+    "tmdb_type": "movie"
+  },
+  "spider-man-into-the-spider-verse": {
+    "tmdb_id": 324857,
+    "tmdb_type": "movie"
+  },
+  "spider-man-no-way-home": {
+    "tmdb_id": 634649,
+    "tmdb_type": "movie"
+  },
+  "spirit-stallion-of-the-cimarron": {
+    "tmdb_id": 9023,
+    "tmdb_type": "movie"
+  },
+  "spirited-away": {
+    "tmdb_id": 129,
+    "tmdb_type": "movie"
+  },
+  "split-2016": {
+    "tmdb_id": 381288,
+    "tmdb_type": "movie"
+  },
+  "spotlight": {
+    "tmdb_id": 314365,
+    "tmdb_type": "movie"
+  },
+  "spy-kids": {
+    "tmdb_id": 10054,
+    "tmdb_type": "movie"
+  },
+  "spy-kids-3-d-game-over": {
+    "tmdb_id": 12279,
+    "tmdb_type": "movie"
+  },
+  "squid-game": {
+    "tmdb_id": null,
+    "tmdb_type": null
+  },
+  "star-trek": {
+    "tmdb_id": 13475,
+    "tmdb_type": "movie"
+  },
+  "star-trek-into-darkness": {
+    "tmdb_id": 54138,
+    "tmdb_type": "movie"
+  },
+  "star-wars-the-force-awakens": {
+    "tmdb_id": 140607,
+    "tmdb_type": "movie"
+  },
+  "star-wars-the-last-jedi": {
+    "tmdb_id": 181808,
+    "tmdb_type": "movie"
+  },
+  "star-wars-the-rise-of-skywalker": {
+    "tmdb_id": 181812,
+    "tmdb_type": "movie"
+  },
+  "straight-outta-compton": {
+    "tmdb_id": 277216,
+    "tmdb_type": "movie"
+  },
+  "strange-way-of-life": {
+    "tmdb_id": 963765,
+    "tmdb_type": "movie"
+  },
+  "stuart-little": {
+    "tmdb_id": 10137,
+    "tmdb_type": "movie"
+  },
+  "stutz": {
+    "tmdb_id": 799375,
+    "tmdb_type": "movie"
+  },
+  "suicide-squad-2016": {
+    "tmdb_id": 297761,
+    "tmdb_type": "movie"
+  },
+  "surfs-up": {
+    "tmdb_id": 9408,
+    "tmdb_type": "movie"
+  },
+  "suspiria-2018": {
+    "tmdb_id": 361292,
+    "tmdb_type": "movie"
+  },
+  "suzume": {
+    "tmdb_id": 916224,
+    "tmdb_type": "movie"
+  },
+  "talk-to-me-2022": {
+    "tmdb_id": 1008042,
+    "tmdb_type": "movie"
+  },
+  "tar-2022": {
+    "tmdb_id": 817758,
+    "tmdb_type": "movie"
+  },
+  "tarzan": {
+    "tmdb_id": 37135,
+    "tmdb_type": "movie"
+  },
+  "taxi-driver": {
+    "tmdb_id": 103,
+    "tmdb_type": "movie"
+  },
+  "ted": {
+    "tmdb_id": 72105,
+    "tmdb_type": "movie"
+  },
+  "teenage-mutant-ninja-turtles-mutant-mayhem": {
+    "tmdb_id": 614930,
+    "tmdb_type": "movie"
+  },
+  "tenet": {
+    "tmdb_id": 577922,
+    "tmdb_type": "movie"
+  },
+  "terrifier-2": {
+    "tmdb_id": 663712,
+    "tmdb_type": "movie"
+  },
+  "terrifier-3": {
+    "tmdb_id": 1034541,
+    "tmdb_type": "movie"
+  },
+  "the-adventures-of-sharkboy-and-lavagirl": {
+    "tmdb_id": 14199,
+    "tmdb_type": "movie"
+  },
+  "the-almost-legends": {
+    "tmdb_id": 1148969,
+    "tmdb_type": "movie"
+  },
+  "the-amazing-spider-man": {
+    "tmdb_id": 1930,
+    "tmdb_type": "movie"
+  },
+  "the-amazing-spider-man-2": {
+    "tmdb_id": 102382,
+    "tmdb_type": "movie"
+  },
+  "the-avengers-2012": {
+    "tmdb_id": 24428,
+    "tmdb_type": "movie"
+  },
+  "the-babadook": {
+    "tmdb_id": 242224,
+    "tmdb_type": "movie"
+  },
+  "the-banshees-of-inisherin": {
+    "tmdb_id": 674324,
+    "tmdb_type": "movie"
+  },
+  "the-batman": {
+    "tmdb_id": 414906,
+    "tmdb_type": "movie"
+  },
+  "the-beasts-2022": {
+    "tmdb_id": 848685,
+    "tmdb_type": "movie"
+  },
+  "the-beekeeper-2024": {
+    "tmdb_id": 866398,
+    "tmdb_type": "movie"
+  },
+  "the-bewitched-house-1907": {
+    "tmdb_id": 138730,
+    "tmdb_type": "movie"
+  },
+  "the-big-short": {
+    "tmdb_id": 318846,
+    "tmdb_type": "movie"
+  },
+  "the-black-phone": {
+    "tmdb_id": 756999,
+    "tmdb_type": "movie"
+  },
+  "the-blair-witch-project": {
+    "tmdb_id": 2667,
+    "tmdb_type": "movie"
+  },
+  "the-book-of-life-2014": {
+    "tmdb_id": 228326,
+    "tmdb_type": "movie"
+  },
+  "the-book-thief": {
+    "tmdb_id": 203833,
+    "tmdb_type": "movie"
+  },
+  "the-boy-and-the-heron": {
+    "tmdb_id": 508883,
+    "tmdb_type": "movie"
+  },
+  "the-brutalist": {
+    "tmdb_id": 549509,
+    "tmdb_type": "movie"
+  },
+  "the-butterfly-effect": {
+    "tmdb_id": 1954,
+    "tmdb_type": "movie"
+  },
+  "the-call-2013": {
+    "tmdb_id": 158011,
+    "tmdb_type": "movie"
+  },
+  "the-call-2020-3": {
+    "tmdb_id": 575604,
+    "tmdb_type": "movie"
+  },
+  "the-chronicles-of-narnia-prince-caspian": {
+    "tmdb_id": 2454,
+    "tmdb_type": "movie"
+  },
+  "the-chronicles-of-narnia-the-lion-the-witch-and-the-wardrobe": {
+    "tmdb_id": 411,
+    "tmdb_type": "movie"
+  },
+  "the-conjuring": {
+    "tmdb_id": 138843,
+    "tmdb_type": "movie"
+  },
+  "the-consequences-of-feminism": {
+    "tmdb_id": 120026,
+    "tmdb_type": "movie"
+  },
+  "the-creator-2023": {
+    "tmdb_id": 670292,
+    "tmdb_type": "movie"
+  },
+  "the-dark-knight": {
+    "tmdb_id": 155,
+    "tmdb_type": "movie"
+  },
+  "the-dark-knight-rises": {
+    "tmdb_id": 49026,
+    "tmdb_type": "movie"
+  },
+  "the-dark-tower": {
+    "tmdb_id": 353491,
+    "tmdb_type": "movie"
+  },
+  "the-day-after-tomorrow": {
+    "tmdb_id": 435,
+    "tmdb_type": "movie"
+  },
+  "the-dead-dont-die-2019": {
+    "tmdb_id": 535581,
+    "tmdb_type": "movie"
+  },
+  "the-delinquents-2023": {
+    "tmdb_id": 714889,
+    "tmdb_type": "movie"
+  },
+  "the-departed": {
+    "tmdb_id": 1422,
+    "tmdb_type": "movie"
+  },
+  "the-devil-all-the-time": {
+    "tmdb_id": 499932,
+    "tmdb_type": "movie"
+  },
+  "the-dictator-2012": {
+    "tmdb_id": 76493,
+    "tmdb_type": "movie"
+  },
+  "the-emperors-new-groove": {
+    "tmdb_id": 11688,
+    "tmdb_type": "movie"
+  },
+  "the-equalizer": {
+    "tmdb_id": 156022,
+    "tmdb_type": "movie"
+  },
+  "the-equalizer-2": {
+    "tmdb_id": 345887,
+    "tmdb_type": "movie"
+  },
+  "the-equalizer-3": {
+    "tmdb_id": 926393,
+    "tmdb_type": "movie"
+  },
+  "the-evil-dead": {
+    "tmdb_id": 764,
+    "tmdb_type": "movie"
+  },
+  "the-executioner": {
+    "tmdb_id": 4498,
+    "tmdb_type": "movie"
+  },
+  "the-fast-and-the-furious-2001": {
+    "tmdb_id": 9799,
+    "tmdb_type": "movie"
+  },
+  "the-fast-and-the-furious-tokyo-drift": {
+    "tmdb_id": 9615,
+    "tmdb_type": "movie"
+  },
+  "the-fate-of-the-furious": {
+    "tmdb_id": 337339,
+    "tmdb_type": "movie"
+  },
+  "the-fault-in-our-stars": {
+    "tmdb_id": 222935,
+    "tmdb_type": "movie"
+  },
+  "the-favourite": {
+    "tmdb_id": 375262,
+    "tmdb_type": "movie"
+  },
+  "the-final-destination": {
+    "tmdb_id": 19912,
+    "tmdb_type": "movie"
+  },
+  "the-flash": {
+    "tmdb_id": 298618,
+    "tmdb_type": "movie"
+  },
+  "the-florida-project": {
+    "tmdb_id": 394117,
+    "tmdb_type": "movie"
+  },
+  "the-forever-purge": {
+    "tmdb_id": 602223,
+    "tmdb_type": "movie"
+  },
+  "the-founder": {
+    "tmdb_id": 310307,
+    "tmdb_type": "movie"
+  },
+  "the-french-dispatch-of-the-liberty-kansas": {
+    "tmdb_id": 542178,
+    "tmdb_type": "movie"
+  },
+  "the-garden-of-words": {
+    "tmdb_id": 198375,
+    "tmdb_type": "movie"
+  },
+  "the-gentlemen": {
+    "tmdb_id": 522627,
+    "tmdb_type": "movie"
+  },
+  "the-girl-on-the-train-2016": {
+    "tmdb_id": 346685,
+    "tmdb_type": "movie"
+  },
+  "the-godfather": {
+    "tmdb_id": 238,
+    "tmdb_type": "movie"
+  },
+  "the-grand-budapest-hotel": {
+    "tmdb_id": 120467,
+    "tmdb_type": "movie"
+  },
+  "the-great-gatsby-2013": {
+    "tmdb_id": 64682,
+    "tmdb_type": "movie"
+  },
+  "the-green-knight": {
+    "tmdb_id": 559907,
+    "tmdb_type": "movie"
+  },
+  "the-grudge": {
+    "tmdb_id": 1970,
+    "tmdb_type": "movie"
+  },
+  "the-hand-2020-1": {
+    "tmdb_id": 846716,
+    "tmdb_type": "movie"
+  },
+  "the-handmaiden": {
+    "tmdb_id": 290098,
+    "tmdb_type": "movie"
+  },
+  "the-hangover": {
+    "tmdb_id": 18785,
+    "tmdb_type": "movie"
+  },
+  "the-hangover-part-iii": {
+    "tmdb_id": 109439,
+    "tmdb_type": "movie"
+  },
+  "the-hateful-eight": {
+    "tmdb_id": 273248,
+    "tmdb_type": "movie"
+  },
+  "the-hobbit-an-unexpected-journey": {
+    "tmdb_id": 49051,
+    "tmdb_type": "movie"
+  },
+  "the-hobbit-the-battle-of-the-five-armies": {
+    "tmdb_id": 122917,
+    "tmdb_type": "movie"
+  },
+  "the-hobbit-the-desolation-of-smaug": {
+    "tmdb_id": 57158,
+    "tmdb_type": "movie"
+  },
+  "the-holdovers": {
+    "tmdb_id": 840430,
+    "tmdb_type": "movie"
+  },
+  "the-house-that-jack-built-2018": {
+    "tmdb_id": 398173,
+    "tmdb_type": "movie"
+  },
+  "the-hunger-games": {
+    "tmdb_id": 70160,
+    "tmdb_type": "movie"
+  },
+  "the-hunger-games-catching-fire": {
+    "tmdb_id": 101299,
+    "tmdb_type": "movie"
+  },
+  "the-hunger-games-mockingjay-part-1": {
+    "tmdb_id": 131631,
+    "tmdb_type": "movie"
+  },
+  "the-hunger-games-mockingjay-part-2": {
+    "tmdb_id": 131634,
+    "tmdb_type": "movie"
+  },
+  "the-illusionist": {
+    "tmdb_id": 1491,
+    "tmdb_type": "movie"
+  },
+  "the-imitation-game": {
+    "tmdb_id": 205596,
+    "tmdb_type": "movie"
+  },
+  "the-interview-2014": {
+    "tmdb_id": 228967,
+    "tmdb_type": "movie"
+  },
+  "the-intouchables": {
+    "tmdb_id": 77338,
+    "tmdb_type": "movie"
+  },
+  "the-invisible-man-2020": {
+    "tmdb_id": 570670,
+    "tmdb_type": "movie"
+  },
+  "the-jungle-book-2016": {
+    "tmdb_id": 278927,
+    "tmdb_type": "movie"
+  },
+  "the-killer-2023": {
+    "tmdb_id": 800158,
+    "tmdb_type": "movie"
+  },
+  "the-king-2019": {
+    "tmdb_id": 504949,
+    "tmdb_type": "movie"
+  },
+  "the-kings-man": {
+    "tmdb_id": 476669,
+    "tmdb_type": "movie"
+  },
+  "the-lady-of-silence-the-mataviejitas-murders": {
+    "tmdb_id": 1142216,
+    "tmdb_type": "movie"
+  },
+  "the-lego-batman-movie": {
+    "tmdb_id": 324849,
+    "tmdb_type": "movie"
+  },
+  "the-lego-movie": {
+    "tmdb_id": 137106,
+    "tmdb_type": "movie"
+  },
+  "the-lego-movie-2-the-second-part": {
+    "tmdb_id": 280217,
+    "tmdb_type": "movie"
+  },
+  "the-lighthouse-2019": {
+    "tmdb_id": 503919,
+    "tmdb_type": "movie"
+  },
+  "the-lion-king-ii-simbas-pride": {
+    "tmdb_id": 9732,
+    "tmdb_type": "movie"
+  },
+  "the-little-mermaid-2023": {
+    "tmdb_id": 447277,
+    "tmdb_type": "movie"
+  },
+  "the-lord-of-the-rings-the-fellowship-of-the-ring": {
+    "tmdb_id": 120,
+    "tmdb_type": "movie"
+  },
+  "the-man-from-uncle": {
+    "tmdb_id": 203801,
+    "tmdb_type": "movie"
+  },
+  "the-martian": {
+    "tmdb_id": 286217,
+    "tmdb_type": "movie"
+  },
+  "the-mask-1994": {
+    "tmdb_id": 854,
+    "tmdb_type": "movie"
+  },
+  "the-mask-of-zorro": {
+    "tmdb_id": 9342,
+    "tmdb_type": "movie"
+  },
+  "the-maze-runner": {
+    "tmdb_id": 198663,
+    "tmdb_type": "movie"
+  },
+  "the-medium-2021": {
+    "tmdb_id": 745881,
+    "tmdb_type": "movie"
+  },
+  "the-meg": {
+    "tmdb_id": 345940,
+    "tmdb_type": "movie"
+  },
+  "the-menu-2022": {
+    "tmdb_id": 593643,
+    "tmdb_type": "movie"
+  },
+  "the-mitchells-vs-the-machines": {
+    "tmdb_id": 501929,
+    "tmdb_type": "movie"
+  },
+  "the-mummy-1999": {
+    "tmdb_id": 564,
+    "tmdb_type": "movie"
+  },
+  "the-mummy-returns": {
+    "tmdb_id": 1734,
+    "tmdb_type": "movie"
+  },
+  "the-neon-demon": {
+    "tmdb_id": 301365,
+    "tmdb_type": "movie"
+  },
+  "the-nice-guys": {
+    "tmdb_id": 290250,
+    "tmdb_type": "movie"
+  },
+  "the-northman": {
+    "tmdb_id": 639933,
+    "tmdb_type": "movie"
+  },
+  "the-nun-2018": {
+    "tmdb_id": 439079,
+    "tmdb_type": "movie"
+  },
+  "the-nun-ii": {
+    "tmdb_id": 968051,
+    "tmdb_type": "movie"
+  },
+  "the-outfit-2022": {
+    "tmdb_id": 799876,
+    "tmdb_type": "movie"
+  },
+  "the-parent-trap-1998": {
+    "tmdb_id": 9820,
+    "tmdb_type": "movie"
+  },
+  "the-platform": {
+    "tmdb_id": 619264,
+    "tmdb_type": "movie"
+  },
+  "the-platform-2": {
+    "tmdb_id": 1125510,
+    "tmdb_type": "movie"
+  },
+  "the-polar-express": {
+    "tmdb_id": 5255,
+    "tmdb_type": "movie"
+  },
+  "the-power-of-the-dog": {
+    "tmdb_id": 600583,
+    "tmdb_type": "movie"
+  },
+  "the-prestige": {
+    "tmdb_id": 1124,
+    "tmdb_type": "movie"
+  },
+  "the-promised-land-2023": {
+    "tmdb_id": 980026,
+    "tmdb_type": "movie"
+  },
+  "the-purge": {
+    "tmdb_id": 158015,
+    "tmdb_type": "movie"
+  },
+  "the-purge-anarchy": {
+    "tmdb_id": 238636,
+    "tmdb_type": "movie"
+  },
+  "the-purge-election-year": {
+    "tmdb_id": 316727,
+    "tmdb_type": "movie"
+  },
+  "the-rat-catcher-2023": {
+    "tmdb_id": 1172674,
+    "tmdb_type": "movie"
+  },
+  "the-red-spectre": {
+    "tmdb_id": 150396,
+    "tmdb_type": "movie"
+  },
+  "the-revenant-2015": {
+    "tmdb_id": 281957,
+    "tmdb_type": "movie"
+  },
+  "the-ritual-2017": {
+    "tmdb_id": 433808,
+    "tmdb_type": "movie"
+  },
+  "the-road-to-el-dorado": {
+    "tmdb_id": 10501,
+    "tmdb_type": "movie"
+  },
+  "the-roommate-2024-1": {
+    "tmdb_id": 1229913,
+    "tmdb_type": "movie"
+  },
+  "the-salt-of-the-earth": {
+    "tmdb_id": 265297,
+    "tmdb_type": "movie"
+  },
+  "the-secret-life-of-walter-mitty-2013": {
+    "tmdb_id": 116745,
+    "tmdb_type": "movie"
+  },
+  "the-shape-of-water": {
+    "tmdb_id": 399055,
+    "tmdb_type": "movie"
+  },
+  "the-silence-of-the-lambs": {
+    "tmdb_id": 274,
+    "tmdb_type": "movie"
+  },
+  "the-simpsons-movie": {
+    "tmdb_id": 35,
+    "tmdb_type": "movie"
+  },
+  "the-sixth-sense": {
+    "tmdb_id": 745,
+    "tmdb_type": "movie"
+  },
+  "the-social-dilemma": {
+    "tmdb_id": 656690,
+    "tmdb_type": "movie"
+  },
+  "the-social-network": {
+    "tmdb_id": 37799,
+    "tmdb_type": "movie"
+  },
+  "the-spongebob-squarepants-movie": {
+    "tmdb_id": 11836,
+    "tmdb_type": "movie"
+  },
+  "the-substance": {
+    "tmdb_id": 933260,
+    "tmdb_type": "movie"
+  },
+  "the-suicide-squad": {
+    "tmdb_id": 436969,
+    "tmdb_type": "movie"
+  },
+  "the-summit-of-the-gods": {
+    "tmdb_id": 712454,
+    "tmdb_type": "movie"
+  },
+  "the-theory-of-everything-2014": {
+    "tmdb_id": 266856,
+    "tmdb_type": "movie"
+  },
+  "the-three-deaths-of-marisela-escobedo": {
+    "tmdb_id": 753230,
+    "tmdb_type": "movie"
+  },
+  "the-tomorrow-war": {
+    "tmdb_id": 588228,
+    "tmdb_type": "movie"
+  },
+  "the-trial-of-the-chicago-7": {
+    "tmdb_id": 556984,
+    "tmdb_type": "movie"
+  },
+  "the-truman-show": {
+    "tmdb_id": 37165,
+    "tmdb_type": "movie"
+  },
+  "the-usual-suspects": {
+    "tmdb_id": 629,
+    "tmdb_type": "movie"
+  },
+  "the-wave-2008": {
+    "tmdb_id": 7735,
+    "tmdb_type": "movie"
+  },
+  "the-whale-2022": {
+    "tmdb_id": 785084,
+    "tmdb_type": "movie"
+  },
+  "the-wild-robot": {
+    "tmdb_id": 1184918,
+    "tmdb_type": "movie"
+  },
+  "the-wind-2018": {
+    "tmdb_id": 541560,
+    "tmdb_type": "movie"
+  },
+  "the-witch-2015": {
+    "tmdb_id": 310131,
+    "tmdb_type": "movie"
+  },
+  "the-wolf-of-wall-street": {
+    "tmdb_id": 106646,
+    "tmdb_type": "movie"
+  },
+  "the-wolverine": {
+    "tmdb_id": 76170,
+    "tmdb_type": "movie"
+  },
+  "the-wonderful-story-of-henry-sugar": {
+    "tmdb_id": 923939,
+    "tmdb_type": "movie"
+  },
+  "the-zone-of-interest": {
+    "tmdb_id": 467244,
+    "tmdb_type": "movie"
+  },
+  "there-will-be-blood": {
+    "tmdb_id": 7345,
+    "tmdb_type": "movie"
+  },
+  "thief": {
+    "tmdb_id": 11524,
+    "tmdb_type": "movie"
+  },
+  "thor": {
+    "tmdb_id": 10195,
+    "tmdb_type": "movie"
+  },
+  "thor-love-and-thunder": {
+    "tmdb_id": 616037,
+    "tmdb_type": "movie"
+  },
+  "three-billboards-outside-ebbing-missouri": {
+    "tmdb_id": 359940,
+    "tmdb_type": "movie"
+  },
+  "thunderbolts": {
+    "tmdb_id": 986056,
+    "tmdb_type": "movie"
+  },
+  "titane": {
+    "tmdb_id": 630240,
+    "tmdb_type": "movie"
+  },
+  "tomorrowland": {
+    "tmdb_id": 158852,
+    "tmdb_type": "movie"
+  },
+  "top-gun-maverick": {
+    "tmdb_id": 361743,
+    "tmdb_type": "movie"
+  },
+  "totem-2023": {
+    "tmdb_id": 958186,
+    "tmdb_type": "movie"
+  },
+  "toy-story": {
+    "tmdb_id": 862,
+    "tmdb_type": "movie"
+  },
+  "toy-story-2": {
+    "tmdb_id": 863,
+    "tmdb_type": "movie"
+  },
+  "toy-story-3": {
+    "tmdb_id": 10193,
+    "tmdb_type": "movie"
+  },
+  "toy-story-4": {
+    "tmdb_id": 301528,
+    "tmdb_type": "movie"
+  },
+  "train-to-busan": {
+    "tmdb_id": 396535,
+    "tmdb_type": "movie"
+  },
+  "transcendence": {
+    "tmdb_id": 157353,
+    "tmdb_type": "movie"
+  },
+  "transformers": {
+    "tmdb_id": 1858,
+    "tmdb_type": "movie"
+  },
+  "transformers-rise-of-the-beasts": {
+    "tmdb_id": 667538,
+    "tmdb_type": "movie"
+  },
+  "tremors": {
+    "tmdb_id": 9362,
+    "tmdb_type": "movie"
+  },
+  "triple-frontier": {
+    "tmdb_id": 399361,
+    "tmdb_type": "movie"
+  },
+  "tron-legacy": {
+    "tmdb_id": 20526,
+    "tmdb_type": "movie"
+  },
+  "twelve-monkeys": {
+    "tmdb_id": 63,
+    "tmdb_type": "movie"
+  },
+  "twilight-2008": {
+    "tmdb_id": 8966,
+    "tmdb_type": "movie"
+  },
+  "u-are-the-universe": {
+    "tmdb_id": 1013052,
+    "tmdb_type": "movie"
+  },
+  "unbroken": {
+    "tmdb_id": 227306,
+    "tmdb_type": "movie"
+  },
+  "uncut-gems": {
+    "tmdb_id": 473033,
+    "tmdb_type": "movie"
+  },
+  "under-the-skin-2013": {
+    "tmdb_id": 97370,
+    "tmdb_type": "movie"
+  },
+  "us-2019": {
+    "tmdb_id": 458723,
+    "tmdb_type": "movie"
+  },
+  "v-for-vendetta": {
+    "tmdb_id": 752,
+    "tmdb_type": "movie"
+  },
+  "v-h-s": {
+    "tmdb_id": 84348,
+    "tmdb_type": "movie"
+  },
+  "vagabond": {
+    "tmdb_id": 44018,
+    "tmdb_type": "movie"
+  },
+  "venom-2018": {
+    "tmdb_id": 335983,
+    "tmdb_type": "movie"
+  },
+  "vinland-saga": {
+    "tmdb_id": null,
+    "tmdb_type": null
+  },
+  "walle": {
+    "tmdb_id": 10681,
+    "tmdb_type": "movie"
+  },
+  "war-dogs-2016": {
+    "tmdb_id": 308266,
+    "tmdb_type": "movie"
+  },
+  "watcher": {
+    "tmdb_id": 807356,
+    "tmdb_type": "movie"
+  },
+  "weapons-2025": {
+    "tmdb_id": 1078605,
+    "tmdb_type": "movie"
+  },
+  "weathering-with-you": {
+    "tmdb_id": 568160,
+    "tmdb_type": "movie"
+  },
+  "what-we-do-in-the-shadows": {
+    "tmdb_id": 246741,
+    "tmdb_type": "movie"
+  },
+  "when-evil-lurks": {
+    "tmdb_id": 744857,
+    "tmdb_type": "movie"
+  },
+  "whiplash-2014": {
+    "tmdb_id": 244786,
+    "tmdb_type": "movie"
+  },
+  "willy-wonka-the-chocolate-factory": {
+    "tmdb_id": 252,
+    "tmdb_type": "movie"
+  },
+  "wolfwalkers": {
+    "tmdb_id": 441130,
+    "tmdb_type": "movie"
+  },
+  "wonder-woman-1984": {
+    "tmdb_id": 464052,
+    "tmdb_type": "movie"
+  },
+  "wonder-woman-2017": {
+    "tmdb_id": 297762,
+    "tmdb_type": "movie"
+  },
+  "world-of-tomorrow": {
+    "tmdb_id": 303867,
+    "tmdb_type": "movie"
+  },
+  "world-war-ii-in-colour": {
+    "tmdb_id": null,
+    "tmdb_type": null
+  },
+  "world-war-z": {
+    "tmdb_id": 72190,
+    "tmdb_type": "movie"
+  },
+  "wreck-it-ralph": {
+    "tmdb_id": 82690,
+    "tmdb_type": "movie"
+  },
+  "x-2022": {
+    "tmdb_id": 760104,
+    "tmdb_type": "movie"
+  },
+  "x-men": {
+    "tmdb_id": 36657,
+    "tmdb_type": "movie"
+  },
+  "x-men-apocalypse": {
+    "tmdb_id": 246655,
+    "tmdb_type": "movie"
+  },
+  "x-men-days-of-future-past": {
+    "tmdb_id": 127585,
+    "tmdb_type": "movie"
+  },
+  "x-men-first-class": {
+    "tmdb_id": 49538,
+    "tmdb_type": "movie"
+  },
+  "x-men-origins-wolverine": {
+    "tmdb_id": 2080,
+    "tmdb_type": "movie"
+  },
+  "x-men-the-last-stand": {
+    "tmdb_id": 36668,
+    "tmdb_type": "movie"
+  },
+  "x2": {
+    "tmdb_id": 36658,
+    "tmdb_type": "movie"
+  },
+  "y-tu-mama-tambien": {
+    "tmdb_id": 1391,
+    "tmdb_type": "movie"
+  },
+  "you-dont-mess-with-the-zohan": {
+    "tmdb_id": 10661,
+    "tmdb_type": "movie"
+  },
+  "your-name": {
+    "tmdb_id": 372058,
+    "tmdb_type": "movie"
+  },
+  "zack-snyders-justice-league": {
+    "tmdb_id": 791373,
+    "tmdb_type": "movie"
+  },
+  "zombieland": {
+    "tmdb_id": 19908,
+    "tmdb_type": "movie"
+  },
+  "zombieland-double-tap": {
+    "tmdb_id": 338967,
+    "tmdb_type": "movie"
+  },
+  "zootopia": {
+    "tmdb_id": 269149,
+    "tmdb_type": "movie"
+  }
+}

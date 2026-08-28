@@ -4,8 +4,8 @@
 # this file unattended, so a new major release must never arrive on its own and
 # break a run nobody is watching.
 #
-# Everything else the pipeline needs comes from the Python standard library:
-# the scripts import only httpx and python-dotenv, and pytest runs the tests.
+# Everything else the pipeline needs comes from the Python standard library. The
+# scripts import only httpx and python-dotenv.
 #
 # This file is the whole dependency list. There is no requirements.in beside it.
 
@@ -17,5 +17,9 @@ httpx>=0.28,<0.29
 # environment variable instead, so no .env exists there.
 python-dotenv>=1.2,<2
 
-# Test runner.
+# Test runner, installed ahead of the tests it will run.
+#
+# This repository has no tests yet. Running pytest here collects nothing, prints
+# "no tests ran" and exits 5, which is why no workflow step calls it. It is
+# pinned here so that adding the first test file needs no change to this file.
 pytest>=8.4,<9

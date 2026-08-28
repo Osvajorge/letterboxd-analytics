@@ -19,7 +19,21 @@ Two rules run through the whole file:
     module that reads a calendar: by year, streaks, heatmap, rating drift. Mixing
     them in would put films in the wrong year without any visible error.
 
-Films are joined across sources by Letterboxd slug. Nothing is matched by title.
+    One slug is one film. The slug is the identity this whole pipeline joins
+    on, so a film watched twice is one film and two slugs are two films.
+
+Films are joined across sources by Letterboxd slug. Nothing is matched by title,
+and nothing is matched by TMDB id either. An id is TMDB's answer about a film,
+not the film, and a wrong search answer is not evidence that two of the member's
+films are one. Treating a shared id as one film is what reported 821 films for
+an account holding 827: six searches went to the wrong film, and six pairs were
+folded together with nothing printed to say so. Any id still shared by two slugs
+is named in the run summary instead.
+
+The "coverage" block says how many distinct films stand behind the modules that
+do not describe the whole library. Only about a third of this account's 827
+films carry a watch date, so the site prints that denominator beside every time
+based module rather than letting it read as a figure for the whole library.
 
 This script reaches the network nowhere, and it imports nothing that does. It
 reads the cached list files itself rather than importing the fetcher, so it runs
@@ -208,15 +222,35 @@ def load_cached_lists(directory: Path = LISTS_CACHE_DIR) -> dict[str, dict[str, 
     return lists
 
 
-# Both the missing-cache and the unreadable-cache messages end with this, so
-# the reader learns what an absent cache costs without either message having to
-# repeat the list or the two lists drifting apart.
+# Every message about a cache this run cannot use ends with this, so the reader
+# learns what an absent cache costs without any message having to repeat the
+# list or the copies drifting apart.
+#
+# The list names every module that goes empty, including the world map and
+# director completeness, which are easy to forget because they are built one
+# step away from the film payloads: the map from production countries, the
+# completeness from cached filmography sizes. Leaving them out told the operator
+# the run would show more than it does.
+#
+# extras.extremes is named separately because it is the one module that neither
+# empties nor survives. Its oldest and newest films come from release years the
+# history already holds, so those two keep reporting; its shortest and longest
+# need a runtime, which only the cache has, so those two go null inside a module
+# that still looks filled in.
+#
+# The closing sentence used to say the history-only modules report in full. They
+# do, but extras.extremes is not one of them, and saying so sent the operator
+# looking for a module that was never going to be complete.
 TMDB_CACHE_ABSENT_EFFECT = (
     "Until then every module built on film details stays empty: genres, "
-    "countries, languages, cast, directors, studios, collections, runtime, "
-    "rating bias, contrarian index, obscurity, release recency, crew, "
-    "background actors, life in days and rating against runtime. The modules "
-    "built on the history alone still report in full."
+    "countries, languages, the world map, cast, directors, director "
+    "completeness, studios, collections, runtime, rating bias, contrarian "
+    "index, obscurity, release recency, crew, background actors, life in days "
+    "and rating against runtime. In extras.extremes the shortest and longest "
+    "films go null and the oldest and newest still report, because release "
+    "years come from the history and runtimes do not. Totals for hours, "
+    "directors and countries fall to zero for the same reason. Every other "
+    "module built on the history alone reports in full."
 )
 
 
@@ -226,10 +260,11 @@ def open_tmdb_cache(path: Path) -> sqlite3.Connection | None:
     Read only matters: opening a missing path for writing would create an empty
     database and hide the fact that enrichment never ran.
 
-    A cache that is present but not a database is treated as absent rather than
-    fatal. The file holds nothing but downloaded TMDB responses, so the answer
-    is always to delete it and download them again, and the rest of the panel
-    still builds from the history in the meantime.
+    A cache this run cannot use is treated as absent rather than fatal, whether
+    it cannot be opened at all or opens and turns out to be damaged. The file
+    holds nothing but downloaded TMDB responses, so the answer is always to make
+    it readable again or to delete it and download them again, and the rest of
+    the panel still builds from the history in the meantime.
     """
     if not path.exists():
         print(
@@ -238,24 +273,61 @@ def open_tmdb_cache(path: Path) -> sqlite3.Connection | None:
         )
         return None
 
-    connection = sqlite3.connect(f"file:{path}?mode=ro", uri=True)
+    # Opening is inside the guard because opening is one of the things that
+    # fails: a file the process may not read, or a path that is not a file at
+    # all, raises here. That is still a cache this run cannot use, and this
+    # function promises to report it rather than end the build.
+    try:
+        connection = sqlite3.connect(f"file:{path}?mode=ro", uri=True)
+    except (sqlite3.Error, OSError) as error:
+        print(
+            f"The TMDB cache at {path} could not be opened ({error}). "
+            f"Check that {path.name} is readable, or delete it and run "
+            "scripts/enrich_tmdb.py to build it again. "
+            "Treating it as missing for this run. " + TMDB_CACHE_ABSENT_EFFECT
+        )
+        return None
+
     connection.row_factory = sqlite3.Row
 
-    # sqlite opens the file without reading far enough to know it is a database,
-    # so a damaged or truncated file only fails on the first real query. Ask one
-    # cheap question here, where the answer can still be reported plainly.
-    try:
-        connection.execute("SELECT name FROM sqlite_master LIMIT 1").fetchone()
-    except sqlite3.DatabaseError as error:
+    unreadable = why_the_cache_cannot_be_read(connection)
+    if unreadable is not None:
         connection.close()
         print(
-            f"The TMDB cache at {path} could not be read as a database ({error}). "
+            f"The TMDB cache at {path} could not be read as a database ({unreadable}). "
             f"Delete {path.name} and run scripts/enrich_tmdb.py to build it again. "
             "Treating it as missing for this run. " + TMDB_CACHE_ABSENT_EFFECT
         )
         return None
 
     return connection
+
+
+def why_the_cache_cannot_be_read(connection: sqlite3.Connection) -> str | None:
+    """Report why this run cannot read the cache at all, or None when it can.
+
+    The question is deliberately narrow: can this reader find the tables it
+    needs? Reading the schema answers exactly that, and nothing else.
+
+    It used to ask SQLite to check every page of the database, which answers a
+    much broader question than this build ever asks. A database holds more than
+    the tables read here: indexes, free pages, rows for films that are not in
+    this history, and any table a later version of the enrichment step adds.
+    Damage in any of them failed the check, and one failed check threw away a
+    cache that could still have answered every question put to it. The run then
+    wrote a stats file with every TMDB module empty and exited 0, which the site
+    renders as a member who watched nothing rather than as a cache to repair.
+
+    Damage past the schema is met where it is met. read_payloads loses the films
+    on the damaged pages and keeps the rest, so the cost of real damage is the
+    films it actually touched.
+    """
+    try:
+        connection.execute("SELECT name FROM sqlite_master WHERE type = 'table'").fetchall()
+    except sqlite3.DatabaseError as error:
+        return str(error)
+
+    return None
 
 
 def table_exists(connection: sqlite3.Connection, name: str) -> bool:
@@ -266,47 +338,110 @@ def table_exists(connection: sqlite3.Connection, name: str) -> bool:
     return row is not None
 
 
+def read_payloads(
+    connection: sqlite3.Connection, table: str
+) -> tuple[dict[int, dict[str, Any]], int]:
+    """Read one payload table, keyed by TMDB id, skipping any row it cannot read.
+
+    Returns the payloads and the number of rows lost.
+
+    A row is lost two ways, and both cost one film rather than the build. The
+    stored text may not parse as JSON, which a half written cache produces. Or
+    SQLite may refuse to produce the row at all, which a damaged page produces.
+
+    The second one used to end the run. It raises from inside the loop that reads
+    the table, so it arrived as a bare SQLite message with no stats file written,
+    and it did so for damage that a whole-database check had already passed: the
+    payload text sits on its own pages, which that check reads without reading
+    the JSON in them. Sixty single-spot corruptions of a three hundred film cache
+    left twenty-six of them passing the check and then killing the build.
+
+    Reading one row at a time is what makes it survivable. A single query over
+    the whole table cannot be resumed once it has raised, so one damaged page
+    also took every film stored after it.
+    """
+    payloads: dict[int, dict[str, Any]] = {}
+    lost = 0
+
+    try:
+        tmdb_ids = [row[0] for row in connection.execute(f"SELECT tmdb_id FROM {table}")]
+    except sqlite3.DatabaseError as error:
+        print(
+            f"The TMDB cache table {table} could not be listed ({error}), so no film "
+            f"was read from it. Delete {TMDB_CACHE_FILE.name} and run "
+            "scripts/enrich_tmdb.py to build it again."
+        )
+        return payloads, lost
+
+    for tmdb_id in tmdb_ids:
+        try:
+            row = connection.execute(
+                f"SELECT payload FROM {table} WHERE tmdb_id = ?", (tmdb_id,)
+            ).fetchone()
+        except sqlite3.DatabaseError:
+            # One film's stored bytes are unreadable. Every other film in the
+            # table still is, so this costs that film and nothing more.
+            lost += 1
+            continue
+
+        payload = decode_payload(row["payload"]) if row is not None else None
+        if payload is None:
+            lost += 1
+            continue
+
+        payloads[tmdb_id] = payload
+
+    return payloads, lost
+
+
 def load_payloads_by_slug(
     connection: sqlite3.Connection | None,
     slug_to_tmdb_id: dict[str, int],
-) -> tuple[dict[str, dict[str, Any]], dict[str, dict[str, Any]]]:
+) -> tuple[dict[str, dict[str, Any]], dict[str, dict[str, Any]], int]:
     """Read the film and credit payloads for the films in the history.
 
-    Returns two maps keyed by slug: film details, and credits. Films the cache
-    does not hold are simply absent from both.
+    Returns two maps keyed by slug, film details and credits, and the number of
+    cached rows this run could not read.
 
-    Several slugs can point at one TMDB id, because Letterboxd keeps a renamed
-    film reachable under its old slug and because a provisional slug built from
-    a title can land on a film the history already holds. Each of them gets the
-    payload, so no film loses its details on one of its slugs without a word.
+    Several slugs can point at one TMDB id. That should not happen and the
+    enrichment step now refuses to let it, because one id is one film, but a
+    cache written before that rule can still hold it. Every slug given is filed,
+    so a slug never comes back without the details of the id it names, and the
+    two slugs then show the same film until one of them is given its own id in
+    data/manual-matches.json.
+
+    Filing one film under two keys does not change any count. Counting is of
+    slugs, because the slug is what a film is identified by everywhere in this
+    pipeline, so two slugs are two films here whatever id they carry. The summary
+    names any pair that shares an id, so the wrong details are visible rather
+    than silently averaged into the panel.
     """
     films: dict[str, dict[str, Any]] = {}
     credits: dict[str, dict[str, Any]] = {}
     if connection is None:
-        return films, credits
+        return films, credits, 0
 
     slugs_per_tmdb_id: dict[int, list[str]] = defaultdict(list)
     for slug, tmdb_id in slug_to_tmdb_id.items():
         slugs_per_tmdb_id[tmdb_id].append(slug)
 
+    lost = 0
+
     def collect(table: str, into: dict[str, dict[str, Any]]) -> None:
         """Read one payload table and file each row under every slug it serves."""
+        nonlocal lost
         if not table_exists(connection, table):
             return
-        for row in connection.execute(f"SELECT tmdb_id, payload FROM {table}"):
-            slugs = slugs_per_tmdb_id.get(row["tmdb_id"])
-            if not slugs:
-                continue
-            payload = decode_payload(row["payload"])
-            if payload is None:
-                continue
-            for slug in slugs:
+        payloads, lost_here = read_payloads(connection, table)
+        lost += lost_here
+        for tmdb_id, payload in payloads.items():
+            for slug in slugs_per_tmdb_id.get(tmdb_id, ()):
                 into[slug] = payload
 
     collect("films", films)
     collect("credits", credits)
 
-    return films, credits
+    return films, credits, lost
 
 
 def decode_payload(raw: Any) -> dict[str, Any] | None:
@@ -349,6 +484,38 @@ def resolve_tmdb_ids(
                 slug_to_tmdb_id.setdefault(slug, tmdb_id)
 
     return slug_to_tmdb_id
+
+
+def slugs_sharing_a_tmdb_id(
+    entries: list[dict[str, Any]], slug_to_tmdb_id: dict[str, int]
+) -> list[tuple[int, list[str]]]:
+    """Name every TMDB id that more than one slug in this history carries.
+
+    Nothing here changes a count. Counting is of slugs, because the slug is what
+    identifies a film everywhere in this pipeline, and two slugs are two films.
+
+    A shared id is still worth naming. One id is one film, so two slugs carrying
+    one id means one of them was matched to the wrong film and is now showing
+    that film's runtime, genres and cast. This is what makes that visible.
+
+    It used to do the opposite. Two slugs sharing an id were treated as one film
+    and their entries were moved onto a single slug, which turned six wrong
+    search answers into six films missing from the total, printed nothing about
+    it, and exited 0. The count read 821 against the 827 Letterboxd reports.
+
+    Returns each id with its slugs, sorted, so two runs report the same thing.
+    """
+    slugs_per_tmdb_id: dict[int, set[str]] = defaultdict(set)
+    for entry in entries:
+        slug = entry.get("slug")
+        if isinstance(slug, str) and slug in slug_to_tmdb_id:
+            slugs_per_tmdb_id[slug_to_tmdb_id[slug]].add(slug)
+
+    return [
+        (tmdb_id, sorted(slugs))
+        for tmdb_id, slugs in sorted(slugs_per_tmdb_id.items())
+        if len(slugs) > 1
+    ]
 
 
 def load_director_filmography_sizes(
@@ -470,6 +637,30 @@ def crowd_rating_in_stars(payload: dict[str, Any] | None) -> float | None:
 def rounded(value: float | None, places: int = 2) -> float | None:
     """Round a number for output, passing None through untouched."""
     return None if value is None else round(value, places)
+
+
+def rounded_share(value: float, places: int = 3) -> float:
+    """Round a share for output without letting the rounding invent 0 or 1.
+
+    The site reads these two values as absolutes: 0 means not one film, 1 means
+    every film. Ordinary rounding manufactures both. A watchlist of 3000 films
+    carrying 2999 estimated dates is a share of 0.9997, three-place rounding
+    makes that exactly 1.0, and the site then states that no watchlist film has
+    a real date, which the one film with a real date contradicts. The same
+    rounding turns one estimate in 3000 into 0.0 and states the opposite lie.
+
+    So a share that really sits between the two bounds is kept off them, at the
+    closest value this many places can hold. A share that is truly 0 or truly 1
+    passes through, because then the absolute is the measurement.
+    """
+    smallest_step = 10.0**-places
+    rounded_value = round(value, places)
+
+    if value > 0 and rounded_value <= 0:
+        return smallest_step
+    if value < 1 and rounded_value >= 1:
+        return round(1 - smallest_step, places)
+    return rounded_value
 
 
 def average(values: Iterable[float]) -> float | None:
@@ -1051,7 +1242,9 @@ def build_watchlist(
 
     Conversion rate is the share of the current watchlist whose films already
     appear in the history. It cannot see films removed from the watchlist after
-    being watched, because nothing in these inputs records that.
+    being watched, because nothing in these inputs records that. history_slugs
+    holds every slug the history mentions, including the second slug of a film
+    that has two, so a watchlist page naming either one counts as watched.
 
     estimated_date_share says how much of the age figure is guesswork. The
     public watchlist pages do not say when a film was added, so the weekly
@@ -1059,6 +1252,11 @@ def build_watchlist(
     the real date. Only the export carries real dates. The site reads this share
     to decide whether it may present the ages as measurements at all: with no
     export loaded the share is 1.0 and every age is 0.
+
+    Both shares are rounded through rounded_share, because the site reads 0 and
+    1 in either of them as "none" and "all". A watchlist one film short of fully
+    estimated is not fully estimated, and rounding it up to 1.0 would tell the
+    reader that not one age on the page is real.
     """
     ages_in_days = [
         (today - added).days
@@ -1078,12 +1276,12 @@ def build_watchlist(
         "size": len(watchlist),
         "median_age_days": int(median(ages_in_days)) if ages_in_days else None,
         "conversion_rate": (
-            rounded(len(already_seen) / len(watchlist_slugs), 3) if watchlist_slugs else None
+            rounded_share(len(already_seen) / len(watchlist_slugs)) if watchlist_slugs else None
         ),
         # Measured against the whole watchlist, so it stays the share of the
         # ages the site is about to print, not the share of some smaller set.
         "estimated_date_share": (
-            rounded(estimated_dates / len(watchlist), 3) if watchlist else None
+            rounded_share(estimated_dates / len(watchlist)) if watchlist else None
         ),
     }
 
@@ -1091,7 +1289,12 @@ def build_watchlist(
 def build_list_progress(
     cached_lists: dict[str, dict[str, Any]], history_slugs: set[str]
 ) -> list[dict[str, Any]]:
-    """Intersect the history with each curated list. Slugs only, no title matching."""
+    """Intersect the history with each curated list. Slugs only, no title matching.
+
+    history_slugs holds every slug the history mentions, including the second
+    slug of a film that has two, because a list names a film by whichever slug
+    Letterboxd printed on its page and either one is the same film.
+    """
     titles = {list_id: title for list_id, title, _ in CURATED_LISTS}
     progress: list[dict[str, Any]] = []
 
@@ -1663,7 +1866,7 @@ def build_stats_document(
     connection: sqlite3.Connection | None,
     cached_lists: dict[str, dict[str, Any]],
     today: date | None = None,
-) -> tuple[dict[str, Any], dict[str, int]]:
+) -> tuple[dict[str, Any], dict[str, Any]]:
     """Compute every module and return the finished stats document.
 
     Returns two things: the document itself, in the shape DATA_CONTRACT.md
@@ -1677,21 +1880,42 @@ def build_stats_document(
     entries = [entry for entry in history.get("entries", []) if isinstance(entry, dict)]
     watchlist = [item for item in history.get("watchlist", []) if isinstance(item, dict)]
 
+    # The slug is the film. Nothing below merges two slugs, because nothing here
+    # knows better than the slug what film an entry is: a shared TMDB id is a
+    # search answer, and a wrong one is what merged six pairs of this member's
+    # films and took six off the total without a word. Shared ids are reported
+    # instead, by shared_tmdb_ids below.
+    every_slug_to_tmdb_id = resolve_tmdb_ids(entries, connection)
+
+    # Curated lists and the watchlist name a film by whichever slug Letterboxd
+    # printed on that page, so membership is asked of every slug the history
+    # mentions.
+    every_history_slug = {
+        entry["slug"] for entry in entries if isinstance(entry.get("slug"), str)
+    }
+
     # The split every time based module depends on. Undated entries stay in the
     # totals and in the film based modules, and appear nowhere on a calendar.
     dated_entries = [entry for entry in entries if parse_watched_date(entry.get("watched_date"))]
     watched_dates = [parse_watched_date(entry["watched_date"]) for entry in dated_entries]
 
-    history_slugs = {entry["slug"] for entry in entries if isinstance(entry.get("slug"), str)}
+    # One slug each, so these are counts of films rather than of viewings.
+    film_slugs = {entry["slug"] for entry in entries if isinstance(entry.get("slug"), str)}
+    films_with_a_date = {
+        entry["slug"] for entry in dated_entries if isinstance(entry.get("slug"), str)
+    }
     rating_per_film = latest_rating_per_film(entries)
     titles = title_per_slug(entries)
 
     slug_to_tmdb_id = {
         slug: tmdb_id
-        for slug, tmdb_id in resolve_tmdb_ids(entries, connection).items()
-        if slug in history_slugs
+        for slug, tmdb_id in every_slug_to_tmdb_id.items()
+        if slug in film_slugs
     }
-    films_by_slug, credits_by_slug = load_payloads_by_slug(connection, slug_to_tmdb_id)
+    films_by_slug, credits_by_slug, unreadable_cache_rows = load_payloads_by_slug(
+        connection, slug_to_tmdb_id
+    )
+    shared_tmdb_ids = slugs_sharing_a_tmdb_id(entries, slug_to_tmdb_id)
 
     release_year_per_film: dict[str, int] = {}
     for entry in entries:
@@ -1757,20 +1981,39 @@ def build_stats_document(
         "entries_without_slug": sum(
             1 for entry in entries if not isinstance(entry.get("slug"), str)
         ),
-        "films_without_tmdb_payload": len(history_slugs) - len(films_by_slug),
-        "films_without_credits": len(history_slugs) - len(credits_by_slug),
+        "films_without_tmdb_payload": len(film_slugs) - len(films_by_slug),
+        "films_without_credits": len(film_slugs) - len(credits_by_slug),
+        "unreadable_cache_rows": unreadable_cache_rows,
+        "shared_tmdb_ids": shared_tmdb_ids,
     }
 
     document = {
         "generated_at": today.isoformat(),
         "username": history.get("username") or LETTERBOXD_USER,
         "totals": {
-            "films": len(history_slugs),
+            "films": len(film_slugs),
             "hours": runtime["total_minutes"] // 60,
             "directors": len(films_per_director),
             "countries": len(world_map),
             "longest_streak_weeks": longest_run_of_consecutive_weeks(watched_dates),
             "multi_film_days": count_multi_film_days(watched_dates),
+        },
+        # How much of the library each kind of module can speak for. Every
+        # figure counts distinct films, never entries, so a film watched twice
+        # is one film here.
+        #
+        # These four are what lets the site print a denominator beside a module
+        # instead of leaving the reader to assume every module answers for the
+        # whole library. In this account 827 films are watched, which is what
+        # Letterboxd reports, and fewer than 300 of them carry a date, so the
+        # time based modules describe about a third of what the totals describe.
+        # Both are right, and only the coverage block makes the difference
+        # visible.
+        "coverage": {
+            "films_total": len(film_slugs),
+            "films_with_a_date": len(films_with_a_date),
+            "films_with_a_rating": len(rating_per_film),
+            "films_with_tmdb_data": len(films_by_slug),
         },
         "by_year": build_by_year(dated_entries),
         "decades": build_decades(release_year_per_film, rating_per_film),
@@ -1784,12 +2027,12 @@ def build_stats_document(
         "studios": build_studios(films_by_slug, rating_per_film),
         "collections": build_collections(films_by_slug, load_collection_sizes(connection)),
         "world_map": world_map,
-        "list_progress": build_list_progress(cached_lists, history_slugs),
+        "list_progress": build_list_progress(cached_lists, every_history_slug),
         "extras": {
             "rating_bias": build_rating_bias(rating_per_film, films_by_slug),
             "rating_drift": build_rating_drift(dated_entries),
             "rewatch_rate": rounded(rewatches / len(entries), 3) if entries else None,
-            "watchlist": build_watchlist(watchlist, history_slugs, today),
+            "watchlist": build_watchlist(watchlist, every_history_slug, today),
             "heatmap": build_heatmap(dated_entries),
             "runtime": runtime,
             "decade_gaps": build_decade_gaps(release_year_per_film, today),
@@ -1848,9 +2091,12 @@ def describe_value(value: Any) -> str:
     return "null" if value is None else str(value)
 
 
-def print_summary(stats: dict[str, Any], audit: dict[str, int]) -> None:
+def print_summary(stats: dict[str, Any], audit: dict[str, Any]) -> None:
     """Print what each module produced, so a run can be checked without opening the file."""
-    rows: list[tuple[str, str]] = [("totals", describe_module(stats["totals"]))]
+    rows: list[tuple[str, str]] = [
+        ("totals", describe_module(stats["totals"])),
+        ("coverage", describe_module(stats["coverage"])),
+    ]
 
     for name in (
         "by_year",
@@ -1882,12 +2128,52 @@ def print_summary(stats: dict[str, Any], audit: dict[str, int]) -> None:
     rows.append(("input: entries with no slug", str(audit["entries_without_slug"])))
     rows.append(("input: films with no TMDB payload", str(audit["films_without_tmdb_payload"])))
     rows.append(("input: films with no credits", str(audit["films_without_credits"])))
+    rows.append(
+        (
+            "input: cache rows that would not read",
+            f"{audit['unreadable_cache_rows']} (each costs one film, not the build)",
+        )
+    )
+    rows.append(
+        (
+            "input: films sharing a TMDB id",
+            str(sum(len(slugs) for _, slugs in audit["shared_tmdb_ids"])),
+        )
+    )
 
     width = max(len(label) for label, _ in rows)
     print(f"\n{'module'.ljust(width)}  result")
     print(f"{'-' * width}  {'-' * 40}")
     for label, detail in rows:
         print(f"{label.ljust(width)}  {detail}".rstrip())
+
+    print_shared_tmdb_ids(audit["shared_tmdb_ids"])
+
+
+def print_shared_tmdb_ids(shared: list[tuple[int, list[str]]]) -> None:
+    """Name the films that carry one TMDB id between them, and what it costs.
+
+    Each of them is still counted as its own film, so the total is right. What is
+    wrong is the detail: one id is one film, so the slugs below all show that one
+    film's runtime, genres, cast and country, and only one of them is the film it
+    belongs to.
+
+    This is printed rather than absorbed. The old behaviour counted the group as
+    a single film, which quietly took six films off this account's total and put
+    the panel six behind the number Letterboxd shows on the member's own page.
+    """
+    if not shared:
+        return
+
+    print("")
+    print(
+        "These films share a TMDB id, which one film cannot do. Each is counted "
+        "as\nits own film, so the total is right, but they all show the details "
+        "of the\none film that id belongs to. Give the wrong ones their own id in\n"
+        "data/manual-matches.json and run scripts/enrich_tmdb.py again:"
+    )
+    for tmdb_id, slugs in shared:
+        print(f"  {tmdb_id}: {', '.join(slugs)}")
 
 
 def main() -> None:

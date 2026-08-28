@@ -384,6 +384,39 @@ main,
   border-left: var(--lb-border-thick) solid var(--lb-blue);
 }
 
+/* The one paragraph that names the denominators the rest of the page counts
+   from. It qualifies rather than fails, so it takes the same blue as a caveat. */
+.notice--coverage {
+  margin-top: var(--lb-space-md);
+  border-left: var(--lb-border-thick) solid var(--lb-blue);
+}
+
+/* The scope label under a section or block heading, which names the subset of
+   the library the figures under it are counted from.
+   It stays a label rather than a paragraph: the same words appear wherever two
+   modules are counted the same way, and the paragraph under the totals explains
+   them once. Short and repeated reads as a unit; a repeated sentence reads as
+   an apology. A section whose figures come from two different subsets prints one
+   short claim per figure here instead, so it can run to two lines. */
+.coverage-note {
+  display: inline-block;
+  max-width: 100%;
+  margin-top: var(--lb-space-sm);
+  padding: var(--lb-space-dense-sm) var(--lb-space-dense-lg);
+  border-left: var(--lb-border-thick) solid var(--lb-blue);
+  border-radius: var(--lb-radius-sm);
+  background: var(--lb-surface);
+  color: var(--lb-body-high-contrast);
+  font-size: var(--lb-body-meta);
+}
+
+/* Under a section lede or a block lede the label follows body text rather than
+   a heading, so it needs less space above it than after a heading rule. */
+.section__lede + .coverage-note,
+.block__lede + .coverage-note {
+  margin-top: var(--lb-space-dense-lg);
+}
+
 .empty {
   padding: var(--lb-space-md);
   border: var(--lb-border-thin) dashed var(--lb-separator);
@@ -434,8 +467,9 @@ main,
   color: var(--lb-metadata);
 }
 
-/* A figure the source data cannot back up. The note carries the caveat, so it
-   is lifted out of the metadata grey to be read rather than skimmed past. */
+/* A figure the source data cannot back up: either unresolved, or resting on
+   dates the pipeline had to estimate. The note carries the reason, so it is
+   lifted out of the metadata grey to be read rather than skimmed past. */
 .tile--unverified .tile__note {
   color: var(--lb-blue);
 }

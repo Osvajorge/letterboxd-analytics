@@ -17,6 +17,31 @@ changes its destination, so this runs once per new film and never again.
 Short link ids are case-sensitive base62. Lowercasing them merges distinct
 films: in one real export `boxd.it/1JzG` is Inglourious Basterds and
 `boxd.it/1jzg` is Paris Is Burning.
+
+Which files are read:
+
+Only the member's own six film files, each at the exact path it has inside the
+export, whether the export arrives as a ZIP or as an unpacked directory. A file
+with the same name under `deleted/`, `orphaned/`, `likes/` or `lists/` is not the
+member's current activity, and `scripts/backfill.py` refuses all of them, so a
+slug resolved out of one of them could never be joined to anything.
+
+`lists/*.csv` are not read. Two measured reasons:
+
+- They are not the single CSV table this script assumed. The first line is the
+  literal text "Letterboxd list export v7", the second line is the header
+  `Date,Name,Tags,URL,Description` for one row describing the list itself, and
+  only the fifth line starts the film table under `Position,Name,Year,URL`.
+  There is no "Letterboxd URI" column anywhere in them.
+- Nothing downstream can use what they hold. In the real export they contribute
+  80 short links that appear in no other file, so no history entry and no
+  watchlist row ever joins on them, and four of those links are the lists' own
+  URLs, which resolve to a list page rather than a film and were being recorded
+  as a film with no slug.
+
+profile.csv is excluded deliberately: it holds the member's email address and has
+no place in anything this project publishes. Reading it would put that address in
+memory for no gain, since it names no film.
 """
 
 from __future__ import annotations
@@ -35,6 +60,26 @@ from lib.config import DATA, REQUEST_TIMEOUT, USER_AGENT, ensure_dirs
 SHORT_LINKS_FILE = DATA / "short-links.json"
 
 SHORT_LINK_PATTERN = re.compile(r"boxd\.it/([A-Za-z0-9]+)")
+
+# The member's own films files, each at the exact path it has inside the export.
+# These are the same six files scripts/backfill.py reads, so every slug resolved
+# here has a row that can join to it. Every other file in the export is skipped,
+# profile.csv included: it holds the member's email address and names no film.
+MEMBER_FILES_WITH_FILM_LINKS = (
+    "diary.csv",
+    "watched.csv",
+    "ratings.csv",
+    "reviews.csv",
+    "watchlist.csv",
+    "likes/films.csv",
+)
+
+# Folders whose files carry the names above without holding the member's current
+# activity: deleted and orphaned hold entries Letterboxd removed, likes holds
+# other people's reviews and lists, lists holds the member's own curated lists.
+# A file under any of them is skipped however deep the export is wrapped.
+NON_MEMBER_FOLDERS = frozenset({"deleted", "orphaned", "likes", "lists"})
+
 FILM_SLUG_PATTERN = re.compile(r"/film/([^/]+)/?")
 
 # The short link host answers instantly, so a short pause is enough to stay a
@@ -132,11 +177,41 @@ def resolve_all(short_ids: list[str]) -> dict[str, str | None]:
     return known
 
 
+def wanted(member: str) -> bool:
+    """Say whether one path inside the export is one of the member's own film files.
+
+    The whole path decides this, never the bare file name. An export holds
+    deleted/diary.csv, orphaned/diary.csv and likes/reviews.csv, whose names match
+    the member's own files while their contents do not: they hold entries
+    Letterboxd removed and other people's writing. Matching on the name alone read
+    all of them out of a ZIP while a directory run of the same export skipped them,
+    so one export produced two different maps.
+
+    Folders above the match are allowed, because the export arrives wrapped in a
+    dated folder and may be passed at either level. Only the folder directly above
+    the file is checked, and that is the one that says whose activity it is.
+
+    Anything else is skipped, which keeps profile.csv and its email address out of
+    this script entirely.
+    """
+    parts = [
+        part for part in member.replace("\\", "/").lower().split("/") if part not in ("", ".")
+    ]
+    for member_file in MEMBER_FILES_WITH_FILM_LINKS:
+        wanted_parts = member_file.split("/")
+        if parts[-len(wanted_parts) :] != wanted_parts:
+            continue
+        folders_above = parts[: -len(wanted_parts)]
+        return not folders_above or folders_above[-1] not in NON_MEMBER_FOLDERS
+    return False
+
+
 def main() -> None:
     if len(sys.argv) < 2:
         print(
             "Usage: python scripts/resolve_short_links.py <export-dir-or-zip>\n"
-            "Reads every Letterboxd URI in the export and resolves the short links.",
+            "Reads the member's own diary, watched, ratings, reviews, watchlist and\n"
+            "likes/films files and resolves every boxd.it link in them to a film slug.",
             file=sys.stderr,
         )
         raise SystemExit(2)
@@ -144,14 +219,29 @@ def main() -> None:
     source = Path(sys.argv[1])
     text = ""
     if source.is_dir():
-        for csv_file in source.rglob("*.csv"):
-            text += csv_file.read_text(encoding="utf-8-sig", errors="replace")
+        # The folder's own name is read from the resolved path, because
+        # Path(".").name is the empty string and this script would otherwise read
+        # orphaned/diary.csv as the member's diary when run from inside that
+        # folder. scripts/backfill.py refuses the same folders for the same reason.
+        folder_name = source.resolve().name.lower()
+        if folder_name in NON_MEMBER_FOLDERS:
+            print(
+                f"{source.resolve()} is the export's {folder_name} folder, not the export "
+                f"itself.\n"
+                f"  What to do: pass the folder that holds diary.csv and watched.csv.",
+                file=sys.stderr,
+            )
+            raise SystemExit(2)
+
+        for path in sorted(source.rglob("*.csv")):
+            if path.is_file() and wanted(str(path.relative_to(source))):
+                text += path.read_text(encoding="utf-8-sig", errors="replace")
     else:
         import zipfile
 
         with zipfile.ZipFile(source) as archive:
             for member in archive.namelist():
-                if member.endswith(".csv"):
+                if wanted(member):
                     text += archive.read(member).decode("utf-8-sig", errors="replace")
 
     short_ids = SHORT_LINK_PATTERN.findall(text)

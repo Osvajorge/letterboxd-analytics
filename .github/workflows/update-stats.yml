@@ -19,6 +19,19 @@ on:
 permissions:
   contents: write
 
+# Every `run` block below is a shell script, and this decides how a failure
+# inside one is treated.
+#
+# GitHub's unnamed default is `bash -e`, which stops a step at the first failing
+# command but lets a command that fails inside a pipeline pass unnoticed, because
+# only the last command in a pipeline sets the exit status. Naming bash here gets
+# `bash -eo pipefail` instead, so any failing command in any step fails that step
+# and stops the job before the commit. No step uses a pipeline today. This is
+# what keeps that still true of the first step that does.
+defaults:
+  run:
+    shell: bash
+
 # A scheduled run and a manual run can overlap. Both end by committing to the
 # same branch, and the second push would be rejected. Queue them instead of
 # letting them race, and let the first one finish rather than cancelling it
@@ -67,8 +80,15 @@ jobs:
 
       - name: Read the public RSS feed and merge new entries into the history
         # The feed is a rolling window of roughly the last fifty diary entries.
-        # It keeps data/history.json current; it cannot rebuild it. Entries are
-        # merged by guid, so re-reading the same window changes nothing.
+        # It keeps data/history.json current; it cannot rebuild it.
+        #
+        # Two entries are the same watch when they name the same film on the same
+        # day, so re-reading the same window changes nothing. The guid is not what
+        # decides that: the export and the feed number the same watch differently,
+        # so keying on it stored one watch twice, once per source.
+        #
+        # The merge only ever adds entries to the history. Nothing in this step
+        # removes one, which is what the check before the commit relies on.
         run: |
           python scripts/fetch_rss.py > "${RUNNER_TEMP}/rss-entries.json"
           python scripts/merge_history.py "${RUNNER_TEMP}/rss-entries.json"
@@ -93,6 +113,28 @@ jobs:
         # disappear here too. The date a film was added is not replaced: a film
         # already stored keeps the date it had, so watchlist ages stay meaningful
         # instead of resetting to zero every Monday.
+        #
+        # This is one of the two steps that can destroy data, so it carries the
+        # same sanity gate as the list refresh below. Replacing membership is
+        # exactly what makes it dangerous: the added dates the export supplied
+        # live only in data/history.json, and a film dropped from it comes back
+        # next week stamped with next week's date and marked an estimate. The
+        # pages never state the real one, so the loss is permanent.
+        #
+        # The script therefore refuses to write a read that came back empty, that
+        # fell more than one page short of the total the watchlist pages state,
+        # or that fell far short of the watchlist already stored. It also refuses
+        # a page whose films no longer carry their slug and their name on the
+        # same element, because that read comes back the right size wearing the
+        # wrong titles. It keeps what is stored and exits non-zero, which stops
+        # the job here, before the build and before the commit.
+        #
+        # Two flags override parts of that, and neither must ever be added here,
+        # where nobody is watching to make the judgement either one asks for.
+        # --allow-shrink says the watchlist really did lose that many films.
+        # --allow-first-watchlist says it is fine to store a read when nothing is
+        # stored yet, which is the one run that stamps every film with an
+        # estimated date. Creating the first watchlist is backfill.py's job.
         run: python scripts/fetch_watchlist.py
 
       - name: Refresh membership of the curated lists
@@ -104,14 +146,21 @@ jobs:
         # reads no pages, sends no requests, and list_progress stays frozen at
         # whatever the first snapshot happened to hold.
         #
-        # Forcing a refresh is also what makes this the most destructive step in
-        # the job, so it is the one step with a sanity gate. Letterboxd answers
-        # 200 whether or not the markup still carries the attribute the films are
-        # read from, so a markup change looks exactly like a list that emptied
-        # overnight. The script refuses any refresh that comes back far smaller
-        # than the cache it would replace, keeps the cached copy, and exits
-        # non-zero. That stops the job here, before the build and the commit, so
-        # the week goes red instead of publishing sixteen lists of nothing.
+        # Forcing a refresh is also what makes this step destructive, so it
+        # carries a sanity gate, as the watchlist step above does. Letterboxd
+        # answers 200 whether or not the markup still carries the attribute the
+        # films are read from, so a markup change looks exactly like a list that
+        # emptied overnight. The script refuses any refresh that comes back far
+        # smaller than the cache it would replace, keeps the cached copy, and
+        # exits non-zero. That stops the job here, before the build and the
+        # commit, so the week goes red instead of publishing sixteen lists of
+        # nothing.
+        #
+        # Under --force a list with no cached copy is refused too. The size check
+        # has nothing to measure against there, and accepting whatever the page
+        # returned is the outcome the gate exists to prevent. Create that cache
+        # by hand instead: run the script once without --force, check the count,
+        # and commit the file.
         #
         # --allow-shrink exists for a person who has checked the pages and knows
         # the lists really did shrink. It must never be added here, where nobody
@@ -144,6 +193,86 @@ jobs:
 
       - name: Build the site data file
         run: python scripts/build_stats.py
+
+      - name: Check the two files this run is about to commit
+        # Every step above fails the job on a non-zero exit, and nothing in this
+        # file overrides that, so the commit below already cannot run after a step
+        # that crashed. This step covers the other failure, the one this pipeline
+        # keeps producing: a script that writes an empty or shrunken file and
+        # still exits zero. After the commit the good copy is gone, so this is the
+        # last point where the difference can still be seen.
+        #
+        # Only two invariants, both of them things no healthy run can break:
+        #
+        #   the stats file parses and reports at least one film
+        #   the history holds no fewer entries than the checkout supplied
+        #
+        # The second one holds because the RSS merge only adds entries and the
+        # watchlist step writes a different array, so within one run the entry
+        # count can rise and never fall.
+        #
+        # The size rules for the watchlist and the curated lists are deliberately
+        # not repeated here. They live in the scripts that read those pages, and a
+        # second copy of a rule is a copy that drifts.
+        run: |
+          # The very first run of a new clone has no committed history to compare
+          # against, and starting from nothing is not a shrunken file.
+          if ! git show HEAD:data/history.json > "${RUNNER_TEMP}/history-before.json"; then
+            echo '{"entries": []}' > "${RUNNER_TEMP}/history-before.json"
+          fi
+
+          python - "${RUNNER_TEMP}/history-before.json" <<'PYTHON'
+          import json
+          import sys
+          from pathlib import Path
+
+          stats_file = Path("docs/data/stats.json")
+          history_file = Path("data/history.json")
+          history_before_file = Path(sys.argv[1])
+
+
+          def load(path: Path) -> dict:
+              """Read one JSON file, or stop the run naming the file that will not parse."""
+              try:
+                  return json.loads(path.read_text(encoding="utf-8"))
+              except (OSError, ValueError) as error:
+                  sys.exit(
+                      f"{path} is missing or is not readable JSON: {error}\n"
+                      f"The step that wrote it exited zero anyway, so start there. "
+                      f"Nothing was committed and the published site is untouched."
+                  )
+
+
+          stats = load(stats_file)
+          history = load(history_file)
+          history_before = load(history_before_file)
+
+          films = stats.get("totals", {}).get("films") or 0
+          if films < 1:
+              sys.exit(
+                  f"{stats_file} reports {films} films, so publishing it would replace the "
+                  f"panel with an empty one.\n"
+                  f"Look at the build step above. Nothing was committed and the published "
+                  f"site is untouched."
+              )
+
+          entries_now = len(history.get("entries", []))
+          entries_before = len(history_before.get("entries", []))
+          if entries_now < entries_before:
+              sys.exit(
+                  f"{history_file} holds {entries_now} entries and the checkout supplied "
+                  f"{entries_before}, so this run lost {entries_before - entries_now} of "
+                  f"them.\n"
+                  f"A run can only add entries, so this is damage rather than an edit. Look "
+                  f"at the RSS merge step above. Nothing was committed and the published "
+                  f"site is untouched."
+              )
+
+          print(
+              f"Ready to commit: {films} films in the stats file, {entries_now} history "
+              f"entries against {entries_before} in the checkout."
+          )
+          PYTHON
 
       - name: Commit the rebuilt data, but only when it changed
         run: |

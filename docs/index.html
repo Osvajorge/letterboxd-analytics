@@ -81,10 +81,15 @@
     <section class="section" id="totals" aria-labelledby="totals-heading">
       <h3 class="section__heading" id="totals-heading">Totals</h3>
       <div class="tile-grid" id="totals-grid"></div>
+      <!-- Filled by app.js from stats.coverage. The denominators are explained
+           here once, so each section built on part of the library needs only the
+           short scope label that appears under its heading. -->
+      <p class="notice notice--coverage" id="coverage-summary" hidden></p>
     </section>
 
     <section class="section" id="by-year" aria-labelledby="by-year-heading">
       <h3 class="section__heading" id="by-year-heading">By year</h3>
+      <p class="coverage-note" id="by-year-coverage" hidden></p>
 
       <div class="block">
         <h4 class="block__heading" id="films-per-year-heading">Films and diary entries per year</h4>
@@ -103,7 +108,8 @@
 
     <section class="section" id="decades" aria-labelledby="decades-heading">
       <h3 class="section__heading" id="decades-heading">Highest rated decades</h3>
-      <p class="section__lede">Average rating of every film watched from each decade, on the half-star scale from 0.5 to 5.</p>
+      <p class="section__lede">Average rating of the films watched from each decade, on the half-star scale from 0.5 to 5.</p>
+      <p class="coverage-note" id="decades-coverage" hidden></p>
       <div id="decades-chart"></div>
     </section>
 
@@ -247,6 +253,7 @@
     <section class="section" id="rhythm" aria-labelledby="rhythm-heading">
       <h3 class="section__heading" id="rhythm-heading">Viewing rhythm</h3>
       <p class="section__lede">When you watch, how long you go without, and how quickly you log it.</p>
+      <p class="coverage-note" id="rhythm-coverage" hidden></p>
 
       <div class="block">
         <h4 class="block__heading">The headline figures</h4>
@@ -269,13 +276,16 @@
 
       <div class="block">
         <h4 class="block__heading">Logging lag</h4>
-        <p class="block__lede">Days between watching a film and writing it into the diary.</p>
+        <p class="block__lede">
+          Days between watching a film and writing it into the diary, counted over the
+          entries where the export records both dates.
+        </p>
         <div id="logging-lag"></div>
       </div>
 
       <div class="block">
         <h4 class="block__heading">Viewing heatmap</h4>
-        <p class="block__lede">One square per day. Darker squares are days with no film.</p>
+        <p class="block__lede">One square per day. Darker squares are days with no dated entry.</p>
         <div id="heatmap"></div>
       </div>
     </section>
@@ -287,11 +297,14 @@
       <div class="block">
         <h4 class="block__heading">Rating drift</h4>
         <p class="block__lede">The average rating given in each year, on the 0.5 to 5 scale.</p>
+        <p class="coverage-note" id="rating-drift-coverage" hidden></p>
         <div id="rating-drift-chart"></div>
       </div>
 
       <div class="block">
         <h4 class="block__heading">Half-star usage</h4>
+        <p class="block__lede">Every rating you have given, whether or not the film carries a watch date.</p>
+        <p class="coverage-note" id="half-star-coverage" hidden></p>
         <div id="half-star-usage"></div>
       </div>
 
@@ -323,6 +336,7 @@
 
       <div class="block">
         <h4 class="block__heading">How long after release you watch</h4>
+        <p class="coverage-note" id="release-recency-coverage" hidden></p>
         <div id="release-recency"></div>
       </div>
 

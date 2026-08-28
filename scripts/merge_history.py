@@ -37,13 +37,19 @@ def load_history() -> dict[str, Any]:
 def identity(entry: dict[str, Any]) -> str:
     """Return the key that decides whether two entries are the same watch.
 
-    The guid is preferred. Entries built from the export have a synthetic guid,
-    so falling back to slug and date keeps a re-run from duplicating them.
+    What identifies a watch is the film and the day it was seen, not the guid.
+    The two sources number the same watch differently: the export builds
+    `export:<slug>:<date>` while the feed carries Letterboxd's own review id. Keying
+    on the guid therefore stores one watch twice, once per source, which inflates
+    every count built from entries. On a real account that meant 880 stored entries
+    for 830 actual watches.
+
+    The guid is only a fallback, for an entry that somehow has no slug.
     """
-    guid = entry.get("guid")
-    if guid:
-        return str(guid)
-    return f"{entry.get('slug')}:{entry.get('watched_date') or 'undated'}"
+    slug = entry.get("slug")
+    if slug:
+        return f"{slug}:{entry.get('watched_date') or 'undated'}"
+    return str(entry.get("guid") or "")
 
 
 def wins(candidate: dict[str, Any], incumbent: dict[str, Any]) -> bool:
