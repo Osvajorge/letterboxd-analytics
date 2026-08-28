@@ -1,0 +1,406 @@
+{
+  "title": "AFI 100 Years 100 Movies",
+  "path": "/afi/list/afis-100-years100-movies-10th-anniversary/",
+  "films": [
+    {
+      "slug": "citizen-kane",
+      "name": "Citizen Kane (1941)"
+    },
+    {
+      "slug": "the-godfather",
+      "name": "The Godfather (1972)"
+    },
+    {
+      "slug": "casablanca",
+      "name": "Casablanca (1942)"
+    },
+    {
+      "slug": "raging-bull",
+      "name": "Raging Bull (1980)"
+    },
+    {
+      "slug": "singin-in-the-rain",
+      "name": "Singin&#039; in the Rain (1952)"
+    },
+    {
+      "slug": "gone-with-the-wind",
+      "name": "Gone with the Wind (1939)"
+    },
+    {
+      "slug": "lawrence-of-arabia",
+      "name": "Lawrence of Arabia (1962)"
+    },
+    {
+      "slug": "schindlers-list",
+      "name": "Schindler&#039;s List (1993)"
+    },
+    {
+      "slug": "vertigo",
+      "name": "Vertigo (1958)"
+    },
+    {
+      "slug": "the-wizard-of-oz-1939",
+      "name": "The Wizard of Oz (1939)"
+    },
+    {
+      "slug": "city-lights",
+      "name": "City Lights (1931)"
+    },
+    {
+      "slug": "the-searchers",
+      "name": "The Searchers (1956)"
+    },
+    {
+      "slug": "star-wars",
+      "name": "Star Wars (1977)"
+    },
+    {
+      "slug": "psycho",
+      "name": "Psycho (1960)"
+    },
+    {
+      "slug": "2001-a-space-odyssey",
+      "name": "2001: A Space Odyssey (1968)"
+    },
+    {
+      "slug": "sunset-boulevard",
+      "name": "Sunset Boulevard (1950)"
+    },
+    {
+      "slug": "the-graduate",
+      "name": "The Graduate (1967)"
+    },
+    {
+      "slug": "the-general",
+      "name": "The General (1926)"
+    },
+    {
+      "slug": "on-the-waterfront",
+      "name": "On the Waterfront (1954)"
+    },
+    {
+      "slug": "its-a-wonderful-life",
+      "name": "It&#039;s a Wonderful Life (1946)"
+    },
+    {
+      "slug": "chinatown",
+      "name": "Chinatown (1974)"
+    },
+    {
+      "slug": "some-like-it-hot",
+      "name": "Some Like It Hot (1959)"
+    },
+    {
+      "slug": "the-grapes-of-wrath",
+      "name": "The Grapes of Wrath (1940)"
+    },
+    {
+      "slug": "et-the-extra-terrestrial",
+      "name": "E.T. the Extra-Terrestrial (1982)"
+    },
+    {
+      "slug": "to-kill-a-mockingbird",
+      "name": "To Kill a Mockingbird (1962)"
+    },
+    {
+      "slug": "mr-smith-goes-to-washington",
+      "name": "Mr. Smith Goes to Washington (1939)"
+    },
+    {
+      "slug": "high-noon",
+      "name": "High Noon (1952)"
+    },
+    {
+      "slug": "all-about-eve",
+      "name": "All About Eve (1950)"
+    },
+    {
+      "slug": "double-indemnity",
+      "name": "Double Indemnity (1944)"
+    },
+    {
+      "slug": "apocalypse-now",
+      "name": "Apocalypse Now (1979)"
+    },
+    {
+      "slug": "the-maltese-falcon-1941",
+      "name": "The Maltese Falcon (1941)"
+    },
+    {
+      "slug": "the-godfather-part-ii",
+      "name": "The Godfather Part II (1974)"
+    },
+    {
+      "slug": "one-flew-over-the-cuckoos-nest",
+      "name": "One Flew Over the Cuckoo&#039;s Nest (1975)"
+    },
+    {
+      "slug": "snow-white-and-the-seven-dwarfs",
+      "name": "Snow White and the Seven Dwarfs (1937)"
+    },
+    {
+      "slug": "annie-hall",
+      "name": "Annie Hall (1977)"
+    },
+    {
+      "slug": "the-bridge-on-the-river-kwai",
+      "name": "The Bridge on the River Kwai (1957)"
+    },
+    {
+      "slug": "the-best-years-of-our-lives",
+      "name": "The Best Years of Our Lives (1946)"
+    },
+    {
+      "slug": "the-treasure-of-the-sierra-madre",
+      "name": "The Treasure of the Sierra Madre (1948)"
+    },
+    {
+      "slug": "dr-strangelove-or-how-i-learned-to-stop-worrying-and-love-the-bomb",
+      "name": "Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb (1964)"
+    },
+    {
+      "slug": "the-sound-of-music",
+      "name": "The Sound of Music (1965)"
+    },
+    {
+      "slug": "king-kong",
+      "name": "King Kong (1933)"
+    },
+    {
+      "slug": "bonnie-and-clyde",
+      "name": "Bonnie and Clyde (1967)"
+    },
+    {
+      "slug": "midnight-cowboy",
+      "name": "Midnight Cowboy (1969)"
+    },
+    {
+      "slug": "the-philadelphia-story",
+      "name": "The Philadelphia Story (1940)"
+    },
+    {
+      "slug": "shane",
+      "name": "Shane (1953)"
+    },
+    {
+      "slug": "it-happened-one-night",
+      "name": "It Happened One Night (1934)"
+    },
+    {
+      "slug": "a-streetcar-named-desire",
+      "name": "A Streetcar Named Desire (1951)"
+    },
+    {
+      "slug": "rear-window",
+      "name": "Rear Window (1954)"
+    },
+    {
+      "slug": "intolerance-loves-struggle-throughout-the-ages",
+      "name": "Intolerance: Love&#039;s Struggle Throughout the Ages (1916)"
+    },
+    {
+      "slug": "the-lord-of-the-rings-the-fellowship-of-the-ring",
+      "name": "The Lord of the Rings: The Fellowship of the Ring (2001)"
+    },
+    {
+      "slug": "west-side-story",
+      "name": "West Side Story (1961)"
+    },
+    {
+      "slug": "taxi-driver",
+      "name": "Taxi Driver (1976)"
+    },
+    {
+      "slug": "the-deer-hunter",
+      "name": "The Deer Hunter (1978)"
+    },
+    {
+      "slug": "mash",
+      "name": "M*A*S*H (1970)"
+    },
+    {
+      "slug": "north-by-northwest",
+      "name": "North by Northwest (1959)"
+    },
+    {
+      "slug": "jaws",
+      "name": "Jaws (1975)"
+    },
+    {
+      "slug": "rocky",
+      "name": "Rocky (1976)"
+    },
+    {
+      "slug": "the-gold-rush",
+      "name": "The Gold Rush (1925)"
+    },
+    {
+      "slug": "nashville",
+      "name": "Nashville (1975)"
+    },
+    {
+      "slug": "duck-soup-1933",
+      "name": "Duck Soup (1933)"
+    },
+    {
+      "slug": "sullivans-travels",
+      "name": "Sullivan&#039;s Travels (1941)"
+    },
+    {
+      "slug": "american-graffiti",
+      "name": "American Graffiti (1973)"
+    },
+    {
+      "slug": "cabaret",
+      "name": "Cabaret (1972)"
+    },
+    {
+      "slug": "network",
+      "name": "Network (1976)"
+    },
+    {
+      "slug": "the-african-queen",
+      "name": "The African Queen (1951)"
+    },
+    {
+      "slug": "raiders-of-the-lost-ark",
+      "name": "Raiders of the Lost Ark (1981)"
+    },
+    {
+      "slug": "whos-afraid-of-virginia-woolf",
+      "name": "Who&#039;s Afraid of Virginia Woolf? (1966)"
+    },
+    {
+      "slug": "unforgiven",
+      "name": "Unforgiven (1992)"
+    },
+    {
+      "slug": "tootsie",
+      "name": "Tootsie (1982)"
+    },
+    {
+      "slug": "a-clockwork-orange",
+      "name": "A Clockwork Orange (1971)"
+    },
+    {
+      "slug": "saving-private-ryan",
+      "name": "Saving Private Ryan (1998)"
+    },
+    {
+      "slug": "the-shawshank-redemption",
+      "name": "The Shawshank Redemption (1994)"
+    },
+    {
+      "slug": "butch-cassidy-and-the-sundance-kid",
+      "name": "Butch Cassidy and the Sundance Kid (1969)"
+    },
+    {
+      "slug": "the-silence-of-the-lambs",
+      "name": "The Silence of the Lambs (1991)"
+    },
+    {
+      "slug": "in-the-heat-of-the-night",
+      "name": "In the Heat of the Night (1967)"
+    },
+    {
+      "slug": "forrest-gump",
+      "name": "Forrest Gump (1994)"
+    },
+    {
+      "slug": "all-the-presidents-men",
+      "name": "All the President&#039;s Men (1976)"
+    },
+    {
+      "slug": "modern-times",
+      "name": "Modern Times (1936)"
+    },
+    {
+      "slug": "the-wild-bunch",
+      "name": "The Wild Bunch (1969)"
+    },
+    {
+      "slug": "the-apartment",
+      "name": "The Apartment (1960)"
+    },
+    {
+      "slug": "spartacus",
+      "name": "Spartacus (1960)"
+    },
+    {
+      "slug": "sunrise-a-song-of-two-humans",
+      "name": "Sunrise: A Song of Two Humans (1927)"
+    },
+    {
+      "slug": "titanic-1997",
+      "name": "Titanic (1997)"
+    },
+    {
+      "slug": "easy-rider",
+      "name": "Easy Rider (1969)"
+    },
+    {
+      "slug": "a-night-at-the-opera",
+      "name": "A Night at the Opera (1935)"
+    },
+    {
+      "slug": "platoon",
+      "name": "Platoon (1986)"
+    },
+    {
+      "slug": "12-angry-men",
+      "name": "12 Angry Men (1957)"
+    },
+    {
+      "slug": "bringing-up-baby",
+      "name": "Bringing Up Baby (1938)"
+    },
+    {
+      "slug": "the-sixth-sense",
+      "name": "The Sixth Sense (1999)"
+    },
+    {
+      "slug": "swing-time",
+      "name": "Swing Time (1936)"
+    },
+    {
+      "slug": "sophies-choice",
+      "name": "Sophie&#039;s Choice (1982)"
+    },
+    {
+      "slug": "goodfellas",
+      "name": "GoodFellas (1990)"
+    },
+    {
+      "slug": "the-french-connection",
+      "name": "The French Connection (1971)"
+    },
+    {
+      "slug": "pulp-fiction",
+      "name": "Pulp Fiction (1994)"
+    },
+    {
+      "slug": "the-last-picture-show",
+      "name": "The Last Picture Show (1971)"
+    },
+    {
+      "slug": "do-the-right-thing",
+      "name": "Do the Right Thing (1989)"
+    },
+    {
+      "slug": "blade-runner",
+      "name": "Blade Runner (1982)"
+    },
+    {
+      "slug": "yankee-doodle-dandy",
+      "name": "Yankee Doodle Dandy (1942)"
+    },
+    {
+      "slug": "toy-story",
+      "name": "Toy Story (1995)"
+    },
+    {
+      "slug": "ben-hur-1959",
+      "name": "Ben-Hur (1959)"
+    }
+  ]
+}

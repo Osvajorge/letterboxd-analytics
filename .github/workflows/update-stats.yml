@@ -1,0 +1,174 @@
+name: Weekly stats refresh
+
+# Two triggers, on purpose.
+#
+# There is no `pull_request` trigger and there must never be one. A workflow that
+# runs on a pull request can be started by a fork, and a fork that can start this
+# workflow can read the repository secrets. The only thing this pipeline needs a
+# secret for is TMDB, and that key stays out of reach of anyone who opens a pull
+# request.
+on:
+  schedule:
+    # Mondays at 06:17 UTC. An odd minute keeps the job out of the queue that
+    # forms on the hour, when GitHub delays scheduled runs the most.
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+
+# The job writes one commit to this repository and does nothing else, so it asks
+# for nothing else. Every other permission stays at "none".
+permissions:
+  contents: write
+
+# A scheduled run and a manual run can overlap. Both end by committing to the
+# same branch, and the second push would be rejected. Queue them instead of
+# letting them race, and let the first one finish rather than cancelling it
+# halfway through a TMDB pass.
+concurrency:
+  group: weekly-stats-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh-stats:
+    name: Rebuild the site data file
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    env:
+      # The only secret this pipeline uses.
+      #
+      # There is deliberately no Letterboxd credential here, and adding one would
+      # be a step backwards. The RSS feed and the curated list pages are public,
+      # so the weekly run needs no account access at all. The one-time backfill
+      # reads an export archive on the owner's own machine and never runs here.
+      TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check --requirement requirements.txt
+
+      - name: Confirm the TMDB key is present
+        # Failing here costs seconds. Failing later, inside the TMDB pass, costs
+        # the whole RSS and list run first and reports a bare 401.
+        run: |
+          if [ -z "${TMDB_API_KEY}" ]; then
+            echo "TMDB_API_KEY is empty, so film metadata cannot be looked up." >&2
+            echo "Add it under Settings > Secrets and variables > Actions > New repository secret, then run this workflow again." >&2
+            exit 1
+          fi
+
+      - name: Read the public RSS feed and merge new entries into the history
+        # The feed is a rolling window of roughly the last fifty diary entries.
+        # It keeps data/history.json current; it cannot rebuild it. Entries are
+        # merged by guid, so re-reading the same window changes nothing.
+        run: |
+          python scripts/fetch_rss.py > "${RUNNER_TEMP}/rss-entries.json"
+          python scripts/merge_history.py "${RUNNER_TEMP}/rss-entries.json"
+
+      - name: Read the public watchlist
+        # The watchlist is the one part of the account the RSS feed does not
+        # carry, and it changes constantly, so the export snapshot goes stale
+        # within weeks. This step reads it from the member's own watchlist
+        # pages instead.
+        #
+        # No credential is involved and none is needed. Those pages are public,
+        # they need no sign-in, and this step deliberately adds no Letterboxd
+        # account access to a workflow that has never had any.
+        #
+        # Expect about 46 seconds for a 1,044-film watchlist. The reader waits a
+        # second between pages on purpose, so a step that looks idle is being a
+        # polite client, not hanging.
+        #
+        # It writes into data/history.json, which the RSS merge above has just
+        # finished with, so the two never write it at the same time. Membership
+        # is replaced wholesale, because a film removed on the site has to
+        # disappear here too. The date a film was added is not replaced: a film
+        # already stored keeps the date it had, so watchlist ages stay meaningful
+        # instead of resetting to zero every Monday.
+        run: python scripts/fetch_watchlist.py
+
+      - name: Refresh membership of the curated lists
+        # --force is what makes this step do any work at all.
+        #
+        # data/cache/lists is committed, so the checkout restores all sixteen
+        # cache files before this step starts. The script skips any list whose
+        # cache file already exists unless it is forced, so without the flag it
+        # reads no pages, sends no requests, and list_progress stays frozen at
+        # whatever the first snapshot happened to hold.
+        #
+        # Forcing a refresh is also what makes this the most destructive step in
+        # the job, so it is the one step with a sanity gate. Letterboxd answers
+        # 200 whether or not the markup still carries the attribute the films are
+        # read from, so a markup change looks exactly like a list that emptied
+        # overnight. The script refuses any refresh that comes back far smaller
+        # than the cache it would replace, keeps the cached copy, and exits
+        # non-zero. That stops the job here, before the build and the commit, so
+        # the week goes red instead of publishing sixteen lists of nothing.
+        #
+        # --allow-shrink exists for a person who has checked the pages and knows
+        # the lists really did shrink. It must never be added here, where nobody
+        # is watching to make that judgement.
+        run: python scripts/fetch_lists.py --force
+
+      - name: Restore the TMDB database saved by the last successful run
+        uses: actions/cache@v4
+        with:
+          path: data/cache/tmdb.sqlite
+          # data/cache/tmdb.sqlite is git-ignored, so the checkout cannot supply
+          # it and this cache is the only thing that carries it between runs.
+          # Without it every run starts on an empty database and re-resolves all
+          # 827 films, roughly 1,600 TMDB requests for metadata it already had.
+          #
+          # The key carries the run id so that it can never match exactly. That
+          # is deliberate: on an exact match the action treats the cache as
+          # already current and skips the save, which would pin every future run
+          # to the first database ever stored. The restoring is done by
+          # restore-keys, which takes the newest cache whose key starts with the
+          # same prefix, and the job's post step then saves the database this run
+          # ends with under a fresh key.
+          key: tmdb-cache-${{ github.run_id }}
+          restore-keys: |
+            tmdb-cache-
+
+      - name: Look up film metadata on TMDB
+        # Only films the restored database does not already hold are fetched.
+        run: python scripts/enrich_tmdb.py
+
+      - name: Build the site data file
+        run: python scripts/build_stats.py
+
+      - name: Commit the rebuilt data, but only when it changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # data/cache/lists is staged because the list step rewrites it. Leave
+          # it unstaged and the refreshed membership dies with the runner, so the
+          # next run starts from the same stale snapshot again.
+          #
+          # data/history.json carries both the new diary entries and the
+          # watchlist, so staging it is what makes the watchlist read above
+          # survive into next week and keep its added dates.
+          #
+          # data/cache/tmdb.sqlite is deliberately not staged. It is git-ignored,
+          # it is large, and the Actions cache above already carries it forward.
+          git add docs/data/stats.json data/history.json data/cache/lists
+
+          # A week with no new films and no list changes is the normal case, not
+          # a failure. Leave the history clean instead of adding a commit that
+          # changes nothing.
+          if git diff --cached --quiet; then
+            echo "The stats, the history and the curated lists are all unchanged. Nothing to commit."
+            exit 0
+          fi
+
+          git commit --message "Refresh stats for $(date -u +%Y-%m-%d)"
+          git push

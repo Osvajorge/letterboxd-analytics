@@ -1,0 +1,4006 @@
+{
+  "title": "They Shoot Pictures 21st Century",
+  "path": "/thisisdrew/list/they-shoot-pictures-dont-they-21st-centurys-5/",
+  "films": [
+    {
+      "slug": "in-the-mood-for-love",
+      "name": "In the Mood for Love (2000)"
+    },
+    {
+      "slug": "mulholland-drive",
+      "name": "Mulholland Drive (2001)"
+    },
+    {
+      "slug": "yi-yi",
+      "name": "Yi Yi (2000)"
+    },
+    {
+      "slug": "spirited-away",
+      "name": "Spirited Away (2001)"
+    },
+    {
+      "slug": "there-will-be-blood",
+      "name": "There Will Be Blood (2007)"
+    },
+    {
+      "slug": "tropical-malady",
+      "name": "Tropical Malady (2004)"
+    },
+    {
+      "slug": "portrait-of-a-lady-on-fire",
+      "name": "Portrait of a Lady on Fire (2019)"
+    },
+    {
+      "slug": "the-tree-of-life-2011",
+      "name": "The Tree of Life (2011)"
+    },
+    {
+      "slug": "the-gleaners-and-i",
+      "name": "The Gleaners and I (2000)"
+    },
+    {
+      "slug": "moonlight-2016",
+      "name": "Moonlight (2016)"
+    },
+    {
+      "slug": "parasite-2019",
+      "name": "Parasite (2019)"
+    },
+    {
+      "slug": "eternal-sunshine-of-the-spotless-mind",
+      "name": "Eternal Sunshine of the Spotless Mind (2004)"
+    },
+    {
+      "slug": "cache",
+      "name": "Caché (2005)"
+    },
+    {
+      "slug": "uncle-boonmee-who-can-recall-his-past-lives",
+      "name": "Uncle Boonmee Who Can Recall His Past Lives (2010)"
+    },
+    {
+      "slug": "la-cienaga",
+      "name": "La Ciénaga (2001)"
+    },
+    {
+      "slug": "goodbye-dragon-inn",
+      "name": "Goodbye, Dragon Inn (2003)"
+    },
+    {
+      "slug": "a-separation",
+      "name": "A Separation (2011)"
+    },
+    {
+      "slug": "city-of-god",
+      "name": "City of God (2002)"
+    },
+    {
+      "slug": "mad-max-fury-road",
+      "name": "Mad Max: Fury Road (2015)"
+    },
+    {
+      "slug": "werckmeister-harmonies",
+      "name": "Werckmeister Harmonies (2000)"
+    },
+    {
+      "slug": "melancholia",
+      "name": "Melancholia (2011)"
+    },
+    {
+      "slug": "get-out-2017",
+      "name": "Get Out (2017)"
+    },
+    {
+      "slug": "tie-xi-qu-west-of-the-tracks",
+      "name": "Tie Xi Qu: West of the Tracks (2002)"
+    },
+    {
+      "slug": "the-turin-horse",
+      "name": "The Turin Horse (2011)"
+    },
+    {
+      "slug": "the-white-ribbon",
+      "name": "The White Ribbon (2009)"
+    },
+    {
+      "slug": "under-the-skin-2013",
+      "name": "Under the Skin (2013)"
+    },
+    {
+      "slug": "lost-in-translation",
+      "name": "Lost in Translation (2003)"
+    },
+    {
+      "slug": "toni-erdmann",
+      "name": "Toni Erdmann (2016)"
+    },
+    {
+      "slug": "dogville",
+      "name": "Dogville (2003)"
+    },
+    {
+      "slug": "holy-motors",
+      "name": "Holy Motors (2012)"
+    },
+    {
+      "slug": "the-headless-woman",
+      "name": "The Headless Woman (2008)"
+    },
+    {
+      "slug": "no-country-for-old-men",
+      "name": "No Country for Old Men (2007)"
+    },
+    {
+      "slug": "phantom-thread",
+      "name": "Phantom Thread (2017)"
+    },
+    {
+      "slug": "the-act-of-killing",
+      "name": "The Act of Killing (2012)"
+    },
+    {
+      "slug": "ai-artificial-intelligence",
+      "name": "A.I. Artificial Intelligence (2001)"
+    },
+    {
+      "slug": "pans-labyrinth",
+      "name": "Pan&#039;s Labyrinth (2006)"
+    },
+    {
+      "slug": "syndromes-and-a-century",
+      "name": "Syndromes and a Century (2006)"
+    },
+    {
+      "slug": "zama",
+      "name": "Zama (2017)"
+    },
+    {
+      "slug": "boyhood",
+      "name": "Boyhood (2014)"
+    },
+    {
+      "slug": "talk-to-her",
+      "name": "Talk to Her (2002)"
+    },
+    {
+      "slug": "once-upon-a-time-in-anatolia",
+      "name": "Once Upon a Time in Anatolia (2011)"
+    },
+    {
+      "slug": "elephant-2003",
+      "name": "Elephant (2003)"
+    },
+    {
+      "slug": "songs-from-the-second-floor",
+      "name": "Songs from the Second Floor (2000)"
+    },
+    {
+      "slug": "the-death-of-mr-lazarescu",
+      "name": "The Death of Mr. Lazarescu (2005)"
+    },
+    {
+      "slug": "children-of-men",
+      "name": "Children of Men (2006)"
+    },
+    {
+      "slug": "platform",
+      "name": "Platform (2000)"
+    },
+    {
+      "slug": "in-vandas-room",
+      "name": "In Vanda&#039;s Room (2000)"
+    },
+    {
+      "slug": "oldboy",
+      "name": "Oldboy (2003)"
+    },
+    {
+      "slug": "punch-drunk-love",
+      "name": "Punch-Drunk Love (2002)"
+    },
+    {
+      "slug": "inland-empire",
+      "name": "Inland Empire (2006)"
+    },
+    {
+      "slug": "the-lives-of-others",
+      "name": "The Lives of Others (2006)"
+    },
+    {
+      "slug": "the-master-2012",
+      "name": "The Master (2012)"
+    },
+    {
+      "slug": "twin-peaks-the-return",
+      "name": "Twin Peaks: The Return (2017)"
+    },
+    {
+      "slug": "memories-of-murder",
+      "name": "Memories of Murder (2003)"
+    },
+    {
+      "slug": "crouching-tiger-hidden-dragon",
+      "name": "Crouching Tiger, Hidden Dragon (2000)"
+    },
+    {
+      "slug": "brokeback-mountain",
+      "name": "Brokeback Mountain (2005)"
+    },
+    {
+      "slug": "zodiac",
+      "name": "Zodiac (2007)"
+    },
+    {
+      "slug": "walle",
+      "name": "WALL·E (2008)"
+    },
+    {
+      "slug": "morvern-callar",
+      "name": "Morvern Callar (2002)"
+    },
+    {
+      "slug": "amour",
+      "name": "Amour (2012)"
+    },
+    {
+      "slug": "russian-ark",
+      "name": "Russian Ark (2002)"
+    },
+    {
+      "slug": "nostalgia-for-the-light",
+      "name": "Nostalgia for the Light (2010)"
+    },
+    {
+      "slug": "amelie",
+      "name": "Amélie (2001)"
+    },
+    {
+      "slug": "the-lord-of-the-rings-the-fellowship-of-the-ring",
+      "name": "The Lord of the Rings: The Fellowship of the Ring (2001)"
+    },
+    {
+      "slug": "as-i-was-moving-ahead-occasionally-i-saw",
+      "name": "As I Was Moving Ahead, Occasionally I Saw Brief Glimpses of Beauty (2000)"
+    },
+    {
+      "slug": "the-social-network",
+      "name": "The Social Network (2010)"
+    },
+    {
+      "slug": "y-tu-mama-tambien",
+      "name": "Y Tu Mamá También (2001)"
+    },
+    {
+      "slug": "a-prophet",
+      "name": "A Prophet (2009)"
+    },
+    {
+      "slug": "the-piano-teacher",
+      "name": "The Piano Teacher (2001)"
+    },
+    {
+      "slug": "colossal-youth",
+      "name": "Colossal Youth (2006)"
+    },
+    {
+      "slug": "the-royal-tenenbaums",
+      "name": "The Royal Tenenbaums (2001)"
+    },
+    {
+      "slug": "synecdoche-new-york",
+      "name": "Synecdoche, New York (2008)"
+    },
+    {
+      "slug": "roma-2018",
+      "name": "Roma (2018)"
+    },
+    {
+      "slug": "carol-2015",
+      "name": "Carol (2015)"
+    },
+    {
+      "slug": "silent-light",
+      "name": "Silent Light (2007)"
+    },
+    {
+      "slug": "the-dark-knight",
+      "name": "The Dark Knight (2008)"
+    },
+    {
+      "slug": "before-sunset",
+      "name": "Before Sunset (2004)"
+    },
+    {
+      "slug": "once-upon-a-time-in-hollywood",
+      "name": "Once Upon a Time... in Hollywood (2019)"
+    },
+    {
+      "slug": "4-months-3-weeks-and-2-days",
+      "name": "4 Months, 3 Weeks and 2 Days (2007)"
+    },
+    {
+      "slug": "dancer-in-the-dark",
+      "name": "Dancer in the Dark (2000)"
+    },
+    {
+      "slug": "millennium-mambo",
+      "name": "Millennium Mambo (2001)"
+    },
+    {
+      "slug": "memento",
+      "name": "Memento (2000)"
+    },
+    {
+      "slug": "the-great-beauty",
+      "name": "The Great Beauty (2013)"
+    },
+    {
+      "slug": "35-shots-of-rum",
+      "name": "35 Shots of Rum (2008)"
+    },
+    {
+      "slug": "hunger",
+      "name": "Hunger (2008)"
+    },
+    {
+      "slug": "the-intruder",
+      "name": "The Intruder (2004)"
+    },
+    {
+      "slug": "moulin-rouge-2001",
+      "name": "Moulin Rouge! (2001)"
+    },
+    {
+      "slug": "distant",
+      "name": "Distant (2002)"
+    },
+    {
+      "slug": "fish-tank",
+      "name": "Fish Tank (2009)"
+    },
+    {
+      "slug": "the-new-world",
+      "name": "The New World (2005)"
+    },
+    {
+      "slug": "inglourious-basterds",
+      "name": "Inglourious Basterds (2009)"
+    },
+    {
+      "slug": "let-the-right-one-in",
+      "name": "Let the Right One In (2008)"
+    },
+    {
+      "slug": "petite-maman",
+      "name": "Petite Maman (2021)"
+    },
+    {
+      "slug": "grizzly-man",
+      "name": "Grizzly Man (2005)"
+    },
+    {
+      "slug": "sideways",
+      "name": "Sideways (2004)"
+    },
+    {
+      "slug": "requiem-for-a-dream",
+      "name": "Requiem for a Dream (2000)"
+    },
+    {
+      "slug": "still-life",
+      "name": "Still Life (2006)"
+    },
+    {
+      "slug": "blue-is-the-warmest-color",
+      "name": "Blue Is the Warmest Color (2013)"
+    },
+    {
+      "slug": "margaret",
+      "name": "Margaret (2011)"
+    },
+    {
+      "slug": "first-cow",
+      "name": "First Cow (2019)"
+    },
+    {
+      "slug": "the-hurt-locker",
+      "name": "The Hurt Locker (2008)"
+    },
+    {
+      "slug": "a-history-of-violence",
+      "name": "A History of Violence (2005)"
+    },
+    {
+      "slug": "blissfully-yours",
+      "name": "Blissfully Yours (2002)"
+    },
+    {
+      "slug": "amores-perros",
+      "name": "Amores Perros (2000)"
+    },
+    {
+      "slug": "code-unknown",
+      "name": "Code Unknown (2000)"
+    },
+    {
+      "slug": "the-son",
+      "name": "The Son (2002)"
+    },
+    {
+      "slug": "trouble-every-day",
+      "name": "Trouble Every Day (2001)"
+    },
+    {
+      "slug": "tabu",
+      "name": "Tabu (2012)"
+    },
+    {
+      "slug": "wendy-and-lucy",
+      "name": "Wendy and Lucy (2008)"
+    },
+    {
+      "slug": "persepolis",
+      "name": "Persepolis (2007)"
+    },
+    {
+      "slug": "one-battle-after-another",
+      "name": "One Battle After Another (2025)"
+    },
+    {
+      "slug": "irreversible",
+      "name": "Irreversible (2002)"
+    },
+    {
+      "slug": "the-grand-budapest-hotel",
+      "name": "The Grand Budapest Hotel (2014)"
+    },
+    {
+      "slug": "nomadland",
+      "name": "Nomadland (2020)"
+    },
+    {
+      "slug": "atlantics-2019",
+      "name": "Atlantics (2019)"
+    },
+    {
+      "slug": "the-lord-of-the-rings-the-return-of-the-king",
+      "name": "The Lord of the Rings: The Return of the King (2003)"
+    },
+    {
+      "slug": "mysteries-of-lisbon-2010",
+      "name": "Mysteries of Lisbon (2010)"
+    },
+    {
+      "slug": "la-commune-paris-1871",
+      "name": "La Commune (Paris, 1871) (2000)"
+    },
+    {
+      "slug": "goodbye-to-language",
+      "name": "Goodbye to Language (2014)"
+    },
+    {
+      "slug": "meeks-cutoff",
+      "name": "Meek&#039;s Cutoff (2010)"
+    },
+    {
+      "slug": "lovers-rock-2020",
+      "name": "Lovers Rock (2020)"
+    },
+    {
+      "slug": "the-assassin-2015",
+      "name": "The Assassin (2015)"
+    },
+    {
+      "slug": "lady-bird",
+      "name": "Lady Bird (2017)"
+    },
+    {
+      "slug": "avatar",
+      "name": "Avatar (2009)"
+    },
+    {
+      "slug": "far-from-heaven",
+      "name": "Far from Heaven (2002)"
+    },
+    {
+      "slug": "certified-copy",
+      "name": "Certified Copy (2010)"
+    },
+    {
+      "slug": "12-years-a-slave",
+      "name": "12 Years a Slave (2013)"
+    },
+    {
+      "slug": "leviathan-2012",
+      "name": "Leviathan (2012)"
+    },
+    {
+      "slug": "cemetery-of-splendor",
+      "name": "Cemetery of Splendor (2015)"
+    },
+    {
+      "slug": "2046",
+      "name": "2046 (2004)"
+    },
+    {
+      "slug": "inside-llewyn-davis",
+      "name": "Inside Llewyn Davis (2013)"
+    },
+    {
+      "slug": "shaun-of-the-dead",
+      "name": "Shaun of the Dead (2004)"
+    },
+    {
+      "slug": "spring-summer-fall-winter-and-spring",
+      "name": "Spring, Summer, Fall, Winter... and Spring (2003)"
+    },
+    {
+      "slug": "the-pianist",
+      "name": "The Pianist (2002)"
+    },
+    {
+      "slug": "la-flor",
+      "name": "La Flor (2018)"
+    },
+    {
+      "slug": "no-home-movie",
+      "name": "No Home Movie (2015)"
+    },
+    {
+      "slug": "head-on-2004",
+      "name": "Head-On (2004)"
+    },
+    {
+      "slug": "a-serious-man",
+      "name": "A Serious Man (2009)"
+    },
+    {
+      "slug": "shoplifters",
+      "name": "Shoplifters (2018)"
+    },
+    {
+      "slug": "stranger-by-the-lake",
+      "name": "Stranger by the Lake (2013)"
+    },
+    {
+      "slug": "arrival-2016",
+      "name": "Arrival (2016)"
+    },
+    {
+      "slug": "the-host",
+      "name": "The Host (2006)"
+    },
+    {
+      "slug": "ida",
+      "name": "Ida (2013)"
+    },
+    {
+      "slug": "still-walking",
+      "name": "Still Walking (2008)"
+    },
+    {
+      "slug": "million-dollar-baby",
+      "name": "Million Dollar Baby (2004)"
+    },
+    {
+      "slug": "adaptation",
+      "name": "Adaptation. (2002)"
+    },
+    {
+      "slug": "gravity-2013",
+      "name": "Gravity (2013)"
+    },
+    {
+      "slug": "kill-bill-vol-1",
+      "name": "Kill Bill: Vol. 1 (2003)"
+    },
+    {
+      "slug": "the-return",
+      "name": "The Return (2003)"
+    },
+    {
+      "slug": "inception",
+      "name": "Inception (2010)"
+    },
+    {
+      "slug": "volver",
+      "name": "Volver (2006)"
+    },
+    {
+      "slug": "this-is-not-a-film",
+      "name": "This Is Not a Film (2011)"
+    },
+    {
+      "slug": "happy-as-lazzaro",
+      "name": "Happy as Lazzaro (2018)"
+    },
+    {
+      "slug": "american-honey",
+      "name": "American Honey (2016)"
+    },
+    {
+      "slug": "miami-vice",
+      "name": "Miami Vice (2006)"
+    },
+    {
+      "slug": "the-departed",
+      "name": "The Departed (2006)"
+    },
+    {
+      "slug": "the-world",
+      "name": "The World (2004)"
+    },
+    {
+      "slug": "the-souvenir",
+      "name": "The Souvenir (2019)"
+    },
+    {
+      "slug": "burning-2018",
+      "name": "Burning (2018)"
+    },
+    {
+      "slug": "dogtooth",
+      "name": "Dogtooth (2009)"
+    },
+    {
+      "slug": "call-me-by-your-name",
+      "name": "Call Me by Your Name (2017)"
+    },
+    {
+      "slug": "you-were-never-really-here",
+      "name": "You Were Never Really Here (2017)"
+    },
+    {
+      "slug": "the-holy-girl",
+      "name": "The Holy Girl (2004)"
+    },
+    {
+      "slug": "hard-to-be-a-god",
+      "name": "Hard to Be a God (2013)"
+    },
+    {
+      "slug": "oasis",
+      "name": "Oasis (2002)"
+    },
+    {
+      "slug": "donnie-darko",
+      "name": "Donnie Darko (2001)"
+    },
+    {
+      "slug": "interstellar",
+      "name": "Interstellar (2014)"
+    },
+    {
+      "slug": "you-the-living",
+      "name": "You, the Living (2007)"
+    },
+    {
+      "slug": "son-of-saul",
+      "name": "Son of Saul (2015)"
+    },
+    {
+      "slug": "toy-story-3",
+      "name": "Toy Story 3 (2010)"
+    },
+    {
+      "slug": "the-power-of-the-dog",
+      "name": "The Power of the Dog (2021)"
+    },
+    {
+      "slug": "kung-fu-hustle",
+      "name": "Kung Fu Hustle (2004)"
+    },
+    {
+      "slug": "cafe-lumiere",
+      "name": "Café Lumière (2003)"
+    },
+    {
+      "slug": "atanarjuat-the-fast-runner",
+      "name": "Atanarjuat: The Fast Runner (2001)"
+    },
+    {
+      "slug": "the-lord-of-the-rings-the-two-towers",
+      "name": "The Lord of the Rings: The Two Towers (2002)"
+    },
+    {
+      "slug": "certain-women",
+      "name": "Certain Women (2016)"
+    },
+    {
+      "slug": "the-circle",
+      "name": "The Circle (2000)"
+    },
+    {
+      "slug": "gladiator-2000",
+      "name": "Gladiator (2000)"
+    },
+    {
+      "slug": "marie-antoinette-2006",
+      "name": "Marie Antoinette (2006)"
+    },
+    {
+      "slug": "an-elephant-sitting-still",
+      "name": "An Elephant Sitting Still (2018)"
+    },
+    {
+      "slug": "in-praise-of-love",
+      "name": "In Praise of Love (2001)"
+    },
+    {
+      "slug": "the-wolf-of-wall-street",
+      "name": "The Wolf of Wall Street (2013)"
+    },
+    {
+      "slug": "divine-intervention",
+      "name": "Divine Intervention (2002)"
+    },
+    {
+      "slug": "le-havre",
+      "name": "Le Havre (2011)"
+    },
+    {
+      "slug": "hero-2002",
+      "name": "Hero (2002)"
+    },
+    {
+      "slug": "vitalina-varela",
+      "name": "Vitalina Varela (2019)"
+    },
+    {
+      "slug": "old-joy",
+      "name": "Old Joy (2006)"
+    },
+    {
+      "slug": "the-arbor",
+      "name": "The Arbor (2010)"
+    },
+    {
+      "slug": "the-incredibles",
+      "name": "The Incredibles (2004)"
+    },
+    {
+      "slug": "whiplash-2014",
+      "name": "Whiplash (2014)"
+    },
+    {
+      "slug": "what-time-is-it-there",
+      "name": "What Time Is It There? (2001)"
+    },
+    {
+      "slug": "monsoon-wedding",
+      "name": "Monsoon Wedding (2001)"
+    },
+    {
+      "slug": "stories-we-tell",
+      "name": "Stories We Tell (2012)"
+    },
+    {
+      "slug": "the-beaches-of-agnes",
+      "name": "The Beaches of Agnès (2008)"
+    },
+    {
+      "slug": "poetry",
+      "name": "Poetry (2010)"
+    },
+    {
+      "slug": "the-mastermind-2025",
+      "name": "The Mastermind (2025)"
+    },
+    {
+      "slug": "waltz-with-bashir",
+      "name": "Waltz with Bashir (2008)"
+    },
+    {
+      "slug": "almost-famous",
+      "name": "Almost Famous (2000)"
+    },
+    {
+      "slug": "the-secret-agent-2025",
+      "name": "The Secret Agent (2025)"
+    },
+    {
+      "slug": "girlhood-2014",
+      "name": "Girlhood (2014)"
+    },
+    {
+      "slug": "the-assassination-of-jesse-james-by-the-coward-robert-ford",
+      "name": "The Assassination of Jesse James by the Coward Robert Ford (2007)"
+    },
+    {
+      "slug": "i-am-not-your-negro",
+      "name": "I Am Not Your Negro (2016)"
+    },
+    {
+      "slug": "drive-my-car",
+      "name": "Drive My Car (2021)"
+    },
+    {
+      "slug": "its-such-a-beautiful-day",
+      "name": "It&#039;s Such a Beautiful Day (2012)"
+    },
+    {
+      "slug": "drive-2011",
+      "name": "Drive (2011)"
+    },
+    {
+      "slug": "bamako",
+      "name": "Bamako (2006)"
+    },
+    {
+      "slug": "up",
+      "name": "Up (2009)"
+    },
+    {
+      "slug": "25th-hour",
+      "name": "25th Hour (2002)"
+    },
+    {
+      "slug": "ten-2002",
+      "name": "Ten (2002)"
+    },
+    {
+      "slug": "fantastic-mr-fox",
+      "name": "Fantastic Mr. Fox (2009)"
+    },
+    {
+      "slug": "the-child",
+      "name": "The Child (2005)"
+    },
+    {
+      "slug": "cameraperson",
+      "name": "Cameraperson (2016)"
+    },
+    {
+      "slug": "white-material",
+      "name": "White Material (2009)"
+    },
+    {
+      "slug": "inside-out-2015",
+      "name": "Inside Out (2015)"
+    },
+    {
+      "slug": "ghost-world",
+      "name": "Ghost World (2001)"
+    },
+    {
+      "slug": "evolution-of-a-filipino-family",
+      "name": "Evolution of a Filipino Family (2004)"
+    },
+    {
+      "slug": "borat-cultural-learnings-of-america-for-make-benefit-glorious-nation-of-kazakhstan",
+      "name": "Borat: Cultural Learnings of America for Make Benefit Glorious Nation of Kazakhstan (2006)"
+    },
+    {
+      "slug": "mystic-river",
+      "name": "Mystic River (2003)"
+    },
+    {
+      "slug": "secret-sunshine",
+      "name": "Secret Sunshine (2007)"
+    },
+    {
+      "slug": "titane",
+      "name": "Titane (2021)"
+    },
+    {
+      "slug": "spider-man-into-the-spider-verse",
+      "name": "Spider-Man: Into the Spider-Verse (2018)"
+    },
+    {
+      "slug": "the-man-without-a-past",
+      "name": "The Man Without a Past (2002)"
+    },
+    {
+      "slug": "enter-the-void",
+      "name": "Enter the Void (2009)"
+    },
+    {
+      "slug": "the-clock-2010",
+      "name": "The Clock (2010)"
+    },
+    {
+      "slug": "sinners-2025",
+      "name": "Sinners (2025)"
+    },
+    {
+      "slug": "weekend-2011",
+      "name": "Weekend (2011)"
+    },
+    {
+      "slug": "black-swan",
+      "name": "Black Swan (2010)"
+    },
+    {
+      "slug": "everything-everywhere-all-at-once",
+      "name": "Everything Everywhere All at Once (2022)"
+    },
+    {
+      "slug": "two-lovers",
+      "name": "Two Lovers (2008)"
+    },
+    {
+      "slug": "her",
+      "name": "Her (2013)"
+    },
+    {
+      "slug": "los-angeles-plays-itself",
+      "name": "Los Angeles Plays Itself (2003)"
+    },
+    {
+      "slug": "the-babadook",
+      "name": "The Babadook (2014)"
+    },
+    {
+      "slug": "gone-girl",
+      "name": "Gone Girl (2014)"
+    },
+    {
+      "slug": "the-rider",
+      "name": "The Rider (2017)"
+    },
+    {
+      "slug": "man-on-wire",
+      "name": "Man on Wire (2008)"
+    },
+    {
+      "slug": "black-panther",
+      "name": "Black Panther (2018)"
+    },
+    {
+      "slug": "three-times",
+      "name": "Three Times (2005)"
+    },
+    {
+      "slug": "mother-2009",
+      "name": "Mother (2009)"
+    },
+    {
+      "slug": "aftersun",
+      "name": "Aftersun (2022)"
+    },
+    {
+      "slug": "afternoons-of-solitude",
+      "name": "Afternoons of Solitude (2024)"
+    },
+    {
+      "slug": "shara",
+      "name": "Shara (2003)"
+    },
+    {
+      "slug": "american-psycho",
+      "name": "American Psycho (2000)"
+    },
+    {
+      "slug": "paddington-2",
+      "name": "Paddington 2 (2017)"
+    },
+    {
+      "slug": "we-need-to-talk-about-kevin",
+      "name": "We Need to Talk About Kevin (2011)"
+    },
+    {
+      "slug": "stray-dogs-2013",
+      "name": "Stray Dogs (2013)"
+    },
+    {
+      "slug": "faces-places",
+      "name": "Faces Places (2017)"
+    },
+    {
+      "slug": "in-the-city-of-sylvia",
+      "name": "In the City of Sylvia (2007)"
+    },
+    {
+      "slug": "moonrise-kingdom",
+      "name": "Moonrise Kingdom (2012)"
+    },
+    {
+      "slug": "cold-war-2018",
+      "name": "Cold War (2018)"
+    },
+    {
+      "slug": "finding-nemo",
+      "name": "Finding Nemo (2003)"
+    },
+    {
+      "slug": "timbuktu-2014",
+      "name": "Timbuktu (2014)"
+    },
+    {
+      "slug": "moolaade",
+      "name": "Moolaadé (2004)"
+    },
+    {
+      "slug": "lust-caution",
+      "name": "Lust, Caution (2007)"
+    },
+    {
+      "slug": "the-irishman-2019",
+      "name": "The Irishman (2019)"
+    },
+    {
+      "slug": "the-handmaiden",
+      "name": "The Handmaiden (2016)"
+    },
+    {
+      "slug": "la-la-land",
+      "name": "La La Land (2016)"
+    },
+    {
+      "slug": "ratatouille",
+      "name": "Ratatouille (2007)"
+    },
+    {
+      "slug": "my-winnipeg",
+      "name": "My Winnipeg (2007)"
+    },
+    {
+      "slug": "winters-bone",
+      "name": "Winter&#039;s Bone (2010)"
+    },
+    {
+      "slug": "a-ghost-story-2017",
+      "name": "A Ghost Story (2017)"
+    },
+    {
+      "slug": "pulse-2001",
+      "name": "Pulse (2001)"
+    },
+    {
+      "slug": "the-devils-backbone",
+      "name": "The Devil&#039;s Backbone (2001)"
+    },
+    {
+      "slug": "film-socialisme",
+      "name": "Film Socialisme (2010)"
+    },
+    {
+      "slug": "leviathan-2014",
+      "name": "Leviathan (2014)"
+    },
+    {
+      "slug": "crimson-gold",
+      "name": "Crimson Gold (2003)"
+    },
+    {
+      "slug": "misericordia-2024",
+      "name": "Misericordia (2024)"
+    },
+    {
+      "slug": "inherent-vice",
+      "name": "Inherent Vice (2014)"
+    },
+    {
+      "slug": "the-diving-bell-and-the-butterfly",
+      "name": "The Diving Bell and the Butterfly (2007)"
+    },
+    {
+      "slug": "21-grams",
+      "name": "21 Grams (2003)"
+    },
+    {
+      "slug": "happy-hour-2015-1",
+      "name": "Happy Hour (2015)"
+    },
+    {
+      "slug": "the-zone-of-interest",
+      "name": "The Zone of Interest (2023)"
+    },
+    {
+      "slug": "horse-money",
+      "name": "Horse Money (2014)"
+    },
+    {
+      "slug": "hugo",
+      "name": "Hugo (2011)"
+    },
+    {
+      "slug": "fat-girl",
+      "name": "Fat Girl (2001)"
+    },
+    {
+      "slug": "right-now-wrong-then",
+      "name": "Right Now, Wrong Then (2015)"
+    },
+    {
+      "slug": "elle",
+      "name": "Elle (2016)"
+    },
+    {
+      "slug": "saraband",
+      "name": "Saraband (2003)"
+    },
+    {
+      "slug": "the-triplets-of-belleville",
+      "name": "The Triplets of Belleville (2003)"
+    },
+    {
+      "slug": "slumdog-millionaire",
+      "name": "Slumdog Millionaire (2008)"
+    },
+    {
+      "slug": "it-was-just-an-accident",
+      "name": "It Was Just an Accident (2025)"
+    },
+    {
+      "slug": "sirat-2025",
+      "name": "Sirāt (2025)"
+    },
+    {
+      "slug": "long-days-journey-into-night-2018",
+      "name": "Long Day&#039;s Journey Into Night (2018)"
+    },
+    {
+      "slug": "the-four-times",
+      "name": "The Four Times (2010)"
+    },
+    {
+      "slug": "a-christmas-tale",
+      "name": "A Christmas Tale (2008)"
+    },
+    {
+      "slug": "infernal-affairs",
+      "name": "Infernal Affairs (2002)"
+    },
+    {
+      "slug": "the-squid-and-the-whale",
+      "name": "The Squid and the Whale (2005)"
+    },
+    {
+      "slug": "waiting-for-happiness",
+      "name": "Waiting for Happiness (2002)"
+    },
+    {
+      "slug": "force-majeure-2014",
+      "name": "Force Majeure (2014)"
+    },
+    {
+      "slug": "manchester-by-the-sea",
+      "name": "Manchester by the Sea (2016)"
+    },
+    {
+      "slug": "time-2020",
+      "name": "Time (2020)"
+    },
+    {
+      "slug": "o-brother-where-art-thou",
+      "name": "O Brother, Where Art Thou? (2000)"
+    },
+    {
+      "slug": "the-day-he-arrives",
+      "name": "The Day He Arrives (2011)"
+    },
+    {
+      "slug": "do-not-expect-too-much-from-the-end-of-the-world",
+      "name": "Do Not Expect Too Much from the End of the World (2023)"
+    },
+    {
+      "slug": "waking-life",
+      "name": "Waking Life (2001)"
+    },
+    {
+      "slug": "the-wayward-cloud",
+      "name": "The Wayward Cloud (2005)"
+    },
+    {
+      "slug": "bridesmaids",
+      "name": "Bridesmaids (2011)"
+    },
+    {
+      "slug": "gerry",
+      "name": "Gerry (2002)"
+    },
+    {
+      "slug": "never-rarely-sometimes-always",
+      "name": "Never Rarely Sometimes Always (2020)"
+    },
+    {
+      "slug": "in-the-cut",
+      "name": "In the Cut (2003)"
+    },
+    {
+      "slug": "nobody-knows",
+      "name": "Nobody Knows (2004)"
+    },
+    {
+      "slug": "western-2017",
+      "name": "Western (2017)"
+    },
+    {
+      "slug": "winter-sleep",
+      "name": "Winter Sleep (2014)"
+    },
+    {
+      "slug": "step-brothers",
+      "name": "Step Brothers (2008)"
+    },
+    {
+      "slug": "dawson-city-frozen-time",
+      "name": "Dawson City: Frozen Time (2016)"
+    },
+    {
+      "slug": "the-tale-of-the-princess-kaguya",
+      "name": "The Tale of The Princess Kaguya (2013)"
+    },
+    {
+      "slug": "the-wonders-2014",
+      "name": "The Wonders (2014)"
+    },
+    {
+      "slug": "kill-bill-vol-2",
+      "name": "Kill Bill: Vol. 2 (2004)"
+    },
+    {
+      "slug": "sexy-beast",
+      "name": "Sexy Beast (2000)"
+    },
+    {
+      "slug": "the-hours",
+      "name": "The Hours (2002)"
+    },
+    {
+      "slug": "death-proof",
+      "name": "Death Proof (2007)"
+    },
+    {
+      "slug": "la-chimera",
+      "name": "La Chimera (2023)"
+    },
+    {
+      "slug": "saint-omer",
+      "name": "Saint Omer (2022)"
+    },
+    {
+      "slug": "paterson",
+      "name": "Paterson (2016)"
+    },
+    {
+      "slug": "us-2019",
+      "name": "Us (2019)"
+    },
+    {
+      "slug": "howls-moving-castle",
+      "name": "Howl&#039;s Moving Castle (2004)"
+    },
+    {
+      "slug": "zero-dark-thirty",
+      "name": "Zero Dark Thirty (2012)"
+    },
+    {
+      "slug": "mysterious-object-at-noon",
+      "name": "Mysterious Object at Noon (2000)"
+    },
+    {
+      "slug": "clouds-of-sils-maria",
+      "name": "Clouds of Sils Maria (2014)"
+    },
+    {
+      "slug": "little-miss-sunshine",
+      "name": "Little Miss Sunshine (2006)"
+    },
+    {
+      "slug": "birth-2004",
+      "name": "Birth (2004)"
+    },
+    {
+      "slug": "the-shape-of-water",
+      "name": "The Shape of Water (2017)"
+    },
+    {
+      "slug": "first-reformed",
+      "name": "First Reformed (2017)"
+    },
+    {
+      "slug": "the-image-book",
+      "name": "The Image Book (2018)"
+    },
+    {
+      "slug": "oxhide-ii",
+      "name": "Oxhide II (2009)"
+    },
+    {
+      "slug": "tomboy-2011",
+      "name": "Tomboy (2011)"
+    },
+    {
+      "slug": "school-of-rock",
+      "name": "School of Rock (2003)"
+    },
+    {
+      "slug": "the-hunt-2012",
+      "name": "The Hunt (2012)"
+    },
+    {
+      "slug": "killers-of-the-flower-moon",
+      "name": "Killers of the Flower Moon (2023)"
+    },
+    {
+      "slug": "memoria-2021",
+      "name": "Memoria (2021)"
+    },
+    {
+      "slug": "caught-by-the-tides",
+      "name": "Caught by the Tides (2024)"
+    },
+    {
+      "slug": "red-road",
+      "name": "Red Road (2006)"
+    },
+    {
+      "slug": "paprika-2006",
+      "name": "Paprika (2006)"
+    },
+    {
+      "slug": "speed-racer",
+      "name": "Speed Racer (2008)"
+    },
+    {
+      "slug": "homeland-iraq-year-zero",
+      "name": "Homeland: Iraq Year Zero (2015)"
+    },
+    {
+      "slug": "star-spangled-to-death",
+      "name": "Star Spangled to Death (2004)"
+    },
+    {
+      "slug": "to-be-and-to-have",
+      "name": "To Be and to Have (2002)"
+    },
+    {
+      "slug": "a-pigeon-sat-on-a-branch-reflecting-on-existence",
+      "name": "A Pigeon Sat on a Branch Reflecting on Existence (2014)"
+    },
+    {
+      "slug": "birdman-or-the-unexpected-virtue-of-ignorance",
+      "name": "Birdman or (The Unexpected Virtue of Ignorance) (2014)"
+    },
+    {
+      "slug": "28-days-later",
+      "name": "28 Days Later (2002)"
+    },
+    {
+      "slug": "anatomy-of-a-fall",
+      "name": "Anatomy of a Fall (2023)"
+    },
+    {
+      "slug": "kings-queen",
+      "name": "Kings &amp; Queen (2004)"
+    },
+    {
+      "slug": "antichrist",
+      "name": "Antichrist (2009)"
+    },
+    {
+      "slug": "capturing-the-friedmans",
+      "name": "Capturing the Friedmans (2003)"
+    },
+    {
+      "slug": "extraordinary-stories",
+      "name": "Extraordinary Stories (2008)"
+    },
+    {
+      "slug": "raw-2016",
+      "name": "Raw (2016)"
+    },
+    {
+      "slug": "o-fantasma",
+      "name": "O Fantasma (2000)"
+    },
+    {
+      "slug": "the-lobster",
+      "name": "The Lobster (2015)"
+    },
+    {
+      "slug": "the-hills-of-disorder",
+      "name": "The Hills of Disorder (2006)"
+    },
+    {
+      "slug": "master-and-commander-the-far-side-of-the-world",
+      "name": "Master and Commander: The Far Side of the World (2003)"
+    },
+    {
+      "slug": "frances-ha",
+      "name": "Frances Ha (2012)"
+    },
+    {
+      "slug": "michael-clayton",
+      "name": "Michael Clayton (2007)"
+    },
+    {
+      "slug": "battle-in-heaven",
+      "name": "Battle in Heaven (2005)"
+    },
+    {
+      "slug": "pain-and-glory",
+      "name": "Pain and Glory (2019)"
+    },
+    {
+      "slug": "last-days",
+      "name": "Last Days (2005)"
+    },
+    {
+      "slug": "unbreakable",
+      "name": "Unbreakable (2000)"
+    },
+    {
+      "slug": "bowling-for-columbine",
+      "name": "Bowling for Columbine (2002)"
+    },
+    {
+      "slug": "sorry-to-bother-you",
+      "name": "Sorry to Bother You (2018)"
+    },
+    {
+      "slug": "together-2000",
+      "name": "Together (2000)"
+    },
+    {
+      "slug": "incendies",
+      "name": "Incendies (2010)"
+    },
+    {
+      "slug": "im-not-there",
+      "name": "I&#039;m Not There (2007)"
+    },
+    {
+      "slug": "anora",
+      "name": "Anora (2024)"
+    },
+    {
+      "slug": "the-fog-of-war",
+      "name": "The Fog of War (2003)"
+    },
+    {
+      "slug": "tangerine",
+      "name": "Tangerine (2015)"
+    },
+    {
+      "slug": "the-brown-bunny",
+      "name": "The Brown Bunny (2003)"
+    },
+    {
+      "slug": "fallen-leaves-2023",
+      "name": "Fallen Leaves (2023)"
+    },
+    {
+      "slug": "this-is-england",
+      "name": "This Is England (2006)"
+    },
+    {
+      "slug": "the-artist",
+      "name": "The Artist (2011)"
+    },
+    {
+      "slug": "you-can-count-on-me",
+      "name": "You Can Count on Me (2000)"
+    },
+    {
+      "slug": "the-sons-room",
+      "name": "The Son&#039;s Room (2001)"
+    },
+    {
+      "slug": "the-worst-person-in-the-world",
+      "name": "The Worst Person in the World (2021)"
+    },
+    {
+      "slug": "letters-from-iwo-jima",
+      "name": "Letters from Iwo Jima (2006)"
+    },
+    {
+      "slug": "anchorman-the-legend-of-ron-burgundy",
+      "name": "Anchorman: The Legend of Ron Burgundy (2004)"
+    },
+    {
+      "slug": "a-touch-of-sin",
+      "name": "A Touch of Sin (2013)"
+    },
+    {
+      "slug": "the-other-side-of-the-wind",
+      "name": "The Other Side of the Wind (2018)"
+    },
+    {
+      "slug": "all-we-imagine-as-light",
+      "name": "All We Imagine as Light (2024)"
+    },
+    {
+      "slug": "bad-education",
+      "name": "Bad Education (2004)"
+    },
+    {
+      "slug": "oj-made-in-america",
+      "name": "O.J.: Made in America (2016)"
+    },
+    {
+      "slug": "the-best-of-youth",
+      "name": "The Best of Youth (2003)"
+    },
+    {
+      "slug": "the-shrouds",
+      "name": "The Shrouds (2024)"
+    },
+    {
+      "slug": "summer-hours",
+      "name": "Summer Hours (2008)"
+    },
+    {
+      "slug": "the-look-of-silence",
+      "name": "The Look of Silence (2014)"
+    },
+    {
+      "slug": "neighboring-sounds",
+      "name": "Neighboring Sounds (2012)"
+    },
+    {
+      "slug": "13-lakes",
+      "name": "13 Lakes (2004)"
+    },
+    {
+      "slug": "phoenix-2014",
+      "name": "Phoenix (2014)"
+    },
+    {
+      "slug": "bright-star",
+      "name": "Bright Star (2009)"
+    },
+    {
+      "slug": "it-follows",
+      "name": "It Follows (2014)"
+    },
+    {
+      "slug": "the-five-obstructions",
+      "name": "The Five Obstructions (2003)"
+    },
+    {
+      "slug": "time-out",
+      "name": "Time Out (2001)"
+    },
+    {
+      "slug": "battle-royale",
+      "name": "Battle Royale (2000)"
+    },
+    {
+      "slug": "american-splendor",
+      "name": "American Splendor (2003)"
+    },
+    {
+      "slug": "george-washington",
+      "name": "George Washington (2000)"
+    },
+    {
+      "slug": "uncut-gems",
+      "name": "Uncut Gems (2019)"
+    },
+    {
+      "slug": "the-strange-case-of-angelica",
+      "name": "The Strange Case of Angelica (2010)"
+    },
+    {
+      "slug": "about-schmidt",
+      "name": "About Schmidt (2002)"
+    },
+    {
+      "slug": "tar-2022",
+      "name": "TÁR (2022)"
+    },
+    {
+      "slug": "high-life-2018",
+      "name": "High Life (2018)"
+    },
+    {
+      "slug": "django-unchained",
+      "name": "Django Unchained (2012)"
+    },
+    {
+      "slug": "match-point",
+      "name": "Match Point (2005)"
+    },
+    {
+      "slug": "good-morning-night",
+      "name": "Good Morning, Night (2003)"
+    },
+    {
+      "slug": "the-kid-with-a-bike",
+      "name": "The Kid with a Bike (2011)"
+    },
+    {
+      "slug": "la-libertad",
+      "name": "La libertad (2001)"
+    },
+    {
+      "slug": "another-year",
+      "name": "Another Year (2010)"
+    },
+    {
+      "slug": "the-favourite",
+      "name": "The Favourite (2018)"
+    },
+    {
+      "slug": "nope",
+      "name": "Nope (2022)"
+    },
+    {
+      "slug": "southland-tales",
+      "name": "Southland Tales (2006)"
+    },
+    {
+      "slug": "the-kids-are-all-right",
+      "name": "The Kids Are All Right (2010)"
+    },
+    {
+      "slug": "the-beat-that-my-heart-skipped",
+      "name": "The Beat That My Heart Skipped (2005)"
+    },
+    {
+      "slug": "om-shanti-om",
+      "name": "Om Shanti Om (2007)"
+    },
+    {
+      "slug": "the-class-2008",
+      "name": "The Class (2008)"
+    },
+    {
+      "slug": "carlos",
+      "name": "Carlos (2010)"
+    },
+    {
+      "slug": "days-2020",
+      "name": "Days (2020)"
+    },
+    {
+      "slug": "regular-lovers",
+      "name": "Regular Lovers (2005)"
+    },
+    {
+      "slug": "lilya-4-ever",
+      "name": "Lilya 4-ever (2002)"
+    },
+    {
+      "slug": "love-is-the-message-the-message-is-death",
+      "name": "Love Is the Message, the Message Is Death (2017)"
+    },
+    {
+      "slug": "midsommar",
+      "name": "Midsommar (2019)"
+    },
+    {
+      "slug": "come-and-go",
+      "name": "Come and Go (2003)"
+    },
+    {
+      "slug": "gangs-of-wasseypur-part-1",
+      "name": "Gangs of Wasseypur – Part 1 (2012)"
+    },
+    {
+      "slug": "3-iron",
+      "name": "3-Iron (2004)"
+    },
+    {
+      "slug": "sieranevada",
+      "name": "Sieranevada (2016)"
+    },
+    {
+      "slug": "whale-rider",
+      "name": "Whale Rider (2002)"
+    },
+    {
+      "slug": "idiocracy",
+      "name": "Idiocracy (2006)"
+    },
+    {
+      "slug": "the-life-aquatic-with-steve-zissou",
+      "name": "The Life Aquatic with Steve Zissou (2004)"
+    },
+    {
+      "slug": "love-actually",
+      "name": "Love Actually (2003)"
+    },
+    {
+      "slug": "district-9",
+      "name": "District 9 (2009)"
+    },
+    {
+      "slug": "dunkirk-2017",
+      "name": "Dunkirk (2017)"
+    },
+    {
+      "slug": "millennium-actress",
+      "name": "Millennium Actress (2001)"
+    },
+    {
+      "slug": "eureka-2000",
+      "name": "Eureka (2000)"
+    },
+    {
+      "slug": "minority-report",
+      "name": "Minority Report (2002)"
+    },
+    {
+      "slug": "me-and-you-and-everyone-we-know",
+      "name": "Me and You and Everyone We Know (2005)"
+    },
+    {
+      "slug": "notre-musique",
+      "name": "Notre Musique (2004)"
+    },
+    {
+      "slug": "police-adjective",
+      "name": "Police, Adjective (2009)"
+    },
+    {
+      "slug": "attack-the-block",
+      "name": "Attack the Block (2011)"
+    },
+    {
+      "slug": "beasts-of-the-southern-wild",
+      "name": "Beasts of the Southern Wild (2012)"
+    },
+    {
+      "slug": "exit-through-the-gift-shop",
+      "name": "Exit Through the Gift Shop (2010)"
+    },
+    {
+      "slug": "spring-breakers",
+      "name": "Spring Breakers (2012)"
+    },
+    {
+      "slug": "united-93",
+      "name": "United 93 (2006)"
+    },
+    {
+      "slug": "the-prestige",
+      "name": "The Prestige (2006)"
+    },
+    {
+      "slug": "personal-shopper",
+      "name": "Personal Shopper (2016)"
+    },
+    {
+      "slug": "playing",
+      "name": "Playing (2007)"
+    },
+    {
+      "slug": "big-fish",
+      "name": "Big Fish (2003)"
+    },
+    {
+      "slug": "samson-and-delilah",
+      "name": "Samson and Delilah (2009)"
+    },
+    {
+      "slug": "babel-2006",
+      "name": "Babel (2006)"
+    },
+    {
+      "slug": "femme-fatale",
+      "name": "Femme Fatale (2002)"
+    },
+    {
+      "slug": "only-lovers-left-alive",
+      "name": "Only Lovers Left Alive (2013)"
+    },
+    {
+      "slug": "fruitvale-station",
+      "name": "Fruitvale Station (2013)"
+    },
+    {
+      "slug": "faust-2011",
+      "name": "Faust (2011)"
+    },
+    {
+      "slug": "oh-man",
+      "name": "Oh! Man (2004)"
+    },
+    {
+      "slug": "the-village",
+      "name": "The Village (2004)"
+    },
+    {
+      "slug": "the-wrestler",
+      "name": "The Wrestler (2008)"
+    },
+    {
+      "slug": "the-duke-of-burgundy",
+      "name": "The Duke of Burgundy (2014)"
+    },
+    {
+      "slug": "before-midnight",
+      "name": "Before Midnight (2013)"
+    },
+    {
+      "slug": "superbad",
+      "name": "Superbad (2007)"
+    },
+    {
+      "slug": "mysterious-skin",
+      "name": "Mysterious Skin (2004)"
+    },
+    {
+      "slug": "the-day-i-became-a-woman",
+      "name": "The Day I Became a Woman (2000)"
+    },
+    {
+      "slug": "hereditary",
+      "name": "Hereditary (2018)"
+    },
+    {
+      "slug": "the-taste-of-others",
+      "name": "The Taste of Others (2000)"
+    },
+    {
+      "slug": "close-your-eyes-2023",
+      "name": "Close Your Eyes (2023)"
+    },
+    {
+      "slug": "in-the-bedroom",
+      "name": "In the Bedroom (2001)"
+    },
+    {
+      "slug": "unknown-pleasures",
+      "name": "Unknown Pleasures (2002)"
+    },
+    {
+      "slug": "gangs-of-new-york-2002",
+      "name": "Gangs of New York (2002)"
+    },
+    {
+      "slug": "showing-up-2022",
+      "name": "Showing Up (2022)"
+    },
+    {
+      "slug": "happy-go-lucky",
+      "name": "Happy-Go-Lucky (2008)"
+    },
+    {
+      "slug": "climates",
+      "name": "Climates (2006)"
+    },
+    {
+      "slug": "house-of-flying-daggers",
+      "name": "House of Flying Daggers (2004)"
+    },
+    {
+      "slug": "pariah",
+      "name": "Pariah (2011)"
+    },
+    {
+      "slug": "the-captive",
+      "name": "The Captive (2000)"
+    },
+    {
+      "slug": "evil-does-not-exist",
+      "name": "Evil Does Not Exist (2023)"
+    },
+    {
+      "slug": "gosford-park",
+      "name": "Gosford Park (2001)"
+    },
+    {
+      "slug": "cargo-200",
+      "name": "Cargo 200 (2007)"
+    },
+    {
+      "slug": "45-years",
+      "name": "45 Years (2015)"
+    },
+    {
+      "slug": "computer-chess",
+      "name": "Computer Chess (2013)"
+    },
+    {
+      "slug": "24-hour-party-people",
+      "name": "24 Hour Party People (2002)"
+    },
+    {
+      "slug": "erin-brockovich",
+      "name": "Erin Brockovich (2000)"
+    },
+    {
+      "slug": "our-beloved-month-of-august",
+      "name": "Our Beloved Month of August (2008)"
+    },
+    {
+      "slug": "five-dedicated-to-ozu",
+      "name": "Five Dedicated to Ozu (2003)"
+    },
+    {
+      "slug": "martyrs",
+      "name": "Martyrs (2008)"
+    },
+    {
+      "slug": "bpm-beats-per-minute",
+      "name": "BPM (Beats per Minute) (2017)"
+    },
+    {
+      "slug": "like-father-like-son-2013",
+      "name": "Like Father, Like Son (2013)"
+    },
+    {
+      "slug": "the-sun",
+      "name": "The Sun (2005)"
+    },
+    {
+      "slug": "gran-torino",
+      "name": "Gran Torino (2008)"
+    },
+    {
+      "slug": "may-december",
+      "name": "May December (2023)"
+    },
+    {
+      "slug": "if-beale-street-could-talk",
+      "name": "If Beale Street Could Talk (2018)"
+    },
+    {
+      "slug": "the-death-of-louis-xiv",
+      "name": "The Death of Louis XIV (2016)"
+    },
+    {
+      "slug": "the-station-agent",
+      "name": "The Station Agent (2003)"
+    },
+    {
+      "slug": "s21-the-khmer-rouge-killing-machine",
+      "name": "S21: The Khmer Rouge Killing Machine (2003)"
+    },
+    {
+      "slug": "kill-list",
+      "name": "Kill List (2011)"
+    },
+    {
+      "slug": "traffic",
+      "name": "Traffic (2000)"
+    },
+    {
+      "slug": "blue-valentine",
+      "name": "Blue Valentine (2010)"
+    },
+    {
+      "slug": "i-dont-want-to-sleep-alone",
+      "name": "I Don&#039;t Want to Sleep Alone (2006)"
+    },
+    {
+      "slug": "lil-quinquin",
+      "name": "Li&#039;l Quinquin (2014)"
+    },
+    {
+      "slug": "mean-girls",
+      "name": "Mean Girls (2004)"
+    },
+    {
+      "slug": "the-banshees-of-inisherin",
+      "name": "The Banshees of Inisherin (2022)"
+    },
+    {
+      "slug": "love-basketball",
+      "name": "Love &amp; Basketball (2000)"
+    },
+    {
+      "slug": "wild-grass",
+      "name": "Wild Grass (2009)"
+    },
+    {
+      "slug": "decasia-the-state-of-decay",
+      "name": "Decasia: The State of Decay (2002)"
+    },
+    {
+      "slug": "wonder-boys",
+      "name": "Wonder Boys (2000)"
+    },
+    {
+      "slug": "the-house-of-mirth",
+      "name": "The House of Mirth (2000)"
+    },
+    {
+      "slug": "casino-royale-2006",
+      "name": "Casino Royale (2006)"
+    },
+    {
+      "slug": "ex-machina-2015",
+      "name": "Ex Machina (2015)"
+    },
+    {
+      "slug": "the-autobiography-of-nicolae-ceausescu",
+      "name": "The Autobiography of Nicolae Ceausescu (2010)"
+    },
+    {
+      "slug": "melancholia-2008",
+      "name": "Melancholia (2008)"
+    },
+    {
+      "slug": "paranoid-park",
+      "name": "Paranoid Park (2007)"
+    },
+    {
+      "slug": "the-time-that-remains",
+      "name": "The Time That Remains (2009)"
+    },
+    {
+      "slug": "lumumba",
+      "name": "Lumumba (2000)"
+    },
+    {
+      "slug": "billy-elliot",
+      "name": "Billy Elliot (2000)"
+    },
+    {
+      "slug": "the-ghost-writer",
+      "name": "The Ghost Writer (2010)"
+    },
+    {
+      "slug": "munich",
+      "name": "Munich (2005)"
+    },
+    {
+      "slug": "flight-of-the-red-balloon",
+      "name": "Flight of the Red Balloon (2007)"
+    },
+    {
+      "slug": "la-morte-rouge",
+      "name": "La Morte Rouge (2006)"
+    },
+    {
+      "slug": "the-wind-rises",
+      "name": "The Wind Rises (2013)"
+    },
+    {
+      "slug": "anomalisa",
+      "name": "Anomalisa (2015)"
+    },
+    {
+      "slug": "licorice-pizza",
+      "name": "Licorice Pizza (2021)"
+    },
+    {
+      "slug": "upstream-color",
+      "name": "Upstream Color (2013)"
+    },
+    {
+      "slug": "silence",
+      "name": "Silence (2016)"
+    },
+    {
+      "slug": "napoleon-dynamite",
+      "name": "Napoleon Dynamite (2004)"
+    },
+    {
+      "slug": "primer",
+      "name": "Primer (2004)"
+    },
+    {
+      "slug": "devils-on-the-doorstep",
+      "name": "Devils on the Doorstep (2000)"
+    },
+    {
+      "slug": "the-revenant-2015",
+      "name": "The Revenant (2015)"
+    },
+    {
+      "slug": "the-fountain",
+      "name": "The Fountain (2006)"
+    },
+    {
+      "slug": "the-grandmaster",
+      "name": "The Grandmaster (2013)"
+    },
+    {
+      "slug": "rocks-2019",
+      "name": "Rocks (2019)"
+    },
+    {
+      "slug": "team-america-world-police",
+      "name": "Team America: World Police (2004)"
+    },
+    {
+      "slug": "the-skin-i-live-in",
+      "name": "The Skin I Live In (2011)"
+    },
+    {
+      "slug": "the-40-year-old-virgin",
+      "name": "The 40 Year Old Virgin (2005)"
+    },
+    {
+      "slug": "beyond-the-hills",
+      "name": "Beyond the Hills (2012)"
+    },
+    {
+      "slug": "on-the-beach-at-night-alone",
+      "name": "On the Beach at Night Alone (2017)"
+    },
+    {
+      "slug": "eden-2014-1",
+      "name": "Eden (2014)"
+    },
+    {
+      "slug": "the-queen-2006",
+      "name": "The Queen (2006)"
+    },
+    {
+      "slug": "the-descent",
+      "name": "The Descent (2005)"
+    },
+    {
+      "slug": "pride-prejudice",
+      "name": "Pride &amp; Prejudice (2005)"
+    },
+    {
+      "slug": "biutiful",
+      "name": "Biutiful (2010)"
+    },
+    {
+      "slug": "tarnation",
+      "name": "Tarnation (2003)"
+    },
+    {
+      "slug": "poor-things-2023",
+      "name": "Poor Things (2023)"
+    },
+    {
+      "slug": "innocence",
+      "name": "Innocence (2004)"
+    },
+    {
+      "slug": "hot-fuzz",
+      "name": "Hot Fuzz (2007)"
+    },
+    {
+      "slug": "lagaan-once-upon-a-time-in-india",
+      "name": "Lagaan: Once Upon a Time in India (2001)"
+    },
+    {
+      "slug": "twentynine-palms",
+      "name": "Twentynine Palms (2003)"
+    },
+    {
+      "slug": "shame-2011",
+      "name": "Shame (2011)"
+    },
+    {
+      "slug": "at-sea",
+      "name": "At Sea (2007)"
+    },
+    {
+      "slug": "dune-2021",
+      "name": "Dune (2021)"
+    },
+    {
+      "slug": "okis-movie",
+      "name": "Oki&#039;s Movie (2010)"
+    },
+    {
+      "slug": "bend-it-like-beckham",
+      "name": "Bend It Like Beckham (2002)"
+    },
+    {
+      "slug": "atonement",
+      "name": "Atonement (2007)"
+    },
+    {
+      "slug": "good-bye-lenin",
+      "name": "Good Bye, Lenin! (2003)"
+    },
+    {
+      "slug": "norte-the-end-of-history",
+      "name": "Norte, the End of History (2013)"
+    },
+    {
+      "slug": "downfall",
+      "name": "Downfall (2004)"
+    },
+    {
+      "slug": "the-dreamed-path",
+      "name": "The Dreamed Path (2016)"
+    },
+    {
+      "slug": "eastern-promises",
+      "name": "Eastern Promises (2007)"
+    },
+    {
+      "slug": "grand-tour-2024",
+      "name": "Grand Tour (2024)"
+    },
+    {
+      "slug": "los-muertos-2004",
+      "name": "Los Muertos (2004)"
+    },
+    {
+      "slug": "mommy-2014",
+      "name": "Mommy (2014)"
+    },
+    {
+      "slug": "the-human-surge",
+      "name": "The Human Surge (2016)"
+    },
+    {
+      "slug": "once",
+      "name": "Once (2007)"
+    },
+    {
+      "slug": "best-in-show",
+      "name": "Best in Show (2000)"
+    },
+    {
+      "slug": "rust-and-bone",
+      "name": "Rust and Bone (2012)"
+    },
+    {
+      "slug": "selma",
+      "name": "Selma (2014)"
+    },
+    {
+      "slug": "santiago",
+      "name": "Santiago (2007)"
+    },
+    {
+      "slug": "scott-pilgrim-vs-the-world",
+      "name": "Scott Pilgrim vs. the World (2010)"
+    },
+    {
+      "slug": "nickel-boys",
+      "name": "Nickel Boys (2024)"
+    },
+    {
+      "slug": "the-aviator",
+      "name": "The Aviator (2004)"
+    },
+    {
+      "slug": "spotlight",
+      "name": "Spotlight (2015)"
+    },
+    {
+      "slug": "bus-174",
+      "name": "Bus 174 (2002)"
+    },
+    {
+      "slug": "hell-or-high-water",
+      "name": "Hell or High Water (2016)"
+    },
+    {
+      "slug": "the-witch-2015",
+      "name": "The Witch (2015)"
+    },
+    {
+      "slug": "about-elly",
+      "name": "About Elly (2009)"
+    },
+    {
+      "slug": "the-square-2017",
+      "name": "The Square (2017)"
+    },
+    {
+      "slug": "blackkklansman",
+      "name": "BlacKkKlansman (2018)"
+    },
+    {
+      "slug": "a-lullaby-to-the-sorrowful-mystery",
+      "name": "A Lullaby to the Sorrowful Mystery (2016)"
+    },
+    {
+      "slug": "loveless-2017",
+      "name": "Loveless (2017)"
+    },
+    {
+      "slug": "bacurau",
+      "name": "Bacurau (2019)"
+    },
+    {
+      "slug": "attenberg",
+      "name": "Attenberg (2010)"
+    },
+    {
+      "slug": "oppenheimer-2023",
+      "name": "Oppenheimer (2023)"
+    },
+    {
+      "slug": "dahomey",
+      "name": "Dahomey (2024)"
+    },
+    {
+      "slug": "in-bruges",
+      "name": "In Bruges (2008)"
+    },
+    {
+      "slug": "bamboozled",
+      "name": "Bamboozled (2000)"
+    },
+    {
+      "slug": "hedwig-and-the-angry-inch",
+      "name": "Hedwig and the Angry Inch (2001)"
+    },
+    {
+      "slug": "turtles-can-fly",
+      "name": "Turtles Can Fly (2004)"
+    },
+    {
+      "slug": "promising-young-woman",
+      "name": "Promising Young Woman (2020)"
+    },
+    {
+      "slug": "hard-truths-2024",
+      "name": "Hard Truths (2024)"
+    },
+    {
+      "slug": "demonlover",
+      "name": "Demonlover (2002)"
+    },
+    {
+      "slug": "the-florida-project",
+      "name": "The Florida Project (2017)"
+    },
+    {
+      "slug": "throw-down",
+      "name": "Throw Down (2004)"
+    },
+    {
+      "slug": "modern-life",
+      "name": "Modern Life (2008)"
+    },
+    {
+      "slug": "import-export",
+      "name": "Import/Export (2007)"
+    },
+    {
+      "slug": "sentimental-value-2025",
+      "name": "Sentimental Value (2025)"
+    },
+    {
+      "slug": "marriage-story-2019",
+      "name": "Marriage Story (2019)"
+    },
+    {
+      "slug": "kaili-blues",
+      "name": "Kaili Blues (2015)"
+    },
+    {
+      "slug": "the-mouth-of-the-wolf",
+      "name": "The Mouth of the Wolf (2009)"
+    },
+    {
+      "slug": "wallace-gromit-the-curse-of-the-were-rabbit",
+      "name": "Wallace &amp; Gromit: The Curse of the Were-Rabbit (2005)"
+    },
+    {
+      "slug": "anvil-the-story-of-anvil",
+      "name": "Anvil! The Story of Anvil (2008)"
+    },
+    {
+      "slug": "offside",
+      "name": "Offside (2006)"
+    },
+    {
+      "slug": "of-gods-and-men",
+      "name": "Of Gods and Men (2010)"
+    },
+    {
+      "slug": "spellbound-2002",
+      "name": "Spellbound (2002)"
+    },
+    {
+      "slug": "train-to-busan",
+      "name": "Train to Busan (2016)"
+    },
+    {
+      "slug": "if-i-had-legs-id-kick-you",
+      "name": "If I Had Legs I&#039;d Kick You (2025)"
+    },
+    {
+      "slug": "heremias-book-one-the-legend-of-the-lizard-princess",
+      "name": "Heremias: Book One - The Legend of the Lizard Princess (2006)"
+    },
+    {
+      "slug": "paradise-love",
+      "name": "Paradise: Love (2012)"
+    },
+    {
+      "slug": "zoolander",
+      "name": "Zoolander (2001)"
+    },
+    {
+      "slug": "our-daily-bread",
+      "name": "Our Daily Bread (2005)"
+    },
+    {
+      "slug": "edge-of-tomorrow",
+      "name": "Edge of Tomorrow (2014)"
+    },
+    {
+      "slug": "wolff-von-amerongen-did-he-commit-bankruptcy-offences",
+      "name": "Wolff Von Amerongen: Did He Commit Bankruptcy Offences? (2004)"
+    },
+    {
+      "slug": "no-other-land",
+      "name": "No Other Land (2024)"
+    },
+    {
+      "slug": "spider",
+      "name": "Spider (2002)"
+    },
+    {
+      "slug": "the-immigrant-2013",
+      "name": "The Immigrant (2013)"
+    },
+    {
+      "slug": "shrek",
+      "name": "Shrek (2001)"
+    },
+    {
+      "slug": "man-on-fire-2004",
+      "name": "Man on Fire (2004)"
+    },
+    {
+      "slug": "true-grit-2010",
+      "name": "True Grit (2010)"
+    },
+    {
+      "slug": "a-girl-walks-home-alone-at-night",
+      "name": "A Girl Walks Home Alone at Night (2014)"
+    },
+    {
+      "slug": "rr",
+      "name": "RR (2007)"
+    },
+    {
+      "slug": "dry-season",
+      "name": "Dry Season (2006)"
+    },
+    {
+      "slug": "two-days-one-night",
+      "name": "Two Days, One Night (2014)"
+    },
+    {
+      "slug": "juno",
+      "name": "Juno (2007)"
+    },
+    {
+      "slug": "tinker-tailor-soldier-spy",
+      "name": "Tinker Tailor Soldier Spy (2011)"
+    },
+    {
+      "slug": "the-souvenir-part-ii",
+      "name": "The Souvenir: Part II (2021)"
+    },
+    {
+      "slug": "decision-to-leave",
+      "name": "Decision to Leave (2022)"
+    },
+    {
+      "slug": "the-three-burials-of-melquiades-estrada",
+      "name": "The Three Burials of Melquiades Estrada (2005)"
+    },
+    {
+      "slug": "let-the-sunshine-in",
+      "name": "Let the Sunshine In (2017)"
+    },
+    {
+      "slug": "blue-moon-2025",
+      "name": "Blue Moon (2025)"
+    },
+    {
+      "slug": "the-fabelmans",
+      "name": "The Fabelmans (2022)"
+    },
+    {
+      "slug": "rrr",
+      "name": "RRR (2022)"
+    },
+    {
+      "slug": "leave-no-trace",
+      "name": "Leave No Trace (2018)"
+    },
+    {
+      "slug": "blackboards",
+      "name": "Blackboards (2000)"
+    },
+    {
+      "slug": "embrace-of-the-serpent",
+      "name": "Embrace of the Serpent (2015)"
+    },
+    {
+      "slug": "shortbus",
+      "name": "Shortbus (2006)"
+    },
+    {
+      "slug": "mary-and-max",
+      "name": "Mary and Max (2009)"
+    },
+    {
+      "slug": "brooklyn",
+      "name": "Brooklyn (2015)"
+    },
+    {
+      "slug": "the-last-black-man-in-san-francisco",
+      "name": "The Last Black Man in San Francisco (2019)"
+    },
+    {
+      "slug": "wadjda",
+      "name": "Wadjda (2012)"
+    },
+    {
+      "slug": "the-lighthouse-2019",
+      "name": "The Lighthouse (2019)"
+    },
+    {
+      "slug": "departures",
+      "name": "Departures (2008)"
+    },
+    {
+      "slug": "wheel-of-fortune-and-fantasy",
+      "name": "Wheel of Fortune and Fantasy (2021)"
+    },
+    {
+      "slug": "the-killing-of-a-sacred-deer",
+      "name": "The Killing of a Sacred Deer (2017)"
+    },
+    {
+      "slug": "pina",
+      "name": "Pina (2011)"
+    },
+    {
+      "slug": "war-of-the-worlds",
+      "name": "War of the Worlds (2005)"
+    },
+    {
+      "slug": "12-08-east-of-bucharest",
+      "name": "12:08 East of Bucharest (2006)"
+    },
+    {
+      "slug": "past-lives",
+      "name": "Past Lives (2023)"
+    },
+    {
+      "slug": "the-bourne-ultimatum",
+      "name": "The Bourne Ultimatum (2007)"
+    },
+    {
+      "slug": "pacifiction",
+      "name": "Pacifiction (2022)"
+    },
+    {
+      "slug": "a-time-for-drunken-horses",
+      "name": "A Time for Drunken Horses (2000)"
+    },
+    {
+      "slug": "sin-city",
+      "name": "Sin City (2005)"
+    },
+    {
+      "slug": "i-am-love",
+      "name": "I Am Love (2009)"
+    },
+    {
+      "slug": "lady-chatterley",
+      "name": "Lady Chatterley (2006)"
+    },
+    {
+      "slug": "triangle-of-sadness",
+      "name": "Triangle of Sadness (2022)"
+    },
+    {
+      "slug": "summer-palace",
+      "name": "Summer Palace (2006)"
+    },
+    {
+      "slug": "a-night-of-knowing-nothing",
+      "name": "A Night of Knowing Nothing (2021)"
+    },
+    {
+      "slug": "500-days-of-summer",
+      "name": "(500) Days of Summer (2009)"
+    },
+    {
+      "slug": "before-i-forget",
+      "name": "Before I Forget (2007)"
+    },
+    {
+      "slug": "weapons-2025",
+      "name": "Weapons (2025)"
+    },
+    {
+      "slug": "intimacy-2001",
+      "name": "Intimacy (2001)"
+    },
+    {
+      "slug": "little-women-2019",
+      "name": "Little Women (2019)"
+    },
+    {
+      "slug": "vera-drake",
+      "name": "Vera Drake (2004)"
+    },
+    {
+      "slug": "like-someone-in-love",
+      "name": "Like Someone in Love (2012)"
+    },
+    {
+      "slug": "silver-linings-playbook",
+      "name": "Silver Linings Playbook (2012)"
+    },
+    {
+      "slug": "a-visit-to-the-louvre",
+      "name": "A Visit to the Louvre (2004)"
+    },
+    {
+      "slug": "the-day-after-2017",
+      "name": "The Day After (2017)"
+    },
+    {
+      "slug": "citizenfour",
+      "name": "Citizenfour (2014)"
+    },
+    {
+      "slug": "shirin",
+      "name": "Shirin (2008)"
+    },
+    {
+      "slug": "friday-night",
+      "name": "Friday Night (2002)"
+    },
+    {
+      "slug": "black-hawk-down",
+      "name": "Black Hawk Down (2001)"
+    },
+    {
+      "slug": "collateral",
+      "name": "Collateral (2004)"
+    },
+    {
+      "slug": "quo-vadis-aida",
+      "name": "Quo Vadis, Aida? (2020)"
+    },
+    {
+      "slug": "nine-queens",
+      "name": "Nine Queens (2000)"
+    },
+    {
+      "slug": "this-is-not-a-burial-its-a-resurrection",
+      "name": "This Is Not a Burial, It&#039;s a Resurrection (2019)"
+    },
+    {
+      "slug": "solaris-2002",
+      "name": "Solaris (2002)"
+    },
+    {
+      "slug": "magic-mike-xxl",
+      "name": "Magic Mike XXL (2015)"
+    },
+    {
+      "slug": "martin-eden-2019",
+      "name": "Martin Eden (2019)"
+    },
+    {
+      "slug": "life-of-pi",
+      "name": "Life of Pi (2012)"
+    },
+    {
+      "slug": "elf",
+      "name": "Elf (2003)"
+    },
+    {
+      "slug": "good-night-and-good-luck",
+      "name": "Good Night, and Good Luck. (2005)"
+    },
+    {
+      "slug": "chunhyang",
+      "name": "Chunhyang (2000)"
+    },
+    {
+      "slug": "apocalypto",
+      "name": "Apocalypto (2006)"
+    },
+    {
+      "slug": "mustang-2015",
+      "name": "Mustang (2015)"
+    },
+    {
+      "slug": "sorry-baby-2025",
+      "name": "Sorry, Baby (2025)"
+    },
+    {
+      "slug": "a-prairie-home-companion",
+      "name": "A Prairie Home Companion (2006)"
+    },
+    {
+      "slug": "bridget-joness-diary",
+      "name": "Bridget Jones&#039;s Diary (2001)"
+    },
+    {
+      "slug": "minari",
+      "name": "Minari (2020)"
+    },
+    {
+      "slug": "booksmart",
+      "name": "Booksmart (2019)"
+    },
+    {
+      "slug": "things-to-come-2016",
+      "name": "Things to Come (2016)"
+    },
+    {
+      "slug": "somewhere",
+      "name": "Somewhere (2010)"
+    },
+    {
+      "slug": "trenque-lauquen",
+      "name": "Trenque Lauquen (2022)"
+    },
+    {
+      "slug": "take-shelter",
+      "name": "Take Shelter (2011)"
+    },
+    {
+      "slug": "the-wind-that-shakes-the-barley",
+      "name": "The Wind That Shakes the Barley (2006)"
+    },
+    {
+      "slug": "the-deep-blue-sea",
+      "name": "The Deep Blue Sea (2011)"
+    },
+    {
+      "slug": "the-other-side-of-hope",
+      "name": "The Other Side of Hope (2017)"
+    },
+    {
+      "slug": "im-thinking-of-ending-things",
+      "name": "I&#039;m Thinking of Ending Things (2020)"
+    },
+    {
+      "slug": "triple-agent",
+      "name": "Triple Agent (2004)"
+    },
+    {
+      "slug": "madelines-madeline",
+      "name": "Madeline&#039;s Madeline (2018)"
+    },
+    {
+      "slug": "wuthering-heights-2011",
+      "name": "Wuthering Heights (2011)"
+    },
+    {
+      "slug": "gomorrah",
+      "name": "Gomorrah (2008)"
+    },
+    {
+      "slug": "milk-2008",
+      "name": "Milk (2008)"
+    },
+    {
+      "slug": "sweet-sixteen",
+      "name": "Sweet Sixteen (2002)"
+    },
+    {
+      "slug": "eo",
+      "name": "EO (2022)"
+    },
+    {
+      "slug": "the-secret-in-their-eyes",
+      "name": "The Secret in Their Eyes (2009)"
+    },
+    {
+      "slug": "the-tribe-2014",
+      "name": "The Tribe (2014)"
+    },
+    {
+      "slug": "tale-of-cinema",
+      "name": "Tale of Cinema (2005)"
+    },
+    {
+      "slug": "father-and-daughter",
+      "name": "Father and Daughter (2000)"
+    },
+    {
+      "slug": "nouvelle-vague-2025",
+      "name": "Nouvelle Vague (2025)"
+    },
+    {
+      "slug": "the-secret-of-the-grain",
+      "name": "The Secret of the Grain (2007)"
+    },
+    {
+      "slug": "the-others",
+      "name": "The Others (2001)"
+    },
+    {
+      "slug": "the-duchess-of-langeais",
+      "name": "The Duchess of Langeais (2007)"
+    },
+    {
+      "slug": "lincoln",
+      "name": "Lincoln (2012)"
+    },
+    {
+      "slug": "post-tenebras-lux",
+      "name": "Post Tenebras Lux (2012)"
+    },
+    {
+      "slug": "trash-humpers",
+      "name": "Trash Humpers (2009)"
+    },
+    {
+      "slug": "barbie",
+      "name": "Barbie (2023)"
+    },
+    {
+      "slug": "paddington",
+      "name": "Paddington (2014)"
+    },
+    {
+      "slug": "darwins-nightmare",
+      "name": "Darwin&#039;s Nightmare (2004)"
+    },
+    {
+      "slug": "monster",
+      "name": "Monster (2003)"
+    },
+    {
+      "slug": "ginger-snaps",
+      "name": "Ginger Snaps (2000)"
+    },
+    {
+      "slug": "looper",
+      "name": "Looper (2012)"
+    },
+    {
+      "slug": "saint-maud",
+      "name": "Saint Maud (2019)"
+    },
+    {
+      "slug": "the-missing-picture",
+      "name": "The Missing Picture (2013)"
+    },
+    {
+      "slug": "sleep-has-her-house",
+      "name": "Sleep Has Her House (2017)"
+    },
+    {
+      "slug": "museum-hours",
+      "name": "Museum Hours (2012)"
+    },
+    {
+      "slug": "origins-of-the-21st-century",
+      "name": "Origins of the 21st Century (2000)"
+    },
+    {
+      "slug": "sound-of-falling",
+      "name": "Sound of Falling (2025)"
+    },
+    {
+      "slug": "the-brutalist",
+      "name": "The Brutalist (2024)"
+    },
+    {
+      "slug": "all-about-lily-chou-chou",
+      "name": "All About Lily Chou-Chou (2001)"
+    },
+    {
+      "slug": "water-lilies",
+      "name": "Water Lilies (2007)"
+    },
+    {
+      "slug": "paradise-now",
+      "name": "Paradise Now (2005)"
+    },
+    {
+      "slug": "sweeney-todd-the-demon-barber-of-fleet-street-2007",
+      "name": "Sweeney Todd: The Demon Barber of Fleet Street (2007)"
+    },
+    {
+      "slug": "eddington",
+      "name": "Eddington (2025)"
+    },
+    {
+      "slug": "the-substance",
+      "name": "The Substance (2024)"
+    },
+    {
+      "slug": "compartment-no-6",
+      "name": "Compartment No. 6 (2021)"
+    },
+    {
+      "slug": "cloud-2024",
+      "name": "Cloud (2024)"
+    },
+    {
+      "slug": "a-screaming-man",
+      "name": "A Screaming Man (2010)"
+    },
+    {
+      "slug": "snowpiercer",
+      "name": "Snowpiercer (2013)"
+    },
+    {
+      "slug": "barbara",
+      "name": "Barbara (2012)"
+    },
+    {
+      "slug": "the-woman-king",
+      "name": "The Woman King (2022)"
+    },
+    {
+      "slug": "mia-madre",
+      "name": "Mia madre (2015)"
+    },
+    {
+      "slug": "sicario-2015",
+      "name": "Sicario (2015)"
+    },
+    {
+      "slug": "aurora-2010",
+      "name": "Aurora (2010)"
+    },
+    {
+      "slug": "henry-fonda-for-president",
+      "name": "Henry Fonda for President (2024)"
+    },
+    {
+      "slug": "elena",
+      "name": "Elena (2011)"
+    },
+    {
+      "slug": "13th",
+      "name": "13th (2016)"
+    },
+    {
+      "slug": "moon",
+      "name": "Moon (2009)"
+    },
+    {
+      "slug": "after-lucia",
+      "name": "After Lucia (2012)"
+    },
+    {
+      "slug": "the-kings-speech",
+      "name": "The King&#039;s Speech (2010)"
+    },
+    {
+      "slug": "lady-vengeance",
+      "name": "Lady Vengeance (2005)"
+    },
+    {
+      "slug": "archipelago",
+      "name": "Archipelago (2010)"
+    },
+    {
+      "slug": "cave-of-forgotten-dreams",
+      "name": "Cave of Forgotten Dreams (2010)"
+    },
+    {
+      "slug": "fahrenheit-9-11",
+      "name": "Fahrenheit 9/11 (2004)"
+    },
+    {
+      "slug": "vivan-las-antipodas",
+      "name": "¡Vivan las Antipodas! (2011)"
+    },
+    {
+      "slug": "the-farewell-2019",
+      "name": "The Farewell (2019)"
+    },
+    {
+      "slug": "double-tide",
+      "name": "Double Tide (2009)"
+    },
+    {
+      "slug": "for-sama",
+      "name": "For Sama (2019)"
+    },
+    {
+      "slug": "the-motorcycle-diaries",
+      "name": "The Motorcycle Diaries (2004)"
+    },
+    {
+      "slug": "fragile-as-the-world",
+      "name": "Fragile as the World (2001)"
+    },
+    {
+      "slug": "cosmopolis",
+      "name": "Cosmopolis (2012)"
+    },
+    {
+      "slug": "dry-leaf",
+      "name": "Dry Leaf (2025)"
+    },
+    {
+      "slug": "monsters-inc",
+      "name": "Monsters, Inc. (2001)"
+    },
+    {
+      "slug": "collective",
+      "name": "Collective (2019)"
+    },
+    {
+      "slug": "the-diary-of-a-teenage-girl",
+      "name": "The Diary of a Teenage Girl (2015)"
+    },
+    {
+      "slug": "hunt-for-the-wilderpeople",
+      "name": "Hunt for the Wilderpeople (2016)"
+    },
+    {
+      "slug": "a-hidden-life-2019",
+      "name": "A Hidden Life (2019)"
+    },
+    {
+      "slug": "crip-camp-a-disability-revolution",
+      "name": "Crip Camp: A Disability Revolution (2020)"
+    },
+    {
+      "slug": "precious-2009",
+      "name": "Precious (2009)"
+    },
+    {
+      "slug": "visitor-q",
+      "name": "Visitor Q (2001)"
+    },
+    {
+      "slug": "maqbool",
+      "name": "Maqbool (2003)"
+    },
+    {
+      "slug": "transit-2018",
+      "name": "Transit (2018)"
+    },
+    {
+      "slug": "everyone-else",
+      "name": "Everyone Else (2009)"
+    },
+    {
+      "slug": "the-beast-2023-1",
+      "name": "The Beast (2023)"
+    },
+    {
+      "slug": "wolfwalkers",
+      "name": "Wolfwalkers (2020)"
+    },
+    {
+      "slug": "appropriate-behavior",
+      "name": "Appropriate Behavior (2014)"
+    },
+    {
+      "slug": "i-daniel-blake",
+      "name": "I, Daniel Blake (2016)"
+    },
+    {
+      "slug": "bastards-2013",
+      "name": "Bastards (2013)"
+    },
+    {
+      "slug": "by-the-stream",
+      "name": "By the Stream (2024)"
+    },
+    {
+      "slug": "the-passion-of-the-christ",
+      "name": "The Passion of the Christ (2004)"
+    },
+    {
+      "slug": "to-the-left-of-the-father",
+      "name": "To the Left of the Father (2001)"
+    },
+    {
+      "slug": "john-wick",
+      "name": "John Wick (2014)"
+    },
+    {
+      "slug": "amy-2015",
+      "name": "Amy (2015)"
+    },
+    {
+      "slug": "the-orphanage",
+      "name": "The Orphanage (2007)"
+    },
+    {
+      "slug": "oslo-august-31st",
+      "name": "Oslo, August 31st (2011)"
+    },
+    {
+      "slug": "i-saw-the-tv-glow",
+      "name": "I Saw the TV Glow (2024)"
+    },
+    {
+      "slug": "vincere",
+      "name": "Vincere (2009)"
+    },
+    {
+      "slug": "ash-is-purest-white",
+      "name": "Ash Is Purest White (2018)"
+    },
+    {
+      "slug": "coraline",
+      "name": "Coraline (2009)"
+    },
+    {
+      "slug": "the-bridge-of-arts",
+      "name": "The Bridge of Arts (2004)"
+    },
+    {
+      "slug": "black-book",
+      "name": "Black Book (2006)"
+    },
+    {
+      "slug": "king-kong-2005",
+      "name": "King Kong (2005)"
+    },
+    {
+      "slug": "star-wars-episode-iii-revenge-of-the-sith",
+      "name": "Star Wars: Episode III – Revenge of the Sith (2005)"
+    },
+    {
+      "slug": "anatomy-of-hell",
+      "name": "Anatomy of Hell (2004)"
+    },
+    {
+      "slug": "heaven-knows-what",
+      "name": "Heaven Knows What (2014)"
+    },
+    {
+      "slug": "the-delinquents-2023",
+      "name": "The Delinquents (2023)"
+    },
+    {
+      "slug": "requiem-from-java",
+      "name": "Requiem from Java (2006)"
+    },
+    {
+      "slug": "martha-marcy-may-marlene",
+      "name": "Martha Marcy May Marlene (2011)"
+    },
+    {
+      "slug": "what-goes-up-2003",
+      "name": "What Goes Up.... (2003)"
+    },
+    {
+      "slug": "chopper",
+      "name": "Chopper (2000)"
+    },
+    {
+      "slug": "the-death-of-stalin",
+      "name": "The Death of Stalin (2017)"
+    },
+    {
+      "slug": "jauja",
+      "name": "Jauja (2014)"
+    },
+    {
+      "slug": "annette",
+      "name": "Annette (2021)"
+    },
+    {
+      "slug": "the-man-who-wasnt-there-2001",
+      "name": "The Man Who Wasn&#039;t There (2001)"
+    },
+    {
+      "slug": "last-summer-2023",
+      "name": "Last Summer (2023)"
+    },
+    {
+      "slug": "the-raid-2",
+      "name": "The Raid 2 (2014)"
+    },
+    {
+      "slug": "city-hall-2020",
+      "name": "City Hall (2020)"
+    },
+    {
+      "slug": "the-hateful-eight",
+      "name": "The Hateful Eight (2015)"
+    },
+    {
+      "slug": "rabbit-proof-fence",
+      "name": "Rabbit-Proof Fence (2002)"
+    },
+    {
+      "slug": "a-talking-picture",
+      "name": "A Talking Picture (2003)"
+    },
+    {
+      "slug": "joker-2019",
+      "name": "Joker (2019)"
+    },
+    {
+      "slug": "of-time-and-the-city",
+      "name": "Of Time and the City (2008)"
+    },
+    {
+      "slug": "knocked-up",
+      "name": "Knocked Up (2007)"
+    },
+    {
+      "slug": "nebraska",
+      "name": "Nebraska (2013)"
+    },
+    {
+      "slug": "the-weeping-meadow",
+      "name": "The Weeping Meadow (2004)"
+    },
+    {
+      "slug": "beanpole",
+      "name": "Beanpole (2019)"
+    },
+    {
+      "slug": "on-body-and-soul",
+      "name": "On Body and Soul (2017)"
+    },
+    {
+      "slug": "snatch",
+      "name": "Snatch (2000)"
+    },
+    {
+      "slug": "annihilation",
+      "name": "Annihilation (2018)"
+    },
+    {
+      "slug": "capote",
+      "name": "Capote (2005)"
+    },
+    {
+      "slug": "in-the-loop",
+      "name": "In the Loop (2009)"
+    },
+    {
+      "slug": "wet-hot-american-summer",
+      "name": "Wet Hot American Summer (2001)"
+    },
+    {
+      "slug": "in-this-world",
+      "name": "In This World (2002)"
+    },
+    {
+      "slug": "profit-motive-and-the-whispering-wind",
+      "name": "Profit Motive and the Whispering Wind (2007)"
+    },
+    {
+      "slug": "benediction",
+      "name": "Benediction (2021)"
+    },
+    {
+      "slug": "the-assistant-2019",
+      "name": "The Assistant (2019)"
+    },
+    {
+      "slug": "signs",
+      "name": "Signs (2002)"
+    },
+    {
+      "slug": "wasp",
+      "name": "Wasp (2003)"
+    },
+    {
+      "slug": "at-berkeley",
+      "name": "At Berkeley (2013)"
+    },
+    {
+      "slug": "the-woman-who-left",
+      "name": "The Woman Who Left (2016)"
+    },
+    {
+      "slug": "the-cabin-in-the-woods",
+      "name": "The Cabin in the Woods (2011)"
+    },
+    {
+      "slug": "sympathy-for-mr-vengeance",
+      "name": "Sympathy for Mr. Vengeance (2002)"
+    },
+    {
+      "slug": "the-body-remembers-when-the-world-broke-open",
+      "name": "The Body Remembers When the World Broke Open (2019)"
+    },
+    {
+      "slug": "hit-the-road-2021",
+      "name": "Hit the Road (2021)"
+    },
+    {
+      "slug": "the-century-of-the-self",
+      "name": "The Century of the Self (2002)"
+    },
+    {
+      "slug": "all-the-beauty-and-the-bloodshed",
+      "name": "All the Beauty and the Bloodshed (2022)"
+    },
+    {
+      "slug": "eephus",
+      "name": "Eephus (2024)"
+    },
+    {
+      "slug": "room-2015",
+      "name": "Room (2015)"
+    },
+    {
+      "slug": "frozen-river",
+      "name": "Frozen River (2008)"
+    },
+    {
+      "slug": "the-chaser",
+      "name": "The Chaser (2008)"
+    },
+    {
+      "slug": "i-saw-the-devil",
+      "name": "I Saw the Devil (2010)"
+    },
+    {
+      "slug": "paraguayan-hammock",
+      "name": "Paraguayan Hammock (2006)"
+    },
+    {
+      "slug": "foxcatcher",
+      "name": "Foxcatcher (2014)"
+    },
+    {
+      "slug": "the-edge-of-heaven",
+      "name": "The Edge of Heaven (2007)"
+    },
+    {
+      "slug": "high-fidelity",
+      "name": "High Fidelity (2000)"
+    },
+    {
+      "slug": "creed",
+      "name": "Creed (2015)"
+    },
+    {
+      "slug": "the-love-witch",
+      "name": "The Love Witch (2016)"
+    },
+    {
+      "slug": "yourself-and-yours",
+      "name": "Yourself and Yours (2016)"
+    },
+    {
+      "slug": "workers-peasants",
+      "name": "Workers, Peasants (2001)"
+    },
+    {
+      "slug": "road-to-nowhere",
+      "name": "Road to Nowhere (2010)"
+    },
+    {
+      "slug": "the-woman-who-ran",
+      "name": "The Woman Who Ran (2020)"
+    },
+    {
+      "slug": "frownland",
+      "name": "Frownland (2007)"
+    },
+    {
+      "slug": "woman-on-the-beach",
+      "name": "Woman on the Beach (2006)"
+    },
+    {
+      "slug": "black-sun",
+      "name": "Black Sun (2005)"
+    },
+    {
+      "slug": "a-quiet-passion",
+      "name": "A Quiet Passion (2016)"
+    },
+    {
+      "slug": "the-holdovers",
+      "name": "The Holdovers (2023)"
+    },
+    {
+      "slug": "berberian-sound-studio",
+      "name": "Berberian Sound Studio (2012)"
+    },
+    {
+      "slug": "burn-after-reading",
+      "name": "Burn After Reading (2008)"
+    },
+    {
+      "slug": "devdas-2002",
+      "name": "Devdas (2002)"
+    },
+    {
+      "slug": "im-going-home",
+      "name": "I’m Going Home (2001)"
+    },
+    {
+      "slug": "artemides-knee",
+      "name": "Artemide’s Knee (2008)"
+    },
+    {
+      "slug": "crash-2004",
+      "name": "Crash (2004)"
+    },
+    {
+      "slug": "peter-hujars-day",
+      "name": "Peter Hujar&#039;s Day (2025)"
+    },
+    {
+      "slug": "resurrection-2025",
+      "name": "Resurrection (2025)"
+    },
+    {
+      "slug": "chicken-run",
+      "name": "Chicken Run (2000)"
+    },
+    {
+      "slug": "da-5-bloods",
+      "name": "Da 5 Bloods (2020)"
+    },
+    {
+      "slug": "these-encounters-of-theirs",
+      "name": "These Encounters of Theirs (2006)"
+    },
+    {
+      "slug": "the-novelists-film",
+      "name": "The Novelist&#039;s Film (2022)"
+    },
+    {
+      "slug": "the-darjeeling-limited",
+      "name": "The Darjeeling Limited (2007)"
+    },
+    {
+      "slug": "dig",
+      "name": "Dig! (2004)"
+    },
+    {
+      "slug": "catch-me-if-you-can-2002",
+      "name": "Catch Me If You Can (2002)"
+    },
+    {
+      "slug": "united-red-army",
+      "name": "United Red Army (2007)"
+    },
+    {
+      "slug": "metallica-some-kind-of-monster",
+      "name": "Metallica: Some Kind of Monster (2004)"
+    },
+    {
+      "slug": "mangrove-2020",
+      "name": "Mangrove (2020)"
+    },
+    {
+      "slug": "vicky-cristina-barcelona",
+      "name": "Vicky Cristina Barcelona (2008)"
+    },
+    {
+      "slug": "by-the-time-it-gets-dark",
+      "name": "By the Time It Gets Dark (2016)"
+    },
+    {
+      "slug": "my-undesirable-friends-part-i-last-air-in",
+      "name": "My Undesirable Friends: Part I - Last Air in Moscow (2024)"
+    },
+    {
+      "slug": "america-2019",
+      "name": "America (2019)"
+    },
+    {
+      "slug": "the-curious-case-of-benjamin-button",
+      "name": "The Curious Case of Benjamin Button (2008)"
+    },
+    {
+      "slug": "i-lost-my-body",
+      "name": "I Lost My Body (2019)"
+    },
+    {
+      "slug": "a-beautiful-mind",
+      "name": "A Beautiful Mind (2001)"
+    },
+    {
+      "slug": "senna",
+      "name": "Senna (2010)"
+    },
+    {
+      "slug": "ex-libris-the-new-york-public-library",
+      "name": "Ex Libris: The New York Public Library (2017)"
+    },
+    {
+      "slug": "no-other-choice-2025",
+      "name": "No Other Choice (2025)"
+    },
+    {
+      "slug": "an-inconvenient-truth",
+      "name": "An Inconvenient Truth (2006)"
+    },
+    {
+      "slug": "the-loneliest-planet",
+      "name": "The Loneliest Planet (2011)"
+    },
+    {
+      "slug": "instructions-for-a-light-and-sound-machine",
+      "name": "Instructions for a Light and Sound Machine (2005)"
+    },
+    {
+      "slug": "harry-potter-and-the-prisoner-of-azkaban",
+      "name": "Harry Potter and the Prisoner of Azkaban (2004)"
+    },
+    {
+      "slug": "the-portuguese-nun",
+      "name": "The Portuguese Nun (2009)"
+    },
+    {
+      "slug": "the-mist",
+      "name": "The Mist (2007)"
+    },
+    {
+      "slug": "frozen-2013",
+      "name": "Frozen (2013)"
+    },
+    {
+      "slug": "the-notebook",
+      "name": "The Notebook (2004)"
+    },
+    {
+      "slug": "maps-to-the-stars",
+      "name": "Maps to the Stars (2014)"
+    },
+    {
+      "slug": "the-saddest-music-in-the-world",
+      "name": "The Saddest Music in the World (2003)"
+    },
+    {
+      "slug": "the-interrupters",
+      "name": "The Interrupters (2011)"
+    },
+    {
+      "slug": "the-lost-city-of-z",
+      "name": "The Lost City of Z (2016)"
+    },
+    {
+      "slug": "a-thousand-suns-2013",
+      "name": "A Thousand Suns (2013)"
+    },
+    {
+      "slug": "in-jackson-heights",
+      "name": "In Jackson Heights (2015)"
+    },
+    {
+      "slug": "the-raid-2011",
+      "name": "The Raid (2011)"
+    },
+    {
+      "slug": "challengers",
+      "name": "Challengers (2024)"
+    },
+    {
+      "slug": "road-to-perdition",
+      "name": "Road to Perdition (2002)"
+    },
+    {
+      "slug": "the-3-rooms-of-melancholia",
+      "name": "The 3 Rooms of Melancholia (2004)"
+    },
+    {
+      "slug": "good-time",
+      "name": "Good Time (2017)"
+    },
+    {
+      "slug": "spider-man-2",
+      "name": "Spider-Man 2 (2004)"
+    },
+    {
+      "slug": "oxhide",
+      "name": "Oxhide (2005)"
+    },
+    {
+      "slug": "flags-of-our-fathers",
+      "name": "Flags of Our Fathers (2006)"
+    },
+    {
+      "slug": "the-heart-of-the-world",
+      "name": "The Heart of the World (2000)"
+    },
+    {
+      "slug": "24-city",
+      "name": "24 City (2008)"
+    },
+    {
+      "slug": "a-new-life",
+      "name": "A New Life (2002)"
+    },
+    {
+      "slug": "the-inheritance-2020",
+      "name": "The Inheritance (2020)"
+    },
+    {
+      "slug": "brick",
+      "name": "Brick (2005)"
+    },
+    {
+      "slug": "zidane-a-21st-century-portrait",
+      "name": "Zidane: A 21st Century Portrait (2006)"
+    },
+    {
+      "slug": "blade-runner-2049",
+      "name": "Blade Runner 2049 (2017)"
+    },
+    {
+      "slug": "city-of-life-and-death",
+      "name": "City of Life and Death (2009)"
+    },
+    {
+      "slug": "perfect-days-2023",
+      "name": "Perfect Days (2023)"
+    },
+    {
+      "slug": "animal-kingdom",
+      "name": "Animal Kingdom (2010)"
+    },
+    {
+      "slug": "moneyball",
+      "name": "Moneyball (2011)"
+    },
+    {
+      "slug": "japon",
+      "name": "Japón (2002)"
+    },
+    {
+      "slug": "no-2012",
+      "name": "No (2012)"
+    },
+    {
+      "slug": "belfast",
+      "name": "Belfast (2021)"
+    },
+    {
+      "slug": "drug-war",
+      "name": "Drug War (2012)"
+    },
+    {
+      "slug": "stevie-2002",
+      "name": "Stevie (2002)"
+    },
+    {
+      "slug": "afire",
+      "name": "Afire (2023)"
+    },
+    {
+      "slug": "the-sea-inside",
+      "name": "The Sea Inside (2004)"
+    },
+    {
+      "slug": "three-monkeys",
+      "name": "Three Monkeys (2008)"
+    },
+    {
+      "slug": "sobibor-october-14-1943-4-pm",
+      "name": "Sobibor, October 14, 1943, 4 p.m. (2001)"
+    },
+    {
+      "slug": "bergman-island-2021",
+      "name": "Bergman Island (2021)"
+    },
+    {
+      "slug": "dick-johnson-is-dead",
+      "name": "Dick Johnson Is Dead (2020)"
+    },
+    {
+      "slug": "a-single-man",
+      "name": "A Single Man (2009)"
+    },
+    {
+      "slug": "mr-turner",
+      "name": "Mr. Turner (2014)"
+    },
+    {
+      "slug": "what-we-do-in-the-shadows",
+      "name": "What We Do in the Shadows (2014)"
+    },
+    {
+      "slug": "midnight-in-paris",
+      "name": "Midnight in Paris (2011)"
+    },
+    {
+      "slug": "house-of-tolerance",
+      "name": "House of Tolerance (2011)"
+    },
+    {
+      "slug": "monos",
+      "name": "Monos (2019)"
+    },
+    {
+      "slug": "a-tale-of-two-sisters",
+      "name": "A Tale of Two Sisters (2003)"
+    },
+    {
+      "slug": "secretary",
+      "name": "Secretary (2002)"
+    },
+    {
+      "slug": "what-do-we-see-when-we-look-at-the-sky",
+      "name": "What Do We See When We Look at the Sky? (2021)"
+    },
+    {
+      "slug": "before-night-falls",
+      "name": "Before Night Falls (2000)"
+    },
+    {
+      "slug": "a-cock-and-bull-story",
+      "name": "A Cock and Bull Story (2005)"
+    },
+    {
+      "slug": "manakamana",
+      "name": "Manakamana (2013)"
+    },
+    {
+      "slug": "juror-2",
+      "name": "Juror #2 (2024)"
+    },
+    {
+      "slug": "material-2009",
+      "name": "Material (2009)"
+    },
+    {
+      "slug": "rec",
+      "name": "[REC] (2007)"
+    },
+    {
+      "slug": "when-the-levees-broke-a-requiem-in-four-acts",
+      "name": "When the Levees Broke: A Requiem in Four Acts (2006)"
+    },
+    {
+      "slug": "pig-2021",
+      "name": "Pig (2021)"
+    },
+    {
+      "slug": "fire-will-come",
+      "name": "Fire Will Come (2019)"
+    },
+    {
+      "slug": "the-descendants",
+      "name": "The Descendants (2011)"
+    },
+    {
+      "slug": "gods-own-country-2017",
+      "name": "God&#039;s Own Country (2017)"
+    },
+    {
+      "slug": "enemy",
+      "name": "Enemy (2013)"
+    },
+    {
+      "slug": "green-room",
+      "name": "Green Room (2015)"
+    },
+    {
+      "slug": "i-am-not-a-witch",
+      "name": "I Am Not a Witch (2017)"
+    },
+    {
+      "slug": "kiss-kiss-bang-bang-2005",
+      "name": "Kiss Kiss Bang Bang (2005)"
+    },
+    {
+      "slug": "wonder-woman-2017",
+      "name": "Wonder Woman (2017)"
+    },
+    {
+      "slug": "touching-the-void",
+      "name": "Touching the Void (2003)"
+    },
+    {
+      "slug": "whisky",
+      "name": "Whisky (2004)"
+    },
+    {
+      "slug": "half-nelson",
+      "name": "Half Nelson (2006)"
+    },
+    {
+      "slug": "faya-dayi",
+      "name": "Faya Dayi (2021)"
+    },
+    {
+      "slug": "april-2024-1",
+      "name": "April (2024)"
+    },
+    {
+      "slug": "my-mothers-smile",
+      "name": "My Mother&#039;s Smile (2002)"
+    },
+    {
+      "slug": "the-dreamers",
+      "name": "The Dreamers (2003)"
+    },
+    {
+      "slug": "aquarius",
+      "name": "Aquarius (2016)"
+    },
+    {
+      "slug": "unrelated",
+      "name": "Unrelated (2007)"
+    },
+    {
+      "slug": "elvis-2022",
+      "name": "Elvis (2022)"
+    },
+    {
+      "slug": "strong-island",
+      "name": "Strong Island (2017)"
+    },
+    {
+      "slug": "david-byrnes-american-utopia",
+      "name": "David Byrne&#039;s American Utopia (2020)"
+    },
+    {
+      "slug": "all-of-us-strangers",
+      "name": "All of Us Strangers (2023)"
+    },
+    {
+      "slug": "in-front-of-your-face",
+      "name": "In Front of Your Face (2021)"
+    },
+    {
+      "slug": "the-isle",
+      "name": "The Isle (2000)"
+    },
+    {
+      "slug": "shirkers",
+      "name": "Shirkers (2018)"
+    },
+    {
+      "slug": "3-faces",
+      "name": "3 Faces (2018)"
+    },
+    {
+      "slug": "rachel-getting-married",
+      "name": "Rachel Getting Married (2008)"
+    },
+    {
+      "slug": "where-does-your-hidden-smile-lie",
+      "name": "Where Does Your Hidden Smile Lie? (2001)"
+    },
+    {
+      "slug": "cloud-atlas",
+      "name": "Cloud Atlas (2012)"
+    },
+    {
+      "slug": "a-girl-at-my-door",
+      "name": "A Girl at My Door (2014)"
+    },
+    {
+      "slug": "another-round",
+      "name": "Another Round (2020)"
+    },
+    {
+      "slug": "season-of-the-devil",
+      "name": "Season of the Devil (2018)"
+    },
+    {
+      "slug": "evolution-2015",
+      "name": "Evolution (2015)"
+    },
+    {
+      "slug": "the-ring-2002",
+      "name": "The Ring (2002)"
+    },
+    {
+      "slug": "dreams-of-a-life",
+      "name": "Dreams of a Life (2011)"
+    },
+    {
+      "slug": "ghost-in-the-shell-2-innocence",
+      "name": "Ghost in the Shell 2: Innocence (2004)"
+    },
+    {
+      "slug": "top-gun-maverick",
+      "name": "Top Gun: Maverick (2022)"
+    },
+    {
+      "slug": "encounters-at-the-end-of-the-world",
+      "name": "Encounters at the End of the World (2007)"
+    },
+    {
+      "slug": "a-fantastic-woman",
+      "name": "A Fantastic Woman (2017)"
+    },
+    {
+      "slug": "shirley-2020",
+      "name": "Shirley (2020)"
+    },
+    {
+      "slug": "il-divo",
+      "name": "Il Divo (2008)"
+    },
+    {
+      "slug": "we-have-a-pope",
+      "name": "We Have a Pope (2011)"
+    },
+    {
+      "slug": "knives-out-2019",
+      "name": "Knives Out (2019)"
+    },
+    {
+      "slug": "you-aint-seen-nothin-yet",
+      "name": "You Ain&#039;t Seen Nothin&#039; Yet (2012)"
+    },
+    {
+      "slug": "the-barbarian-invasions",
+      "name": "The Barbarian Invasions (2003)"
+    },
+    {
+      "slug": "megalopolis-2024",
+      "name": "Megalopolis (2024)"
+    },
+    {
+      "slug": "pontypool",
+      "name": "Pontypool (2008)"
+    },
+    {
+      "slug": "the-seed-of-the-sacred-fig",
+      "name": "The Seed of the Sacred Fig (2024)"
+    },
+    {
+      "slug": "the-lego-movie",
+      "name": "The Lego Movie (2014)"
+    },
+    {
+      "slug": "closeness",
+      "name": "Closeness (2017)"
+    },
+    {
+      "slug": "20th-century-women",
+      "name": "20th Century Women (2016)"
+    },
+    {
+      "slug": "control-2007",
+      "name": "Control (2007)"
+    },
+    {
+      "slug": "cow-2021",
+      "name": "Cow (2021)"
+    },
+    {
+      "slug": "nightcrawler",
+      "name": "Nightcrawler (2014)"
+    },
+    {
+      "slug": "into-the-wild",
+      "name": "Into the Wild (2007)"
+    },
+    {
+      "slug": "asteroid-city",
+      "name": "Asteroid City (2023)"
+    },
+    {
+      "slug": "lantana",
+      "name": "Lantana (2001)"
+    },
+    {
+      "slug": "let-the-bullets-fly",
+      "name": "Let the Bullets Fly (2010)"
+    },
+    {
+      "slug": "the-big-short",
+      "name": "The Big Short (2015)"
+    },
+    {
+      "slug": "the-nine-muses",
+      "name": "The Nine Muses (2010)"
+    },
+    {
+      "slug": "bloody-nose-empty-pockets",
+      "name": "Bloody Nose, Empty Pockets (2020)"
+    },
+    {
+      "slug": "eighth-grade",
+      "name": "Eighth Grade (2018)"
+    },
+    {
+      "slug": "stuck-on-you",
+      "name": "Stuck on You (2003)"
+    },
+    {
+      "slug": "greenberg",
+      "name": "Greenberg (2010)"
+    },
+    {
+      "slug": "ten-canoes",
+      "name": "Ten Canoes (2006)"
+    },
+    {
+      "slug": "the-mourning-forest",
+      "name": "The Mourning Forest (2007)"
+    },
+    {
+      "slug": "mind-game",
+      "name": "Mind Game (2004)"
+    },
+    {
+      "slug": "marty-supreme",
+      "name": "Marty Supreme (2025)"
+    },
+    {
+      "slug": "jackie-2016",
+      "name": "Jackie (2016)"
+    }
+  ]
+}

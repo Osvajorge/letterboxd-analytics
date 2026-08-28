@@ -1,0 +1,422 @@
+{
+  "title": "Cannes Palme d'Or Winners",
+  "path": "/brsan/list/cannes-palme-dor-winners/",
+  "films": [
+    {
+      "slug": "fjord-2026",
+      "name": "Fjord (2026)"
+    },
+    {
+      "slug": "it-was-just-an-accident",
+      "name": "It Was Just an Accident (2025)"
+    },
+    {
+      "slug": "anora",
+      "name": "Anora (2024)"
+    },
+    {
+      "slug": "anatomy-of-a-fall",
+      "name": "Anatomy of a Fall (2023)"
+    },
+    {
+      "slug": "triangle-of-sadness",
+      "name": "Triangle of Sadness (2022)"
+    },
+    {
+      "slug": "titane",
+      "name": "Titane (2021)"
+    },
+    {
+      "slug": "parasite-2019",
+      "name": "Parasite (2019)"
+    },
+    {
+      "slug": "shoplifters",
+      "name": "Shoplifters (2018)"
+    },
+    {
+      "slug": "the-image-book",
+      "name": "The Image Book (2018)"
+    },
+    {
+      "slug": "the-square-2017",
+      "name": "The Square (2017)"
+    },
+    {
+      "slug": "i-daniel-blake",
+      "name": "I, Daniel Blake (2016)"
+    },
+    {
+      "slug": "dheepan",
+      "name": "Dheepan (2015)"
+    },
+    {
+      "slug": "winter-sleep",
+      "name": "Winter Sleep (2014)"
+    },
+    {
+      "slug": "blue-is-the-warmest-color",
+      "name": "Blue Is the Warmest Color (2013)"
+    },
+    {
+      "slug": "amour",
+      "name": "Amour (2012)"
+    },
+    {
+      "slug": "the-tree-of-life-2011",
+      "name": "The Tree of Life (2011)"
+    },
+    {
+      "slug": "uncle-boonmee-who-can-recall-his-past-lives",
+      "name": "Uncle Boonmee Who Can Recall His Past Lives (2010)"
+    },
+    {
+      "slug": "the-white-ribbon",
+      "name": "The White Ribbon (2009)"
+    },
+    {
+      "slug": "the-class-2008",
+      "name": "The Class (2008)"
+    },
+    {
+      "slug": "4-months-3-weeks-and-2-days",
+      "name": "4 Months, 3 Weeks and 2 Days (2007)"
+    },
+    {
+      "slug": "the-wind-that-shakes-the-barley",
+      "name": "The Wind That Shakes the Barley (2006)"
+    },
+    {
+      "slug": "the-child",
+      "name": "The Child (2005)"
+    },
+    {
+      "slug": "fahrenheit-9-11",
+      "name": "Fahrenheit 9/11 (2004)"
+    },
+    {
+      "slug": "elephant-2003",
+      "name": "Elephant (2003)"
+    },
+    {
+      "slug": "the-pianist",
+      "name": "The Pianist (2002)"
+    },
+    {
+      "slug": "the-sons-room",
+      "name": "The Son&#039;s Room (2001)"
+    },
+    {
+      "slug": "dancer-in-the-dark",
+      "name": "Dancer in the Dark (2000)"
+    },
+    {
+      "slug": "rosetta",
+      "name": "Rosetta (1999)"
+    },
+    {
+      "slug": "eternity-and-a-day",
+      "name": "Eternity and a Day (1998)"
+    },
+    {
+      "slug": "taste-of-cherry",
+      "name": "Taste of Cherry (1997)"
+    },
+    {
+      "slug": "the-eel",
+      "name": "The Eel (1997)"
+    },
+    {
+      "slug": "secrets-lies",
+      "name": "Secrets &amp; Lies (1996)"
+    },
+    {
+      "slug": "underground-1995",
+      "name": "Underground (1995)"
+    },
+    {
+      "slug": "pulp-fiction",
+      "name": "Pulp Fiction (1994)"
+    },
+    {
+      "slug": "farewell-my-concubine",
+      "name": "Farewell My Concubine (1993)"
+    },
+    {
+      "slug": "the-piano",
+      "name": "The Piano (1993)"
+    },
+    {
+      "slug": "the-best-intentions",
+      "name": "The Best Intentions (1992)"
+    },
+    {
+      "slug": "barton-fink",
+      "name": "Barton Fink (1991)"
+    },
+    {
+      "slug": "wild-at-heart",
+      "name": "Wild at Heart (1990)"
+    },
+    {
+      "slug": "sex-lies-and-videotape",
+      "name": "sex, lies, and videotape (1989)"
+    },
+    {
+      "slug": "pelle-the-conqueror",
+      "name": "Pelle the Conqueror (1987)"
+    },
+    {
+      "slug": "under-the-sun-of-satan",
+      "name": "Under the Sun of Satan (1987)"
+    },
+    {
+      "slug": "the-mission",
+      "name": "The Mission (1986)"
+    },
+    {
+      "slug": "when-father-was-away-on-business",
+      "name": "When Father Was Away on Business (1985)"
+    },
+    {
+      "slug": "paris-texas",
+      "name": "Paris, Texas (1984)"
+    },
+    {
+      "slug": "the-ballad-of-narayama",
+      "name": "The Ballad of Narayama (1983)"
+    },
+    {
+      "slug": "missing",
+      "name": "Missing (1982)"
+    },
+    {
+      "slug": "the-road-1982",
+      "name": "The Road (1982)"
+    },
+    {
+      "slug": "man-of-iron",
+      "name": "Man of Iron (1981)"
+    },
+    {
+      "slug": "kagemusha",
+      "name": "Kagemusha (1980)"
+    },
+    {
+      "slug": "all-that-jazz",
+      "name": "All That Jazz (1979)"
+    },
+    {
+      "slug": "apocalypse-now",
+      "name": "Apocalypse Now (1979)"
+    },
+    {
+      "slug": "the-tin-drum",
+      "name": "The Tin Drum (1979)"
+    },
+    {
+      "slug": "the-tree-of-wooden-clogs",
+      "name": "The Tree of Wooden Clogs (1978)"
+    },
+    {
+      "slug": "padre-padrone",
+      "name": "Padre Padrone (1977)"
+    },
+    {
+      "slug": "taxi-driver",
+      "name": "Taxi Driver (1976)"
+    },
+    {
+      "slug": "chronicle-of-the-years-of-fire",
+      "name": "Chronicle of the Years of Fire (1975)"
+    },
+    {
+      "slug": "the-conversation",
+      "name": "The Conversation (1974)"
+    },
+    {
+      "slug": "scarecrow",
+      "name": "Scarecrow (1973)"
+    },
+    {
+      "slug": "the-hireling",
+      "name": "The Hireling (1973)"
+    },
+    {
+      "slug": "the-working-class-goes-to-heaven",
+      "name": "The Working Class Goes to Heaven (1971)"
+    },
+    {
+      "slug": "the-mattei-affair",
+      "name": "The Mattei Affair (1972)"
+    },
+    {
+      "slug": "the-go-between-1971",
+      "name": "The Go-Between (1971)"
+    },
+    {
+      "slug": "mash",
+      "name": "M*A*S*H (1970)"
+    },
+    {
+      "slug": "if",
+      "name": "if.... (1968)"
+    },
+    {
+      "slug": "blow-up",
+      "name": "Blow-Up (1966)"
+    },
+    {
+      "slug": "a-man-and-a-woman",
+      "name": "A Man and a Woman (1966)"
+    },
+    {
+      "slug": "the-birds-the-bees-and-the-italians",
+      "name": "The Birds, the Bees and the Italians (1966)"
+    },
+    {
+      "slug": "the-knack-and-how-to-get-it",
+      "name": "The Knack... and How to Get It (1965)"
+    },
+    {
+      "slug": "the-umbrellas-of-cherbourg",
+      "name": "The Umbrellas of Cherbourg (1964)"
+    },
+    {
+      "slug": "the-leopard",
+      "name": "The Leopard (1963)"
+    },
+    {
+      "slug": "the-given-word",
+      "name": "The Given Word (1962)"
+    },
+    {
+      "slug": "the-long-absence",
+      "name": "The Long Absence (1961)"
+    },
+    {
+      "slug": "viridiana",
+      "name": "Viridiana (1961)"
+    },
+    {
+      "slug": "la-dolce-vita",
+      "name": "La Dolce Vita (1960)"
+    },
+    {
+      "slug": "black-orpheus",
+      "name": "Black Orpheus (1959)"
+    },
+    {
+      "slug": "the-cranes-are-flying",
+      "name": "The Cranes Are Flying (1957)"
+    },
+    {
+      "slug": "friendly-persuasion",
+      "name": "Friendly Persuasion (1956)"
+    },
+    {
+      "slug": "the-silent-world",
+      "name": "The Silent World (1956)"
+    },
+    {
+      "slug": "marty",
+      "name": "Marty (1955)"
+    },
+    {
+      "slug": "gate-of-hell",
+      "name": "Gate of Hell (1953)"
+    },
+    {
+      "slug": "the-wages-of-fear",
+      "name": "The Wages of Fear (1953)"
+    },
+    {
+      "slug": "othello-1951",
+      "name": "Othello (1951)"
+    },
+    {
+      "slug": "two-cents-worth-of-hope",
+      "name": "Two Cents Worth of Hope (1952)"
+    },
+    {
+      "slug": "miracle-in-milan",
+      "name": "Miracle in Milan (1951)"
+    },
+    {
+      "slug": "miss-julie",
+      "name": "Miss Julie (1951)"
+    },
+    {
+      "slug": "the-third-man",
+      "name": "The Third Man (1949)"
+    },
+    {
+      "slug": "antoine-antoinette",
+      "name": "Antoine &amp; Antoinette (1947)"
+    },
+    {
+      "slug": "crossfire",
+      "name": "Crossfire (1947)"
+    },
+    {
+      "slug": "the-damned-1947",
+      "name": "The Damned (1947)"
+    },
+    {
+      "slug": "dumbo",
+      "name": "Dumbo (1941)"
+    },
+    {
+      "slug": "ziegfeld-follies",
+      "name": "Ziegfeld Follies (1945)"
+    },
+    {
+      "slug": "rome-open-city",
+      "name": "Rome, Open City (1945)"
+    },
+    {
+      "slug": "pastoral-symphony",
+      "name": "Pastoral Symphony (1946)"
+    },
+    {
+      "slug": "torment",
+      "name": "Torment (1944)"
+    },
+    {
+      "slug": "men-without-wings",
+      "name": "Men Without Wings (1946)"
+    },
+    {
+      "slug": "red-meadows",
+      "name": "Red Meadows (1945)"
+    },
+    {
+      "slug": "maria-candelaria",
+      "name": "Maria Candelaria (1944)"
+    },
+    {
+      "slug": "the-last-chance",
+      "name": "The Last Chance (1945)"
+    },
+    {
+      "slug": "neecha-nagar",
+      "name": "Neecha Nagar (1946)"
+    },
+    {
+      "slug": "the-turning-point-1945",
+      "name": "The Turning Point (1945)"
+    },
+    {
+      "slug": "the-lost-weekend",
+      "name": "The Lost Weekend (1945)"
+    },
+    {
+      "slug": "brief-encounter",
+      "name": "Brief Encounter (1945)"
+    },
+    {
+      "slug": "union-pacific",
+      "name": "Union Pacific (1939)"
+    }
+  ]
+}

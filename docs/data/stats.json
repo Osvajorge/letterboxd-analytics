@@ -1,0 +1,748 @@
+{
+  "generated_at": "2026-08-28",
+  "username": "osvajorge",
+  "totals": {
+    "films": 50,
+    "hours": 0,
+    "directors": 0,
+    "countries": 0,
+    "longest_streak_weeks": 6,
+    "multi_film_days": 4
+  },
+  "by_year": [
+    {
+      "year": 2026,
+      "films": 1,
+      "diary": 1,
+      "ratings": {
+        "4.5": 1
+      }
+    },
+    {
+      "year": 2025,
+      "films": 49,
+      "diary": 49,
+      "ratings": {
+        "1.5": 1,
+        "2.0": 1,
+        "2.5": 2,
+        "3.0": 11,
+        "3.5": 9,
+        "4.0": 16,
+        "4.5": 2,
+        "5.0": 6
+      }
+    }
+  ],
+  "decades": [
+    {
+      "decade": 1870,
+      "films": 1,
+      "average_rating": null
+    },
+    {
+      "decade": 1890,
+      "films": 1,
+      "average_rating": 3.0
+    },
+    {
+      "decade": 1900,
+      "films": 2,
+      "average_rating": 3.5
+    },
+    {
+      "decade": 1930,
+      "films": 1,
+      "average_rating": 4.5
+    },
+    {
+      "decade": 1950,
+      "films": 1,
+      "average_rating": 5.0
+    },
+    {
+      "decade": 1970,
+      "films": 1,
+      "average_rating": 4.0
+    },
+    {
+      "decade": 1980,
+      "films": 3,
+      "average_rating": 3.83
+    },
+    {
+      "decade": 1990,
+      "films": 5,
+      "average_rating": 4.0
+    },
+    {
+      "decade": 2000,
+      "films": 8,
+      "average_rating": 4.0
+    },
+    {
+      "decade": 2010,
+      "films": 7,
+      "average_rating": 3.14
+    },
+    {
+      "decade": 2020,
+      "films": 20,
+      "average_rating": 3.58
+    }
+  ],
+  "genres": {
+    "most_watched": [],
+    "highest_rated": []
+  },
+  "countries": {
+    "most_watched": [],
+    "highest_rated": []
+  },
+  "languages": {
+    "most_watched": [],
+    "highest_rated": []
+  },
+  "cast": [],
+  "directors": [],
+  "studios": [],
+  "collections": [],
+  "world_map": [],
+  "list_progress": [
+    {
+      "id": "letterboxd-top-500",
+      "title": "Letterboxd Top 500",
+      "seen": 9,
+      "total": 500
+    },
+    {
+      "id": "imdb-top-250",
+      "title": "IMDb Top 250",
+      "seen": 9,
+      "total": 250
+    },
+    {
+      "id": "oscar-best-picture",
+      "title": "Oscar Best Picture Winners",
+      "seen": 2,
+      "total": 98
+    },
+    {
+      "id": "cannes-palme-dor",
+      "title": "Cannes Palme d'Or Winners",
+      "seen": 1,
+      "total": 104
+    },
+    {
+      "id": "billion-club",
+      "title": "$1 Billion Club",
+      "seen": 0,
+      "total": 65
+    },
+    {
+      "id": "afi-100",
+      "title": "AFI 100 Years 100 Movies",
+      "seen": 1,
+      "total": 100
+    },
+    {
+      "id": "sight-and-sound",
+      "title": "Sight and Sound Greatest Films",
+      "seen": 2,
+      "total": 264
+    },
+    {
+      "id": "1001-films",
+      "title": "1001 Films To See Before You Die",
+      "seen": 7,
+      "total": 1001
+    },
+    {
+      "id": "tspdt-all-time",
+      "title": "They Shoot Pictures All Time",
+      "seen": 8,
+      "total": 1000
+    },
+    {
+      "id": "tspdt-21st-century",
+      "title": "They Shoot Pictures 21st Century",
+      "seen": 11,
+      "total": 1000
+    },
+    {
+      "id": "top-250-women",
+      "title": "Top 250 Women-Directed",
+      "seen": 2,
+      "total": 250
+    },
+    {
+      "id": "top-250-black",
+      "title": "Top 250 Black-Directed",
+      "seen": 0,
+      "total": 250
+    },
+    {
+      "id": "top-250-most-fans",
+      "title": "Top 250 Most Fans",
+      "seen": 8,
+      "total": 250
+    },
+    {
+      "id": "top-250-documentary",
+      "title": "Top 250 Documentaries",
+      "seen": 1,
+      "total": 250
+    },
+    {
+      "id": "top-250-animation",
+      "title": "Top 250 Animation",
+      "seen": 7,
+      "total": 250
+    },
+    {
+      "id": "top-250-horror",
+      "title": "Top 250 Horror",
+      "seen": 4,
+      "total": 250
+    }
+  ],
+  "extras": {
+    "rating_bias": null,
+    "rating_drift": [
+      {
+        "year": 2025,
+        "average": 3.67
+      },
+      {
+        "year": 2026,
+        "average": 4.5
+      }
+    ],
+    "rewatch_rate": 0.02,
+    "watchlist": {
+      "size": 1044,
+      "median_age_days": 0,
+      "conversion_rate": 0.0,
+      "estimated_date_share": 1.0
+    },
+    "heatmap": [
+      {
+        "date": "2025-05-01",
+        "count": 1
+      },
+      {
+        "date": "2025-05-02",
+        "count": 1
+      },
+      {
+        "date": "2025-05-09",
+        "count": 1
+      },
+      {
+        "date": "2025-06-11",
+        "count": 1
+      },
+      {
+        "date": "2025-06-17",
+        "count": 1
+      },
+      {
+        "date": "2025-06-18",
+        "count": 1
+      },
+      {
+        "date": "2025-06-19",
+        "count": 1
+      },
+      {
+        "date": "2025-06-20",
+        "count": 1
+      },
+      {
+        "date": "2025-06-21",
+        "count": 1
+      },
+      {
+        "date": "2025-06-23",
+        "count": 1
+      },
+      {
+        "date": "2025-06-24",
+        "count": 1
+      },
+      {
+        "date": "2025-07-24",
+        "count": 1
+      },
+      {
+        "date": "2025-07-25",
+        "count": 1
+      },
+      {
+        "date": "2025-07-26",
+        "count": 1
+      },
+      {
+        "date": "2025-08-02",
+        "count": 1
+      },
+      {
+        "date": "2025-08-03",
+        "count": 1
+      },
+      {
+        "date": "2025-08-06",
+        "count": 1
+      },
+      {
+        "date": "2025-08-08",
+        "count": 1
+      },
+      {
+        "date": "2025-08-09",
+        "count": 1
+      },
+      {
+        "date": "2025-08-10",
+        "count": 1
+      },
+      {
+        "date": "2025-08-13",
+        "count": 1
+      },
+      {
+        "date": "2025-08-23",
+        "count": 1
+      },
+      {
+        "date": "2025-08-27",
+        "count": 1
+      },
+      {
+        "date": "2025-09-10",
+        "count": 4
+      },
+      {
+        "date": "2025-09-11",
+        "count": 1
+      },
+      {
+        "date": "2025-09-12",
+        "count": 1
+      },
+      {
+        "date": "2025-09-13",
+        "count": 1
+      },
+      {
+        "date": "2025-09-19",
+        "count": 2
+      },
+      {
+        "date": "2025-09-22",
+        "count": 1
+      },
+      {
+        "date": "2025-09-24",
+        "count": 1
+      },
+      {
+        "date": "2025-09-25",
+        "count": 1
+      },
+      {
+        "date": "2025-09-26",
+        "count": 1
+      },
+      {
+        "date": "2025-09-27",
+        "count": 2
+      },
+      {
+        "date": "2025-10-01",
+        "count": 1
+      },
+      {
+        "date": "2025-10-12",
+        "count": 2
+      },
+      {
+        "date": "2025-10-16",
+        "count": 1
+      },
+      {
+        "date": "2025-10-18",
+        "count": 1
+      },
+      {
+        "date": "2025-10-19",
+        "count": 1
+      },
+      {
+        "date": "2025-11-08",
+        "count": 1
+      },
+      {
+        "date": "2025-11-09",
+        "count": 1
+      },
+      {
+        "date": "2025-11-21",
+        "count": 1
+      },
+      {
+        "date": "2025-11-27",
+        "count": 1
+      },
+      {
+        "date": "2025-12-05",
+        "count": 1
+      },
+      {
+        "date": "2026-01-04",
+        "count": 1
+      }
+    ],
+    "runtime": {
+      "total_minutes": 0,
+      "median": null,
+      "distribution": []
+    },
+    "decade_gaps": [
+      1880,
+      1910,
+      1920,
+      1940,
+      1960
+    ],
+    "director_completeness": [],
+    "contrarian_index": {
+      "hotter_than_crowd": [],
+      "colder_than_crowd": []
+    },
+    "obscurity": null,
+    "release_recency": null,
+    "half_star_usage": {
+      "half_star_share": 0.306,
+      "distribution": [
+        {
+          "rating": 0.5,
+          "count": 0
+        },
+        {
+          "rating": 1.0,
+          "count": 0
+        },
+        {
+          "rating": 1.5,
+          "count": 1
+        },
+        {
+          "rating": 2.0,
+          "count": 1
+        },
+        {
+          "rating": 2.5,
+          "count": 2
+        },
+        {
+          "rating": 3.0,
+          "count": 11
+        },
+        {
+          "rating": 3.5,
+          "count": 9
+        },
+        {
+          "rating": 4.0,
+          "count": 16
+        },
+        {
+          "rating": 4.5,
+          "count": 3
+        },
+        {
+          "rating": 5.0,
+          "count": 6
+        }
+      ]
+    },
+    "liked_but_low": [],
+    "longest_drought": {
+      "days": 33,
+      "from": "2025-05-09",
+      "to": "2025-06-11"
+    },
+    "weekday_profile": [
+      {
+        "weekday": "Monday",
+        "count": 2
+      },
+      {
+        "weekday": "Tuesday",
+        "count": 2
+      },
+      {
+        "weekday": "Wednesday",
+        "count": 11
+      },
+      {
+        "weekday": "Thursday",
+        "count": 7
+      },
+      {
+        "weekday": "Friday",
+        "count": 11
+      },
+      {
+        "weekday": "Saturday",
+        "count": 10
+      },
+      {
+        "weekday": "Sunday",
+        "count": 7
+      }
+    ],
+    "month_seasonality": [
+      {
+        "month": 1,
+        "count": 1
+      },
+      {
+        "month": 2,
+        "count": 0
+      },
+      {
+        "month": 3,
+        "count": 0
+      },
+      {
+        "month": 4,
+        "count": 0
+      },
+      {
+        "month": 5,
+        "count": 3
+      },
+      {
+        "month": 6,
+        "count": 8
+      },
+      {
+        "month": 7,
+        "count": 3
+      },
+      {
+        "month": 8,
+        "count": 9
+      },
+      {
+        "month": 9,
+        "count": 15
+      },
+      {
+        "month": 10,
+        "count": 6
+      },
+      {
+        "month": 11,
+        "count": 4
+      },
+      {
+        "month": 12,
+        "count": 1
+      }
+    ],
+    "logging_lag": null,
+    "lucky_director": [],
+    "unlucky_director": [],
+    "background_actor": [],
+    "crew_most_watched": {
+      "composer": [],
+      "cinematographer": [],
+      "editor": [],
+      "writer": []
+    },
+    "life_in_days": null,
+    "extremes": {
+      "shortest": null,
+      "longest": null,
+      "oldest": {
+        "slug": "sallie-gardner-at-a-gallop",
+        "title": "Sallie Gardner at a Gallop",
+        "year": 1878
+      },
+      "newest": {
+        "slug": "weapons-2025",
+        "title": "Weapons",
+        "year": 2025
+      }
+    },
+    "rating_vs_runtime": {
+      "correlation": null,
+      "buckets": []
+    },
+    "title_words": [
+      {
+        "word": "castle",
+        "count": 2
+      },
+      {
+        "word": "demon",
+        "count": 2
+      },
+      {
+        "word": "fire",
+        "count": 2
+      },
+      {
+        "word": "friday",
+        "count": 2
+      },
+      {
+        "word": "hard",
+        "count": 2
+      },
+      {
+        "word": "abyss",
+        "count": 1
+      },
+      {
+        "word": "accident",
+        "count": 1
+      },
+      {
+        "word": "after",
+        "count": 1
+      },
+      {
+        "word": "american",
+        "count": 1
+      },
+      {
+        "word": "among",
+        "count": 1
+      },
+      {
+        "word": "another",
+        "count": 1
+      },
+      {
+        "word": "back",
+        "count": 1
+      },
+      {
+        "word": "ballerina",
+        "count": 1
+      },
+      {
+        "word": "battle",
+        "count": 1
+      },
+      {
+        "word": "beyond",
+        "count": 1
+      },
+      {
+        "word": "black",
+        "count": 1
+      },
+      {
+        "word": "bob",
+        "count": 1
+      },
+      {
+        "word": "body",
+        "count": 1
+      },
+      {
+        "word": "bring",
+        "count": 1
+      },
+      {
+        "word": "bête",
+        "count": 1
+      },
+      {
+        "word": "call",
+        "count": 1
+      },
+      {
+        "word": "celestine",
+        "count": 1
+      },
+      {
+        "word": "compadre",
+        "count": 1
+      },
+      {
+        "word": "consequences",
+        "count": 1
+      },
+      {
+        "word": "cure",
+        "count": 1
+      },
+      {
+        "word": "dance",
+        "count": 1
+      },
+      {
+        "word": "departed",
+        "count": 1
+      },
+      {
+        "word": "devil",
+        "count": 1
+      },
+      {
+        "word": "dictator",
+        "count": 1
+      },
+      {
+        "word": "dragons",
+        "count": 1
+      },
+      {
+        "word": "dungeons",
+        "count": 1
+      },
+      {
+        "word": "eleven",
+        "count": 1
+      },
+      {
+        "word": "end",
+        "count": 1
+      },
+      {
+        "word": "ernest",
+        "count": 1
+      },
+      {
+        "word": "fargo",
+        "count": 1
+      },
+      {
+        "word": "feelings",
+        "count": 1
+      },
+      {
+        "word": "fellowship",
+        "count": 1
+      },
+      {
+        "word": "feminism",
+        "count": 1
+      },
+      {
+        "word": "frankenstein",
+        "count": 1
+      },
+      {
+        "word": "freakier",
+        "count": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,91 @@
+/* Design tokens read from Letterboxd's own stylesheet on 2026-08-28.
+ *
+ * Source: https://s.ltrbxd.com/static/css/main-DZ3b6D0l.css
+ * Values are copied verbatim so the panel matches the reference layout.
+ *
+ * Typefaces are NOT copied. Letterboxd licenses GraphikWeb, TiemposHeadlineWeb,
+ * TiemposTextWeb, and PitchSansWeb commercially. The stacks below name open
+ * substitutes with comparable metrics.
+ */
+
+:root {
+  /* Surfaces */
+  --lb-background: #14181C;
+  --lb-background-hover: #1E242A;
+  --lb-surface: #283038;
+  --lb-surface-hover: #384450;
+  --lb-fill: #445566;
+  --lb-fill-hover: #778899;
+  --lb-separator: #445566;
+
+  /* Text */
+  --lb-heading: #ffffff;
+  --lb-body: #99aabb;
+  --lb-body-high-contrast: #aabbcc;
+  --lb-body-low-contrast: #8899aa;
+  --lb-metadata: #667788;
+  --lb-metadata-low-contrast: #556677;
+  --lb-link: #ddeeff;
+  --lb-link-hover: #40BCF4;
+  --lb-link-active: #209CE4;
+
+  /* Brand accents: the green, blue, and orange of the rating dots */
+  --lb-green: #00AC1C;
+  --lb-green-hover: #00C030;
+  --lb-blue: #40BCF4;
+  --lb-blue-surface: #209CE4;
+  --lb-orange: #FF8000;
+  --lb-orange-surface: #EE7000;
+  --lb-like: #FF9933;
+
+  /* Ratings */
+  --lb-rating-track: #3C454F;
+  --lb-rating-value: #00C030;
+  --lb-rating-blended: #8899aa;
+
+  /* Type scale */
+  --lb-font-sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --lb-font-serif: "Source Serif 4", Georgia, serif;
+  --lb-font-mono: "JetBrains Mono", Menlo, Consolas, monospace;
+
+  --lb-heading-1: 2rem;
+  --lb-heading-2: 1.6875rem;
+  --lb-heading-3: 1.375rem;
+  --lb-heading-4: 1.125rem;
+  --lb-heading-5: 1rem;
+  --lb-body-large: 1.0625rem;
+  --lb-body-medium: 0.9375rem;
+  --lb-body-small: 0.8125rem;
+  --lb-body-meta: 0.75rem;
+  --lb-body-tiny: 0.6875rem;
+  --lb-title-caps: 0.8125rem;
+  --lb-line-height: 1.5;
+
+  /* Spacing scale */
+  --lb-space-dense-sm: 0.25rem;
+  --lb-space-dense-md: 0.375rem;
+  --lb-space-dense-lg: 0.5rem;
+  --lb-space-xs: 0.625rem;
+  --lb-space-sm: 0.75rem;
+  --lb-space-md: 1rem;
+  --lb-space-lg: 1.25rem;
+  --lb-space-xl: 1.5rem;
+  --lb-space-2xl: 2rem;
+  --lb-space-3xl: 3rem;
+  --lb-space-4xl: 4rem;
+
+  /* Radius and borders */
+  --lb-radius-sm: 0.25rem;
+  --lb-radius-md: 0.375rem;
+  --lb-radius: 0.5rem;
+  --lb-radius-lg: 1rem;
+  --lb-border-thin: max(1px, 0.0625rem);
+  --lb-border-thick: max(2px, 0.125rem);
+
+  /* Page grid: 12 columns of 5rem, 1.5rem gutters */
+  --lb-grid-columns: 12;
+  --lb-grid-column-width: 5rem;
+  --lb-page-gutter: 1.5rem;
+  --lb-content-width: 60rem;
+  --lb-content-gutter: 20px;
+}

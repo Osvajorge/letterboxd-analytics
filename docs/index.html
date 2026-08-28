@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Letterboxd stats for osvajorge</title>
+<meta name="description" content="A self-hosted rebuild of the Letterboxd stats panel, generated once a week from a public RSS feed and TMDB metadata.">
+<meta name="color-scheme" content="dark">
+
+<!-- Letterboxd's own typefaces are commercially licensed and are not used here.
+     These are the open substitutes named in docs/design-tokens.css. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&amp;display=swap">
+
+<link rel="stylesheet" href="./styles.css">
+<script type="module" src="./app.js"></script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to the stats</a>
+
+<header class="page-header">
+  <div class="layout">
+    <p class="page-header__eyebrow">Letterboxd stats</p>
+    <h1 class="page-header__title" id="page-title">osvajorge</h1>
+    <p class="page-header__meta" id="page-meta">Reading the latest figures.</p>
+  </div>
+</header>
+
+<nav class="section-nav" aria-label="Jump to a section">
+  <div class="layout">
+    <ul class="section-nav__list">
+      <li class="section-nav__label">Panel</li>
+      <li><a href="#totals">Totals</a></li>
+      <li><a href="#by-year">By year</a></li>
+      <li><a href="#decades">Decades</a></li>
+      <li><a href="#genres-countries-languages">Genres and origins</a></li>
+      <li><a href="#cast">Cast</a></li>
+      <li><a href="#directors">Directors</a></li>
+      <li><a href="#studios">Studios</a></li>
+      <li><a href="#collections">Collections</a></li>
+      <li><a href="#list-progress">List progress</a></li>
+      <li><a href="#countries-ranked">Countries ranked</a></li>
+      <li class="section-nav__label section-nav__label--extras">Extras</li>
+      <li><a href="#extras-glance">At a glance</a></li>
+      <li><a href="#contrarian">Hot takes</a></li>
+      <li><a href="#rhythm">Viewing rhythm</a></li>
+      <li><a href="#taste">Your taste</a></li>
+      <li><a href="#reach">Your reach</a></li>
+      <li><a href="#extras-people">The people</a></li>
+      <li><a href="#title-words">Title words</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main" class="layout">
+
+  <noscript>
+    <p class="notice notice--error">
+      This page builds its charts in the browser, so it needs JavaScript switched on.
+      The underlying figures are readable without it at <code>./data/stats.json</code>.
+    </p>
+  </noscript>
+
+  <p class="notice notice--error" id="load-error" hidden></p>
+
+  <!-- ============================================ Part one: the reference panel -->
+
+  <section class="region" id="panel" aria-labelledby="panel-heading">
+    <div class="region__banner">
+      <p class="region__kicker">Part one</p>
+      <h2 class="region__heading" id="panel-heading">The stats panel</h2>
+      <p class="region__lede">
+        These sections mirror the panel Letterboxd Pro shows, section for section
+        and in the same order. Anything below that needs film or crew metadata
+        stays empty until the TMDB cache is built.
+      </p>
+    </div>
+
+    <section class="section" id="totals" aria-labelledby="totals-heading">
+      <h3 class="section__heading" id="totals-heading">Totals</h3>
+      <div class="tile-grid" id="totals-grid"></div>
+    </section>
+
+    <section class="section" id="by-year" aria-labelledby="by-year-heading">
+      <h3 class="section__heading" id="by-year-heading">By year</h3>
+
+      <div class="block">
+        <h4 class="block__heading" id="films-per-year-heading">Films and diary entries per year</h4>
+        <p class="legend" id="by-year-legend" hidden>
+          <span class="legend__item"><span class="legend__swatch legend__swatch--primary" aria-hidden="true"></span>Films watched</span>
+          <span class="legend__item"><span class="legend__swatch legend__swatch--secondary" aria-hidden="true"></span>Diary entries</span>
+        </p>
+        <div id="by-year-chart"></div>
+      </div>
+
+      <div class="block">
+        <h4 class="block__heading" id="ratings-heading">Ratings given</h4>
+        <div id="ratings-chart"></div>
+      </div>
+    </section>
+
+    <section class="section" id="decades" aria-labelledby="decades-heading">
+      <h3 class="section__heading" id="decades-heading">Highest rated decades</h3>
+      <p class="section__lede">Average rating of every film watched from each decade, on the half-star scale from 0.5 to 5.</p>
+      <div id="decades-chart"></div>
+    </section>
+
+    <section class="section" id="genres-countries-languages" aria-labelledby="genres-countries-languages-heading">
+      <h3 class="section__heading" id="genres-countries-languages-heading">Genres, countries and languages</h3>
+
+      <div class="block">
+        <h4 class="block__heading">Genres</h4>
+        <div class="pair">
+          <div class="pair__column">
+            <h5 class="pair__heading">Most watched</h5>
+            <div id="genres-most-watched"></div>
+          </div>
+          <div class="pair__column">
+            <h5 class="pair__heading">Highest rated</h5>
+            <div id="genres-highest-rated"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h4 class="block__heading">Countries</h4>
+        <div class="pair">
+          <div class="pair__column">
+            <h5 class="pair__heading">Most watched</h5>
+            <div id="countries-most-watched"></div>
+          </div>
+          <div class="pair__column">
+            <h5 class="pair__heading">Highest rated</h5>
+            <div id="countries-highest-rated"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h4 class="block__heading">Languages</h4>
+        <div class="pair">
+          <div class="pair__column">
+            <h5 class="pair__heading">Most watched</h5>
+            <div id="languages-most-watched"></div>
+          </div>
+          <div class="pair__column">
+            <h5 class="pair__heading">Highest rated</h5>
+            <div id="languages-highest-rated"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cast" aria-labelledby="cast-heading">
+      <h3 class="section__heading" id="cast-heading">Cast</h3>
+      <p class="section__lede">The actors who turn up most often across the watch history.</p>
+      <div id="cast-list"></div>
+    </section>
+
+    <section class="section" id="directors" aria-labelledby="directors-heading">
+      <h3 class="section__heading" id="directors-heading">Directors</h3>
+      <p class="section__lede">Films seen per director, with the average rating given to them.</p>
+      <div id="directors-list"></div>
+    </section>
+
+    <section class="section" id="studios" aria-labelledby="studios-heading">
+      <h3 class="section__heading" id="studios-heading">Studios</h3>
+      <p class="section__lede">Production companies credited on the films watched, most first.</p>
+      <div id="studios-chart"></div>
+    </section>
+
+    <section class="section" id="collections" aria-labelledby="collections-heading">
+      <h3 class="section__heading" id="collections-heading">Collections</h3>
+      <p class="section__lede">Film series where at least one part has been watched.</p>
+      <div id="collections-chart"></div>
+    </section>
+
+    <section class="section" id="list-progress" aria-labelledby="list-progress-heading">
+      <h3 class="section__heading" id="list-progress-heading">List progress</h3>
+      <p class="section__lede">Progress through the sixteen curated lists the pipeline tracks.</p>
+      <div id="list-progress-chart"></div>
+    </section>
+
+    <section class="section" id="countries-ranked" aria-labelledby="countries-ranked-heading">
+      <h3 class="section__heading" id="countries-ranked-heading">Countries ranked</h3>
+      <p class="section__lede">
+        A ranked table, not a map. Drawing real borders needs a geographic boundary file,
+        and this site ships no such file, so the same figures are shown as proportional bars.
+      </p>
+      <div id="countries-ranked-chart"></div>
+    </section>
+  </section>
+
+  <!-- ================================================ Part two: the extras -->
+
+  <section class="region region--extras" id="extras" aria-labelledby="extras-heading">
+    <div class="region__banner">
+      <p class="region__kicker">Part two</p>
+      <h2 class="region__heading" id="extras-heading">Extras</h2>
+      <p class="region__lede">
+        Nothing below appears in the Letterboxd panel. It is computed from the same
+        history, plus TMDB where a figure needs the crowd's opinion, a runtime, or a
+        credit. Each block says what it is missing when it has nothing to show.
+      </p>
+    </div>
+
+    <section class="section" id="extras-glance" aria-labelledby="extras-glance-heading">
+      <h3 class="section__heading" id="extras-glance-heading">At a glance</h3>
+      <p class="section__lede">The scalar figures, before the charts that unpack them.</p>
+      <div class="tile-grid" id="extras-tiles"></div>
+      <!-- Filled by app.js only when the watchlist wait is built on estimated
+           dates. An unqualified wait figure would read as a measurement. -->
+      <p class="notice notice--caveat" id="watchlist-dates-caveat" hidden></p>
+    </section>
+
+    <section class="section" id="contrarian" aria-labelledby="contrarian-heading">
+      <h3 class="section__heading" id="contrarian-heading">Hot takes</h3>
+      <p class="section__lede">
+        The films where your rating and the crowd's part company by the widest margin.
+        Both ratings are shown out of five stars.
+      </p>
+
+      <div class="block">
+        <h4 class="block__heading">Against the crowd</h4>
+        <div id="contrarian-legend"></div>
+        <div class="pair pair--takes">
+          <div class="pair__column">
+            <h5 class="pair__heading pair__heading--hot">You rated it higher</h5>
+            <div class="takes-column takes-column--hotter" id="contrarian-hotter"></div>
+          </div>
+          <div class="pair__column">
+            <h5 class="pair__heading pair__heading--cold">You rated it lower</h5>
+            <div class="takes-column takes-column--colder" id="contrarian-colder"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h4 class="block__heading">Liked, but rated low</h4>
+        <p class="block__lede">Films you pressed the heart on and then marked down anyway.</p>
+        <div id="liked-but-low"></div>
+      </div>
+    </section>
+
+    <section class="section" id="rhythm" aria-labelledby="rhythm-heading">
+      <h3 class="section__heading" id="rhythm-heading">Viewing rhythm</h3>
+      <p class="section__lede">When you watch, how long you go without, and how quickly you log it.</p>
+
+      <div class="block">
+        <h4 class="block__heading">The headline figures</h4>
+        <div class="stat-grid" id="rhythm-facts"></div>
+      </div>
+
+      <div class="block">
+        <h4 class="block__heading">When you watch</h4>
+        <div class="pair">
+          <div class="pair__column">
+            <h5 class="pair__heading">By day of the week</h5>
+            <div id="weekday-profile"></div>
+          </div>
+          <div class="pair__column">
+            <h5 class="pair__heading">By month of the year</h5>
+            <div id="month-seasonality"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h4 class="block__heading">Logging lag</h4>
+        <p class="block__lede">Days between watching a film and writing it into the diary.</p>
+        <div id="logging-lag"></div>
+      </div>
+
+      <div class="block">
+        <h4 class="block__heading">Viewing heatmap</h4>
+        <p class="block__lede">One square per day. Darker squares are days with no film.</p>
+        <div id="heatmap"></div>
+      </div>
+    </section>
+
+    <section class="section" id="taste" aria-labelledby="taste-heading">
+      <h3 class="section__heading" id="taste-heading">Your taste</h3>
+      <p class="section__lede">How you use the rating scale, and whether anything predicts the score.</p>
+
+      <div class="block">
+        <h4 class="block__heading">Rating drift</h4>
+        <p class="block__lede">The average rating given in each year, on the 0.5 to 5 scale.</p>
+        <div id="rating-drift-chart"></div>
+      </div>
+
+      <div class="block">
+        <h4 class="block__heading">Half-star usage</h4>
+        <div id="half-star-usage"></div>
+      </div>
+
+      <div class="block">
+        <h4 class="block__heading">Rating against runtime</h4>
+        <div id="rating-vs-runtime"></div>
+      </div>
+    </section>
+
+    <section class="section" id="reach" aria-labelledby="reach-heading">
+      <h3 class="section__heading" id="reach-heading">Your reach</h3>
+      <p class="section__lede">How well known, how old, and how long the films you watch are.</p>
+
+      <div class="block">
+        <h4 class="block__heading">Obscurity</h4>
+        <p class="block__lede">Measured by how many people have voted on each film at TMDB.</p>
+        <div id="obscurity"></div>
+        <div class="pair">
+          <div class="pair__column">
+            <h5 class="pair__heading">Deepest cuts</h5>
+            <div id="obscurity-most-obscure"></div>
+          </div>
+          <div class="pair__column">
+            <h5 class="pair__heading">Best known</h5>
+            <div id="obscurity-most-popular"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h4 class="block__heading">How long after release you watch</h4>
+        <div id="release-recency"></div>
+      </div>
+
+      <div class="block">
+        <h4 class="block__heading">Runtime distribution</h4>
+        <div id="runtime-distribution"></div>
+      </div>
+
+      <div class="block">
+        <h4 class="block__heading">Extremes</h4>
+        <p class="block__lede">The shortest, longest, oldest, and newest films in the history.</p>
+        <div id="extremes"></div>
+      </div>
+
+      <div class="block">
+        <h4 class="block__heading">Decade gaps</h4>
+        <p class="block__lede">Decades with no film watched yet.</p>
+        <div id="decade-gaps"></div>
+      </div>
+    </section>
+
+    <section class="section" id="extras-people" aria-labelledby="extras-people-heading">
+      <h3 class="section__heading" id="extras-people-heading">The people</h3>
+      <p class="section__lede">
+        Directors you are kind to, directors you are not, and the faces and hands
+        you keep seeing without noticing.
+      </p>
+
+      <div class="block">
+        <h4 class="block__heading">Lucky and unlucky directors</h4>
+        <p class="block__lede">Only directors with enough rated films to be worth ranking are listed.</p>
+        <div class="pair">
+          <div class="pair__column">
+            <h5 class="pair__heading pair__heading--hot">You rate them highest</h5>
+            <div id="lucky-director"></div>
+          </div>
+          <div class="pair__column">
+            <h5 class="pair__heading pair__heading--cold">You rate them lowest</h5>
+            <div id="unlucky-director"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h4 class="block__heading">Faces in the background</h4>
+        <p class="block__lede">Actors you have seen often but rarely near the top of the billing.</p>
+        <div id="background-actor"></div>
+      </div>
+
+      <div class="block">
+        <h4 class="block__heading">Crew you watch most</h4>
+        <div id="crew-most-watched"></div>
+      </div>
+
+      <div class="block">
+        <h4 class="block__heading">Director completeness</h4>
+        <p class="block__lede">Films seen against each director's full known filmography.</p>
+        <div id="director-completeness"></div>
+      </div>
+    </section>
+
+    <section class="section" id="title-words" aria-labelledby="title-words-heading">
+      <h3 class="section__heading" id="title-words-heading">Title words</h3>
+      <p class="section__lede">The words that recur most across the titles you have watched.</p>
+      <div id="title-words-cloud"></div>
+    </section>
+  </section>
+
+</main>
+
+<footer class="page-footer">
+  <div class="layout">
+    <p>
+      Built from <code>docs/data/stats.json</code>. Film and person metadata comes from
+      TMDB. This page is not endorsed by, and carries no typeface of, Letterboxd.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,398 @@
+{
+  "title": "Oscar Best Picture Winners",
+  "path": "/oscars/list/oscar-winning-films-best-picture/",
+  "films": [
+    {
+      "slug": "one-battle-after-another",
+      "name": "One Battle After Another (2025)"
+    },
+    {
+      "slug": "anora",
+      "name": "Anora (2024)"
+    },
+    {
+      "slug": "oppenheimer-2023",
+      "name": "Oppenheimer (2023)"
+    },
+    {
+      "slug": "everything-everywhere-all-at-once",
+      "name": "Everything Everywhere All at Once (2022)"
+    },
+    {
+      "slug": "coda-2021",
+      "name": "CODA (2021)"
+    },
+    {
+      "slug": "nomadland",
+      "name": "Nomadland (2020)"
+    },
+    {
+      "slug": "parasite-2019",
+      "name": "Parasite (2019)"
+    },
+    {
+      "slug": "green-book",
+      "name": "Green Book (2018)"
+    },
+    {
+      "slug": "the-shape-of-water",
+      "name": "The Shape of Water (2017)"
+    },
+    {
+      "slug": "moonlight-2016",
+      "name": "Moonlight (2016)"
+    },
+    {
+      "slug": "spotlight",
+      "name": "Spotlight (2015)"
+    },
+    {
+      "slug": "birdman-or-the-unexpected-virtue-of-ignorance",
+      "name": "Birdman or (The Unexpected Virtue of Ignorance) (2014)"
+    },
+    {
+      "slug": "12-years-a-slave",
+      "name": "12 Years a Slave (2013)"
+    },
+    {
+      "slug": "argo",
+      "name": "Argo (2012)"
+    },
+    {
+      "slug": "the-artist",
+      "name": "The Artist (2011)"
+    },
+    {
+      "slug": "the-kings-speech",
+      "name": "The King&#039;s Speech (2010)"
+    },
+    {
+      "slug": "the-hurt-locker",
+      "name": "The Hurt Locker (2008)"
+    },
+    {
+      "slug": "slumdog-millionaire",
+      "name": "Slumdog Millionaire (2008)"
+    },
+    {
+      "slug": "no-country-for-old-men",
+      "name": "No Country for Old Men (2007)"
+    },
+    {
+      "slug": "the-departed",
+      "name": "The Departed (2006)"
+    },
+    {
+      "slug": "crash-2004",
+      "name": "Crash (2004)"
+    },
+    {
+      "slug": "million-dollar-baby",
+      "name": "Million Dollar Baby (2004)"
+    },
+    {
+      "slug": "the-lord-of-the-rings-the-return-of-the-king",
+      "name": "The Lord of the Rings: The Return of the King (2003)"
+    },
+    {
+      "slug": "chicago",
+      "name": "Chicago (2002)"
+    },
+    {
+      "slug": "a-beautiful-mind",
+      "name": "A Beautiful Mind (2001)"
+    },
+    {
+      "slug": "gladiator-2000",
+      "name": "Gladiator (2000)"
+    },
+    {
+      "slug": "american-beauty",
+      "name": "American Beauty (1999)"
+    },
+    {
+      "slug": "shakespeare-in-love",
+      "name": "Shakespeare in Love (1998)"
+    },
+    {
+      "slug": "titanic-1997",
+      "name": "Titanic (1997)"
+    },
+    {
+      "slug": "the-english-patient",
+      "name": "The English Patient (1996)"
+    },
+    {
+      "slug": "braveheart",
+      "name": "Braveheart (1995)"
+    },
+    {
+      "slug": "forrest-gump",
+      "name": "Forrest Gump (1994)"
+    },
+    {
+      "slug": "schindlers-list",
+      "name": "Schindler&#039;s List (1993)"
+    },
+    {
+      "slug": "unforgiven",
+      "name": "Unforgiven (1992)"
+    },
+    {
+      "slug": "the-silence-of-the-lambs",
+      "name": "The Silence of the Lambs (1991)"
+    },
+    {
+      "slug": "dances-with-wolves",
+      "name": "Dances with Wolves (1990)"
+    },
+    {
+      "slug": "driving-miss-daisy",
+      "name": "Driving Miss Daisy (1989)"
+    },
+    {
+      "slug": "rain-man",
+      "name": "Rain Man (1988)"
+    },
+    {
+      "slug": "the-last-emperor",
+      "name": "The Last Emperor (1987)"
+    },
+    {
+      "slug": "platoon",
+      "name": "Platoon (1986)"
+    },
+    {
+      "slug": "out-of-africa",
+      "name": "Out of Africa (1985)"
+    },
+    {
+      "slug": "amadeus",
+      "name": "Amadeus (1984)"
+    },
+    {
+      "slug": "terms-of-endearment",
+      "name": "Terms of Endearment (1983)"
+    },
+    {
+      "slug": "gandhi",
+      "name": "Gandhi (1982)"
+    },
+    {
+      "slug": "chariots-of-fire",
+      "name": "Chariots of Fire (1981)"
+    },
+    {
+      "slug": "ordinary-people",
+      "name": "Ordinary People (1980)"
+    },
+    {
+      "slug": "kramer-vs-kramer",
+      "name": "Kramer vs. Kramer (1979)"
+    },
+    {
+      "slug": "the-deer-hunter",
+      "name": "The Deer Hunter (1978)"
+    },
+    {
+      "slug": "annie-hall",
+      "name": "Annie Hall (1977)"
+    },
+    {
+      "slug": "rocky",
+      "name": "Rocky (1976)"
+    },
+    {
+      "slug": "one-flew-over-the-cuckoos-nest",
+      "name": "One Flew Over the Cuckoo&#039;s Nest (1975)"
+    },
+    {
+      "slug": "the-godfather-part-ii",
+      "name": "The Godfather Part II (1974)"
+    },
+    {
+      "slug": "the-sting",
+      "name": "The Sting (1973)"
+    },
+    {
+      "slug": "the-godfather",
+      "name": "The Godfather (1972)"
+    },
+    {
+      "slug": "the-french-connection",
+      "name": "The French Connection (1971)"
+    },
+    {
+      "slug": "patton",
+      "name": "Patton (1970)"
+    },
+    {
+      "slug": "midnight-cowboy",
+      "name": "Midnight Cowboy (1969)"
+    },
+    {
+      "slug": "oliver",
+      "name": "Oliver! (1968)"
+    },
+    {
+      "slug": "in-the-heat-of-the-night",
+      "name": "In the Heat of the Night (1967)"
+    },
+    {
+      "slug": "a-man-for-all-seasons",
+      "name": "A Man for All Seasons (1966)"
+    },
+    {
+      "slug": "the-sound-of-music",
+      "name": "The Sound of Music (1965)"
+    },
+    {
+      "slug": "my-fair-lady",
+      "name": "My Fair Lady (1964)"
+    },
+    {
+      "slug": "tom-jones",
+      "name": "Tom Jones (1963)"
+    },
+    {
+      "slug": "lawrence-of-arabia",
+      "name": "Lawrence of Arabia (1962)"
+    },
+    {
+      "slug": "west-side-story",
+      "name": "West Side Story (1961)"
+    },
+    {
+      "slug": "the-apartment",
+      "name": "The Apartment (1960)"
+    },
+    {
+      "slug": "ben-hur-1959",
+      "name": "Ben-Hur (1959)"
+    },
+    {
+      "slug": "gigi",
+      "name": "Gigi (1958)"
+    },
+    {
+      "slug": "the-bridge-on-the-river-kwai",
+      "name": "The Bridge on the River Kwai (1957)"
+    },
+    {
+      "slug": "around-the-world-in-80-days-1956",
+      "name": "Around the World in 80 Days (1956)"
+    },
+    {
+      "slug": "marty",
+      "name": "Marty (1955)"
+    },
+    {
+      "slug": "on-the-waterfront",
+      "name": "On the Waterfront (1954)"
+    },
+    {
+      "slug": "from-here-to-eternity",
+      "name": "From Here to Eternity (1953)"
+    },
+    {
+      "slug": "the-greatest-show-on-earth",
+      "name": "The Greatest Show on Earth (1952)"
+    },
+    {
+      "slug": "an-american-in-paris",
+      "name": "An American in Paris (1951)"
+    },
+    {
+      "slug": "all-about-eve",
+      "name": "All About Eve (1950)"
+    },
+    {
+      "slug": "all-the-kings-men",
+      "name": "All the King&#039;s Men (1949)"
+    },
+    {
+      "slug": "hamlet",
+      "name": "Hamlet (1948)"
+    },
+    {
+      "slug": "gentlemans-agreement",
+      "name": "Gentleman&#039;s Agreement (1947)"
+    },
+    {
+      "slug": "the-best-years-of-our-lives",
+      "name": "The Best Years of Our Lives (1946)"
+    },
+    {
+      "slug": "the-lost-weekend",
+      "name": "The Lost Weekend (1945)"
+    },
+    {
+      "slug": "going-my-way",
+      "name": "Going My Way (1944)"
+    },
+    {
+      "slug": "casablanca",
+      "name": "Casablanca (1942)"
+    },
+    {
+      "slug": "mrs-miniver",
+      "name": "Mrs. Miniver (1942)"
+    },
+    {
+      "slug": "how-green-was-my-valley",
+      "name": "How Green Was My Valley (1941)"
+    },
+    {
+      "slug": "rebecca",
+      "name": "Rebecca (1940)"
+    },
+    {
+      "slug": "gone-with-the-wind",
+      "name": "Gone with the Wind (1939)"
+    },
+    {
+      "slug": "you-cant-take-it-with-you",
+      "name": "You Can&#039;t Take It with You (1938)"
+    },
+    {
+      "slug": "the-life-of-emile-zola",
+      "name": "The Life of Emile Zola (1937)"
+    },
+    {
+      "slug": "the-great-ziegfeld",
+      "name": "The Great Ziegfeld (1936)"
+    },
+    {
+      "slug": "mutiny-on-the-bounty",
+      "name": "Mutiny on the Bounty (1935)"
+    },
+    {
+      "slug": "it-happened-one-night",
+      "name": "It Happened One Night (1934)"
+    },
+    {
+      "slug": "cavalcade",
+      "name": "Cavalcade (1933)"
+    },
+    {
+      "slug": "grand-hotel",
+      "name": "Grand Hotel (1932)"
+    },
+    {
+      "slug": "cimarron",
+      "name": "Cimarron (1931)"
+    },
+    {
+      "slug": "all-quiet-on-the-western-front",
+      "name": "All Quiet on the Western Front (1930)"
+    },
+    {
+      "slug": "the-broadway-melody",
+      "name": "The Broadway Melody (1929)"
+    },
+    {
+      "slug": "wings",
+      "name": "Wings (1927)"
+    }
+  ]
+}

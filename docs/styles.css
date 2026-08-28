@@ -1,0 +1,1021 @@
+/* Presentation for the stats panel.
+ *
+ * Every colour, size, and spacing value comes from design-tokens.css, which was
+ * read from Letterboxd's own stylesheet. Nothing here invents a colour.
+ * Chart colours live in this file rather than in app.js, so the drawing code
+ * never has to know a hex value.
+ */
+
+@import url("./design-tokens.css");
+
+/* ---------------------------------------------------------------- Local tokens */
+
+:root {
+  color-scheme: dark;
+
+  /* Heatmap intensity steps. They are mixed from the brand green rather than
+     picked by eye, so a token change carries through the whole scale. */
+  --heatmap-level-0: var(--lb-surface);
+  --heatmap-level-1: color-mix(in srgb, var(--lb-green) 30%, var(--lb-surface));
+  --heatmap-level-2: color-mix(in srgb, var(--lb-green) 55%, var(--lb-surface));
+  --heatmap-level-3: color-mix(in srgb, var(--lb-green) 80%, var(--lb-surface));
+  --heatmap-level-4: var(--lb-green-hover);
+
+  /* The measured height of the sticky section navigation. app.js republishes it
+     whenever the bar changes shape, because the bar wraps to two or three rows
+     between roughly 768px and 888px and CSS cannot read one element's height
+     into another's rule. The value here is only the first paint and the value a
+     reader with scripting switched off keeps. */
+  --section-nav-height: calc(var(--lb-space-4xl) + var(--lb-space-lg));
+}
+
+/* ------------------------------------------------------------------- Foundation */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+/* A class that sets display would otherwise beat the browser's own rule for
+   the hidden attribute, and a block the script means to hide would show. */
+[hidden] {
+  display: none !important;
+}
+
+body {
+  margin: 0;
+  /* A stray wide child must never push the whole document sideways. */
+  overflow-x: hidden;
+  background: var(--lb-background);
+  color: var(--lb-body);
+  font-family: var(--lb-font-sans);
+  font-size: var(--lb-body-medium);
+  line-height: var(--lb-line-height);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+dl,
+figure {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: var(--lb-link);
+  text-decoration-color: var(--lb-fill);
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  color: var(--lb-link-hover);
+}
+
+a:active {
+  color: var(--lb-link-active);
+}
+
+:focus-visible {
+  outline: var(--lb-border-thick) solid var(--lb-blue);
+  outline-offset: 2px;
+  border-radius: var(--lb-radius-sm);
+}
+
+code {
+  font-family: var(--lb-font-mono);
+  font-size: 0.9em;
+  color: var(--lb-body-high-contrast);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--lb-space-md);
+  top: calc(-1 * var(--lb-space-4xl));
+  z-index: 10;
+  padding: var(--lb-space-dense-lg) var(--lb-space-md);
+  background: var(--lb-surface);
+  color: var(--lb-heading);
+  border-radius: var(--lb-radius-sm);
+  text-decoration: none;
+  transition: top 120ms ease;
+}
+
+.skip-link:focus {
+  top: var(--lb-space-md);
+}
+
+.layout {
+  width: min(var(--lb-content-width), 100%);
+  margin-inline: auto;
+  padding-inline: var(--lb-content-gutter);
+}
+
+/* ----------------------------------------------------------------- Page header */
+
+.page-header {
+  padding-block: var(--lb-space-2xl) var(--lb-space-lg);
+  border-bottom: var(--lb-border-thin) solid var(--lb-separator);
+}
+
+.page-header__eyebrow {
+  font-size: var(--lb-title-caps);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--lb-metadata);
+}
+
+.page-header__title {
+  font-family: var(--lb-font-serif);
+  font-size: var(--lb-heading-1);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--lb-heading);
+  overflow-wrap: anywhere;
+}
+
+.page-header__meta {
+  margin-top: var(--lb-space-dense-lg);
+  font-size: var(--lb-body-small);
+  color: var(--lb-metadata);
+}
+
+/* -------------------------------------------------------------- Section navigation */
+
+.section-nav {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--lb-background);
+  border-bottom: var(--lb-border-thin) solid var(--lb-separator);
+}
+
+.section-nav__list {
+  display: flex;
+  gap: var(--lb-space-dense-lg);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  padding-block: var(--lb-space-dense-lg);
+  scrollbar-width: thin;
+}
+
+/* Once there is room for two rows the list wraps instead of scrolling, so the
+   Extras group marker is visible rather than parked off the right edge. */
+@media (min-width: 48rem) {
+  .section-nav__list {
+    flex-wrap: wrap;
+    overflow-x: visible;
+    row-gap: var(--lb-space-dense-sm);
+  }
+}
+
+.section-nav__list a {
+  display: block;
+  padding: var(--lb-space-dense-sm) var(--lb-space-dense-lg);
+  border-radius: var(--lb-radius-sm);
+  white-space: nowrap;
+  font-size: var(--lb-body-small);
+  color: var(--lb-body-low-contrast);
+  text-decoration: none;
+}
+
+.section-nav__list a:hover {
+  background: var(--lb-background-hover);
+  color: var(--lb-link-hover);
+}
+
+/* The group markers are real list items rather than decoration, so the split
+   between the mirrored panel and the additions is announced, not only seen. */
+.section-nav__label {
+  align-self: center;
+  padding-inline: var(--lb-space-dense-lg) var(--lb-space-dense-sm);
+  white-space: nowrap;
+  font-size: var(--lb-body-tiny);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--lb-metadata-low-contrast);
+}
+
+.section-nav__label--extras {
+  color: var(--lb-orange);
+}
+
+/* ---------------------------------------------------------------- Page regions */
+
+/* The page has two halves: the sections that mirror the Letterboxd panel, and
+   the additions. Each half opens with a banner so a reader scanning the page
+   can tell at once which half they are in. */
+.region {
+  margin-block: var(--lb-space-3xl);
+}
+
+.region__banner {
+  padding: var(--lb-space-xl) 0 var(--lb-space-lg);
+  border-top: var(--lb-border-thick) solid var(--lb-fill);
+}
+
+.region--extras .region__banner {
+  border-top-color: var(--lb-orange);
+}
+
+.region__kicker {
+  font-size: var(--lb-body-tiny);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--lb-metadata);
+}
+
+.region--extras .region__kicker {
+  color: var(--lb-orange);
+}
+
+.region__heading {
+  margin-top: var(--lb-space-dense-sm);
+  font-family: var(--lb-font-serif);
+  font-size: var(--lb-heading-2);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--lb-heading);
+}
+
+.region__lede {
+  margin-top: var(--lb-space-sm);
+  max-width: 46rem;
+  font-size: var(--lb-body-medium);
+  color: var(--lb-body-low-contrast);
+}
+
+/* --------------------------------------------------------------- Section shells */
+
+main {
+  padding-block: var(--lb-space-xl) var(--lb-space-4xl);
+}
+
+/* Anchor jumps clear the sticky navigation whatever height it happens to be.
+   A constant was wrong wherever the bar wrapped to an extra row, which left the
+   heading the reader jumped to hidden behind it. */
+main,
+.section,
+.region {
+  scroll-margin-top: calc(var(--section-nav-height) + var(--lb-space-lg));
+}
+
+.section {
+  margin-block: var(--lb-space-3xl);
+}
+
+/* The region banner already gives the first section its breathing room. */
+.section:first-of-type {
+  margin-top: var(--lb-space-lg);
+}
+
+.section__heading {
+  padding-bottom: var(--lb-space-dense-md);
+  border-bottom: var(--lb-border-thin) solid var(--lb-separator);
+  font-size: var(--lb-heading-4);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--lb-body-high-contrast);
+}
+
+.section__lede,
+.block__lede {
+  margin-top: var(--lb-space-sm);
+  max-width: 46rem;
+  font-size: var(--lb-body-small);
+  color: var(--lb-metadata);
+}
+
+.block {
+  margin-top: var(--lb-space-xl);
+}
+
+.block__heading {
+  margin-bottom: var(--lb-space-sm);
+  font-size: var(--lb-title-caps);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--lb-body-low-contrast);
+}
+
+.pair {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  gap: var(--lb-space-xl);
+}
+
+.pair__column {
+  min-width: 0;
+}
+
+.pair--takes {
+  gap: var(--lb-space-lg);
+}
+
+.pair__heading {
+  margin-bottom: var(--lb-space-dense-lg);
+  font-size: var(--lb-body-meta);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--lb-metadata);
+}
+
+/* The two sides of a facing pair carry the same colours as their bars, so the
+   heading and the chart under it read as one thing. */
+.pair__heading--hot {
+  color: var(--lb-green-hover);
+}
+
+.pair__heading--cold {
+  color: var(--lb-blue);
+}
+
+/* ------------------------------------------------------------------- Notices */
+
+.notice {
+  padding: var(--lb-space-md);
+  border-radius: var(--lb-radius);
+  border: var(--lb-border-thin) solid var(--lb-separator);
+  background: var(--lb-surface);
+  color: var(--lb-body-high-contrast);
+  font-size: var(--lb-body-small);
+}
+
+.notice--error {
+  border-left: var(--lb-border-thick) solid var(--lb-orange);
+}
+
+/* A caveat is not a failure: it qualifies a figure that is really on the page,
+   so it is marked in the link blue rather than in the error orange. */
+.notice--caveat {
+  margin-top: var(--lb-space-md);
+  border-left: var(--lb-border-thick) solid var(--lb-blue);
+}
+
+.empty {
+  padding: var(--lb-space-md);
+  border: var(--lb-border-thin) dashed var(--lb-separator);
+  border-radius: var(--lb-radius);
+  color: var(--lb-metadata);
+  font-size: var(--lb-body-small);
+}
+
+.note {
+  margin-top: var(--lb-space-dense-lg);
+  font-size: var(--lb-body-meta);
+  color: var(--lb-metadata-low-contrast);
+}
+
+/* --------------------------------------------------------------------- Tiles */
+
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+  gap: var(--lb-space-sm);
+}
+
+.tile {
+  min-width: 0;
+  padding: var(--lb-space-md);
+  border-radius: var(--lb-radius);
+  background: var(--lb-surface);
+}
+
+.tile__value {
+  font-size: var(--lb-heading-3);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--lb-heading);
+  overflow-wrap: anywhere;
+}
+
+.tile__label {
+  margin-top: var(--lb-space-dense-sm);
+  font-size: var(--lb-body-small);
+  font-weight: 500;
+  color: var(--lb-body-high-contrast);
+}
+
+.tile__note {
+  margin-top: var(--lb-space-dense-sm);
+  font-size: var(--lb-body-meta);
+  color: var(--lb-metadata);
+}
+
+/* A figure the source data cannot back up. The note carries the caveat, so it
+   is lifted out of the metadata grey to be read rather than skimmed past. */
+.tile--unverified .tile__note {
+  color: var(--lb-blue);
+}
+
+/* -------------------------------------------------------------------- Charts */
+
+.chart {
+  margin-top: var(--lb-space-dense-lg);
+}
+
+.chart__plot {
+  min-width: 0;
+}
+
+.chart__plot svg {
+  display: block;
+  max-width: 100%;
+}
+
+.chart__caption {
+  margin-top: var(--lb-space-dense-md);
+  font-size: var(--lb-body-meta);
+  color: var(--lb-metadata);
+}
+
+.chart__label {
+  font-family: var(--lb-font-sans);
+  font-size: 13px;
+  fill: var(--lb-body);
+}
+
+.chart__value {
+  font-family: var(--lb-font-mono);
+  font-size: 12px;
+  fill: var(--lb-body-high-contrast);
+}
+
+.chart__tick {
+  font-family: var(--lb-font-sans);
+  font-size: 11px;
+  fill: var(--lb-metadata);
+}
+
+.chart__track {
+  fill: var(--lb-rating-track);
+}
+
+.chart__bar {
+  fill: var(--lb-green);
+}
+
+.chart__bar--secondary {
+  fill: var(--lb-blue);
+}
+
+/* Used where a column is present but is not the point of the chart, such as the
+   whole-star steps beside the half-star ones. */
+.chart__bar--muted {
+  fill: var(--lb-fill);
+}
+
+.chart__axis,
+.chart__gridline {
+  stroke: var(--lb-separator);
+  stroke-width: 1;
+}
+
+.chart__gridline {
+  stroke-dasharray: 2 4;
+}
+
+.chart__line {
+  fill: none;
+  stroke: var(--lb-blue);
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.chart__dot {
+  fill: var(--lb-blue);
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--lb-space-md);
+  margin-bottom: var(--lb-space-dense-lg);
+  font-size: var(--lb-body-meta);
+  color: var(--lb-metadata);
+}
+
+.legend__item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--lb-space-dense-sm);
+}
+
+.legend__swatch {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: var(--lb-radius-sm);
+}
+
+.legend__swatch--primary {
+  background: var(--lb-green);
+}
+
+.legend__swatch--secondary {
+  background: var(--lb-blue);
+}
+
+/* ------------------------------------------------------------------- Heatmap */
+
+.heatmap-year {
+  margin-top: var(--lb-space-md);
+}
+
+.heatmap-year__label {
+  margin-bottom: var(--lb-space-dense-sm);
+  font-family: var(--lb-font-mono);
+  font-size: var(--lb-body-small);
+  color: var(--lb-body-high-contrast);
+}
+
+.scroll-x {
+  overflow-x: auto;
+  /* An inline SVG would otherwise leave a baseline gap under the grid. */
+  line-height: 0;
+  overscroll-behavior-x: contain;
+  padding-bottom: var(--lb-space-dense-sm);
+  scrollbar-width: thin;
+}
+
+.scroll-x svg {
+  display: block;
+}
+
+.heatmap__cell {
+  fill: var(--heatmap-level-0);
+}
+
+.heatmap__cell[data-level="1"] {
+  fill: var(--heatmap-level-1);
+}
+
+.heatmap__cell[data-level="2"] {
+  fill: var(--heatmap-level-2);
+}
+
+.heatmap__cell[data-level="3"] {
+  fill: var(--heatmap-level-3);
+}
+
+.heatmap__cell[data-level="4"] {
+  fill: var(--heatmap-level-4);
+}
+
+.heatmap-legend {
+  display: flex;
+  align-items: center;
+  gap: var(--lb-space-dense-sm);
+  margin-top: var(--lb-space-sm);
+  font-size: var(--lb-body-meta);
+  color: var(--lb-metadata);
+}
+
+.heatmap-legend__swatch {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 2px;
+  background: var(--heatmap-level-0);
+}
+
+.heatmap-legend__swatch[data-level="1"] {
+  background: var(--heatmap-level-1);
+}
+
+.heatmap-legend__swatch[data-level="2"] {
+  background: var(--heatmap-level-2);
+}
+
+.heatmap-legend__swatch[data-level="3"] {
+  background: var(--heatmap-level-3);
+}
+
+.heatmap-legend__swatch[data-level="4"] {
+  background: var(--heatmap-level-4);
+}
+
+/* -------------------------------------------------------------------- People */
+
+.people {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(6.5rem, 1fr));
+  gap: var(--lb-space-md);
+}
+
+.person {
+  min-width: 0;
+}
+
+.person__avatar {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  border-radius: var(--lb-radius-md);
+  background: var(--lb-surface);
+  color: var(--lb-metadata);
+  font-size: var(--lb-heading-3);
+  font-weight: 600;
+}
+
+.person__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.person__name {
+  margin-top: var(--lb-space-dense-lg);
+  font-size: var(--lb-body-small);
+  font-weight: 500;
+  color: var(--lb-body-high-contrast);
+  overflow-wrap: anywhere;
+}
+
+.person__count {
+  font-family: var(--lb-font-mono);
+  font-size: var(--lb-body-meta);
+  color: var(--lb-metadata);
+}
+
+/* --------------------------------------------------------------------- Chips */
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--lb-space-dense-lg);
+}
+
+.chip {
+  padding: var(--lb-space-dense-sm) var(--lb-space-sm);
+  border-radius: var(--lb-radius-lg);
+  background: var(--lb-surface);
+  font-family: var(--lb-font-mono);
+  font-size: var(--lb-body-small);
+  color: var(--lb-body-high-contrast);
+}
+
+/* ------------------------------------------------------- Single large figures */
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: var(--lb-space-md);
+}
+
+.stat {
+  min-width: 0;
+  padding: var(--lb-space-lg);
+  border-radius: var(--lb-radius);
+  border-left: var(--lb-border-thick) solid var(--lb-fill);
+  background: var(--lb-surface);
+}
+
+.stat--primary {
+  border-left-color: var(--lb-green);
+}
+
+.stat--secondary {
+  border-left-color: var(--lb-blue);
+}
+
+.stat__value {
+  font-family: var(--lb-font-serif);
+  /* One step above the largest named heading: these are the page's big numbers. */
+  font-size: calc(var(--lb-heading-1) * 1.25);
+  font-weight: 600;
+  line-height: 1.05;
+  color: var(--lb-heading);
+  overflow-wrap: anywhere;
+}
+
+.stat__unit {
+  font-family: var(--lb-font-sans);
+  font-size: var(--lb-heading-4);
+  font-weight: 500;
+  color: var(--lb-body-low-contrast);
+}
+
+.stat__label {
+  margin-top: var(--lb-space-dense-lg);
+  font-size: var(--lb-body-small);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--lb-body-high-contrast);
+}
+
+.stat__note {
+  margin-top: var(--lb-space-dense-sm);
+  max-width: 34rem;
+  font-size: var(--lb-body-meta);
+  color: var(--lb-metadata);
+}
+
+/* The stat card that opens a block sits above the chart that unpacks it. */
+.stat + .chart {
+  margin-top: var(--lb-space-lg);
+}
+
+/* --------------------------------------------------------------- Hot takes */
+
+/* Both extras lists keep their numbers: every one of them is a ranking, and the
+   position is part of what the reader is being told. */
+.takes,
+.ranked {
+  list-style: decimal;
+  padding-inline-start: var(--lb-space-2xl);
+}
+
+.takes > li::marker,
+.ranked > li::marker {
+  font-family: var(--lb-font-mono);
+  font-size: var(--lb-body-meta);
+  color: var(--lb-metadata);
+}
+
+.takes {
+  display: grid;
+  gap: var(--lb-space-sm);
+}
+
+.take {
+  min-width: 0;
+  padding: var(--lb-space-sm) var(--lb-space-md);
+  border-radius: var(--lb-radius-md);
+  border-left: var(--lb-border-thick) solid var(--lb-fill);
+  background: var(--lb-background-hover);
+}
+
+.takes-column--hotter .take {
+  border-left-color: var(--lb-green);
+}
+
+.takes-column--colder .take {
+  border-left-color: var(--lb-blue);
+}
+
+.take__film {
+  font-size: var(--lb-body-medium);
+  font-weight: 500;
+  color: var(--lb-heading);
+  overflow-wrap: anywhere;
+}
+
+.take__film a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.take__film a:hover {
+  color: var(--lb-link-hover);
+  text-decoration: underline;
+}
+
+.take__year {
+  font-family: var(--lb-font-mono);
+  font-size: var(--lb-body-meta);
+  font-weight: 400;
+  color: var(--lb-metadata);
+}
+
+.take__bars {
+  margin-top: var(--lb-space-dense-lg);
+}
+
+/* The bars are stretched to the row width, so the drawing keeps no width of
+   its own. Only the horizontal axis stretches, so the bar heights hold. */
+.take__bars svg {
+  display: block;
+  width: 100%;
+}
+
+.take__figures {
+  margin-top: var(--lb-space-dense-sm);
+  font-family: var(--lb-font-mono);
+  font-size: var(--lb-body-meta);
+  color: var(--lb-body);
+}
+
+.take__delta--up {
+  color: var(--lb-green-hover);
+}
+
+.take__delta--down {
+  color: var(--lb-blue);
+}
+
+/* ------------------------------------------------------------- Ranked lists */
+
+.ranked {
+  display: grid;
+  gap: var(--lb-space-dense-lg);
+  margin: 0;
+}
+
+.ranked__row {
+  padding-bottom: var(--lb-space-dense-lg);
+  border-bottom: var(--lb-border-thin) solid var(--lb-surface);
+}
+
+.ranked__line {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  column-gap: var(--lb-space-sm);
+}
+
+.ranked__name {
+  min-width: 0;
+  font-size: var(--lb-body-small);
+  color: var(--lb-body-high-contrast);
+  overflow-wrap: anywhere;
+}
+
+.ranked__name a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.ranked__name a:hover {
+  color: var(--lb-link-hover);
+  text-decoration: underline;
+}
+
+.ranked__value {
+  font-family: var(--lb-font-mono);
+  font-size: var(--lb-body-meta);
+  white-space: nowrap;
+  color: var(--lb-body);
+}
+
+.ranked__meta {
+  margin-top: var(--lb-space-dense-sm);
+  font-size: var(--lb-body-meta);
+  color: var(--lb-metadata);
+}
+
+/* -------------------------------------------------------------- Fact lists */
+
+.facts {
+  display: grid;
+  gap: var(--lb-space-dense-lg);
+  margin: 0;
+}
+
+.facts__row {
+  display: grid;
+  grid-template-columns: minmax(7rem, 10rem) 1fr;
+  column-gap: var(--lb-space-md);
+  padding-bottom: var(--lb-space-dense-lg);
+  border-bottom: var(--lb-border-thin) solid var(--lb-surface);
+}
+
+.facts__term {
+  font-size: var(--lb-body-meta);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--lb-metadata);
+}
+
+.facts__definition {
+  min-width: 0;
+  margin: 0;
+  font-size: var(--lb-body-small);
+  color: var(--lb-body-high-contrast);
+  overflow-wrap: anywhere;
+}
+
+.facts__definition a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.facts__definition a:hover {
+  color: var(--lb-link-hover);
+  text-decoration: underline;
+}
+
+.facts__meta {
+  font-family: var(--lb-font-mono);
+  font-size: var(--lb-body-meta);
+  color: var(--lb-metadata);
+}
+
+/* ------------------------------------------------------------- Title words */
+
+.wordcloud {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--lb-space-dense-lg) var(--lb-space-md);
+}
+
+.wordcloud__item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.25em;
+  line-height: 1.2;
+}
+
+.wordcloud__word {
+  font-weight: 600;
+  color: var(--lb-body-high-contrast);
+  overflow-wrap: anywhere;
+}
+
+/* The count is fixed in size so the smallest word is still readable, and so the
+   figure never depends on being able to judge the word's size. */
+.wordcloud__count {
+  font-family: var(--lb-font-mono);
+  font-size: var(--lb-body-tiny);
+  color: var(--lb-metadata);
+}
+
+/* -------------------------------------------------------------------- Footer */
+
+.page-footer {
+  padding-block: var(--lb-space-xl);
+  border-top: var(--lb-border-thin) solid var(--lb-separator);
+  font-size: var(--lb-body-meta);
+  color: var(--lb-metadata-low-contrast);
+}
+
+.page-footer p {
+  max-width: 46rem;
+}
+
+/* ------------------------------------------------------------- Narrow screens */
+
+@media (max-width: 30rem) {
+  .page-header__title {
+    font-size: var(--lb-heading-2);
+  }
+
+  .region__heading {
+    font-size: var(--lb-heading-3);
+  }
+
+  .tile-grid {
+    grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  }
+
+  .people {
+    grid-template-columns: repeat(auto-fill, minmax(5.5rem, 1fr));
+  }
+
+  .stat__value {
+    font-size: var(--lb-heading-1);
+  }
+
+  /* At this width the term and its value no longer fit side by side. */
+  .facts__row {
+    grid-template-columns: 1fr;
+    row-gap: var(--lb-space-dense-sm);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 1ms !important;
+    animation-duration: 1ms !important;
+  }
+}
