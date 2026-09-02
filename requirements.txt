@@ -15,4 +15,4 @@
 
 # HTTP client for the RSS feed, the curated list pages, and the TMDB API.
 # httpx is still below 1.0, so its minor version is the compatibility boundary.
-httpx>=0.28,<0.29
+httpx>=0.28.1,<0.29
