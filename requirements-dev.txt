@@ -21,4 +21,4 @@ python-dotenv>=1.2.2,<2
 # This repository has no tests yet. Running pytest collects nothing, prints
 # "no tests ran" and exits 5, which is why no workflow step calls it. It is
 # pinned here so that adding the first test file needs no change to this file.
-pytest>=8.4,<9
+pytest>=9.1.1,<10
