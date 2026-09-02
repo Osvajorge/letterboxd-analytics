@@ -1,5 +1,7 @@
 # Letterboxd analytics
 
+**[Open the panel](https://letterboxd-analytics.pages.dev)**
+
 A self-hosted rebuild of the Letterboxd Pro stats panel.
 
 It takes one member's watch history, works out the same breakdowns the paid panel
