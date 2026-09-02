@@ -44,6 +44,7 @@ from lib.config import (
     USER_AGENT,
     ensure_dirs,
 )
+from lib.safe_http import read_text
 
 # Every film on a watchlist page carries its slug and its display name as two
 # attributes of the same element. FILM_ELEMENT_PATTERN finds that element, so the
@@ -177,20 +178,21 @@ def fetch_watchlist(username: str = LETTERBOXD_USER) -> tuple[list[dict[str, Any
     ) as client:
         for page in range(1, MAX_PAGES + 1):
             url = page_url(username, page)
-            response = client.get(url)
-
             # There is deliberately no branch that treats a 404 as the end of the
             # watchlist. Letterboxd answers 200 with no films past the last page,
             # checked on page 39 and page 100 of a 38-page watchlist, so the walk
             # ends on an empty page and this branch would never fire on a healthy
             # read. All it could ever do is turn one failed page mid-walk into a
             # short read, which the caller would then have to catch.
-            response.raise_for_status()
+            #
+            # read_text raises on an error status exactly as raise_for_status
+            # did, and additionally refuses a page too large to be a real one.
+            html = read_text(client, url)
 
             if total is None:
-                total = declared_total(response.text)
+                total = declared_total(html)
 
-            fresh = [film for film in read_page(response.text, url) if film["slug"] not in seen]
+            fresh = [film for film in read_page(html, url) if film["slug"] not in seen]
             if not fresh:
                 break
 

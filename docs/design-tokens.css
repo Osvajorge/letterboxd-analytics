@@ -6,6 +6,31 @@
  * Typefaces are NOT copied. Letterboxd licenses GraphikWeb, TiemposHeadlineWeb,
  * TiemposTextWeb, and PitchSansWeb commercially. The stacks below name open
  * substitutes with comparable metrics.
+ *
+ * ---------------------------------------------------------------------------
+ * WHICH OF THESE GREYS MAY CARRY TEXT
+ *
+ * Every value below is Letterboxd's. Two of them fail WCAG AA as text on this
+ * page's own surfaces, measured against the backgrounds they are actually used
+ * on:
+ *
+ *   --lb-metadata            #667788 on --lb-background  3.87:1   fails 4.5:1
+ *                            #667788 on --lb-surface     2.90:1   fails badly
+ *   --lb-metadata-low-contrast #556677 on --lb-background 3.02:1   fails 4.5:1
+ *
+ * That matters here more than it would elsewhere, because on this page the
+ * secondary tier is not decoration: it carries the coverage captions, the
+ * truncation notes, the empty-state remedies and the chart captions, which are
+ * the sentences that make every figure honest. A qualification nobody can read
+ * does not qualify anything.
+ *
+ * So styles.css sets text from --lb-body-low-contrast (#8899aa, 6.06:1 on the
+ * background, 4.57:1 on a surface) and --lb-body (#99aabb, 5.62:1 on a surface)
+ * instead. The two greys above are kept as tokens, because they are what
+ * Letterboxd publishes and the file is a record of that, but they are used only
+ * for non-text marks. This is the one place the page deliberately departs from
+ * the reference palette, and this comment is the record of why.
+ * ---------------------------------------------------------------------------
  */
 
 :root {

@@ -1,25 +1,18 @@
-# Runtime and test dependencies.
+# What the weekly workflow installs.
 #
-# Each one is pinned to its current major version. The weekly workflow installs
-# this file unattended, so a new major release must never arrive on its own and
-# break a run nobody is watching.
+# One package. Everything else the pipeline needs at run time comes from the
+# Python standard library.
 #
-# Everything else the pipeline needs comes from the Python standard library. The
-# scripts import only httpx and python-dotenv.
+# The short list is deliberate. Every package installed here runs its own code
+# inside the job that holds TMDB_API_KEY, so a package that does nothing in
+# Actions is not free: it is more third-party code beside a secret, and one more
+# maintainer account whose compromise would reach this pipeline. The test runner
+# and python-dotenv used to be installed here and did nothing in CI. They are in
+# requirements-dev.txt now.
 #
-# This file is the whole dependency list. There is no requirements.in beside it.
+# Each entry is pinned to its current major version, so a new major release can
+# never arrive on its own and break a run nobody is watching.
 
 # HTTP client for the RSS feed, the curated list pages, and the TMDB API.
 # httpx is still below 1.0, so its minor version is the compatibility boundary.
 httpx>=0.28,<0.29
-
-# Reads the local .env on a manual run. GitHub Actions passes TMDB_API_KEY as an
-# environment variable instead, so no .env exists there.
-python-dotenv>=1.2,<2
-
-# Test runner, installed ahead of the tests it will run.
-#
-# This repository has no tests yet. Running pytest here collects nothing, prints
-# "no tests ran" and exits 5, which is why no workflow step calls it. It is
-# pinned here so that adding the first test file needs no change to this file.
-pytest>=8.4,<9

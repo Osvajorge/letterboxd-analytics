@@ -29,6 +29,7 @@ from lib.config import (
     USER_AGENT,
     ensure_dirs,
 )
+from lib.safe_http import read_text
 
 # Every film on a list page carries its slug and its display name as two
 # attributes of the same element. FILM_ELEMENT_PATTERN finds that element, so the
@@ -71,10 +72,8 @@ def list_page_url(path: str, page: int) -> str:
 
 
 def fetch_list_page(url: str, client: httpx.Client) -> str:
-    """Download one page of a list."""
-    response = client.get(url)
-    response.raise_for_status()
-    return response.text
+    """Download one page of a list, refusing a body past the size budget."""
+    return read_text(client, url)
 
 
 def read_page(html: str, source: str) -> list[dict[str, str]]:

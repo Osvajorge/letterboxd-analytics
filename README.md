@@ -136,8 +136,14 @@ passes in those two steps that talk to a network.
    ```sh
    python3 -m venv .venv
    source .venv/bin/activate
-   pip install -r requirements.txt
+   pip install -r requirements.txt -r requirements-dev.txt
    ```
+
+   `requirements.txt` is what the weekly workflow installs and holds one
+   package, `httpx`. `requirements-dev.txt` adds the two that only a person
+   running this by hand needs: `python-dotenv`, which reads your local `.env`,
+   and `pytest`. The workflow installs neither, because every package installed
+   beside `TMDB_API_KEY` is more third-party code running next to a secret.
 
 2. **Copy the environment file.**
 
@@ -263,7 +269,7 @@ every module it filled and every module it left empty, and under it the counts o
 what it read, so read that to check the run, then push. From here the weekly
 workflow keeps everything current.
 
-There is no test suite in this repository yet. `requirements.txt` installs
+There is no test suite in this repository yet. `requirements-dev.txt` installs
 `pytest`, but nothing collects: running it reports "no tests ran" and exits 5.
 
 ## How the weekly refresh works
@@ -431,17 +437,64 @@ does not change and because the answer for a new film costs a Letterboxd page
 read rather than a TMDB request. The weekly job stages it with the other data
 files, so a film resolved this Monday is still resolved next Monday.
 
-One secret is involved, `TMDB_API_KEY`. Add it under Settings, then Secrets and
-variables, then Actions. There is no Letterboxd credential in this repository and
-none is needed: the feed, the watchlist pages, and the list pages are all public.
-The workflow never runs on `pull_request`, so a fork cannot read even the TMDB
-key.
+One secret is involved in rebuilding the data, `TMDB_API_KEY`. Add it under
+Settings, then Secrets and variables, then Actions. There is no Letterboxd
+credential in this repository and none is needed: the feed, the watchlist pages,
+and the list pages are all public. The workflow never runs on `pull_request`, so
+a fork cannot read even the TMDB key.
+
+`TMDB_API_KEY` is set on the three steps that use it rather than on the job, so
+it is not in the environment of `pip install` or of anything else the run does.
+
+Every action the workflow uses is pinned to a full commit SHA, with the release
+it belongs to in a comment beside it. A version tag is a movable pointer: the
+owner of an action can retag `v4` onto any commit, and every workflow that asked
+for `v4` would run that code on its next Monday with no change here. Upgrading is
+therefore deliberate: look up the SHA of the new release and change the SHA and
+the comment together. `.github/dependabot.yml` opens a pull request when one of
+them moves, so pinning does not quietly mean running last year's action.
+
+### Publishing to Cloudflare Pages
+
+The refresh and the deploy are two separate jobs, and that is deliberate.
+Deploying runs Cloudflare's tooling, which installs npm packages resolved at run
+time; in the refresh job that code would sit beside `TMDB_API_KEY` and beside the
+repository token that lets the job push to `main`. The `publish` job gets neither.
+
+The deploy is off until you turn it on, and it takes a variable as well as the
+two secrets:
+
+| Where | Name | Value |
+|---|---|---|
+| Actions **Variables** | `DEPLOY_TO_CLOUDFLARE` | `true` |
+| Actions **Secrets** | `CLOUDFLARE_API_TOKEN` | a Pages token |
+| Actions **Secrets** | `CLOUDFLARE_ACCOUNT_ID` | your account id |
+
+The variable is what makes a missing token an error rather than a silent skip.
+Gating on the secret alone meant a token that was never added, or was renamed or
+left to expire, skipped the deploy and still reported a green tick, and the panel
+served stale data with nothing to show that anything was wrong. With the variable
+set to `true` and a secret missing, the job fails and says so.
+
+Leaving `DEPLOY_TO_CLOUDFLARE` unset is a supported way to run this: the weekly
+job still commits the rebuilt data, and you deploy when you want to.
+
+Scope the token to the one project if your Cloudflare dashboard offers it. The
+"Cloudflare Pages: Edit" permission covers every Pages project on the account,
+which is more than this panel needs.
+
+Do not commit `.wrangler/`. Deploying by hand writes an account id and the
+account's display name, which is an email address, into `.wrangler/cache/`. It is
+git-ignored now.
 
 ## When it breaks
 
 | What you see | Likely cause | What to do |
 |---|---|---|
 | The run stops at "Confirm the TMDB key is present" | the secret is missing or was renamed | re-add `TMDB_API_KEY` in the repository secrets |
+| The publish job fails with "DEPLOY_TO_CLOUDFLARE is true but these secrets are empty" | deploying is switched on and a Cloudflare credential is missing, renamed, or expired | the rebuilt data is committed and safe; only the deploy did not happen. Re-add the named secret, or unset `DEPLOY_TO_CLOUDFLARE` to go back to deploying by hand |
+| A step fails with "sent more than 10 MB of body" | a page came back far larger than any real page on that site, which usually means the response is not the page you asked for | nothing was written. Open the URL in the message. If the site genuinely started serving something that large, raise `MAX_RESPONSE_BYTES` in `scripts/lib/safe_http.py` |
+| The RSS step fails with "The feed opens with a document type declaration" | the feed is not the feed: a real Letterboxd feed never carries one, and it is how a small document expands into enough text to exhaust the runner | nothing was read or written. Check what `https://letterboxd.com/<user>/rss/` is actually returning |
 | The TMDB step fails with 401 | the key was revoked or regenerated | create a new key, update both `.env` and the repository secret |
 | The list step fails with "Refused N of 16 list refreshes" | Letterboxd changed the list markup, or blocked the run, so the pages came back far smaller than the caches | each named list kept its cached copy, and nothing was committed, because the run stops before the commit step. Lists that passed the check earlier in the same run were already written to disk: in the workflow that work dies with the runner, but on your own machine those cache files are changed, so check `git status` before re-running. Then open one of the named list pages and check whether its films still carry `data-item-slug` and `data-item-name` on the same element. If they do not, fix `FILM_ELEMENT_PATTERN`, `SLUG_PATTERN` and `NAME_PATTERN` in `scripts/fetch_lists.py`. If the lists really did shrink that much, re-run by hand with `--allow-shrink` |
 | The list step fails and names a list with no cached copy | a list was added to `CURATED_LISTS` without committing its cache, or the checkout did not supply one | a forced run has nothing to check the size against, so it refuses rather than accept whatever the page returned. Run `python scripts/fetch_lists.py` once without `--force`, check the film count looks right for that list, and commit the new file under `data/cache/lists/`. `--allow-shrink` does not cover this case |

@@ -14,11 +14,21 @@
   color-scheme: dark;
 
   /* Heatmap intensity steps. They are mixed from the brand green rather than
-     picked by eye, so a token change carries through the whole scale. */
-  --heatmap-level-0: var(--lb-surface);
-  --heatmap-level-1: color-mix(in srgb, var(--lb-green) 30%, var(--lb-surface));
-  --heatmap-level-2: color-mix(in srgb, var(--lb-green) 55%, var(--lb-surface));
-  --heatmap-level-3: color-mix(in srgb, var(--lb-green) 80%, var(--lb-surface));
+     picked by eye, so a token change carries through the whole scale.
+     The empty step sits on --lb-background-hover rather than on --lb-surface.
+     A surface-grey empty day was lighter than the page behind it, which spent
+     most of the available range before the green even started: the step from
+     "no film" to "one film" measured 1.52:1, the weakest boundary on the scale
+     and the only one a reader really has to see.
+     The mix stops are weighted towards that first step. A five-step green ramp
+     on a dark ground has about 5:1 of total range to spend, so an even ladder
+     buys 1.5:1 per step everywhere; this spends 2.2:1 on "did you watch
+     anything" and lets the upper steps run closer together, because telling
+     three films from four matters far less. */
+  --heatmap-level-0: var(--lb-background-hover);
+  --heatmap-level-1: color-mix(in srgb, var(--lb-green) 50%, var(--lb-background-hover));
+  --heatmap-level-2: color-mix(in srgb, var(--lb-green) 70%, var(--lb-background-hover));
+  --heatmap-level-3: color-mix(in srgb, var(--lb-green) 85%, var(--lb-background-hover));
   --heatmap-level-4: var(--lb-green-hover);
 
   /* The measured height of the sticky section navigation. app.js republishes it
@@ -79,7 +89,7 @@ ul {
 
 a {
   color: var(--lb-link);
-  text-decoration-color: var(--lb-fill);
+  text-decoration-color: var(--lb-fill-hover);
   text-underline-offset: 0.2em;
 }
 
@@ -149,7 +159,7 @@ code {
   font-size: var(--lb-title-caps);
   text-transform: uppercase;
   letter-spacing: 0.09em;
-  color: var(--lb-metadata);
+  color: var(--lb-body-low-contrast);
 }
 
 .page-header__title {
@@ -164,7 +174,7 @@ code {
 .page-header__meta {
   margin-top: var(--lb-space-dense-lg);
   font-size: var(--lb-body-small);
-  color: var(--lb-metadata);
+  color: var(--lb-body-low-contrast);
 }
 
 /* -------------------------------------------------------------- Section navigation */
@@ -196,19 +206,108 @@ code {
   }
 }
 
+/* --- The narrow-screen disclosure -------------------------------------------
+   Below the wrapping width the list is 1,657px of links inside a 320px strip:
+   four of seventeen visible, the Extras marker about three screen-widths to the
+   right, and no visual cue that the strip scrolls at all. So it closes, and one
+   button opens the whole thing as a grouped grid.
+   Everything here is scoped to [data-collapsible], which app.js sets. With
+   scripting off the button never appears and the strip stays as it was, which
+   is worse than the disclosure and much better than a list with no way to open
+   it. */
+.section-nav__toggle {
+  display: none;
+  align-items: center;
+  gap: var(--lb-space-dense-lg);
+  width: 100%;
+  min-height: 2.75rem;
+  padding: var(--lb-space-dense-lg) 0;
+  border: 0;
+  background: none;
+  color: var(--lb-body-high-contrast);
+  font-family: inherit;
+  font-size: var(--lb-body-small);
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.section-nav__toggle-icon {
+  position: relative;
+  width: 1rem;
+  height: 2px;
+  background: currentColor;
+  box-shadow: 0 -5px 0 currentColor, 0 5px 0 currentColor;
+}
+
+.section-nav[data-open="true"] .section-nav__toggle-icon {
+  box-shadow: none;
+  transform: rotate(45deg);
+}
+
+.section-nav[data-open="true"] .section-nav__toggle-icon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: currentColor;
+  transform: rotate(90deg);
+}
+
+@media (max-width: 47.99rem) {
+  .section-nav[data-collapsible="true"] .section-nav__toggle {
+    display: flex;
+  }
+
+  .section-nav[data-collapsible="true"] .section-nav__list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--lb-space-dense-sm);
+    overflow-x: visible;
+    max-height: min(60vh, 26rem);
+    overflow-y: auto;
+    padding-bottom: var(--lb-space-md);
+  }
+
+  .section-nav[data-collapsible="true"][data-open="false"] .section-nav__list {
+    display: none;
+  }
+
+  /* A group marker opens its own row, so the two halves of the page read as two
+     groups rather than as one run of seventeen. */
+  .section-nav[data-collapsible="true"] .section-nav__label {
+    grid-column: 1 / -1;
+    padding-top: var(--lb-space-dense-lg);
+  }
+
+  .section-nav[data-collapsible="true"] .section-nav__list a {
+    white-space: normal;
+  }
+}
+
 .section-nav__list a {
   display: block;
-  padding: var(--lb-space-dense-sm) var(--lb-space-dense-lg);
+  /* Tall enough to press. These links were 28px high, in a bar that is the only
+     way to move around a document tens of thousands of pixels long. */
+  padding: var(--lb-space-dense-md) var(--lb-space-sm);
   border-radius: var(--lb-radius-sm);
   white-space: nowrap;
   font-size: var(--lb-body-small);
   color: var(--lb-body-low-contrast);
   text-decoration: none;
+  transition: background-color 140ms ease, color 140ms ease;
 }
 
 .section-nav__list a:hover {
   background: var(--lb-background-hover);
   color: var(--lb-link-hover);
+}
+
+/* Where the reader is. Seventeen links used to sit above forty screens of
+   document with nothing marking the section under the reader's eye. */
+.section-nav__list a[aria-current="location"] {
+  background: var(--lb-surface);
+  color: var(--lb-heading);
+  box-shadow: inset 0 -2px 0 var(--lb-blue);
 }
 
 /* The group markers are real list items rather than decoration, so the split
@@ -221,7 +320,7 @@ code {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--lb-metadata-low-contrast);
+  color: var(--lb-body-low-contrast);
 }
 
 .section-nav__label--extras {
@@ -234,7 +333,11 @@ code {
    the additions. Each half opens with a banner so a reader scanning the page
    can tell at once which half they are in. */
 .region {
-  margin-block: var(--lb-space-3xl);
+  margin-block: var(--lb-space-4xl);
+}
+
+.region:first-of-type {
+  margin-top: var(--lb-space-lg);
 }
 
 .region__banner {
@@ -251,7 +354,7 @@ code {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--lb-metadata);
+  color: var(--lb-body-low-contrast);
 }
 
 .region--extras .region__kicker {
@@ -277,7 +380,9 @@ code {
 /* --------------------------------------------------------------- Section shells */
 
 main {
-  padding-block: var(--lb-space-xl) var(--lb-space-4xl);
+  /* The first region banner brings its own rule and space. A larger pad here
+     left 72px of nothing between the sticky bar and that rule at every width. */
+  padding-block: var(--lb-space-sm) var(--lb-space-4xl);
 }
 
 /* Anchor jumps clear the sticky navigation whatever height it happens to be.
@@ -298,6 +403,19 @@ main,
   margin-top: var(--lb-space-lg);
 }
 
+/* --- The heading ladder -----------------------------------------------------
+   Three levels used to be uppercase, letter-spaced, weight 600, and 18px / 13px
+   / 12px: three greys and six pixels apart, which is not a ladder. In a page of
+   seventeen sections and twenty-three blocks, nesting depth is the reader's only
+   map, so the levels now differ in kind and not only in degree:
+
+     h3  18px, uppercase, with a rule under it       the page's spine
+     h4  16px, sentence case, in the heading white   plainly one step down
+     h5  12px, uppercase, quiet                      the only caps micro-label
+
+   Uppercase now means "structure" and appears at two levels rather than five,
+   so .stat__label and .facts__term give it up: those are data labels, not
+   headings, and they were reading as a fourth heading level. */
 .section__heading {
   padding-bottom: var(--lb-space-dense-md);
   border-bottom: var(--lb-border-thin) solid var(--lb-separator);
@@ -313,20 +431,20 @@ main,
   margin-top: var(--lb-space-sm);
   max-width: 46rem;
   font-size: var(--lb-body-small);
-  color: var(--lb-metadata);
+  color: var(--lb-body-low-contrast);
 }
 
 .block {
-  margin-top: var(--lb-space-xl);
+  /* A block is not a section and should not sit at the same indent as one. */
+  margin-top: var(--lb-space-2xl);
 }
 
 .block__heading {
   margin-bottom: var(--lb-space-sm);
-  font-size: var(--lb-title-caps);
+  font-size: var(--lb-heading-5);
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--lb-body-low-contrast);
+  line-height: 1.3;
+  color: var(--lb-heading);
 }
 
 .pair {
@@ -349,17 +467,17 @@ main,
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--lb-metadata);
+  color: var(--lb-body-low-contrast);
 }
 
-/* The two sides of a facing pair carry the same colours as their bars, so the
-   heading and the chart under it read as one thing. */
-.pair__heading--hot {
-  color: var(--lb-green-hover);
-}
-
+/* These used to be green and blue, which was the third job those two colours
+   were doing inside one card: the legend assigns green to your rating and blue
+   to the crowd's, and a green column heading over a card whose green dot is
+   your rating is two meanings eight pixels apart. The words already say which
+   column is which. */
+.pair__heading--hot,
 .pair__heading--cold {
-  color: var(--lb-blue);
+  color: var(--lb-body-low-contrast);
 }
 
 /* ------------------------------------------------------------------- Notices */
@@ -385,10 +503,22 @@ main,
 }
 
 /* The one paragraph that names the denominators the rest of the page counts
-   from. It qualifies rather than fails, so it takes the same blue as a caveat. */
+   from. It used to be a second blue-railed box sixteen pixels under the scope
+   chip, in the same colour and the same shape, so the page's most important
+   idea arrived as a stack of two things that looked like warnings and read as
+   one long apology.
+   It is not a warning. It is the statement of method that makes every figure
+   above and below it trustworthy, so it drops the rail, takes the reading
+   width, and is set to be read rather than skimmed past. */
 .notice--coverage {
-  margin-top: var(--lb-space-md);
-  border-left: var(--lb-border-thick) solid var(--lb-blue);
+  margin-top: var(--lb-space-xl);
+  padding: 0;
+  max-width: 46rem;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  font-size: var(--lb-body-medium);
+  color: var(--lb-body-high-contrast);
 }
 
 /* The scope label under a section or block heading, which names the subset of
@@ -423,26 +553,61 @@ main,
   margin-top: var(--lb-space-md);
 }
 
+/* --- Empty states -----------------------------------------------------------
+   The reason is prose and the fix is a command, so they are set as prose and as
+   a command. Rendered against a stats file with nothing in it this page shows
+   thirty-eight of these boxes, and twenty-one of them end with the same
+   instruction; running them together as one paragraph made every box a wall of
+   identical grey text. Split, the reader sees at a glance that thirty-eight
+   modules are waiting on three inputs, and each module still names its own. */
 .empty {
   padding: var(--lb-space-md);
-  border: var(--lb-border-thin) dashed var(--lb-separator);
+  border: var(--lb-border-thin) dashed var(--lb-fill-hover);
   border-radius: var(--lb-radius);
-  color: var(--lb-metadata);
+  color: var(--lb-body-low-contrast);
   font-size: var(--lb-body-small);
 }
 
+.empty__fix {
+  margin-top: var(--lb-space-dense-lg);
+  font-family: var(--lb-font-mono);
+  font-size: var(--lb-body-meta);
+  color: var(--lb-body);
+}
+
+/* The sentence that says what a ranking left out. It is the page's own account
+   of its limits, and it used to be the faintest text on the page at 3.02:1. */
 .note {
   margin-top: var(--lb-space-dense-lg);
   font-size: var(--lb-body-meta);
-  color: var(--lb-metadata-low-contrast);
+  color: var(--lb-body-low-contrast);
 }
 
 /* --------------------------------------------------------------------- Tiles */
 
+/* Two fixed column counts rather than auto-fit. The grids hold six tiles and
+   nine, and auto-fit resolved them to five plus one and five plus four: the
+   first thing on the page ended in a single stranded tile. Both counts divide
+   by three, and a lone odd tile at two columns spans the row rather than
+   sitting in half of it. */
 .tile-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--lb-space-sm);
+}
+
+.tile-grid > :last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 40rem) {
+  .tile-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .tile-grid > :last-child:nth-child(odd) {
+    grid-column: auto;
+  }
 }
 
 .tile {
@@ -450,11 +615,22 @@ main,
   padding: var(--lb-space-md);
   border-radius: var(--lb-radius);
   background: var(--lb-surface);
+  transition: background-color 160ms ease;
 }
 
+.tile:hover {
+  background: var(--lb-surface-hover);
+}
+
+/* The serif carries the page's big numbers. It was chosen as the stand-in for
+   the face Letterboxd sets exactly these figures in, and then it was used ten
+   times in twenty thousand pixels while the six numbers everyone actually sees
+   were set in the sans. Tabular figures so a grid of them lines up. */
 .tile__value {
+  font-family: var(--lb-font-serif);
   font-size: var(--lb-heading-3);
   font-weight: 600;
+  font-variant-numeric: tabular-nums;
   line-height: 1.2;
   color: var(--lb-heading);
   overflow-wrap: anywhere;
@@ -470,13 +646,18 @@ main,
 .tile__note {
   margin-top: var(--lb-space-dense-sm);
   font-size: var(--lb-body-meta);
-  color: var(--lb-metadata);
+  color: var(--lb-body);
 }
 
-/* A figure the source data cannot back up: either unresolved, or resting on
-   dates the pipeline had to estimate. The note carries the reason, so it is
-   lifted out of the metadata grey to be read rather than skimmed past. */
-.tile--unverified .tile__note {
+/* A figure nobody has worked out yet. It used to be printed as a bold white
+   dash exactly like a measured figure, with the reason in the note underneath;
+   absence should look like absence. */
+.tile--unresolved .tile__value {
+  color: var(--lb-body-low-contrast);
+  font-weight: 400;
+}
+
+.tile--unresolved .tile__note--reason {
   color: var(--lb-blue);
 }
 
@@ -495,10 +676,13 @@ main,
   max-width: 100%;
 }
 
+/* The caption is the chart's text alternative and has to be true read alone,
+   which makes it the last thing that should be hard to read. */
 .chart__caption {
-  margin-top: var(--lb-space-dense-md);
-  font-size: var(--lb-body-meta);
-  color: var(--lb-metadata);
+  margin-top: var(--lb-space-sm);
+  max-width: 46rem;
+  font-size: var(--lb-body-small);
+  color: var(--lb-body-low-contrast);
 }
 
 .chart__label {
@@ -509,14 +693,14 @@ main,
 
 .chart__value {
   font-family: var(--lb-font-mono);
-  font-size: 12px;
+  font-size: 11px;
   fill: var(--lb-body-high-contrast);
 }
 
 .chart__tick {
-  font-family: var(--lb-font-sans);
+  font-family: var(--lb-font-mono);
   font-size: 11px;
-  fill: var(--lb-metadata);
+  fill: var(--lb-body-low-contrast);
 }
 
 .chart__track {
@@ -532,9 +716,11 @@ main,
 }
 
 /* Used where a column is present but is not the point of the chart, such as the
-   whole-star steps beside the half-star ones. */
+   whole-star steps beside the half-star ones. --lb-fill measured 2.33:1 against
+   the page, under the 3:1 floor for a mark carrying meaning, so a caption that
+   called these "the dim ones" was describing bars that were barely there. */
 .chart__bar--muted {
-  fill: var(--lb-fill);
+  fill: var(--lb-fill-hover);
 }
 
 .chart__axis,
@@ -565,7 +751,7 @@ main,
   gap: var(--lb-space-md);
   margin-bottom: var(--lb-space-dense-lg);
   font-size: var(--lb-body-meta);
-  color: var(--lb-metadata);
+  color: var(--lb-body-low-contrast);
 }
 
 .legend__item {
@@ -601,6 +787,11 @@ main,
   color: var(--lb-body-high-contrast);
 }
 
+/* A year of squares is 53 weeks wide and does not fit a phone. The fade on the
+   right edge is the only sign that there is more of the year to the right:
+   overlay scrollbars are invisible at rest, so a reader saw January to May and
+   had no reason to think June onwards existed. The mask is switched off once
+   the container has scrolled to the end. */
 .scroll-x {
   overflow-x: auto;
   /* An inline SVG would otherwise leave a baseline gap under the grid. */
@@ -608,6 +799,16 @@ main,
   overscroll-behavior-x: contain;
   padding-bottom: var(--lb-space-dense-sm);
   scrollbar-width: thin;
+}
+
+/* app.js sets this, and keeps it current as the window resizes. */
+.scroll-x[data-scrollable="true"] {
+  mask-image: linear-gradient(to right, #000 calc(100% - 3rem), transparent);
+  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 3rem), transparent);
+}
+
+.scroll-x:not([data-scrollable="true"]) + .heatmap-hint {
+  display: none;
 }
 
 .scroll-x svg {
@@ -638,9 +839,9 @@ main,
   display: flex;
   align-items: center;
   gap: var(--lb-space-dense-sm);
-  margin-top: var(--lb-space-sm);
+  margin-bottom: var(--lb-space-sm);
   font-size: var(--lb-body-meta);
-  color: var(--lb-metadata);
+  color: var(--lb-body-low-contrast);
 }
 
 .heatmap-legend__swatch {
@@ -668,14 +869,51 @@ main,
 
 /* -------------------------------------------------------------------- People */
 
+/* Fixed column counts, all of which divide the twenty-four cards a grid holds.
+   auto-fill gave seven columns at 1280px, so every grid ended in a row of three
+   stranded cards. */
 .people {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(6.5rem, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--lb-space-md);
+}
+
+@media (min-width: 26rem) {
+  .people {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 48rem) {
+  .people {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64rem) {
+  .people {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+  }
 }
 
 .person {
   min-width: 0;
+}
+
+/* The whole card is the link. The portrait is the obvious thing to press and it
+   used to be an inert div, leaving a 16px line of text as the only target on a
+   card over a hundred pixels tall. */
+.person__link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  border-radius: var(--lb-radius-md);
+}
+
+.person__link:hover .person__name {
+  color: var(--lb-link-hover);
+  text-decoration: underline;
+  text-decoration-color: currentColor;
 }
 
 .person__avatar {
@@ -686,7 +924,10 @@ main,
   overflow: hidden;
   border-radius: var(--lb-radius-md);
   background: var(--lb-surface);
-  color: var(--lb-metadata);
+  /* An inset hairline gives two dozen photographs with two dozen different
+     backdrops one shared edge, so the grid reads as a grid. */
+  box-shadow: inset 0 0 0 1px var(--lb-separator);
+  color: var(--lb-body-low-contrast);
   font-size: var(--lb-heading-3);
   font-weight: 600;
 }
@@ -697,32 +938,28 @@ main,
   width: 100%;
   height: 100%;
   object-fit: cover;
+  /* Full-saturation publicity stills are the loudest thing on a very dark page,
+     and they pull the eye to whichever grid positions happen to hold a pale
+     backdrop rather than to the people who turn up most. */
+  filter: saturate(0.85) contrast(0.96);
 }
 
+/* Two lines of room whether the name needs them or not, so a wrapped name does
+   not push its own count a line below every other count in the row. */
 .person__name {
   margin-top: var(--lb-space-dense-lg);
+  min-height: calc(2 * 1.5 * var(--lb-body-small));
   font-size: var(--lb-body-small);
   font-weight: 500;
   color: var(--lb-body-high-contrast);
   overflow-wrap: anywhere;
 }
 
-/* A person's name links to their Letterboxd page. It reads as a name first and
-   underlines on hover, so a grid of two dozen cards is not a wall of blue. */
-.person__name a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.person__name a:hover {
-  color: var(--lb-link-hover);
-  text-decoration: underline;
-}
-
 .person__count {
   font-family: var(--lb-font-mono);
   font-size: var(--lb-body-meta);
-  color: var(--lb-metadata);
+  font-variant-numeric: tabular-nums;
+  color: var(--lb-body-low-contrast);
 }
 
 /* --------------------------------------------------------------------- Chips */
@@ -734,11 +971,12 @@ main,
 }
 
 .chip {
-  padding: var(--lb-space-dense-sm) var(--lb-space-sm);
+  padding: var(--lb-space-dense-md) var(--lb-space-sm);
   border-radius: var(--lb-radius-lg);
   background: var(--lb-surface);
   font-family: var(--lb-font-mono);
   font-size: var(--lb-body-small);
+  font-variant-numeric: tabular-nums;
   color: var(--lb-body-high-contrast);
 }
 
@@ -750,20 +988,32 @@ main,
   gap: var(--lb-space-md);
 }
 
+/* A lone stat card used to stretch to 920px to hold six characters. It is a
+   figure, not a banner. */
 .stat {
   min-width: 0;
+  max-width: 26rem;
   padding: var(--lb-space-lg);
   border-radius: var(--lb-radius);
-  border-left: var(--lb-border-thick) solid var(--lb-fill);
+  border-left: var(--lb-border-thick) solid var(--lb-fill-hover);
   background: var(--lb-surface);
+  transition: background-color 160ms ease;
 }
 
-.stat--primary {
-  border-left-color: var(--lb-green);
+.stat-grid .stat {
+  max-width: none;
 }
 
-.stat--secondary {
-  border-left-color: var(--lb-blue);
+.stat:hover {
+  background: var(--lb-surface-hover);
+}
+
+/* The green and blue borders are gone. They alternated by adjacency and encoded
+   nothing, while the same two colours were carrying "your rating" and "the
+   crowd's rating" four sections away. */
+.stat--unresolved .stat__value {
+  color: var(--lb-body-low-contrast);
+  font-weight: 400;
 }
 
 .stat__value {
@@ -771,6 +1021,7 @@ main,
   /* One step above the largest named heading: these are the page's big numbers. */
   font-size: calc(var(--lb-heading-1) * 1.25);
   font-weight: 600;
+  font-variant-numeric: tabular-nums;
   line-height: 1.05;
   color: var(--lb-heading);
   overflow-wrap: anywhere;
@@ -783,12 +1034,13 @@ main,
   color: var(--lb-body-low-contrast);
 }
 
+/* Not uppercase. This is the label on a figure, not a fourth heading level, and
+   in "Your reach" it used to sit between an h4 and an h5 in the same caps, the
+   same letter-spacing and the same six-pixel band as both of them. */
 .stat__label {
   margin-top: var(--lb-space-dense-lg);
   font-size: var(--lb-body-small);
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
   color: var(--lb-body-high-contrast);
 }
 
@@ -796,11 +1048,18 @@ main,
   margin-top: var(--lb-space-dense-sm);
   max-width: 34rem;
   font-size: var(--lb-body-meta);
-  color: var(--lb-metadata);
+  color: var(--lb-body);
 }
 
-/* The stat card that opens a block sits above the chart that unpacks it. */
-.stat + .chart {
+/* The stat card that opens a block sits above whatever unpacks it. Nothing used
+   to cover a pair following a stat card, so in "Your reach" the two columns of
+   films sat flush against the bottom edge of the card above them. */
+.stat + .chart,
+.stat + .pair,
+.stat + .ranked,
+.stat + .ranked-group,
+.stat + .rating-scale,
+.stat + .chart__caption {
   margin-top: var(--lb-space-lg);
 }
 
@@ -818,7 +1077,7 @@ main,
 .ranked > li::marker {
   font-family: var(--lb-font-mono);
   font-size: var(--lb-body-meta);
-  color: var(--lb-metadata);
+  color: var(--lb-body-low-contrast);
 }
 
 .takes {
@@ -826,20 +1085,20 @@ main,
   gap: var(--lb-space-sm);
 }
 
+/* The left border used to be green in one column and blue in the other, which
+   put a green edge eight pixels from a green dot that means something else
+   entirely. Two columns under two explicit headings need no colour coding. */
 .take {
   min-width: 0;
   padding: var(--lb-space-sm) var(--lb-space-md);
   border-radius: var(--lb-radius-md);
-  border-left: var(--lb-border-thick) solid var(--lb-fill);
+  border-left: var(--lb-border-thick) solid var(--lb-fill-hover);
   background: var(--lb-background-hover);
+  transition: background-color 160ms ease;
 }
 
-.takes-column--hotter .take {
-  border-left-color: var(--lb-green);
-}
-
-.takes-column--colder .take {
-  border-left-color: var(--lb-blue);
+.take:hover {
+  background: var(--lb-surface);
 }
 
 .take__film {
@@ -849,47 +1108,150 @@ main,
   overflow-wrap: anywhere;
 }
 
-.take__film a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.take__film a:hover {
-  color: var(--lb-link-hover);
-  text-decoration: underline;
-}
-
 .take__year {
   font-family: var(--lb-font-mono);
   font-size: var(--lb-body-meta);
   font-weight: 400;
-  color: var(--lb-metadata);
+  color: var(--lb-body-low-contrast);
 }
 
 .take__bars {
-  margin-top: var(--lb-space-dense-lg);
-}
-
-/* The bars are stretched to the row width, so the drawing keeps no width of
-   its own. Only the horizontal axis stretches, so the bar heights hold. */
-.take__bars svg {
-  display: block;
-  width: 100%;
+  margin-top: var(--lb-space-sm);
 }
 
 .take__figures {
-  margin-top: var(--lb-space-dense-sm);
+  margin-top: var(--lb-space-dense-lg);
   font-family: var(--lb-font-mono);
   font-size: var(--lb-body-meta);
+  font-variant-numeric: tabular-nums;
   color: var(--lb-body);
 }
 
-.take__delta--up {
-  color: var(--lb-green-hover);
+.take__delta {
+  color: var(--lb-body-high-contrast);
+  font-weight: 600;
 }
 
-.take__delta--down {
-  color: var(--lb-blue);
+/* ------------------------------------------------------- Marks on the axis */
+
+/* The dumbbell: two ratings on one axis, joined by the gap between them.
+   HTML rather than SVG, because every small mark on this page is an SVG
+   stretched from a fixed viewBox with preserveAspectRatio="none", and a circle
+   drawn that way comes out as an ellipse whose shape changes with the width.
+   Percentages along a track need no drawing surface. */
+.dumbbell,
+.rating-mark {
+  position: relative;
+  height: 0.875rem;
+}
+
+.dumbbell {
+  margin-top: var(--lb-space-dense-lg);
+}
+
+.dumbbell__track,
+.rating-mark__track {
+  position: absolute;
+  inset-inline: 0;
+  top: 50%;
+  height: 4px;
+  margin-top: -2px;
+  border-radius: 2px;
+  background: var(--lb-rating-track);
+}
+
+.dumbbell__segment {
+  position: absolute;
+  top: 50%;
+  height: 4px;
+  margin-top: -2px;
+  border-radius: 2px;
+  background: var(--lb-fill-hover);
+}
+
+.dumbbell__dot {
+  position: absolute;
+  top: 50%;
+  width: 0.75rem;
+  height: 0.75rem;
+  margin-top: -0.375rem;
+  margin-left: -0.375rem;
+  border-radius: 50%;
+  /* The dots sit on the same axis and can land on the same point, so each keeps
+     a ring in the card colour and stays countable when they overlap. */
+  box-shadow: 0 0 0 2px var(--lb-background-hover);
+}
+
+.dumbbell__dot--mine {
+  background: var(--lb-rating-value);
+}
+
+.dumbbell__dot--theirs {
+  background: var(--lb-blue);
+}
+
+/* One average on the shared rating axis, with the member's own average marked
+   on it so a row can be read as above or below what they usually give. */
+.rating-mark {
+  height: 0.75rem;
+}
+
+.rating-mark__reference {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  margin-left: -1px;
+  border-radius: 1px;
+  background: var(--lb-fill-hover);
+}
+
+.rating-mark__dot {
+  position: absolute;
+  top: 50%;
+  width: 0.625rem;
+  height: 0.625rem;
+  margin-top: -0.3125rem;
+  margin-left: -0.3125rem;
+  border-radius: 50%;
+  background: var(--lb-rating-value);
+  box-shadow: 0 0 0 2px var(--lb-background);
+}
+
+/* The key for that axis, drawn once above a list rather than once per row. */
+.rating-scale {
+  display: flex;
+  align-items: center;
+  gap: var(--lb-space-dense-lg);
+  flex-wrap: wrap;
+  margin-bottom: var(--lb-space-sm);
+  font-family: var(--lb-font-mono);
+  font-size: var(--lb-body-meta);
+  font-variant-numeric: tabular-nums;
+  color: var(--lb-body-low-contrast);
+}
+
+.rating-scale__bar {
+  position: relative;
+  flex: 1 1 6rem;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--lb-rating-track);
+}
+
+.rating-scale__marker {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  width: 2px;
+  margin-left: -1px;
+  border-radius: 1px;
+  background: var(--lb-fill-hover);
+}
+
+.rating-scale__note {
+  flex: 1 0 100%;
+  font-family: var(--lb-font-sans);
 }
 
 /* ------------------------------------------------------------- Ranked lists */
@@ -901,7 +1263,7 @@ main,
 }
 
 .ranked__row {
-  padding-bottom: var(--lb-space-dense-lg);
+  padding-block: var(--lb-space-dense-md) var(--lb-space-sm);
   border-bottom: var(--lb-border-thin) solid var(--lb-surface);
 }
 
@@ -914,40 +1276,116 @@ main,
 
 .ranked__name {
   min-width: 0;
-  font-size: var(--lb-body-small);
+  font-size: var(--lb-body-medium);
   color: var(--lb-body-high-contrast);
   overflow-wrap: anywhere;
 }
 
-.ranked__name a {
+/* --- Links that look like links ---------------------------------------------
+   Every one of the two hundred links inside main used to reveal itself only on
+   hover, and hover does not exist on a touch screen. The instinct behind that
+   was right: a grid of two dozen names should not be a wall of blue. So the
+   colour still stays put and only the underline arrives, drawn in the quietest
+   line the palette has. Present, and quiet. */
+.ranked__name a,
+.take__film a,
+.facts__definition a {
   color: inherit;
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--lb-fill-hover);
+  text-underline-offset: 0.2em;
+  transition: color 140ms ease, text-decoration-color 140ms ease;
 }
 
-.ranked__name a:hover {
+.ranked__name a:hover,
+.take__film a:hover,
+.facts__definition a:hover {
   color: var(--lb-link-hover);
-  text-decoration: underline;
+  text-decoration-color: currentColor;
+}
+
+/* Eight pixels above and below take a 20px line box to a 36px target, and the
+   list gap keeps the rows apart. */
+.ranked__name a,
+.take__film a,
+.facts__definition a,
+.page-header__meta a,
+.closing__line a {
+  display: inline-block;
+  padding-block: var(--lb-space-dense-lg);
+  margin-block: calc(-1 * var(--lb-space-dense-lg));
 }
 
 .ranked__value {
   font-family: var(--lb-font-mono);
-  font-size: var(--lb-body-meta);
+  font-size: var(--lb-body-small);
+  font-variant-numeric: tabular-nums;
   white-space: nowrap;
   color: var(--lb-body);
+}
+
+/* --- The tail of a long ranking ---------------------------------------------
+   Twelve rankings of twenty near-identical rows is most of why this page ran to
+   thirty thousand pixels on a phone. The disclosure says how many rows are
+   behind it, and the note under the list still names the total the pipeline
+   measured, so nothing is hidden that was not already counted. */
+.ranked__more {
+  margin-top: var(--lb-space-dense-lg);
+}
+
+.ranked__more-summary {
+  display: inline-block;
+  padding: var(--lb-space-dense-md) var(--lb-space-sm);
+  border-radius: var(--lb-radius-sm);
+  background: var(--lb-surface);
+  font-size: var(--lb-body-small);
+  font-weight: 500;
+  color: var(--lb-body-high-contrast);
+  cursor: pointer;
+  transition: background-color 140ms ease;
+}
+
+.ranked__more-summary:hover {
+  background: var(--lb-surface-hover);
+  color: var(--lb-heading);
+}
+
+.ranked__more[open] .ranked__more-summary {
+  margin-bottom: var(--lb-space-sm);
+}
+
+.ranked__more .ranked {
+  padding-inline-start: var(--lb-space-2xl);
 }
 
 /* A ranking that stands where a chart used to sits straight under a lede, and a
    chart brought its own space with it. Under a pair heading the heading already
    provides that space, so only the lede case needs the rule. */
-:is(.section__lede, .block__lede) + div > .ranked {
+:is(.section__lede, .block__lede, .coverage-note) + div > :is(.ranked, .ranked-group, .rating-scale) {
   margin-top: var(--lb-space-md);
 }
 
-/* The bar a ranked row draws under its figure, for the rankings that were charts
-   before their names had to be links. Stretched to the row like the hot takes
-   bars, so the drawing keeps no width of its own. */
-.ranked__bar {
-  margin-top: var(--lb-space-dense-lg);
+/* The mark a ranked row draws under its figure, beside the sentence that says
+   what the mark rests on. Three lines a row, over a hundred and thirty rows, is
+   most of a page. */
+.ranked__under {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: var(--lb-space-sm);
+  margin-top: var(--lb-space-dense-md);
+}
+
+.ranked__under > :only-child {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 24rem) {
+  .ranked__under {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: var(--lb-space-dense-sm);
+  }
 }
 
 .ranked__bar svg {
@@ -957,9 +1395,9 @@ main,
 }
 
 .ranked__meta {
-  margin-top: var(--lb-space-dense-sm);
   font-size: var(--lb-body-meta);
-  color: var(--lb-metadata);
+  font-variant-numeric: tabular-nums;
+  color: var(--lb-body-low-contrast);
 }
 
 /* -------------------------------------------------------------- Fact lists */
@@ -979,35 +1417,24 @@ main,
 }
 
 .facts__term {
-  font-size: var(--lb-body-meta);
+  font-size: var(--lb-body-small);
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-  color: var(--lb-metadata);
+  color: var(--lb-body-low-contrast);
 }
 
 .facts__definition {
   min-width: 0;
   margin: 0;
-  font-size: var(--lb-body-small);
+  font-size: var(--lb-body-medium);
   color: var(--lb-body-high-contrast);
   overflow-wrap: anywhere;
-}
-
-.facts__definition a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.facts__definition a:hover {
-  color: var(--lb-link-hover);
-  text-decoration: underline;
 }
 
 .facts__meta {
   font-family: var(--lb-font-mono);
   font-size: var(--lb-body-meta);
-  color: var(--lb-metadata);
+  font-variant-numeric: tabular-nums;
+  color: var(--lb-body-low-contrast);
 }
 
 /* ------------------------------------------------------------- Title words */
@@ -1037,20 +1464,100 @@ main,
 .wordcloud__count {
   font-family: var(--lb-font-mono);
   font-size: var(--lb-body-tiny);
-  color: var(--lb-metadata);
+  font-variant-numeric: tabular-nums;
+  color: var(--lb-body-low-contrast);
 }
 
 /* -------------------------------------------------------------------- Footer */
 
+/* TMDB's attribution requirement expects to be legible, and this was the least
+   legible text on the page at 3.02:1. */
 .page-footer {
   padding-block: var(--lb-space-xl);
   border-top: var(--lb-border-thin) solid var(--lb-separator);
-  font-size: var(--lb-body-meta);
-  color: var(--lb-metadata-low-contrast);
+  font-size: var(--lb-body-small);
+  color: var(--lb-body-low-contrast);
+}
+
+/* The back-to-top button is fixed to the bottom right, and at the end of the
+   page it lands on top of the footer. Below the width where the footer text
+   stops clearing it, give the footer enough room underneath for the button to
+   sit in empty space instead of over a sentence. Measured: 7 characters were
+   covered at 360px and 13 at 768px before this. */
+@media (max-width: 64rem) {
+  .page-footer {
+    padding-bottom: calc(var(--lb-space-xl) + 3.75rem);
+  }
 }
 
 .page-footer p {
   max-width: 46rem;
+}
+
+/* ---------------------------------------------------------------- Closing */
+
+/* The page used to end on "Showing the top 40 of 1,120 words" and a legal line,
+   after tens of thousands of pixels. The four denominators are the frame for
+   everything above them, and this is the one place a reader who has scrolled
+   the whole way can check a figure against its denominator without going back
+   to the top. */
+.closing {
+  margin-top: var(--lb-space-4xl);
+  padding-top: var(--lb-space-xl);
+  border-top: var(--lb-border-thick) solid var(--lb-fill);
+  scroll-margin-top: calc(var(--section-nav-height) + var(--lb-space-lg));
+}
+
+.closing__heading {
+  font-family: var(--lb-font-serif);
+  font-size: var(--lb-heading-3);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--lb-heading);
+}
+
+.closing__lede {
+  margin-top: var(--lb-space-sm);
+  margin-bottom: var(--lb-space-lg);
+  max-width: 46rem;
+  font-size: var(--lb-body-medium);
+  color: var(--lb-body-low-contrast);
+}
+
+.closing__line {
+  margin-top: var(--lb-space-md);
+  max-width: 46rem;
+  font-size: var(--lb-body-small);
+  color: var(--lb-body-low-contrast);
+}
+
+/* ----------------------------------------------------------- Back to top */
+
+/* A plain link to the top of the document, so it works before the script runs
+   and keeps working if the script fails. app.js only decides when to show it. */
+.back-to-top {
+  position: fixed;
+  right: var(--lb-space-md);
+  bottom: var(--lb-space-md);
+  z-index: 6;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--lb-space-dense-sm);
+  min-height: 2.75rem;
+  padding: var(--lb-space-dense-lg) var(--lb-space-md);
+  border: var(--lb-border-thin) solid var(--lb-separator);
+  border-radius: var(--lb-radius-lg);
+  background: var(--lb-surface);
+  color: var(--lb-body-high-contrast);
+  font-size: var(--lb-body-small);
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.back-to-top:hover {
+  background: var(--lb-surface-hover);
+  color: var(--lb-heading);
 }
 
 /* ------------------------------------------------------------- Narrow screens */
@@ -1062,14 +1569,6 @@ main,
 
   .region__heading {
     font-size: var(--lb-heading-3);
-  }
-
-  .tile-grid {
-    grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
-  }
-
-  .people {
-    grid-template-columns: repeat(auto-fill, minmax(5.5rem, 1fr));
   }
 
   .stat__value {

@@ -1,0 +1,24 @@
+# What a person needs to work on this repository by hand.
+#
+# The weekly workflow installs requirements.txt and never this file. Install
+# both for local work:
+#
+#   python -m pip install -r requirements.txt -r requirements-dev.txt
+
+-r requirements.txt
+
+# Reads a local .env so a manual run picks up TMDB_API_KEY without exporting it.
+#
+# Both scripts that use it fall back to a no-op when it is missing, which is what
+# lets the workflow leave it out. Keep the floor at 1.2.2: earlier 1.2.x releases
+# follow a symlink when writing a key (GHSA-mf9w-mj56-hr94). This project only
+# ever reads, so it was never exposed, but there is no reason to install the
+# affected versions.
+python-dotenv>=1.2.2,<2
+
+# Test runner, installed ahead of the tests it will run.
+#
+# This repository has no tests yet. Running pytest collects nothing, prints
+# "no tests ran" and exits 5, which is why no workflow step calls it. It is
+# pinned here so that adding the first test file needs no change to this file.
+pytest>=8.4,<9

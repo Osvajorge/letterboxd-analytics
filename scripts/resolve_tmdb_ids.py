@@ -30,6 +30,7 @@ import httpx
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from lib.config import BASE_URL, DATA, HISTORY_FILE, REQUEST_TIMEOUT, USER_AGENT, ensure_dirs
+from lib.safe_http import ResponseTooLarge, read_text_and_status
 
 TMDB_IDS_FILE = DATA / "tmdb-ids.json"
 
@@ -65,18 +66,20 @@ def read_film_page(slug: str, client: httpx.Client) -> tuple[dict | None, bool]:
     failure is never recorded as "this film has no TMDB record".
     """
     try:
-        response = client.get(f"{BASE_URL}/film/{slug}/")
-    except httpx.HTTPError:
+        # read_text_and_status streams the page under a size budget and never
+        # reads the body of a non-200 answer at all.
+        status, html = read_text_and_status(client, f"{BASE_URL}/film/{slug}/")
+    except (httpx.HTTPError, ResponseTooLarge):
         return None, False
 
-    if response.status_code == 404:
+    if status == 404:
         # The film page is gone. That is an answer, though an unhelpful one.
         return NO_TMDB_RECORD, True
-    if response.status_code != 200:
+    if status != 200:
         return None, False
 
-    id_match = TMDB_ID_PATTERN.search(response.text)
-    type_match = TMDB_TYPE_PATTERN.search(response.text)
+    id_match = TMDB_ID_PATTERN.search(html)
+    type_match = TMDB_TYPE_PATTERN.search(html)
     if id_match is None:
         return NO_TMDB_RECORD, True
 

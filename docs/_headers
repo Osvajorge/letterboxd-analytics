@@ -1,0 +1,75 @@
+# Response headers for Cloudflare Pages.
+#
+# This is configuration, not page code: Pages reads it from the root of the
+# published directory, applies the rules, and never serves the file itself.
+#
+# The panel had no headers of its own and inherited only Cloudflare's defaults.
+# Every rule below was checked against what the page actually loads:
+#
+#   ./styles.css, which imports ./design-tokens.css   same origin
+#   ./app.js, a module, the only script                same origin
+#   ./data/stats.json, read with fetch()               same origin
+#   fonts.googleapis.com, one stylesheet               third party
+#   fonts.gstatic.com, the font files it pulls         third party
+#   image.tmdb.org, cast and crew photographs          third party
+#   letterboxd.com, ~200 outbound links                navigation only, not loaded
+#
+# There are no inline scripts, no inline event handlers and no
+# other origin anywhere in the page. s.ltrbxd.com appears once in
+# design-tokens.css as a comment recording where the palette was read from;
+# nothing fetches it, so it is deliberately not allowed here.
+
+/*
+  Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://image.tmdb.org; connect-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=(), usb=()
+  Strict-Transport-Security: max-age=31536000
+
+# Why each one is here.
+#
+# Content-Security-Policy
+#   script-src 'self' is the rule that matters. The page builds every element
+#   with textContent and createTextNode and holds no innerHTML, so a hostile
+#   film title from TMDB is already inert text. This is what that protection
+#   falls back on the day somebody adds one innerHTML to a renderer, or the day
+#   the Google Fonts origin serves something it should not. Note the omission:
+#   'unsafe-inline' is NOT in script-src, and adding it would give up the whole
+#   point. Keep scripts in app.js. An inline <script> in index.html will not run
+#   under this policy.
+#
+#   'unsafe-inline' IS in style-src, on purpose. Inline CSS on this page buys an
+#   attacker defacement at most: there is no form, no session, no cookie and no
+#   private value in the DOM, and a compromise of the Google Fonts origin would
+#   supply arbitrary CSS anyway. Meanwhile a strict style-src silently strips a
+#   page that has no build step to catch it, on a Monday, unattended. The trade
+#   is not worth it in that direction. (The word-cloud sizing in app.js assigns
+#   through element.style, which CSP does not govern either way.)
+#
+#   default-src 'none' means anything not listed is refused rather than
+#   inherited, so a new kind of subresource has to be added here deliberately.
+#
+# frame-ancestors 'none' and X-Frame-Options: DENY
+#   The live site could be framed by any origin, which makes it usable as
+#   borrowed credibility inside someone else's page. frame-ancestors is the rule
+#   modern browsers honour; X-Frame-Options is the older one and is kept for the
+#   browsers that still only read that. frame-ancestors is also the reason this
+#   is a headers file and not a <meta> tag in index.html: delivered through a
+#   meta tag, that directive is ignored and the framing stays possible.
+#
+# X-Content-Type-Options and Referrer-Policy
+#   Cloudflare already sends both. They are restated so that adding this file
+#   cannot quietly drop them.
+#
+# Permissions-Policy
+#   The panel asks for none of these. This denies them ahead of time, so a
+#   script that should not be running cannot prompt the reader for a location or
+#   a camera in this page's name.
+#
+# Strict-Transport-Security
+#   Redundant today and kept anyway: the whole .dev top-level domain is on the
+#   HSTS preload list, so browsers already refuse plaintext to pages.dev. It
+#   starts doing real work the day this panel moves to a custom domain on
+#   another suffix. No includeSubDomains and no preload, because neither is this
+#   site's to assert.

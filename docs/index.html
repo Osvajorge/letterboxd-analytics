@@ -6,6 +6,28 @@
 <title>Letterboxd stats for osvajorge</title>
 <meta name="description" content="A self-hosted rebuild of the Letterboxd stats panel, generated once a week from a public RSS feed and TMDB metadata.">
 <meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://letterboxd-analytics.pages.dev/">
+
+<!-- The three rating dots. Without an icon Cloudflare Pages answered
+     /favicon.ico with the index page and the tab showed a blank document
+     glyph. It is a file rather than a data: URI because the site's own
+     Content-Security-Policy allows img-src 'self' and not data:, so an
+     inline icon was blocked in production while working locally, where
+     no CSP is sent. Colours are the brand accents from design-tokens.css. -->
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+
+<!-- A link to this page is meant to be pasted into a thread, so it says what it
+     is when it gets there. There is no og:image: generating one needs a step in
+     the weekly action, and a tag pointing at a file that does not exist is
+     worse than no tag. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Letterboxd stats, rebuilt">
+<meta property="og:title" content="Letterboxd stats for osvajorge">
+<meta property="og:url" content="https://letterboxd-analytics.pages.dev/">
+<meta property="og:description" content="The Letterboxd Pro stats panel, rebuilt as a static page and rebuilt again every week from a public RSS feed and TMDB metadata.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Letterboxd stats for osvajorge">
+<meta name="twitter:description" content="The Letterboxd Pro stats panel, rebuilt as a static page and rebuilt again every week from a public RSS feed and TMDB metadata.">
 
 <!-- Letterboxd's own typefaces are commercially licensed and are not used here.
      These are the open substitutes named in docs/design-tokens.css. -->
@@ -30,7 +52,15 @@
 
 <nav class="section-nav" aria-label="Jump to a section">
   <div class="layout">
-    <ul class="section-nav__list">
+    <!-- Hidden until app.js reveals it. With scripting off there is nothing to
+         open the list again, so the list stays where it is and this button
+         never appears. -->
+    <button class="section-nav__toggle" id="section-nav-toggle" type="button"
+            aria-expanded="false" aria-controls="section-nav-list" hidden>
+      <span class="section-nav__toggle-icon" aria-hidden="true"></span>
+      Sections
+    </button>
+    <ul class="section-nav__list" id="section-nav-list">
       <li class="section-nav__label">Panel</li>
       <li><a href="#totals">Totals</a></li>
       <li><a href="#by-year">By year</a></li>
@@ -120,6 +150,7 @@
 
     <section class="section" id="genres-countries-languages" aria-labelledby="genres-countries-languages-heading">
       <h3 class="section__heading" id="genres-countries-languages-heading">Genres, countries and languages</h3>
+      <p class="coverage-note" id="genres-countries-languages-coverage" hidden></p>
 
       <div class="block">
         <h4 class="block__heading">Genres</h4>
@@ -167,24 +198,28 @@
     <section class="section" id="cast" aria-labelledby="cast-heading">
       <h3 class="section__heading" id="cast-heading">Cast</h3>
       <p class="section__lede">The actors who turn up most often across the watch history.</p>
+      <p class="coverage-note" id="cast-coverage" hidden></p>
       <div id="cast-list"></div>
     </section>
 
     <section class="section" id="directors" aria-labelledby="directors-heading">
       <h3 class="section__heading" id="directors-heading">Directors</h3>
       <p class="section__lede">Films seen per director, with the average rating given to them.</p>
+      <p class="coverage-note" id="directors-coverage" hidden></p>
       <div id="directors-list"></div>
     </section>
 
     <section class="section" id="studios" aria-labelledby="studios-heading">
       <h3 class="section__heading" id="studios-heading">Studios</h3>
       <p class="section__lede">Production companies credited on the films watched, most first.</p>
+      <p class="coverage-note" id="studios-coverage" hidden></p>
       <div id="studios-chart"></div>
     </section>
 
     <section class="section" id="collections" aria-labelledby="collections-heading">
       <h3 class="section__heading" id="collections-heading">Collections</h3>
       <p class="section__lede">Film series where at least one part has been watched.</p>
+      <p class="coverage-note" id="collections-coverage" hidden></p>
       <div id="collections-chart"></div>
     </section>
 
@@ -198,8 +233,11 @@
       <h3 class="section__heading" id="countries-ranked-heading">Countries ranked</h3>
       <p class="section__lede">
         A ranked table, not a map. Drawing real borders needs a geographic boundary file,
-        and this site ships no such file, so the same figures are shown as proportional bars.
+        and this site ships no such file. So this is the complete list rather than a top
+        twenty, and each country carries its share of the library, which is the question a
+        map answers and the chart under "Genres, countries and languages" does not.
       </p>
+      <p class="coverage-note" id="countries-ranked-coverage" hidden></p>
       <div id="countries-ranked-chart"></div>
     </section>
   </section>
@@ -233,8 +271,10 @@
       <h3 class="section__heading" id="contrarian-heading">Hot takes</h3>
       <p class="section__lede">
         The films where your rating and the crowd's part company by the widest margin.
-        Both ratings are shown out of five stars.
+        Both ratings are shown on the same 0.5 to 5 axis, and the line between them is
+        the size of the disagreement.
       </p>
+      <p class="coverage-note" id="contrarian-coverage" hidden></p>
 
       <div class="block">
         <h4 class="block__heading">Against the crowd</h4>
@@ -293,7 +333,10 @@
 
       <div class="block">
         <h4 class="block__heading">Viewing heatmap</h4>
-        <p class="block__lede">One square per day. Darker squares are days with no dated entry.</p>
+        <p class="block__lede">
+          One square per day. A grey square is a day with no dated entry; the greener the
+          square, the more films that day carries.
+        </p>
         <div id="heatmap"></div>
       </div>
     </section>
@@ -318,6 +361,7 @@
 
       <div class="block">
         <h4 class="block__heading">Rating against runtime</h4>
+        <p class="coverage-note" id="rating-vs-runtime-coverage" hidden></p>
         <div id="rating-vs-runtime"></div>
       </div>
     </section>
@@ -325,6 +369,7 @@
     <section class="section" id="reach" aria-labelledby="reach-heading">
       <h3 class="section__heading" id="reach-heading">Your reach</h3>
       <p class="section__lede">How well known, how old, and how long the films you watch are.</p>
+      <p class="coverage-note" id="reach-coverage" hidden></p>
 
       <div class="block">
         <h4 class="block__heading">Obscurity</h4>
@@ -372,6 +417,7 @@
         Directors you are kind to, directors you are not, and the faces and hands
         you keep seeing without noticing.
       </p>
+      <p class="coverage-note" id="extras-people-coverage" hidden></p>
 
       <div class="block">
         <h4 class="block__heading">Lucky and unlucky directors</h4>
@@ -413,7 +459,29 @@
     </section>
   </section>
 
+  <!-- ==================================================== How it was counted -->
+
+  <section class="closing" id="closing" aria-labelledby="closing-heading">
+    <h2 class="closing__heading" id="closing-heading">What this page counted</h2>
+    <p class="closing__lede">
+      Four denominators run through everything above. Every figure on the page is counted
+      from one of them, and every section that is not counted from the whole library says
+      which one it uses.
+    </p>
+    <!-- The counts themselves come from stats.coverage, written by app.js, because a
+         number typed into the markup would go stale the first time the pipeline ran. -->
+    <div id="closing-summary"></div>
+    <p class="closing__line" id="closing-profile"></p>
+  </section>
+
 </main>
+
+<!-- Revealed by app.js once the page header has scrolled away. It is a plain link
+     to the top of the document, so it works before the script runs and keeps
+     working if the script fails. -->
+<a class="back-to-top" id="back-to-top" href="#main" hidden>
+  <span aria-hidden="true">&#8593;</span> Back to top
+</a>
 
 <footer class="page-footer">
   <div class="layout">

@@ -1,9 +1,23 @@
 # Secrets
-.env
+#
+# The glob covers .env.local, .env.production and every other spelling, because
+# the one that leaks is always the spelling nobody thought to list. .env.example
+# is deliberately allowed back: it holds names and no values.
+.env*
+!.env.example
 
-# Raw export archives: these contain your full account data
+# Raw export archives: these contain your full account data.
+#
+# data/raw/ is where the export is meant to be unzipped, but nothing forces that
+# and an export unzipped anywhere else is the same data. The CSV rule is what
+# actually protects it: diary.csv, reviews.csv, watchlist.csv and, above all,
+# profile.csv, which holds the account's email address and which backfill.py
+# refuses to read for exactly that reason. No CSV belongs in this repository.
 data/raw/
+*.csv
 *.zip
+*.tar.gz
+*.tgz
 
 # Caches
 data/cache/tmdb.sqlite
@@ -11,6 +25,15 @@ __pycache__/
 *.py[cod]
 .venv/
 venv/
+.pytest_cache/
+
+# Wrangler's local state.
+#
+# Not build output: it stores the Cloudflare account id and the account's
+# display name, which is the owner's email address. Deploying once writes it,
+# and it was committed that way. The weekly workflow passes the account id as a
+# secret and needs none of this.
+.wrangler/
 
 # OS
 .DS_Store

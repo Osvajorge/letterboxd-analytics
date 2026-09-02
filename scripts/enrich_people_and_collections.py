@@ -99,7 +99,19 @@ from pathlib import Path
 from typing import Any, Callable, Iterable
 
 import httpx
-from dotenv import load_dotenv
+
+try:
+    from dotenv import load_dotenv
+except ImportError:  # pragma: no cover - depends on which requirements file ran
+    def load_dotenv(*_args: object, **_kwargs: object) -> None:
+        """Stand in for python-dotenv when it is not installed.
+
+        Reading a local .env is a convenience for running this script by hand,
+        so python-dotenv lives in requirements-dev.txt. GitHub Actions passes
+        TMDB_API_KEY straight into the step's environment and no .env exists
+        there, so the weekly run installs neither the package nor anything it
+        depends on. There is nothing to read and nothing to do.
+        """
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from lib.config import (
@@ -127,6 +139,15 @@ DELAY_BETWEEN_REQUESTS = 0.25
 
 MAX_ATTEMPTS_PER_REQUEST = 3
 FALLBACK_RETRY_AFTER_SECONDS = 5.0
+
+# The longest a rate limit may park this run.
+#
+# Retry-After is a number chosen by whatever answered the request, and it is
+# handed straight to time.sleep. A real TMDB backoff is seconds; "999999999" is
+# eleven thousand days, and three of those per request is a run that never ends
+# and never says why. Two minutes is longer than TMDB has ever asked for and
+# short enough that a job timeout is not the only thing that ends the wait.
+MAX_RETRY_AFTER_SECONDS = 120.0
 
 # When to decide TMDB is down rather than one record being awkward.
 #
@@ -333,12 +354,24 @@ def build_authentication(credential: str) -> tuple[dict[str, str], dict[str, str
 
 
 def retry_after_seconds(response: httpx.Response) -> float:
-    """Read how long TMDB asked us to wait after a rate limit."""
+    """Read how long TMDB asked us to wait after a rate limit, within reason.
+
+    The answer is clamped at both ends. The floor keeps a busy loop from forming
+    on a zero. The ceiling matters more: without it the header decides how long
+    this process sleeps, and a header is not something this pipeline controls.
+    """
     try:
-        return max(1.0, float(response.headers.get("Retry-After", "")))
+        asked = float(response.headers.get("Retry-After", ""))
     except ValueError:
         # The header is absent or is an HTTP date rather than a count of seconds.
         return FALLBACK_RETRY_AFTER_SECONDS
+
+    if asked != asked:
+        # "nan" parses as a float and then compares false against everything, so
+        # it would slip past both bounds below.
+        return FALLBACK_RETRY_AFTER_SECONDS
+
+    return min(max(1.0, asked), MAX_RETRY_AFTER_SECONDS)
 
 
 def request_json(

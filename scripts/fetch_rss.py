@@ -19,6 +19,7 @@ import httpx
 
 sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parent))
 from lib.config import BASE_URL, LETTERBOXD_USER, REQUEST_TIMEOUT, USER_AGENT
+from lib.safe_http import read_text
 
 NAMESPACES = {
     "letterboxd": "https://letterboxd.com",
@@ -31,14 +32,12 @@ FILM_SLUG_PATTERN = re.compile(r"/film/([^/]+)/?")
 def fetch_feed(username: str = LETTERBOXD_USER) -> str:
     """Download the raw RSS document for one member."""
     url = f"{BASE_URL}/{username}/rss/"
-    response = httpx.get(
-        url,
+    with httpx.Client(
         timeout=REQUEST_TIMEOUT,
         follow_redirects=True,
         headers={"User-Agent": USER_AGENT},
-    )
-    response.raise_for_status()
-    return response.text
+    ) as client:
+        return read_text(client, url)
 
 
 def _text(item: ET.Element, path: str) -> str | None:
@@ -48,12 +47,53 @@ def _text(item: ET.Element, path: str) -> str | None:
     return node.text.strip() or None
 
 
+class UnsafeFeed(RuntimeError):
+    """Raised when the feed carries markup a real Letterboxd feed never does."""
+
+
+# Everything the XML prolog may legally hold before the root element, other than
+# a document type declaration: whitespace, processing instructions, comments.
+PROLOG_FILLER_PATTERN = re.compile(r"\s+|<\?.*?\?>|<!--.*?-->", re.DOTALL)
+
+
+def refuse_document_type_declaration(xml_text: str) -> None:
+    """Stop before parsing a feed that declares its own XML entities.
+
+    An entity is declared inside a document type declaration and nowhere else,
+    and expanding one is how a 10 KB document becomes 10 MB of text: four nested
+    entities multiply by a thousand per level. Python's parser already refuses an
+    entity that points at a file or a URL, so expansion is the whole risk, and a
+    genuine RSS feed carries no document type declaration at all.
+
+    Only the prolog is examined. A declaration is legal nowhere else, so the
+    words "<!DOCTYPE" inside a film title or a review are just text and are left
+    alone.
+    """
+    position = 1 if xml_text.startswith("\ufeff") else 0
+    while True:
+        filler = PROLOG_FILLER_PATTERN.match(xml_text, position)
+        if filler is None:
+            break
+        position = filler.end()
+
+    # Every comment was skipped above, so the only other thing that can open
+    # with "<!" here is the declaration this refuses.
+    if xml_text.startswith("<!", position):
+        raise UnsafeFeed(
+            "The feed opens with a document type declaration. A Letterboxd feed "
+            "never carries one, and it is how a small feed expands into enough "
+            "text to exhaust this machine. Nothing was read from it."
+        )
+
+
 def parse_feed(xml_text: str) -> list[dict[str, Any]]:
     """Turn the RSS document into diary entries.
 
     The feed mixes diary entries with list publications. Only items that carry a
     watched date are diary entries, so everything else is dropped.
     """
+    refuse_document_type_declaration(xml_text)
+
     root = ET.fromstring(xml_text)
     entries: list[dict[str, Any]] = []
 

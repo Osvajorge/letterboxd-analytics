@@ -46,31 +46,57 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
 
-    env:
-      # The only secret this pipeline uses.
-      #
-      # There is deliberately no Letterboxd credential here, and adding one would
-      # be a step backwards. The RSS feed and the curated list pages are public,
-      # so the weekly run needs no account access at all. The one-time backfill
-      # reads an export archive on the owner's own machine and never runs here.
-      TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+    # What the publish job below needs in order to decide whether to run, and
+    # exactly which commit to publish.
+    outputs:
+      panel-changed: ${{ steps.commit.outputs.panel-changed }}
+      commit-sha: ${{ steps.commit.outputs.commit-sha }}
+
+    # TMDB_API_KEY is deliberately NOT declared at job level.
+    #
+    # A job-level `env` block puts the secret into the environment of every step,
+    # including `pip install`, which runs code downloaded from PyPI. Only three
+    # steps below need the key, so only those three carry it.
+    #
+    # There is also deliberately no Letterboxd credential, and adding one would
+    # be a step backwards. The RSS feed and the curated list pages are public, so
+    # the weekly run needs no account access at all. The one-time backfill reads
+    # an export archive on the owner's own machine and never runs here.
 
     steps:
+      # Every action is pinned to a full commit SHA rather than a tag.
+      #
+      # A tag is a movable pointer: whoever owns an action can retag v4 onto any
+      # commit, and every workflow asking for v4 runs that new code on its next
+      # run, with no change here and no review. That is not hypothetical. In
+      # March 2025 tj-actions/changed-files had every version tag moved onto a
+      # commit that printed CI secrets into the build log, and everyone pinned by
+      # tag picked it up automatically. Checkout is step one, so it runs before
+      # this repository's own code and before the key check below.
+      #
+      # The release each SHA belongs to is named beside it. To upgrade, look up
+      # the SHA of the new release and change the SHA and the comment together.
       - name: Check out the repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
 
       - name: Set up Python 3.12
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: "3.12"
           cache: pip
 
       - name: Install dependencies
+        # requirements.txt is the runtime list and holds one package, httpx. The
+        # test runner and python-dotenv moved to requirements-dev.txt: neither
+        # does anything in Actions, and every package installed here is more
+        # third-party code running inside the job that handles the secret.
         run: python -m pip install --disable-pip-version-check --requirement requirements.txt
 
       - name: Confirm the TMDB key is present
         # Failing here costs seconds. Failing later, inside the TMDB pass, costs
         # the whole RSS and list run first and reports a bare 401.
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
         run: |
           if [ -z "${TMDB_API_KEY}" ]; then
             echo "TMDB_API_KEY is empty, so film metadata cannot be looked up." >&2
@@ -188,7 +214,7 @@ jobs:
         run: python scripts/fetch_lists.py --force
 
       - name: Restore the TMDB database saved by the last successful run
-        uses: actions/cache@v4
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
         with:
           path: data/cache/tmdb.sqlite
           # data/cache/tmdb.sqlite is git-ignored, so the checkout cannot supply
@@ -211,6 +237,8 @@ jobs:
 
       - name: Look up film metadata on TMDB
         # Only films the restored database does not already hold are fetched.
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
         run: python scripts/enrich_tmdb.py
 
       - name: Size the collections and the director filmographies
@@ -230,6 +258,8 @@ jobs:
         # A record already cached is never asked for a second time, so a normal
         # week costs no requests here. The cache holds 200 collection sizes and
         # 160 director filmographies today.
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
         run: python scripts/enrich_people_and_collections.py
 
       - name: Build the site data file
@@ -371,6 +401,7 @@ jobs:
           PYTHON
 
       - name: Commit the rebuilt data, but only when it changed
+        id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -398,27 +429,27 @@ jobs:
           # changes nothing.
           if git diff --cached --quiet; then
             echo "The stats, the history, the resolved ids and the curated lists are all unchanged. Nothing to commit."
+            echo "panel-changed=false" >> "${GITHUB_OUTPUT}"
             exit 0
           fi
 
           git commit --message "Refresh stats for $(date -u +%Y-%m-%d)"
           git push
 
-      - name: Publish the panel to Cloudflare Pages
-        # The commit step above stops the job at exit 0 when nothing changed, so
-        # reaching this step means the panel is genuinely new.
-        #
-        # This runs only when CLOUDFLARE_API_TOKEN is set. Without it the weekly
-        # refresh still commits the rebuilt data and the panel simply waits for a
-        # manual deploy, which is a working state rather than a broken one. To
-        # turn it on, create a token with the "Cloudflare Pages: Edit" permission
-        # and add it, plus CLOUDFLARE_ACCOUNT_ID, to this repository's secrets.
-        if: env.CLOUDFLARE_API_TOKEN != ''
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        run: |
-          npx --yes wrangler@4 pages deploy docs \
-            --project-name letterboxd-analytics \
-            --branch main \
-            --commit-dirty=true
+          # Name the exact commit rather than letting the publish job resolve
+          # the branch again. A branch tip is whatever it points at by the time
+          # something reads it; this is the panel this run actually checked.
+          echo "panel-changed=true" >> "${GITHUB_OUTPUT}"
+          echo "commit-sha=$(git rev-parse HEAD)" >> "${GITHUB_OUTPUT}"
+
+# There is no deploy job here on purpose.
+#
+# The Cloudflare Pages project is connected to this repository, so Cloudflare
+# builds and publishes docs/ on every push to main, including the push this
+# workflow makes. Adding a deploy step here would publish the same commit twice
+# and would need a Cloudflare API token this project does not otherwise want.
+#
+# A reviewer caught the version that did exist gating its deploy on the data
+# having changed, which meant a change to docs/ alone was never published: the
+# panel went stale behind a green tick. Git-connected deploys cannot have that
+# bug, because the trigger is the push rather than a judgement about the push.
