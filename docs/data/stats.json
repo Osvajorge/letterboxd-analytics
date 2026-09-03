@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-28",
+  "generated_at": "2026-09-03",
   "username": "osvajorge",
   "totals": {
     "films": 827,
@@ -28,8 +28,8 @@
     "collections": 200,
     "world_map": 49,
     "extras.director_completeness": 160,
-    "extras.lucky_director": 9,
-    "extras.unlucky_director": 9,
+    "extras.lucky_director": 22,
+    "extras.unlucky_director": 22,
     "extras.contrarian_index.hotter_than_crowd": 331,
     "extras.contrarian_index.colder_than_crowd": 452,
     "extras.obscurity.most_obscure": 789,
@@ -2921,7 +2921,7 @@
     "rewatch_rate": 0.014,
     "watchlist": {
       "size": 1044,
-      "median_age_days": 1130,
+      "median_age_days": 1136,
       "conversion_rate": 0.018,
       "estimated_date_share": 0.0
     },
@@ -4895,9 +4895,29 @@
     },
     "lucky_director": [
       {
+        "name": "Robert Eggers",
+        "films": 4,
+        "average_rating": 4.88
+      },
+      {
+        "name": "Alejandro G. Iñárritu",
+        "films": 4,
+        "average_rating": 4.62
+      },
+      {
         "name": "Wong Kar-Wai",
         "films": 5,
         "average_rating": 4.6
+      },
+      {
+        "name": "Park Chan-wook",
+        "films": 4,
+        "average_rating": 4.38
+      },
+      {
+        "name": "Steven Spielberg",
+        "films": 4,
+        "average_rating": 4.38
       },
       {
         "name": "Denis Villeneuve",
@@ -4920,6 +4940,11 @@
         "average_rating": 4.27
       },
       {
+        "name": "Ridley Scott",
+        "films": 4,
+        "average_rating": 4.12
+      },
+      {
         "name": "Matthew Vaughn",
         "films": 5,
         "average_rating": 4.1
@@ -4930,21 +4955,91 @@
         "average_rating": 4.06
       },
       {
+        "name": "Chad Stahelski",
+        "films": 4,
+        "average_rating": 4.0
+      },
+      {
+        "name": "Gore Verbinski",
+        "films": 4,
+        "average_rating": 4.0
+      },
+      {
+        "name": "Guillermo del Toro",
+        "films": 4,
+        "average_rating": 4.0
+      },
+      {
         "name": "Hayao Miyazaki",
         "films": 8,
         "average_rating": 3.94
       },
       {
+        "name": "Alfonso Cuarón",
+        "films": 4,
+        "average_rating": 3.88
+      },
+      {
         "name": "Wes Anderson",
         "films": 8,
         "average_rating": 3.88
+      },
+      {
+        "name": "Edgar Wright",
+        "films": 4,
+        "average_rating": 3.75
+      },
+      {
+        "name": "Paul Thomas Anderson",
+        "films": 4,
+        "average_rating": 3.75
+      },
+      {
+        "name": "Makoto Shinkai",
+        "films": 4,
+        "average_rating": 3.62
+      },
+      {
+        "name": "Todd Phillips",
+        "films": 4,
+        "average_rating": 3.62
       }
     ],
     "unlucky_director": [
       {
+        "name": "Robert Rodriguez",
+        "films": 4,
+        "average_rating": 1.75
+      },
+      {
+        "name": "Paul W. S. Anderson",
+        "films": 4,
+        "average_rating": 2.12
+      },
+      {
+        "name": "Chris Columbus",
+        "films": 4,
+        "average_rating": 2.38
+      },
+      {
         "name": "David Yates",
         "films": 7,
         "average_rating": 2.5
+      },
+      {
+        "name": "Justin Lin",
+        "films": 4,
+        "average_rating": 2.62
+      },
+      {
+        "name": "Francis Lawrence",
+        "films": 4,
+        "average_rating": 2.88
+      },
+      {
+        "name": "Trey Parker",
+        "films": 4,
+        "average_rating": 2.88
       },
       {
         "name": "Zack Snyder",
@@ -4952,9 +5047,39 @@
         "average_rating": 3.08
       },
       {
+        "name": "Christopher Miller",
+        "films": 4,
+        "average_rating": 3.12
+      },
+      {
+        "name": "Luc Besson",
+        "films": 4,
+        "average_rating": 3.12
+      },
+      {
+        "name": "Phil Lord",
+        "films": 4,
+        "average_rating": 3.12
+      },
+      {
         "name": "Antoine Fuqua",
         "films": 5,
         "average_rating": 3.2
+      },
+      {
+        "name": "Andrew Adamson",
+        "films": 4,
+        "average_rating": 3.25
+      },
+      {
+        "name": "Anthony Russo",
+        "films": 4,
+        "average_rating": 3.25
+      },
+      {
+        "name": "Joe Russo",
+        "films": 4,
+        "average_rating": 3.25
       },
       {
         "name": "David Fincher",
@@ -4967,6 +5092,11 @@
         "average_rating": 3.36
       },
       {
+        "name": "J.J. Abrams",
+        "films": 4,
+        "average_rating": 3.38
+      },
+      {
         "name": "John Lasseter",
         "films": 5,
         "average_rating": 3.4
@@ -4977,8 +5107,8 @@
         "average_rating": 3.4
       },
       {
-        "name": "Bryan Singer",
-        "films": 6,
+        "name": "James Gunn",
+        "films": 4,
         "average_rating": 3.5
       },
       {
@@ -6301,7 +6431,7 @@
     },
     "life_in_days": {
       "days": 63.0,
-      "would_end_on": "2026-10-30"
+      "would_end_on": "2026-11-05"
     },
     "extremes": {
       "shortest": {

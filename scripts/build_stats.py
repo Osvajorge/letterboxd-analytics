@@ -72,6 +72,17 @@ from lib.config import (
 # Films in the group that carry no rating do not count towards it.
 MINIMUM_FILMS_FOR_RATED_RANKING = 5
 
+# A person is not a genre, and the same floor asks a much harder question of
+# them. A genre holds hundreds of films, so five ratings is a thin slice of it.
+# A director holds a handful, so four films can be most of what they have made.
+#
+# On this library the shared floor of five hid the two directors the member
+# rates most consistently: Robert Eggers, four films averaging 4.88, and
+# Alejandro G. Inarritu, four averaging 4.62, both of whom would have led the
+# list they were excluded from. Four ratings is still a real sample, and unlike
+# a genre it sits against a filmography the panel already reports beside it.
+MINIMUM_RATED_FILMS_FOR_A_PERSON = 4
+
 # How many of a director's films the member must have seen before completeness
 # says anything. One out of thirty and one out of one both read as "seen once",
 # so a director seen once is left out. scripts/enrich_people_and_collections.py
@@ -1893,7 +1904,7 @@ def build_director_luck(
     rows: list[dict[str, Any]] = []
 
     for person_id, slugs in films_per_director.items():
-        summary = rated_average(slugs, rating_per_film)
+        summary = rated_average(slugs, rating_per_film, MINIMUM_RATED_FILMS_FOR_A_PERSON)
         if summary is None:
             continue
         person_average, rated_films = summary
@@ -2557,12 +2568,12 @@ WHAT_AN_EMPTY_MODULE_IS_WAITING_FOR: dict[str, str] = {
     ),
     "extras.lucky_director": (
         "needs rated films per director: run scripts/enrich_tmdb.py, and note "
-        f"that a director needs {MINIMUM_FILMS_FOR_RATED_RANKING} rated films to "
+        f"that a director needs {MINIMUM_RATED_FILMS_FOR_A_PERSON} rated films to "
         "be ranked"
     ),
     "extras.unlucky_director": (
         "needs rated films per director: run scripts/enrich_tmdb.py, and note "
-        f"that a director needs {MINIMUM_FILMS_FOR_RATED_RANKING} rated films to "
+        f"that a director needs {MINIMUM_RATED_FILMS_FOR_A_PERSON} rated films to "
         "be ranked"
     ),
     "extras.background_actor": FILLED_BY_CREDITS,
