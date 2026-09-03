@@ -1408,9 +1408,16 @@ function buildRatingRowMark(value, reference) {
 /**
  * Builds the key that names the ends of the rating axis and the average on it.
  *
- * It is drawn once above a list rather than once per row, for the same reason
- * the denominators are explained once under the totals: repeated on every row it
- * would be longer than the rows it explains.
+ * The axis and the mark are drawn above every rated list, because they are what
+ * makes each bar readable. The sentence explaining the mark is drawn ONCE, on
+ * the first list that carries one.
+ *
+ * The reason is the same one that keeps the key off every row: an explanation
+ * repeated seven times is no longer an explanation, it is furniture. Printed
+ * once it is read; printed seven times it is skipped, and it was crowding the
+ * seven charts it was supposed to serve. Readers who meet a later chart first
+ * still get the meaning, because the mark carries it as a tooltip and as its
+ * accessible name.
  */
 function buildRatingScaleKey(reference) {
   const key = build("p", "rating-scale");
@@ -1421,13 +1428,22 @@ function buildRatingScaleKey(reference) {
   if (referencePosition !== null) {
     const marker = build("span", "rating-scale__marker");
     marker.style.left = `${referencePosition}%`;
+    // Carries the meaning on every chart, so dropping the repeated sentence
+    // below costs a reader who arrives at a later chart nothing.
+    const markerMeaning = `Your own average, ${formatDecimal(reference, 2)}, over the films TMDB also scores.`;
+    marker.title = markerMeaning;
+    marker.setAttribute("role", "img");
+    marker.setAttribute("aria-label", markerMeaning);
     bar.append(marker);
   }
   key.append(bar);
 
   key.append(build("span", "rating-scale__end", RATING_SCALE_MAXIMUM.toFixed(1)));
 
-  if (referencePosition !== null) {
+  // Only the first key on the page spells the mark out. Everything rendered
+  // after it shows the same axis without repeating the sentence.
+  const alreadyExplained = document.querySelector(".rating-scale__note") !== null;
+  if (referencePosition !== null && !alreadyExplained) {
     key.append(
       build(
         "span",
