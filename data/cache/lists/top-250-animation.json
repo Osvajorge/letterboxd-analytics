@@ -83,12 +83,12 @@
       "name": "Wolfwalkers (2020)"
     },
     {
-      "slug": "marcel-the-shell-with-shoes-on-2021",
-      "name": "Marcel the Shell with Shoes On (2021)"
-    },
-    {
       "slug": "walle",
       "name": "WALL·E (2008)"
+    },
+    {
+      "slug": "marcel-the-shell-with-shoes-on-2021",
+      "name": "Marcel the Shell with Shoes On (2021)"
     },
     {
       "slug": "millennium-actress",
@@ -127,12 +127,12 @@
       "name": "The Wild Robot (2024)"
     },
     {
-      "slug": "azur-asmar-the-princes-quest",
-      "name": "Azur &amp; Asmar: The Princes&#039; Quest (2006)"
-    },
-    {
       "slug": "night-is-short-walk-on-girl",
       "name": "Night Is Short, Walk On Girl (2017)"
+    },
+    {
+      "slug": "azur-asmar-the-princes-quest",
+      "name": "Azur &amp; Asmar: The Princes&#039; Quest (2006)"
     },
     {
       "slug": "revolutionary-girl-utena-the-movie",
@@ -143,12 +143,12 @@
       "name": "Nausicaä of the Valley of the Wind (1984)"
     },
     {
-      "slug": "my-neighbor-totoro",
-      "name": "My Neighbor Totoro (1988)"
-    },
-    {
       "slug": "coraline",
       "name": "Coraline (2009)"
+    },
+    {
+      "slug": "my-neighbor-totoro",
+      "name": "My Neighbor Totoro (1988)"
     },
     {
       "slug": "klaus",
@@ -159,12 +159,12 @@
       "name": "Whisper of the Heart (1995)"
     },
     {
-      "slug": "my-life-as-a-zucchini",
-      "name": "My Life as a Zucchini (2016)"
-    },
-    {
       "slug": "vampire-hunter-d-bloodlust",
       "name": "Vampire Hunter D: Bloodlust (2000)"
+    },
+    {
+      "slug": "my-life-as-a-zucchini",
+      "name": "My Life as a Zucchini (2016)"
     },
     {
       "slug": "mind-game",
@@ -203,44 +203,44 @@
       "name": "Redline (2009)"
     },
     {
-      "slug": "princes-and-princesses",
-      "name": "Princes and Princesses (2000)"
-    },
-    {
       "slug": "the-wolf-house",
       "name": "The Wolf House (2018)"
     },
     {
-      "slug": "puss-in-boots-the-last-wish",
-      "name": "Puss in Boots: The Last Wish (2022)"
+      "slug": "princes-and-princesses",
+      "name": "Princes and Princesses (2000)"
     },
     {
       "slug": "cowboy-bebop-the-movie",
       "name": "Cowboy Bebop: The Movie (2001)"
     },
     {
-      "slug": "wolf-children",
-      "name": "Wolf Children (2012)"
+      "slug": "puss-in-boots-the-last-wish",
+      "name": "Puss in Boots: The Last Wish (2022)"
     },
     {
       "slug": "ponyo",
       "name": "Ponyo (2008)"
     },
     {
+      "slug": "wolf-children",
+      "name": "Wolf Children (2012)"
+    },
+    {
       "slug": "ne-zha-2",
       "name": "Ne Zha 2 (2025)"
     },
     {
-      "slug": "coco-2017",
-      "name": "Coco (2017)"
+      "slug": "in-this-corner-of-the-world",
+      "name": "In This Corner of the World (2016)"
     },
     {
       "slug": "the-wind-rises",
       "name": "The Wind Rises (2013)"
     },
     {
-      "slug": "in-this-corner-of-the-world",
-      "name": "In This Corner of the World (2016)"
+      "slug": "coco-2017",
+      "name": "Coco (2017)"
     },
     {
       "slug": "shrek",
@@ -259,20 +259,20 @@
       "name": "Tekkonkinkreet (2006)"
     },
     {
-      "slug": "toy-story",
-      "name": "Toy Story (1995)"
-    },
-    {
       "slug": "the-breadwinner",
       "name": "The Breadwinner (2017)"
     },
     {
-      "slug": "dou-kyu-sei-classmates",
-      "name": "Dou kyu sei – Classmates (2016)"
+      "slug": "toy-story",
+      "name": "Toy Story (1995)"
     },
     {
       "slug": "paprika-2006",
       "name": "Paprika (2006)"
+    },
+    {
+      "slug": "dou-kyu-sei-classmates",
+      "name": "Dou kyu sei – Classmates (2016)"
     },
     {
       "slug": "flow-2024",
@@ -319,6 +319,10 @@
       "name": "Mononoke the Movie: Chapter II - The Ashes of Rage (2025)"
     },
     {
+      "slug": "monicas-gang-in-an-adventure-in-time",
+      "name": "Monica&#039;s Gang in an Adventure in Time (2007)"
+    },
+    {
       "slug": "tangled-2010",
       "name": "Tangled (2010)"
     },
@@ -331,32 +335,28 @@
       "name": "Lilo &amp; Stitch (2002)"
     },
     {
-      "slug": "monicas-gang-in-an-adventure-in-time",
-      "name": "Monica&#039;s Gang in an Adventure in Time (2007)"
+      "slug": "toy-story-3",
+      "name": "Toy Story 3 (2010)"
     },
     {
       "slug": "the-incredibles",
       "name": "The Incredibles (2004)"
     },
     {
-      "slug": "toy-story-3",
-      "name": "Toy Story 3 (2010)"
+      "slug": "berserk-the-golden-age-arc-iii-the-advent",
+      "name": "Berserk: The Golden Age Arc III – The Advent (2013)"
     },
     {
       "slug": "porco-rosso",
       "name": "Porco Rosso (1992)"
     },
     {
-      "slug": "berserk-the-golden-age-arc-iii-the-advent",
-      "name": "Berserk: The Golden Age Arc III – The Advent (2013)"
+      "slug": "the-plague-dogs",
+      "name": "The Plague Dogs (1982)"
     },
     {
       "slug": "memories",
       "name": "Memories (1995)"
-    },
-    {
-      "slug": "the-plague-dogs",
-      "name": "The Plague Dogs (1982)"
     },
     {
       "slug": "the-castle-of-cagliostro",
@@ -375,12 +375,12 @@
       "name": "A Town Called Panic (2009)"
     },
     {
-      "slug": "when-the-wind-blows",
-      "name": "When the Wind Blows (1986)"
-    },
-    {
       "slug": "barefoot-gen",
       "name": "Barefoot Gen (1983)"
+    },
+    {
+      "slug": "when-the-wind-blows",
+      "name": "When the Wind Blows (1986)"
     },
     {
       "slug": "tower-2016",
@@ -391,52 +391,44 @@
       "name": "Finding Nemo (2003)"
     },
     {
-      "slug": "kirikou-and-the-sorceress",
-      "name": "Kirikou and the Sorceress (1998)"
+      "slug": "the-king-and-the-mockingbird",
+      "name": "The King and the Mockingbird (1980)"
     },
     {
       "slug": "mars-express",
       "name": "Mars Express (2023)"
     },
     {
+      "slug": "kirikou-and-the-sorceress",
+      "name": "Kirikou and the Sorceress (1998)"
+    },
+    {
       "slug": "the-pied-piper-1986",
       "name": "The Pied Piper (1986)"
-    },
-    {
-      "slug": "the-king-and-the-mockingbird",
-      "name": "The King and the Mockingbird (1980)"
-    },
-    {
-      "slug": "fantastic-planet",
-      "name": "Fantastic Planet (1973)"
     },
     {
       "slug": "on-gaku-our-sound",
       "name": "On-Gaku: Our Sound (2019)"
     },
     {
-      "slug": "liz-and-the-blue-bird",
-      "name": "Liz and the Blue Bird (2018)"
+      "slug": "fantastic-planet",
+      "name": "Fantastic Planet (1973)"
     },
     {
-      "slug": "evangelion-20-you-can-not-advance",
-      "name": "Evangelion: 2.0 You Can (Not) Advance (2009)"
+      "slug": "liz-and-the-blue-bird",
+      "name": "Liz and the Blue Bird (2018)"
     },
     {
       "slug": "the-lego-batman-movie",
       "name": "The Lego Batman Movie (2017)"
     },
     {
-      "slug": "guillermo-del-toros-pinocchio",
-      "name": "Guillermo del Toro&#039;s Pinocchio (2022)"
+      "slug": "evangelion-20-you-can-not-advance",
+      "name": "Evangelion: 2.0 You Can (Not) Advance (2009)"
     },
     {
       "slug": "the-princess-and-the-frog",
       "name": "The Princess and the Frog (2009)"
-    },
-    {
-      "slug": "jim-queen",
-      "name": "Jim Queen (2026)"
     },
     {
       "slug": "100-meters-2025",
@@ -447,12 +439,20 @@
       "name": "Alice (1988)"
     },
     {
-      "slug": "the-adventures-of-prince-achmed",
-      "name": "The Adventures of Prince Achmed (1926)"
+      "slug": "guillermo-del-toros-pinocchio",
+      "name": "Guillermo del Toro&#039;s Pinocchio (2022)"
     },
     {
       "slug": "junk-head",
       "name": "Junk Head (2017)"
+    },
+    {
+      "slug": "the-adventures-of-prince-achmed",
+      "name": "The Adventures of Prince Achmed (1926)"
+    },
+    {
+      "slug": "jim-queen",
+      "name": "Jim Queen (2026)"
     },
     {
       "slug": "waltz-with-bashir",
@@ -467,12 +467,12 @@
       "name": "The Nightmare Before Christmas (1993)"
     },
     {
-      "slug": "nimona-2023",
-      "name": "Nimona (2023)"
-    },
-    {
       "slug": "the-little-prince-2015",
       "name": "The Little Prince (2015)"
+    },
+    {
+      "slug": "nimona-2023",
+      "name": "Nimona (2023)"
     },
     {
       "slug": "kubo-and-the-two-strings",
@@ -487,12 +487,12 @@
       "name": "I Want to Eat Your Pancreas (2018)"
     },
     {
-      "slug": "the-spongebob-squarepants-movie",
-      "name": "The SpongeBob SquarePants Movie (2004)"
-    },
-    {
       "slug": "detective-conan-the-phantom-of-baker-street",
       "name": "Detective Conan: The Phantom of Baker Street (2002)"
+    },
+    {
+      "slug": "the-spongebob-squarepants-movie",
+      "name": "The SpongeBob SquarePants Movie (2004)"
     },
     {
       "slug": "treasure-planet",
@@ -515,20 +515,20 @@
       "name": "Spirit: Stallion of the Cimarron (2002)"
     },
     {
-      "slug": "the-emperors-new-groove",
-      "name": "The Emperor&#039;s New Groove (2000)"
-    },
-    {
       "slug": "ethel-ernest",
       "name": "Ethel &amp; Ernest (2016)"
     },
     {
-      "slug": "jin-roh-the-wolf-brigade",
-      "name": "Jin-Roh: The Wolf Brigade (1999)"
+      "slug": "the-emperors-new-groove",
+      "name": "The Emperor&#039;s New Groove (2000)"
     },
     {
       "slug": "kung-fu-panda",
       "name": "Kung Fu Panda (2008)"
+    },
+    {
+      "slug": "jin-roh-the-wolf-brigade",
+      "name": "Jin-Roh: The Wolf Brigade (1999)"
     },
     {
       "slug": "beauty-and-the-beast-1991",
@@ -543,20 +543,12 @@
       "name": "Corpse Bride (2005)"
     },
     {
-      "slug": "sword-of-the-stranger",
-      "name": "Sword of the Stranger (2007)"
-    },
-    {
       "slug": "the-illusionist-2010",
       "name": "The Illusionist (2010)"
     },
     {
-      "slug": "only-yesterday",
-      "name": "Only Yesterday (1991)"
-    },
-    {
-      "slug": "aladdin",
-      "name": "Aladdin (1992)"
+      "slug": "sword-of-the-stranger",
+      "name": "Sword of the Stranger (2007)"
     },
     {
       "slug": "maquia-when-the-promised-flower-blooms",
@@ -567,28 +559,36 @@
       "name": "The Twelve Tasks of Asterix (1976)"
     },
     {
+      "slug": "a-boy-named-charlie-brown",
+      "name": "A Boy Named Charlie Brown (1969)"
+    },
+    {
+      "slug": "only-yesterday",
+      "name": "Only Yesterday (1991)"
+    },
+    {
       "slug": "when-marnie-was-there",
       "name": "When Marnie Was There (2014)"
     },
     {
-      "slug": "the-boy-and-the-heron",
-      "name": "The Boy and the Heron (2023)"
-    },
-    {
-      "slug": "waking-life",
-      "name": "Waking Life (2001)"
-    },
-    {
-      "slug": "a-boy-named-charlie-brown",
-      "name": "A Boy Named Charlie Brown (1969)"
+      "slug": "aladdin",
+      "name": "Aladdin (1992)"
     },
     {
       "slug": "inu-oh",
       "name": "Inu-Oh (2021)"
     },
     {
+      "slug": "waking-life",
+      "name": "Waking Life (2001)"
+    },
+    {
       "slug": "anastasia-1997",
       "name": "Anastasia (1997)"
+    },
+    {
+      "slug": "the-boy-and-the-heron",
+      "name": "The Boy and the Heron (2023)"
     },
     {
       "slug": "no-dogs-or-italians-allowed",
@@ -599,20 +599,24 @@
       "name": "Fantasia (1940)"
     },
     {
-      "slug": "hotarubi-no-mori-e",
-      "name": "Hotarubi no Mori e (2011)"
-    },
-    {
-      "slug": "watership-down",
-      "name": "Watership Down (1978)"
-    },
-    {
       "slug": "mononoke-the-movie-the-phantom-in-the-rain",
       "name": "Mononoke the Movie: The Phantom in the Rain (2024)"
     },
     {
       "slug": "the-peasants-2023",
       "name": "The Peasants (2023)"
+    },
+    {
+      "slug": "watership-down",
+      "name": "Watership Down (1978)"
+    },
+    {
+      "slug": "hotarubi-no-mori-e",
+      "name": "Hotarubi no Mori e (2011)"
+    },
+    {
+      "slug": "the-girl-from-the-other-side-2022",
+      "name": "The Girl from the Other Side (2022)"
     },
     {
       "slug": "blood-tea-and-red-string",
@@ -623,6 +627,10 @@
       "name": "Ghost in the Shell 2: Innocence (2004)"
     },
     {
+      "slug": "the-boy-and-the-beast",
+      "name": "The Boy and the Beast (2015)"
+    },
+    {
       "slug": "the-girl-who-leapt-through-time",
       "name": "The Girl Who Leapt Through Time (2006)"
     },
@@ -631,20 +639,16 @@
       "name": "Wallace &amp; Gromit: The Curse of the Were-Rabbit (2005)"
     },
     {
-      "slug": "the-boy-and-the-beast",
-      "name": "The Boy and the Beast (2015)"
-    },
-    {
       "slug": "how-to-train-your-dragon-2",
       "name": "How to Train Your Dragon 2 (2014)"
     },
     {
-      "slug": "arco",
-      "name": "Arco (2025)"
-    },
-    {
       "slug": "the-legend-of-hei",
       "name": "The Legend of Hei (2019)"
+    },
+    {
+      "slug": "arco",
+      "name": "Arco (2025)"
     },
     {
       "slug": "the-secret-world-of-arrietty",
@@ -659,28 +663,28 @@
       "name": "South Park: Bigger, Longer &amp; Uncut (1999)"
     },
     {
-      "slug": "josep",
-      "name": "Josep (2020)"
-    },
-    {
       "slug": "the-lego-movie",
       "name": "The Lego Movie (2014)"
-    },
-    {
-      "slug": "the-secret-of-kells",
-      "name": "The Secret of Kells (2009)"
-    },
-    {
-      "slug": "the-secret-of-nimh",
-      "name": "The Secret of NIMH (1982)"
     },
     {
       "slug": "snoopy-come-home",
       "name": "Snoopy, Come Home (1972)"
     },
     {
+      "slug": "josep",
+      "name": "Josep (2020)"
+    },
+    {
       "slug": "big-hero-6",
       "name": "Big Hero 6 (2014)"
+    },
+    {
+      "slug": "the-secret-of-nimh",
+      "name": "The Secret of NIMH (1982)"
+    },
+    {
+      "slug": "the-secret-of-kells",
+      "name": "The Secret of Kells (2009)"
     },
     {
       "slug": "the-swallows-of-kabul",
@@ -691,12 +695,12 @@
       "name": "Transformers One (2024)"
     },
     {
-      "slug": "the-red-turtle",
-      "name": "The Red Turtle (2016)"
-    },
-    {
       "slug": "hercules-1997",
       "name": "Hercules (1997)"
+    },
+    {
+      "slug": "the-red-turtle",
+      "name": "The Red Turtle (2016)"
     },
     {
       "slug": "the-last-unicorn",
@@ -711,16 +715,16 @@
       "name": "Summer Wars (2009)"
     },
     {
+      "slug": "brother-bear",
+      "name": "Brother Bear (2003)"
+    },
+    {
       "slug": "chicken-for-linda",
       "name": "Chicken for Linda! (2023)"
     },
     {
       "slug": "ninja-scroll",
       "name": "Ninja Scroll (1993)"
-    },
-    {
-      "slug": "brother-bear",
-      "name": "Brother Bear (2003)"
     },
     {
       "slug": "anomalisa",
@@ -739,16 +743,8 @@
       "name": "Inside Out (2015)"
     },
     {
-      "slug": "the-mitchells-vs-the-machines",
-      "name": "The Mitchells vs. the Machines (2021)"
-    },
-    {
       "slug": "entergalactic",
       "name": "Entergalactic (2022)"
-    },
-    {
-      "slug": "i-lost-my-body",
-      "name": "I Lost My Body (2019)"
     },
     {
       "slug": "the-book-of-life-2014",
@@ -759,6 +755,18 @@
       "name": "Cosmic Princess Kaguya! (2026)"
     },
     {
+      "slug": "jack-and-the-cuckoo-clock-heart",
+      "name": "Jack and the Cuckoo-Clock Heart (2013)"
+    },
+    {
+      "slug": "the-mitchells-vs-the-machines",
+      "name": "The Mitchells vs. the Machines (2021)"
+    },
+    {
+      "slug": "i-lost-my-body",
+      "name": "I Lost My Body (2019)"
+    },
+    {
       "slug": "metropolis-2001",
       "name": "Metropolis (2001)"
     },
@@ -767,16 +775,12 @@
       "name": "Night on the Galactic Railroad (1985)"
     },
     {
-      "slug": "ruben-brandt-collector",
-      "name": "Ruben Brandt, Collector (2018)"
-    },
-    {
-      "slug": "jack-and-the-cuckoo-clock-heart",
-      "name": "Jack and the Cuckoo-Clock Heart (2013)"
-    },
-    {
       "slug": "alice-in-wonderland-1951",
       "name": "Alice in Wonderland (1951)"
+    },
+    {
+      "slug": "ruben-brandt-collector",
+      "name": "Ruben Brandt, Collector (2018)"
     },
     {
       "slug": "promare",
@@ -795,44 +799,48 @@
       "name": "Mad God (2021)"
     },
     {
-      "slug": "the-most-precious-of-cargoes",
-      "name": "The Most Precious of Cargoes (2024)"
-    },
-    {
       "slug": "josee-the-tiger-and-the-fish-2020",
       "name": "Josee, the Tiger and the Fish (2020)"
+    },
+    {
+      "slug": "the-most-precious-of-cargoes",
+      "name": "The Most Precious of Cargoes (2024)"
     },
     {
       "slug": "kung-fu-panda-2",
       "name": "Kung Fu Panda 2 (2011)"
     },
     {
-      "slug": "the-aristocats",
-      "name": "The Aristocats (1970)"
-    },
-    {
       "slug": "surfs-up",
       "name": "Surf&#039;s Up (2007)"
+    },
+    {
+      "slug": "the-aristocats",
+      "name": "The Aristocats (1970)"
     },
     {
       "slug": "zootopia",
       "name": "Zootopia (2016)"
     },
     {
-      "slug": "killer-bean-forever",
-      "name": "Killer Bean Forever (2008)"
-    },
-    {
-      "slug": "the-many-adventures-of-winnie-the-pooh",
-      "name": "The Many Adventures of Winnie the Pooh (1977)"
+      "slug": "in-waves",
+      "name": "In Waves (2026)"
     },
     {
       "slug": "atlantis-the-lost-empire",
       "name": "Atlantis: The Lost Empire (2001)"
     },
     {
-      "slug": "avatar-aang-the-last-airbender",
-      "name": "Avatar Aang: The Last Airbender (2026)"
+      "slug": "the-many-adventures-of-winnie-the-pooh",
+      "name": "The Many Adventures of Winnie the Pooh (1977)"
+    },
+    {
+      "slug": "killer-bean-forever",
+      "name": "Killer Bean Forever (2008)"
+    },
+    {
+      "slug": "the-fox-and-the-hound",
+      "name": "The Fox and the Hound (1981)"
     },
     {
       "slug": "megamind",
@@ -843,24 +851,16 @@
       "name": "Robin Hood (1973)"
     },
     {
-      "slug": "the-fox-and-the-hound",
-      "name": "The Fox and the Hound (1981)"
+      "slug": "time-masters",
+      "name": "Time Masters (1982)"
     },
     {
       "slug": "teenage-mutant-ninja-turtles-mutant-mayhem",
       "name": "Teenage Mutant Ninja Turtles: Mutant Mayhem (2023)"
     },
     {
-      "slug": "time-masters",
-      "name": "Time Masters (1982)"
-    },
-    {
       "slug": "rango",
       "name": "Rango (2011)"
-    },
-    {
-      "slug": "kirikou-and-the-wild-beasts",
-      "name": "Kirikou and the Wild Beasts (2005)"
     },
     {
       "slug": "the-hunchback-of-notre-dame-1996",
@@ -871,16 +871,16 @@
       "name": "From Up on Poppy Hill (2011)"
     },
     {
+      "slug": "kirikou-and-the-wild-beasts",
+      "name": "Kirikou and the Wild Beasts (2005)"
+    },
+    {
       "slug": "predator-killer-of-killers",
       "name": "Predator: Killer of Killers (2025)"
     },
     {
       "slug": "a-monster-in-paris",
       "name": "A Monster in Paris (2011)"
-    },
-    {
-      "slug": "in-waves",
-      "name": "In Waves (2026)"
     },
     {
       "slug": "one-hundred-and-one-dalmatians",
@@ -903,12 +903,16 @@
       "name": "The Animatrix (2003)"
     },
     {
+      "slug": "kirikou-and-the-men-and-women",
+      "name": "Kirikou and the Men and Women (2012)"
+    },
+    {
       "slug": "ultraman-rising",
       "name": "Ultraman: Rising (2024)"
     },
     {
-      "slug": "kirikou-and-the-men-and-women",
-      "name": "Kirikou and the Men and Women (2012)"
+      "slug": "avatar-aang-the-last-airbender",
+      "name": "Avatar Aang: The Last Airbender (2026)"
     },
     {
       "slug": "berserk-the-golden-age-arc-ii-the-battle-for-doldrey",
@@ -919,48 +923,48 @@
       "name": "Patlabor: The Movie (1989)"
     },
     {
-      "slug": "neo-tokyo",
-      "name": "Neo Tokyo (1987)"
-    },
-    {
       "slug": "evangelion-10-you-are-not-alone",
       "name": "Evangelion: 1.0 You Are (Not) Alone (2007)"
     },
     {
-      "slug": "moana-2016",
-      "name": "Moana (2016)"
-    },
-    {
-      "slug": "a-goofy-movie",
-      "name": "A Goofy Movie (1995)"
+      "slug": "neo-tokyo",
+      "name": "Neo Tokyo (1987)"
     },
     {
       "slug": "children-of-the-sea",
       "name": "Children of the Sea (2019)"
     },
     {
+      "slug": "a-goofy-movie",
+      "name": "A Goofy Movie (1995)"
+    },
+    {
       "slug": "the-case-of-hana-alice",
       "name": "The Case of Hana &amp; Alice (2015)"
     },
     {
-      "slug": "how-to-train-your-dragon-the-hidden-world",
-      "name": "How to Train Your Dragon: The Hidden World (2019)"
+      "slug": "rio-2096-a-story-of-love-and-fury",
+      "name": "Rio 2096: A Story of Love and Fury (2013)"
+    },
+    {
+      "slug": "moana-2016",
+      "name": "Moana (2016)"
     },
     {
       "slug": "weathering-with-you",
       "name": "Weathering with You (2019)"
     },
     {
-      "slug": "ride-your-wave",
-      "name": "Ride Your Wave (2019)"
-    },
-    {
       "slug": "the-colors-within",
       "name": "The Colors Within (2024)"
     },
     {
-      "slug": "rio-2096-a-story-of-love-and-fury",
-      "name": "Rio 2096: A Story of Love and Fury (2013)"
+      "slug": "ride-your-wave",
+      "name": "Ride Your Wave (2019)"
+    },
+    {
+      "slug": "how-to-train-your-dragon-the-hidden-world",
+      "name": "How to Train Your Dragon: The Hidden World (2019)"
     },
     {
       "slug": "the-little-mermaid",
@@ -983,24 +987,20 @@
       "name": "April and the Extraordinary World (2015)"
     },
     {
-      "slug": "hoppers",
-      "name": "Hoppers (2026)"
+      "slug": "the-peanuts-movie",
+      "name": "The Peanuts Movie (2015)"
+    },
+    {
+      "slug": "detective-conan-the-time-bombed-skyscraper",
+      "name": "Detective Conan: The Time Bombed Skyscraper (1997)"
     },
     {
       "slug": "a-letter-to-momo",
       "name": "A Letter to Momo (2011)"
     },
     {
-      "slug": "the-peanuts-movie",
-      "name": "The Peanuts Movie (2015)"
-    },
-    {
       "slug": "belladonna-of-sadness",
       "name": "Belladonna of Sadness (1973)"
-    },
-    {
-      "slug": "detective-conan-the-time-bombed-skyscraper",
-      "name": "Detective Conan: The Time Bombed Skyscraper (1997)"
     }
   ]
 }

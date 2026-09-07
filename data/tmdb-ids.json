@@ -43,6 +43,18 @@
     "tmdb_id": 187017,
     "tmdb_type": "movie"
   },
+  "28-days-later": {
+    "tmdb_id": 170,
+    "tmdb_type": "movie"
+  },
+  "28-weeks-later": {
+    "tmdb_id": 1562,
+    "tmdb_type": "movie"
+  },
+  "28-years-later": {
+    "tmdb_id": 1100988,
+    "tmdb_type": "movie"
+  },
   "30-days-of-night": {
     "tmdb_id": 4513,
     "tmdb_type": "movie"
@@ -207,6 +219,10 @@
     "tmdb_id": 424121,
     "tmdb_type": "movie"
   },
+  "arco": {
+    "tmdb_id": 804370,
+    "tmdb_type": "movie"
+  },
   "argo": {
     "tmdb_id": 68734,
     "tmdb_type": "movie"
@@ -277,6 +293,10 @@
   },
   "babylon-2022": {
     "tmdb_id": 615777,
+    "tmdb_type": "movie"
+  },
+  "backrooms-2026": {
+    "tmdb_id": 1083381,
     "tmdb_type": "movie"
   },
   "ballerina-2025": {
@@ -399,6 +419,10 @@
     "tmdb_id": 36647,
     "tmdb_type": "movie"
   },
+  "blade-runner": {
+    "tmdb_id": 78,
+    "tmdb_type": "movie"
+  },
   "blade-runner-2049": {
     "tmdb_id": 335984,
     "tmdb_type": "movie"
@@ -437,6 +461,10 @@
   },
   "broker-2022": {
     "tmdb_id": 736732,
+    "tmdb_type": "movie"
+  },
+  "bugonia": {
+    "tmdb_id": 701387,
     "tmdb_type": "movie"
   },
   "bullet-train": {
@@ -507,6 +535,10 @@
     "tmdb_id": 640,
     "tmdb_type": "movie"
   },
+  "caught-stealing": {
+    "tmdb_id": 1245993,
+    "tmdb_type": "movie"
+  },
   "chainsaw-man-2022": {
     "tmdb_id": null,
     "tmdb_type": null
@@ -570,6 +602,10 @@
   "cowboy-bebop": {
     "tmdb_id": null,
     "tmdb_type": null
+  },
+  "coyote-vs-acme": {
+    "tmdb_id": 1204680,
+    "tmdb_type": "movie"
   },
   "creed": {
     "tmdb_id": 312221,
@@ -939,6 +975,10 @@
     "tmdb_id": 359724,
     "tmdb_type": "movie"
   },
+  "forrest-gump": {
+    "tmdb_id": 13,
+    "tmdb_type": "movie"
+  },
   "frankenstein-2025": {
     "tmdb_id": 1062722,
     "tmdb_type": "movie"
@@ -1017,6 +1057,10 @@
   },
   "gone-girl": {
     "tmdb_id": 210577,
+    "tmdb_type": "movie"
+  },
+  "good-boy-2025": {
+    "tmdb_id": 1422096,
     "tmdb_type": "movie"
   },
   "good-luck-to-you-leo-grande": {
@@ -1423,6 +1467,10 @@
     "tmdb_id": 810693,
     "tmdb_type": "movie"
   },
+  "jujutsu-kaisen-execution": {
+    "tmdb_id": 1539104,
+    "tmdb_type": "movie"
+  },
   "jumper": {
     "tmdb_id": 8247,
     "tmdb_type": "movie"
@@ -1477,6 +1525,10 @@
   },
   "kingsman-the-secret-service": {
     "tmdb_id": 207703,
+    "tmdb_type": "movie"
+  },
+  "kirikou-and-the-sorceress": {
+    "tmdb_id": 21348,
     "tmdb_type": "movie"
   },
   "klaus": {
@@ -1683,6 +1735,10 @@
     "tmdb_id": 869626,
     "tmdb_type": "movie"
   },
+  "marty-supreme": {
+    "tmdb_id": 1317288,
+    "tmdb_type": "movie"
+  },
   "matilda": {
     "tmdb_id": 10830,
     "tmdb_type": "movie"
@@ -1809,6 +1865,14 @@
   },
   "no-one-will-save-you": {
     "tmdb_id": 820609,
+    "tmdb_type": "movie"
+  },
+  "no-other-choice-2025": {
+    "tmdb_id": 639988,
+    "tmdb_type": "movie"
+  },
+  "nobody-2": {
+    "tmdb_id": 1007734,
     "tmdb_type": "movie"
   },
   "nobody-2021": {
@@ -2013,6 +2077,10 @@
   },
   "prisoners": {
     "tmdb_id": 146233,
+    "tmdb_type": "movie"
+  },
+  "project-hail-mary": {
+    "tmdb_id": 687163,
     "tmdb_type": "movie"
   },
   "project-x-2012": {
@@ -2227,6 +2295,10 @@
     "tmdb_id": 335797,
     "tmdb_type": "movie"
   },
+  "sinners-2025": {
+    "tmdb_id": 1233413,
+    "tmdb_type": "movie"
+  },
   "sisu-2022": {
     "tmdb_id": 840326,
     "tmdb_type": "movie"
@@ -2399,6 +2471,10 @@
     "tmdb_id": 297761,
     "tmdb_type": "movie"
   },
+  "superman-2025": {
+    "tmdb_id": 1061474,
+    "tmdb_type": "movie"
+  },
   "surfs-up": {
     "tmdb_id": 9408,
     "tmdb_type": "movie"
@@ -2421,6 +2497,10 @@
   },
   "tarzan": {
     "tmdb_id": 37135,
+    "tmdb_type": "movie"
+  },
+  "taste-of-cherry": {
+    "tmdb_id": 30020,
     "tmdb_type": "movie"
   },
   "taxi-driver": {
@@ -2562,6 +2642,10 @@
   "the-dark-tower": {
     "tmdb_id": 353491,
     "tmdb_type": "movie"
+  },
+  "the-dark-wizard": {
+    "tmdb_id": null,
+    "tmdb_type": null
   },
   "the-day-after-tomorrow": {
     "tmdb_id": 435,
@@ -2875,6 +2959,10 @@
     "tmdb_id": 968051,
     "tmdb_type": "movie"
   },
+  "the-odyssey-2026": {
+    "tmdb_id": 1368337,
+    "tmdb_type": "movie"
+  },
   "the-outfit-2022": {
     "tmdb_id": 799876,
     "tmdb_type": "movie"
@@ -2967,6 +3055,10 @@
     "tmdb_id": 745,
     "tmdb_type": "movie"
   },
+  "the-smashing-machine-2025": {
+    "tmdb_id": 760329,
+    "tmdb_type": "movie"
+  },
   "the-social-dilemma": {
     "tmdb_id": 656690,
     "tmdb_type": "movie"
@@ -2989,6 +3081,10 @@
   },
   "the-summit-of-the-gods": {
     "tmdb_id": 712454,
+    "tmdb_type": "movie"
+  },
+  "the-super-mario-galaxy-movie": {
+    "tmdb_id": 1226863,
     "tmdb_type": "movie"
   },
   "the-theory-of-everything-2014": {
@@ -3087,6 +3183,10 @@
     "tmdb_id": 361743,
     "tmdb_type": "movie"
   },
+  "torrente-for-president": {
+    "tmdb_id": 1217584,
+    "tmdb_type": "movie"
+  },
   "totem-2023": {
     "tmdb_id": 958186,
     "tmdb_type": "movie"
@@ -3105,6 +3205,10 @@
   },
   "toy-story-4": {
     "tmdb_id": 301528,
+    "tmdb_type": "movie"
+  },
+  "train-dreams": {
+    "tmdb_id": 1241983,
     "tmdb_type": "movie"
   },
   "train-to-busan": {
@@ -3129,6 +3233,10 @@
   },
   "triple-frontier": {
     "tmdb_id": 399361,
+    "tmdb_type": "movie"
+  },
+  "tron-ares": {
+    "tmdb_id": 533533,
     "tmdb_type": "movie"
   },
   "tron-legacy": {
@@ -3175,6 +3283,10 @@
     "tmdb_id": 44018,
     "tmdb_type": "movie"
   },
+  "vampire-hunter-d": {
+    "tmdb_id": 9463,
+    "tmdb_type": "movie"
+  },
   "venom-2018": {
     "tmdb_id": 335983,
     "tmdb_type": "movie"
@@ -3189,6 +3301,10 @@
   },
   "war-dogs-2016": {
     "tmdb_id": 308266,
+    "tmdb_type": "movie"
+  },
+  "warfare": {
+    "tmdb_id": 1241436,
     "tmdb_type": "movie"
   },
   "watcher": {
