@@ -14,7 +14,7 @@
 # follow a symlink when writing a key (GHSA-mf9w-mj56-hr94). This project only
 # ever reads, so it was never exposed, but there is no reason to install the
 # affected versions.
-python-dotenv>=1.2.2,<2
+python-dotenv>=1.2.3,<2
 
 # Test runner, installed ahead of the tests it will run.
 #
