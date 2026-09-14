@@ -231,12 +231,12 @@
       "name": "Apocalypse Now (1979)"
     },
     {
-      "slug": "the-odyssey-2026",
-      "name": "The Odyssey (2026)"
-    },
-    {
       "slug": "memento",
       "name": "Memento (2000)"
+    },
+    {
+      "slug": "the-odyssey-2026",
+      "name": "The Odyssey (2026)"
     },
     {
       "slug": "avengers-infinity-war",
@@ -443,12 +443,12 @@
       "name": "North by Northwest (1959)"
     },
     {
-      "slug": "full-metal-jacket",
-      "name": "Full Metal Jacket (1987)"
-    },
-    {
       "slug": "i-swear",
       "name": "I Swear (2025)"
+    },
+    {
+      "slug": "full-metal-jacket",
+      "name": "Full Metal Jacket (1987)"
     },
     {
       "slug": "a-separation",
@@ -511,10 +511,6 @@
       "name": "The Truman Show (1998)"
     },
     {
-      "slug": "woman-in-the-dunes",
-      "name": "Woman in the Dunes (1964)"
-    },
-    {
       "slug": "downfall",
       "name": "Downfall (2004)"
     },
@@ -525,6 +521,10 @@
     {
       "slug": "la-confidential",
       "name": "L.A. Confidential (1997)"
+    },
+    {
+      "slug": "woman-in-the-dunes",
+      "name": "Woman in the Dunes (1964)"
     },
     {
       "slug": "dangal",
@@ -583,12 +583,12 @@
       "name": "The Kid (1921)"
     },
     {
-      "slug": "all-about-eve",
-      "name": "All About Eve (1950)"
-    },
-    {
       "slug": "the-sixth-sense",
       "name": "The Sixth Sense (1999)"
+    },
+    {
+      "slug": "all-about-eve",
+      "name": "All About Eve (1950)"
     },
     {
       "slug": "ran",
@@ -639,12 +639,12 @@
       "name": "Howl&#039;s Moving Castle (2004)"
     },
     {
-      "slug": "the-treasure-of-the-sierra-madre",
-      "name": "The Treasure of the Sierra Madre (1948)"
-    },
-    {
       "slug": "demon-slayer-kimetsu-no-yaiba-infinity-castle",
       "name": "Demon Slayer: Kimetsu no Yaiba Infinity Castle (2025)"
+    },
+    {
+      "slug": "the-treasure-of-the-sierra-madre",
+      "name": "The Treasure of the Sierra Madre (1948)"
     },
     {
       "slug": "finding-nemo",
@@ -715,12 +715,12 @@
       "name": "Trainspotting (1996)"
     },
     {
-      "slug": "three-billboards-outside-ebbing-missouri",
-      "name": "Three Billboards Outside Ebbing, Missouri (2017)"
-    },
-    {
       "slug": "harry-potter-and-the-deathly-hallows-part-2",
       "name": "Harry Potter and the Deathly Hallows: Part 2 (2011)"
+    },
+    {
+      "slug": "three-billboards-outside-ebbing-missouri",
+      "name": "Three Billboards Outside Ebbing, Missouri (2017)"
     },
     {
       "slug": "the-bridge-on-the-river-kwai",
@@ -803,12 +803,12 @@
       "name": "Before Sunrise (1995)"
     },
     {
-      "slug": "blade-runner",
-      "name": "Blade Runner (1982)"
-    },
-    {
       "slug": "monsters-inc",
       "name": "Monsters, Inc. (2001)"
+    },
+    {
+      "slug": "blade-runner",
+      "name": "Blade Runner (1982)"
     },
     {
       "slug": "gone-girl",
@@ -847,20 +847,20 @@
       "name": "Sherlock Jr. (1924)"
     },
     {
-      "slug": "mary-and-max",
-      "name": "Mary and Max (2009)"
-    },
-    {
       "slug": "a-silent-voice-the-movie",
       "name": "A Silent Voice: The Movie (2016)"
     },
     {
-      "slug": "the-wages-of-fear",
-      "name": "The Wages of Fear (1953)"
+      "slug": "mary-and-max",
+      "name": "Mary and Max (2009)"
     },
     {
       "slug": "the-deer-hunter",
       "name": "The Deer Hunter (1978)"
+    },
+    {
+      "slug": "the-wages-of-fear",
+      "name": "The Wages of Fear (1953)"
     },
     {
       "slug": "logan-2017",
@@ -891,16 +891,16 @@
       "name": "La Haine (1995)"
     },
     {
+      "slug": "jai-bhim",
+      "name": "Jai Bhim (2021)"
+    },
+    {
       "slug": "spotlight",
       "name": "Spotlight (2015)"
     },
     {
       "slug": "maharaja-2024",
       "name": "Maharaja (2024)"
-    },
-    {
-      "slug": "jai-bhim",
-      "name": "Jai Bhim (2021)"
     },
     {
       "slug": "the-sound-of-music",
@@ -943,12 +943,12 @@
       "name": "Hachi: A Dog&#039;s Tale (2009)"
     },
     {
-      "slug": "the-chaos-class-failed-the-class",
-      "name": "The Chaos Class Failed the Class (1976)"
-    },
-    {
       "slug": "room-2015",
       "name": "Room (2015)"
+    },
+    {
+      "slug": "the-chaos-class-failed-the-class",
+      "name": "The Chaos Class Failed the Class (1976)"
     },
     {
       "slug": "the-exorcist",
@@ -963,12 +963,12 @@
       "name": "The Seventh Seal (1957)"
     },
     {
-      "slug": "platoon",
-      "name": "Platoon (1986)"
-    },
-    {
       "slug": "the-iron-giant",
       "name": "The Iron Giant (1999)"
+    },
+    {
+      "slug": "platoon",
+      "name": "Platoon (1986)"
     },
     {
       "slug": "rush-2013",
@@ -999,8 +999,8 @@
       "name": "Autumn Sonata (1978)"
     },
     {
-      "slug": "the-handmaiden",
-      "name": "The Handmaiden (2016)"
+      "slug": "andhadhun",
+      "name": "Andhadhun (2018)"
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-07",
+  "generated_at": "2026-09-14",
   "username": "osvajorge",
   "totals": {
     "films": 856,
@@ -22,16 +22,16 @@
     "countries.highest_rated": 20,
     "languages.most_watched": 69,
     "languages.highest_rated": 26,
-    "cast": 32330,
+    "cast": 32336,
     "directors": 546,
-    "studios": 1337,
-    "collections": 207,
+    "studios": 1335,
+    "collections": 208,
     "world_map": 48,
     "extras.director_completeness": 164,
     "extras.lucky_director": 23,
     "extras.unlucky_director": 23,
     "extras.contrarian_index.hotter_than_crowd": 345,
-    "extras.contrarian_index.colder_than_crowd": 467,
+    "extras.contrarian_index.colder_than_crowd": 468,
     "extras.obscurity.most_obscure": 817,
     "extras.obscurity.most_popular": 817,
     "extras.liked_but_low": 2,
@@ -181,7 +181,7 @@
       },
       {
         "name": "Adventure",
-        "count": 229
+        "count": 227
       },
       {
         "name": "Comedy",
@@ -189,7 +189,7 @@
       },
       {
         "name": "Science Fiction",
-        "count": 192
+        "count": 191
       },
       {
         "name": "Thriller",
@@ -213,7 +213,7 @@
       },
       {
         "name": "Crime",
-        "count": 121
+        "count": 120
       },
       {
         "name": "Mystery",
@@ -271,8 +271,8 @@
       },
       {
         "name": "Crime",
-        "average": 3.64,
-        "count": 121
+        "average": 3.63,
+        "count": 120
       },
       {
         "name": "History",
@@ -295,11 +295,6 @@
         "count": 82
       },
       {
-        "name": "Science Fiction",
-        "average": 3.3,
-        "count": 192
-      },
-      {
         "name": "Comedy",
         "average": 3.29,
         "count": 195
@@ -310,19 +305,24 @@
         "count": 57
       },
       {
+        "name": "Science Fiction",
+        "average": 3.29,
+        "count": 191
+      },
+      {
         "name": "Action",
         "average": 3.27,
         "count": 259
       },
       {
-        "name": "Adventure",
-        "average": 3.27,
-        "count": 229
-      },
-      {
         "name": "Horror",
         "average": 3.27,
         "count": 134
+      },
+      {
+        "name": "Adventure",
+        "average": 3.26,
+        "count": 227
       },
       {
         "name": "Fantasy",
@@ -354,19 +354,19 @@
       },
       {
         "name": "United Kingdom",
-        "count": 124
+        "count": 121
       },
       {
         "name": "France",
-        "count": 81
+        "count": 80
       },
       {
         "name": "Japan",
-        "count": 52
+        "count": 51
       },
       {
         "name": "Germany",
-        "count": 42
+        "count": 43
       },
       {
         "name": "Canada",
@@ -482,13 +482,13 @@
       },
       {
         "name": "Japan",
-        "average": 3.73,
-        "count": 52
+        "average": 3.75,
+        "count": 51
       },
       {
         "name": "France",
         "average": 3.7,
-        "count": 81
+        "count": 80
       },
       {
         "name": "Luxembourg",
@@ -511,14 +511,14 @@
         "count": 17
       },
       {
+        "name": "United Kingdom",
+        "average": 3.51,
+        "count": 121
+      },
+      {
         "name": "New Zealand",
         "average": 3.5,
         "count": 10
-      },
-      {
-        "name": "United Kingdom",
-        "average": 3.49,
-        "count": 124
       },
       {
         "name": "Belgium",
@@ -532,8 +532,8 @@
       },
       {
         "name": "Germany",
-        "average": 3.38,
-        "count": 42
+        "average": 3.4,
+        "count": 43
       },
       {
         "name": "Mexico",
@@ -800,7 +800,7 @@
       "tmdb_id": 1245,
       "name": "Scarlett Johansson",
       "count": 21,
-      "profile_path": "/druW5adKddizHNSoPbI0q7Mvn0K.jpg"
+      "profile_path": "/kcGQvyJZdOQFjw1RHTePnX5gxmB.jpg"
     },
     {
       "tmdb_id": 5293,
@@ -848,7 +848,7 @@
       "tmdb_id": 51329,
       "name": "Bradley Cooper",
       "count": 15,
-      "profile_path": "/pLD2XvxqHueLWOuqXoFngJU3A5H.jpg"
+      "profile_path": "/5Dhy50qOMOHfR1NZifKIfffjV9X.jpg"
     },
     {
       "tmdb_id": 5469,
@@ -1504,11 +1504,6 @@
       "average_rating": 3.17
     },
     {
-      "name": "Legendary Pictures",
-      "count": 17,
-      "average_rating": 3.82
-    },
-    {
       "name": "Regency Enterprises",
       "count": 17,
       "average_rating": 3.44
@@ -1529,14 +1524,19 @@
       "average_rating": 2.91
     },
     {
+      "name": "Legendary Pictures",
+      "count": 16,
+      "average_rating": 3.81
+    },
+    {
       "name": "RatPac Entertainment",
       "count": 16,
       "average_rating": 3.19
     },
     {
       "name": "Lionsgate",
-      "count": 15,
-      "average_rating": 3.23
+      "count": 14,
+      "average_rating": 3.25
     },
     {
       "name": "DreamWorks Pictures",
@@ -1559,9 +1559,9 @@
       "average_rating": 3.08
     },
     {
-      "name": "Film4 Productions",
+      "name": "Original Film",
       "count": 12,
-      "average_rating": 3.75
+      "average_rating": 2.67
     }
   ],
   "collections": [
@@ -1891,6 +1891,11 @@
       "total": 3
     },
     {
+      "name": "Unbreakable Collection",
+      "seen": 2,
+      "total": 3
+    },
+    {
       "name": "X Collection",
       "seen": 2,
       "total": 3
@@ -1977,11 +1982,6 @@
     },
     {
       "name": "As Above, So Below Collection",
-      "seen": 1,
-      "total": 2
-    },
-    {
-      "name": "Backrooms Collection",
       "seen": 1,
       "total": 2
     },
@@ -2221,6 +2221,11 @@
       "total": 2
     },
     {
+      "name": "The Backrooms Collection",
+      "seen": 1,
+      "total": 2
+    },
+    {
       "name": "The Batman Collection",
       "seen": 1,
       "total": 2
@@ -2426,6 +2431,11 @@
       "total": 3
     },
     {
+      "name": "The Godfather Collection",
+      "seen": 1,
+      "total": 3
+    },
+    {
       "name": "The Grudge Collection",
       "seen": 1,
       "total": 3
@@ -2521,11 +2531,6 @@
       "total": 4
     },
     {
-      "name": "The Godfather Collection",
-      "seen": 1,
-      "total": 4
-    },
-    {
       "name": "[REC] Collection",
       "seen": 1,
       "total": 4
@@ -2598,7 +2603,7 @@
     {
       "name": "V/H/S Collection",
       "seen": 1,
-      "total": 10
+      "total": 9
     }
   ],
   "world_map": [
@@ -2610,22 +2615,22 @@
     {
       "iso_3166_1": "GB",
       "name": "United Kingdom",
-      "count": 124
+      "count": 121
     },
     {
       "iso_3166_1": "FR",
       "name": "France",
-      "count": 81
+      "count": 80
     },
     {
       "iso_3166_1": "JP",
       "name": "Japan",
-      "count": 52
+      "count": 51
     },
     {
       "iso_3166_1": "DE",
       "name": "Germany",
-      "count": 42
+      "count": 43
     },
     {
       "iso_3166_1": "CA",
@@ -2847,13 +2852,13 @@
     {
       "id": "letterboxd-top-500",
       "title": "Letterboxd Top 500",
-      "seen": 97,
+      "seen": 96,
       "total": 500
     },
     {
       "id": "imdb-top-250",
       "title": "IMDb Top 250",
-      "seen": 102,
+      "seen": 101,
       "total": 250
     },
     {
@@ -2968,7 +2973,7 @@
     "rewatch_rate": 0.015,
     "watchlist": {
       "size": 1025,
-      "median_age_days": 1140,
+      "median_age_days": 1147,
       "conversion_rate": 0.019,
       "estimated_date_share": 0.002
     },
@@ -4027,7 +4032,7 @@
       }
     ],
     "runtime": {
-      "total_minutes": 93870,
+      "total_minutes": 93871,
       "median": 114,
       "distribution": [
         {
@@ -4109,6 +4114,11 @@
         "filmography": 8
       },
       {
+        "name": "J.J. Abrams",
+        "seen": 4,
+        "filmography": 8
+      },
+      {
         "name": "Greta Gerwig",
         "seen": 3,
         "filmography": 6
@@ -4125,11 +4135,6 @@
       },
       {
         "name": "Chad Stahelski",
-        "seen": 4,
-        "filmography": 9
-      },
-      {
-        "name": "J.J. Abrams",
         "seen": 4,
         "filmography": 9
       },
@@ -4199,6 +4204,11 @@
         "filmography": 23
       },
       {
+        "name": "Guy Ritchie",
+        "seen": 7,
+        "filmography": 21
+      },
+      {
         "name": "Joseph Kosinski",
         "seen": 3,
         "filmography": 9
@@ -4224,14 +4234,9 @@
         "filmography": 6
       },
       {
-        "name": "Guy Ritchie",
-        "seen": 7,
-        "filmography": 22
-      },
-      {
         "name": "David Fincher",
         "seen": 6,
-        "filmography": 20
+        "filmography": 19
       },
       {
         "name": "Dean DeBlois",
@@ -4369,8 +4374,8 @@
           "title": "A Ghost Story",
           "year": 2017,
           "member_rating": 5.0,
-          "crowd_rating": 3.53,
-          "delta": 1.47
+          "crowd_rating": 3.55,
+          "delta": 1.45
         },
         {
           "slug": "no-dogs-or-italians-allowed",
@@ -4385,8 +4390,8 @@
           "title": "2046",
           "year": 2004,
           "member_rating": 5.0,
-          "crowd_rating": 3.62,
-          "delta": 1.38
+          "crowd_rating": 3.6,
+          "delta": 1.4
         },
         {
           "slug": "demon-slayer-kimetsu-no-yaiba-to-the-swordsmith-village",
@@ -4401,8 +4406,8 @@
           "title": "Titane",
           "year": 2021,
           "member_rating": 4.5,
-          "crowd_rating": 3.15,
-          "delta": 1.35
+          "crowd_rating": 3.16,
+          "delta": 1.34
         },
         {
           "slug": "one-battle-after-another",
@@ -4449,8 +4454,8 @@
           "title": "The Beasts",
           "year": 2022,
           "member_rating": 5.0,
-          "crowd_rating": 3.75,
-          "delta": 1.25
+          "crowd_rating": 3.74,
+          "delta": 1.26
         },
         {
           "slug": "the-revenant-2015",
@@ -4461,20 +4466,20 @@
           "delta": 1.23
         },
         {
-          "slug": "prometheus",
-          "title": "Prometheus",
-          "year": 2012,
-          "member_rating": 4.5,
-          "crowd_rating": 3.3,
-          "delta": 1.2
-        },
-        {
           "slug": "the-executioner",
           "title": "The Executioner",
           "year": 1963,
           "member_rating": 5.0,
           "crowd_rating": 3.8,
           "delta": 1.2
+        },
+        {
+          "slug": "another-round",
+          "title": "Another Round",
+          "year": 2020,
+          "member_rating": 5.0,
+          "crowd_rating": 3.81,
+          "delta": 1.19
         }
       ],
       "colder_than_crowd": [
@@ -4483,16 +4488,16 @@
           "title": "Sound of Freedom",
           "year": 2023,
           "member_rating": 0.5,
-          "crowd_rating": 3.97,
-          "delta": -3.47
+          "crowd_rating": 4.0,
+          "delta": -3.5
         },
         {
           "slug": "the-super-mario-galaxy-movie",
           "title": "The Super Mario Galaxy Movie",
           "year": 2026,
           "member_rating": 1.0,
-          "crowd_rating": 4.12,
-          "delta": -3.12
+          "crowd_rating": 4.11,
+          "delta": -3.11
         },
         {
           "slug": "coda-2021",
@@ -4571,8 +4576,8 @@
           "title": "The Little Mermaid",
           "year": 2023,
           "member_rating": 0.5,
-          "crowd_rating": 3.12,
-          "delta": -2.62
+          "crowd_rating": 3.13,
+          "delta": -2.63
         },
         {
           "slug": "final-destination-5",
@@ -4595,16 +4600,16 @@
           "title": "Ghost Ship",
           "year": 2002,
           "member_rating": 0.5,
-          "crowd_rating": 3.01,
-          "delta": -2.51
+          "crowd_rating": 3.0,
+          "delta": -2.5
         },
         {
           "slug": "spotlight",
           "title": "Spotlight",
           "year": 2015,
           "member_rating": 1.5,
-          "crowd_rating": 3.91,
-          "delta": -2.41
+          "crowd_rating": 3.9,
+          "delta": -2.4
         },
         {
           "slug": "the-dark-tower",
@@ -4641,11 +4646,11 @@
       ]
     },
     "obscurity": {
-      "median_vote_count": 5748,
+      "median_vote_count": 5765,
       "quartiles": [
-        2524,
-        5748,
-        11761
+        2530,
+        5765,
+        11777
       ],
       "most_obscure": [
         {
@@ -4739,116 +4744,116 @@
           "vote_count": 62
         },
         {
-          "slug": "grand-theft-hamlet",
-          "title": "Grand Theft Hamlet",
-          "vote_count": 64
-        },
-        {
           "slug": "the-almost-legends",
           "title": "The (Almost) Legends",
           "vote_count": 65
+        },
+        {
+          "slug": "grand-theft-hamlet",
+          "title": "Grand Theft Hamlet",
+          "vote_count": 67
         }
       ],
       "most_popular": [
         {
           "slug": "interstellar",
           "title": "Interstellar",
-          "vote_count": 41062
+          "vote_count": 41139
         },
         {
           "slug": "inception",
           "title": "Inception",
-          "vote_count": 40107
+          "vote_count": 40167
         },
         {
           "slug": "the-avengers-2012",
           "title": "The Avengers",
-          "vote_count": 39606
+          "vote_count": 39697
         },
         {
           "slug": "the-dark-knight",
           "title": "The Dark Knight",
-          "vote_count": 36617
+          "vote_count": 36684
         },
         {
           "slug": "avatar",
           "title": "Avatar",
-          "vote_count": 34605
+          "vote_count": 34649
         },
         {
           "slug": "deadpool",
           "title": "Deadpool",
-          "vote_count": 33242
+          "vote_count": 33281
         },
         {
           "slug": "avengers-infinity-war",
           "title": "Avengers: Infinity War",
-          "vote_count": 32818
+          "vote_count": 32881
         },
         {
           "slug": "fight-club",
           "title": "Fight Club",
-          "vote_count": 32796
+          "vote_count": 32853
         },
         {
           "slug": "pulp-fiction",
           "title": "Pulp Fiction",
-          "vote_count": 30804
+          "vote_count": 30854
         },
         {
           "slug": "forrest-gump",
           "title": "Forrest Gump",
-          "vote_count": 30389
+          "vote_count": 30447
         },
         {
           "slug": "guardians-of-the-galaxy",
           "title": "Guardians of the Galaxy",
-          "vote_count": 30249
+          "vote_count": 30289
         },
         {
           "slug": "harry-potter-and-the-philosophers-stone",
           "title": "Harry Potter and the Philosopher's Stone",
-          "vote_count": 30150
+          "vote_count": 30211
         },
         {
           "slug": "iron-man-2008",
           "title": "Iron Man",
-          "vote_count": 28751
+          "vote_count": 28803
         },
         {
           "slug": "avengers-endgame",
           "title": "Avengers: Endgame",
-          "vote_count": 28574
+          "vote_count": 28645
         },
         {
           "slug": "django-unchained",
           "title": "Django Unchained",
-          "vote_count": 28544
+          "vote_count": 28578
         },
         {
           "slug": "the-lord-of-the-rings-the-fellowship-of-the-ring",
           "title": "The Lord of the Rings: The Fellowship of the Ring",
-          "vote_count": 28284
+          "vote_count": 28335
         },
         {
           "slug": "joker-2019",
           "title": "Joker",
-          "vote_count": 28255
+          "vote_count": 28295
         },
         {
           "slug": "the-wolf-of-wall-street",
           "title": "The Wolf of Wall Street",
-          "vote_count": 26450
+          "vote_count": 26505
         },
         {
           "slug": "shutter-island",
           "title": "Shutter Island",
-          "vote_count": 26366
+          "vote_count": 26409
         },
         {
           "slug": "avengers-age-of-ultron",
           "title": "Avengers: Age of Ultron",
-          "vote_count": 24965
+          "vote_count": 25007
         }
       ]
     },
@@ -6588,7 +6593,7 @@
     },
     "life_in_days": {
       "days": 65.2,
-      "would_end_on": "2026-11-11"
+      "would_end_on": "2026-11-18"
     },
     "extremes": {
       "shortest": {
