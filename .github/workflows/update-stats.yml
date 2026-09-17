@@ -442,14 +442,88 @@ jobs:
           echo "panel-changed=true" >> "${GITHUB_OUTPUT}"
           echo "commit-sha=$(git rev-parse HEAD)" >> "${GITHUB_OUTPUT}"
 
-# There is no deploy job here on purpose.
+      - name: Say so if the published panel is behind this repository
+        # This job commits the rebuilt data and does not deploy it. Cloudflare
+        # Pages is meant to publish docs/ itself on every push to main.
+        #
+        # For a fortnight it did not. The Pages project was created through the
+        # API, and that route does not add the repository to Cloudflare's GitHub
+        # App, so no push event ever reached Cloudflare. This job ran green every
+        # week, committed twenty-nine new films, and the site kept serving data
+        # from the third of September. Nobody was told.
+        #
+        # So the run now reads the published file back and fails when it is older
+        # than what was just committed. A failed scheduled run emails the
+        # repository owner, which turns silence into a message.
+        #
+        # This does not fix the deploy. It makes the deploy's absence audible.
+        # The fix is to give the Cloudflare GitHub App access to this repository
+        # at github.com/settings/installations.
+        if: always() && steps.commit.outputs.panel-changed == 'true'
+        env:
+          PUBLISHED_URL: https://letterboxd-analytics.pages.dev/data/stats.json
+        run: |
+          python - <<'PYTHON'
+          import json
+          import os
+          import sys
+          import urllib.error
+          import urllib.request
+
+          published_url = os.environ["PUBLISHED_URL"]
+          local = json.load(open("docs/data/stats.json", encoding="utf-8"))
+          built_on = local.get("generated_at")
+
+          # Cloudflare answers 403 to the default urllib agent, so the check
+          # would fail on its own request rather than on a stale panel.
+          request = urllib.request.Request(
+              published_url,
+              headers={"User-Agent": "letterboxd-analytics staleness check"},
+          )
+
+          try:
+              with urllib.request.urlopen(request, timeout=30) as response:
+                  live = json.load(response)
+          except (urllib.error.URLError, ValueError, TimeoutError) as error:
+              print(
+                  f"Could not read the published panel at {published_url}: {error}.\n"
+                  f"The rebuilt data is committed. Check the site by hand, and if it is "
+                  f"reachable in a browser then this check is what is broken, not the site.",
+                  file=sys.stderr,
+              )
+              raise SystemExit(1)
+
+          serving = live.get("generated_at")
+          if serving == built_on:
+              print(f"The published panel is serving {serving}, which is this run's data.")
+              raise SystemExit(0)
+
+          print(
+              f"The published panel is serving {serving} but this run committed {built_on}.\n"
+              f"\n"
+              f"Cloudflare did not publish the push. The usual cause is that this\n"
+              f"repository is not in the Cloudflare GitHub App's list, which happens\n"
+              f"when the Pages project was created through the API rather than through\n"
+              f"the dashboard. No push event reaches Cloudflare, and nothing reports it.\n"
+              f"\n"
+              f"To fix it, add this repository at github.com/settings/installations,\n"
+              f"under the Cloudflare Pages app. Until then the data here is correct and\n"
+              f"the site is stale, and it will need a deploy triggered by hand.",
+              file=sys.stderr,
+          )
+          raise SystemExit(1)
+          PYTHON
+
+# There is no deploy step in this workflow, and that is a decision rather than
+# an omission.
 #
-# The Cloudflare Pages project is connected to this repository, so Cloudflare
-# builds and publishes docs/ on every push to main, including the push this
-# workflow makes. Adding a deploy step here would publish the same commit twice
-# and would need a Cloudflare API token this project does not otherwise want.
+# Cloudflare Pages is connected to this repository and is meant to publish docs/
+# on every push to main. Deploying from here as well would publish the same
+# commit twice and would need a Cloudflare API token this project does not
+# otherwise want.
 #
-# A reviewer caught the version that did exist gating its deploy on the data
-# having changed, which meant a change to docs/ alone was never published: the
-# panel went stale behind a green tick. Git-connected deploys cannot have that
-# bug, because the trigger is the push rather than a judgement about the push.
+# An earlier version did deploy from here, and a reviewer caught it gating the
+# deploy on the data having changed, so a change to docs/ alone was never
+# published and the panel went stale behind a green tick. The check above exists
+# because the replacement failed the same way for a different reason: the trigger
+# was right, and nothing was listening for it.
