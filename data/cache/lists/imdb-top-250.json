@@ -123,12 +123,12 @@
       "name": "Star Wars (1977)"
     },
     {
-      "slug": "kill-bill-the-whole-bloody-affair",
-      "name": "Kill Bill: The Whole Bloody Affair (2004)"
-    },
-    {
       "slug": "spirited-away",
       "name": "Spirited Away (2001)"
+    },
+    {
+      "slug": "kill-bill-the-whole-bloody-affair",
+      "name": "Kill Bill: The Whole Bloody Affair (2004)"
     },
     {
       "slug": "gladiator-2000",
@@ -235,16 +235,16 @@
       "name": "Memento (2000)"
     },
     {
-      "slug": "the-odyssey-2026",
-      "name": "The Odyssey (2026)"
-    },
-    {
       "slug": "avengers-infinity-war",
       "name": "Avengers: Infinity War (2018)"
     },
     {
       "slug": "dune-part-two",
       "name": "Dune: Part Two (2024)"
+    },
+    {
+      "slug": "the-odyssey-2026",
+      "name": "The Odyssey (2026)"
     },
     {
       "slug": "raiders-of-the-lost-ark",
@@ -271,12 +271,12 @@
       "name": "Paths of Glory (1957)"
     },
     {
-      "slug": "the-shining",
-      "name": "The Shining (1980)"
-    },
-    {
       "slug": "inglourious-basterds",
       "name": "Inglourious Basterds (2009)"
+    },
+    {
+      "slug": "the-shining",
+      "name": "The Shining (1980)"
     },
     {
       "slug": "the-great-dictator",
@@ -383,6 +383,10 @@
       "name": "Requiem for a Dream (2000)"
     },
     {
+      "slug": "attack-on-titan-the-last-attack",
+      "name": "Attack on Titan: THE LAST ATTACK (2024)"
+    },
+    {
       "slug": "ikiru",
       "name": "Ikiru (1952)"
     },
@@ -393,10 +397,6 @@
     {
       "slug": "the-hunt-2012",
       "name": "The Hunt (2012)"
-    },
-    {
-      "slug": "attack-on-titan-the-last-attack",
-      "name": "Attack on Titan: THE LAST ATTACK (2024)"
     },
     {
       "slug": "eternal-sunshine-of-the-spotless-mind",
@@ -423,12 +423,12 @@
       "name": "Reservoir Dogs (1992)"
     },
     {
-      "slug": "2001-a-space-odyssey",
-      "name": "2001: A Space Odyssey (1968)"
-    },
-    {
       "slug": "up",
       "name": "Up (2009)"
+    },
+    {
+      "slug": "2001-a-space-odyssey",
+      "name": "2001: A Space Odyssey (1968)"
     },
     {
       "slug": "double-indemnity",
@@ -455,12 +455,12 @@
       "name": "A Separation (2011)"
     },
     {
-      "slug": "m",
-      "name": "M (1931)"
-    },
-    {
       "slug": "die-hard",
       "name": "Die Hard (1988)"
+    },
+    {
+      "slug": "m",
+      "name": "M (1931)"
     },
     {
       "slug": "amelie",
@@ -471,12 +471,12 @@
       "name": "Vertigo (1958)"
     },
     {
-      "slug": "citizen-kane",
-      "name": "Citizen Kane (1941)"
-    },
-    {
       "slug": "to-kill-a-mockingbird",
       "name": "To Kill a Mockingbird (1962)"
+    },
+    {
+      "slug": "citizen-kane",
+      "name": "Citizen Kane (1941)"
     },
     {
       "slug": "indiana-jones-and-the-last-crusade",
@@ -503,12 +503,12 @@
       "name": "The Wolf of Wall Street (2013)"
     },
     {
-      "slug": "snatch",
-      "name": "Snatch (2000)"
-    },
-    {
       "slug": "the-truman-show",
       "name": "The Truman Show (1998)"
+    },
+    {
+      "slug": "snatch",
+      "name": "Snatch (2000)"
     },
     {
       "slug": "downfall",
@@ -527,12 +527,12 @@
       "name": "Woman in the Dunes (1964)"
     },
     {
-      "slug": "dangal",
-      "name": "Dangal (2016)"
-    },
-    {
       "slug": "green-book",
       "name": "Green Book (2018)"
+    },
+    {
+      "slug": "dangal",
+      "name": "Dangal (2016)"
     },
     {
       "slug": "bicycle-thieves",
@@ -631,16 +631,16 @@
       "name": "A Beautiful Mind (2001)"
     },
     {
-      "slug": "project-hail-mary",
-      "name": "Project Hail Mary (2026)"
-    },
-    {
       "slug": "howls-moving-castle",
       "name": "Howl&#039;s Moving Castle (2004)"
     },
     {
       "slug": "demon-slayer-kimetsu-no-yaiba-infinity-castle",
       "name": "Demon Slayer: Kimetsu no Yaiba Infinity Castle (2025)"
+    },
+    {
+      "slug": "project-hail-mary",
+      "name": "Project Hail Mary (2026)"
     },
     {
       "slug": "the-treasure-of-the-sierra-madre",
@@ -735,12 +735,12 @@
       "name": "Barry Lyndon (1975)"
     },
     {
-      "slug": "the-wild-robot",
-      "name": "The Wild Robot (2024)"
-    },
-    {
       "slug": "ben-hur-1959",
       "name": "Ben-Hur (1959)"
+    },
+    {
+      "slug": "the-wild-robot",
+      "name": "The Wild Robot (2024)"
     },
     {
       "slug": "warrior",
@@ -751,16 +751,16 @@
       "name": "Hacksaw Ridge (2016)"
     },
     {
-      "slug": "fargo",
-      "name": "Fargo (1996)"
+      "slug": "ratatouille",
+      "name": "Ratatouille (2007)"
     },
     {
       "slug": "mad-max-fury-road",
       "name": "Mad Max: Fury Road (2015)"
     },
     {
-      "slug": "ratatouille",
-      "name": "Ratatouille (2007)"
+      "slug": "fargo",
+      "name": "Fargo (1996)"
     },
     {
       "slug": "million-dollar-baby",
@@ -831,12 +831,12 @@
       "name": "Spider-Man: No Way Home (2021)"
     },
     {
-      "slug": "wild-tales",
-      "name": "Wild Tales (2014)"
-    },
-    {
       "slug": "chainsaw-man-the-movie-reze-arc",
       "name": "Chainsaw Man – The Movie: Reze Arc (2025)"
+    },
+    {
+      "slug": "wild-tales",
+      "name": "Wild Tales (2014)"
     },
     {
       "slug": "the-gold-rush",
@@ -899,12 +899,12 @@
       "name": "Spotlight (2015)"
     },
     {
-      "slug": "maharaja-2024",
-      "name": "Maharaja (2024)"
-    },
-    {
       "slug": "the-sound-of-music",
       "name": "The Sound of Music (1965)"
+    },
+    {
+      "slug": "maharaja-2024",
+      "name": "Maharaja (2024)"
     },
     {
       "slug": "the-terminator",
@@ -943,12 +943,12 @@
       "name": "Hachi: A Dog&#039;s Tale (2009)"
     },
     {
-      "slug": "room-2015",
-      "name": "Room (2015)"
-    },
-    {
       "slug": "the-chaos-class-failed-the-class",
       "name": "The Chaos Class Failed the Class (1976)"
+    },
+    {
+      "slug": "room-2015",
+      "name": "Room (2015)"
     },
     {
       "slug": "the-exorcist",
@@ -999,8 +999,8 @@
       "name": "Autumn Sonata (1978)"
     },
     {
-      "slug": "andhadhun",
-      "name": "Andhadhun (2018)"
+      "slug": "soorarai-pottru",
+      "name": "Soorarai Pottru (2020)"
     }
   ]
 }
