@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-21",
+  "generated_at": "2026-09-28",
   "username": "osvajorge",
   "totals": {
     "films": 856,
@@ -2924,7 +2924,7 @@
     {
       "id": "top-250-most-fans",
       "title": "Top 250 Most Fans",
-      "seen": 131,
+      "seen": 134,
       "total": 250
     },
     {
@@ -2972,10 +2972,10 @@
     ],
     "rewatch_rate": 0.015,
     "watchlist": {
-      "size": 1025,
-      "median_age_days": 1154,
-      "conversion_rate": 0.019,
-      "estimated_date_share": 0.003
+      "size": 1032,
+      "median_age_days": 1161,
+      "conversion_rate": 0.018,
+      "estimated_date_share": 0.011
     },
     "heatmap": [
       {
@@ -6593,7 +6593,7 @@
     },
     "life_in_days": {
       "days": 65.2,
-      "would_end_on": "2026-11-25"
+      "would_end_on": "2026-12-02"
     },
     "extremes": {
       "shortest": {

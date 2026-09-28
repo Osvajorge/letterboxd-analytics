@@ -13645,6 +13645,55 @@
   ],
   "watchlist": [
     {
+      "slug": "clayface",
+      "title": "Clayface",
+      "year": 2026,
+      "added_date": "2026-09-28",
+      "added_date_estimated": true
+    },
+    {
+      "slug": "digger-2026",
+      "title": "Digger",
+      "year": 2026,
+      "added_date": "2026-09-28",
+      "added_date_estimated": true
+    },
+    {
+      "slug": "avengers-doomsday",
+      "title": "Avengers: Doomsday",
+      "year": 2026,
+      "added_date": "2026-09-28",
+      "added_date_estimated": true
+    },
+    {
+      "slug": "dune-part-three",
+      "title": "Dune: Part Three",
+      "year": 2026,
+      "added_date": "2026-09-28",
+      "added_date_estimated": true
+    },
+    {
+      "slug": "the-furious",
+      "title": "The Furious",
+      "year": 2025,
+      "added_date": "2026-09-28",
+      "added_date_estimated": true
+    },
+    {
+      "slug": "tony-2026",
+      "title": "Tony",
+      "year": 2026,
+      "added_date": "2026-09-28",
+      "added_date_estimated": true
+    },
+    {
+      "slug": "little-amelie-or-the-character-of-rain",
+      "title": "Little Amélie or the Character of Rain",
+      "year": 2025,
+      "added_date": "2026-09-28",
+      "added_date_estimated": true
+    },
+    {
       "slug": "facing-el-chapo",
       "title": "Facing El Chapo",
       "year": 2026,
@@ -14856,11 +14905,11 @@
       "added_date_estimated": false
     },
     {
-      "slug": "war-and-peace-1967",
+      "slug": "war-and-peace-1968",
       "title": "War and Peace",
-      "year": 1967,
-      "added_date": "2024-04-02",
-      "added_date_estimated": false
+      "year": 1968,
+      "added_date": "2026-09-28",
+      "added_date_estimated": true
     },
     {
       "slug": "modern-times",

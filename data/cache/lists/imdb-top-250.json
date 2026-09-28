@@ -127,16 +127,16 @@
       "name": "Spirited Away (2001)"
     },
     {
-      "slug": "kill-bill-the-whole-bloody-affair",
-      "name": "Kill Bill: The Whole Bloody Affair (2004)"
-    },
-    {
       "slug": "gladiator-2000",
       "name": "Gladiator (2000)"
     },
     {
       "slug": "the-pianist",
       "name": "The Pianist (2002)"
+    },
+    {
+      "slug": "kill-bill-the-whole-bloody-affair",
+      "name": "Kill Bill: The Whole Bloody Affair (2004)"
     },
     {
       "slug": "parasite-2019",
@@ -151,12 +151,12 @@
       "name": "Harakiri (1962)"
     },
     {
-      "slug": "psycho",
-      "name": "Psycho (1960)"
-    },
-    {
       "slug": "the-lion-king",
       "name": "The Lion King (1994)"
+    },
+    {
+      "slug": "psycho",
+      "name": "Psycho (1960)"
     },
     {
       "slug": "the-departed",
@@ -219,12 +219,12 @@
       "name": "Once Upon a Time in the West (1968)"
     },
     {
-      "slug": "city-lights",
-      "name": "City Lights (1931)"
-    },
-    {
       "slug": "walle",
       "name": "WALL·E (2008)"
+    },
+    {
+      "slug": "city-lights",
+      "name": "City Lights (1931)"
     },
     {
       "slug": "apocalypse-now",
@@ -243,12 +243,12 @@
       "name": "Dune: Part Two (2024)"
     },
     {
-      "slug": "the-odyssey-2026",
-      "name": "The Odyssey (2026)"
-    },
-    {
       "slug": "raiders-of-the-lost-ark",
       "name": "Raiders of the Lost Ark (1981)"
+    },
+    {
+      "slug": "the-odyssey-2026",
+      "name": "The Odyssey (2026)"
     },
     {
       "slug": "spider-man-into-the-spider-verse",
@@ -367,6 +367,10 @@
       "name": "Joker (2019)"
     },
     {
+      "slug": "attack-on-titan-the-last-attack",
+      "name": "Attack on Titan: THE LAST ATTACK (2024)"
+    },
+    {
       "slug": "toy-story-3",
       "name": "Toy Story 3 (2010)"
     },
@@ -383,16 +387,12 @@
       "name": "Requiem for a Dream (2000)"
     },
     {
-      "slug": "attack-on-titan-the-last-attack",
-      "name": "Attack on Titan: THE LAST ATTACK (2024)"
+      "slug": "incendies",
+      "name": "Incendies (2010)"
     },
     {
       "slug": "ikiru",
       "name": "Ikiru (1952)"
-    },
-    {
-      "slug": "incendies",
-      "name": "Incendies (2010)"
     },
     {
       "slug": "the-hunt-2012",
@@ -443,12 +443,12 @@
       "name": "North by Northwest (1959)"
     },
     {
-      "slug": "i-swear",
-      "name": "I Swear (2025)"
-    },
-    {
       "slug": "full-metal-jacket",
       "name": "Full Metal Jacket (1987)"
+    },
+    {
+      "slug": "i-swear",
+      "name": "I Swear (2025)"
     },
     {
       "slug": "a-separation",
@@ -499,32 +499,28 @@
       "name": "1917 (2019)"
     },
     {
-      "slug": "the-wolf-of-wall-street",
-      "name": "The Wolf of Wall Street (2013)"
-    },
-    {
       "slug": "the-truman-show",
       "name": "The Truman Show (1998)"
+    },
+    {
+      "slug": "the-wolf-of-wall-street",
+      "name": "The Wolf of Wall Street (2013)"
     },
     {
       "slug": "snatch",
       "name": "Snatch (2000)"
     },
     {
-      "slug": "downfall",
-      "name": "Downfall (2004)"
-    },
-    {
       "slug": "shutter-island",
       "name": "Shutter Island (2010)"
     },
     {
-      "slug": "la-confidential",
-      "name": "L.A. Confidential (1997)"
+      "slug": "downfall",
+      "name": "Downfall (2004)"
     },
     {
-      "slug": "woman-in-the-dunes",
-      "name": "Woman in the Dunes (1964)"
+      "slug": "la-confidential",
+      "name": "L.A. Confidential (1997)"
     },
     {
       "slug": "green-book",
@@ -533,6 +529,10 @@
     {
       "slug": "dangal",
       "name": "Dangal (2016)"
+    },
+    {
+      "slug": "woman-in-the-dunes",
+      "name": "Woman in the Dunes (1964)"
     },
     {
       "slug": "bicycle-thieves",
@@ -579,12 +579,12 @@
       "name": "The Father (2020)"
     },
     {
-      "slug": "the-kid",
-      "name": "The Kid (1921)"
-    },
-    {
       "slug": "the-sixth-sense",
       "name": "The Sixth Sense (1999)"
+    },
+    {
+      "slug": "the-kid",
+      "name": "The Kid (1921)"
     },
     {
       "slug": "all-about-eve",
@@ -639,12 +639,12 @@
       "name": "Demon Slayer: Kimetsu no Yaiba Infinity Castle (2025)"
     },
     {
-      "slug": "project-hail-mary",
-      "name": "Project Hail Mary (2026)"
-    },
-    {
       "slug": "the-treasure-of-the-sierra-madre",
       "name": "The Treasure of the Sierra Madre (1948)"
+    },
+    {
+      "slug": "project-hail-mary",
+      "name": "Project Hail Mary (2026)"
     },
     {
       "slug": "finding-nemo",
@@ -687,24 +687,24 @@
       "name": "Lock, Stock and Two Smoking Barrels (1998)"
     },
     {
-      "slug": "chinatown",
-      "name": "Chinatown (1974)"
-    },
-    {
       "slug": "catch-me-if-you-can-2002",
       "name": "Catch Me If You Can (2002)"
+    },
+    {
+      "slug": "chinatown",
+      "name": "Chinatown (1974)"
     },
     {
       "slug": "v-for-vendetta",
       "name": "V for Vendetta (2005)"
     },
     {
-      "slug": "the-best-of-youth",
-      "name": "The Best of Youth (2003)"
-    },
-    {
       "slug": "dead-poets-society",
       "name": "Dead Poets Society (1989)"
+    },
+    {
+      "slug": "the-best-of-youth",
+      "name": "The Best of Youth (2003)"
     },
     {
       "slug": "inside-out-2015",
@@ -759,12 +759,12 @@
       "name": "Mad Max: Fury Road (2015)"
     },
     {
-      "slug": "fargo",
-      "name": "Fargo (1996)"
-    },
-    {
       "slug": "million-dollar-baby",
       "name": "Million Dollar Baby (2004)"
+    },
+    {
+      "slug": "fargo",
+      "name": "Fargo (1996)"
     },
     {
       "slug": "children-of-heaven",
@@ -843,12 +843,12 @@
       "name": "The Gold Rush (1925)"
     },
     {
-      "slug": "sherlock-jr",
-      "name": "Sherlock Jr. (1924)"
-    },
-    {
       "slug": "a-silent-voice-the-movie",
       "name": "A Silent Voice: The Movie (2016)"
+    },
+    {
+      "slug": "sherlock-jr",
+      "name": "Sherlock Jr. (1924)"
     },
     {
       "slug": "mary-and-max",
@@ -891,20 +891,20 @@
       "name": "La Haine (1995)"
     },
     {
-      "slug": "jai-bhim",
-      "name": "Jai Bhim (2021)"
-    },
-    {
       "slug": "spotlight",
       "name": "Spotlight (2015)"
+    },
+    {
+      "slug": "maharaja-2024",
+      "name": "Maharaja (2024)"
     },
     {
       "slug": "the-sound-of-music",
       "name": "The Sound of Music (1965)"
     },
     {
-      "slug": "maharaja-2024",
-      "name": "Maharaja (2024)"
+      "slug": "jai-bhim",
+      "name": "Jai Bhim (2021)"
     },
     {
       "slug": "the-terminator",
@@ -935,20 +935,20 @@
       "name": "The Incredibles (2004)"
     },
     {
-      "slug": "before-sunset",
-      "name": "Before Sunset (2004)"
-    },
-    {
       "slug": "hachi-a-dogs-tale",
       "name": "Hachi: A Dog&#039;s Tale (2009)"
     },
     {
-      "slug": "the-chaos-class-failed-the-class",
-      "name": "The Chaos Class Failed the Class (1976)"
+      "slug": "before-sunset",
+      "name": "Before Sunset (2004)"
     },
     {
       "slug": "room-2015",
       "name": "Room (2015)"
+    },
+    {
+      "slug": "the-iron-giant",
+      "name": "The Iron Giant (1999)"
     },
     {
       "slug": "the-exorcist",
@@ -963,10 +963,6 @@
       "name": "The Seventh Seal (1957)"
     },
     {
-      "slug": "the-iron-giant",
-      "name": "The Iron Giant (1999)"
-    },
-    {
       "slug": "platoon",
       "name": "Platoon (1986)"
     },
@@ -979,12 +975,16 @@
       "name": "Stand by Me (1986)"
     },
     {
-      "slug": "the-wizard-of-oz-1939",
-      "name": "The Wizard of Oz (1939)"
+      "slug": "the-chaos-class-failed-the-class",
+      "name": "The Chaos Class Failed the Class (1976)"
     },
     {
       "slug": "the-battle-of-algiers",
       "name": "The Battle of Algiers (1966)"
+    },
+    {
+      "slug": "the-wizard-of-oz-1939",
+      "name": "The Wizard of Oz (1939)"
     },
     {
       "slug": "my-father-and-my-son",
@@ -999,8 +999,8 @@
       "name": "Autumn Sonata (1978)"
     },
     {
-      "slug": "soorarai-pottru",
-      "name": "Soorarai Pottru (2020)"
+      "slug": "miracle-in-cell-no-7-2019-1",
+      "name": "Miracle in Cell No. 7 (2019)"
     }
   ]
 }

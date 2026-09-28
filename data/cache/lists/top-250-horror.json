@@ -7,12 +7,12 @@
       "name": "Perfect Blue (1997)"
     },
     {
-      "slug": "the-thing",
-      "name": "The Thing (1982)"
-    },
-    {
       "slug": "twin-peaks-fire-walk-with-me",
       "name": "Twin Peaks: Fire Walk with Me (1992)"
+    },
+    {
+      "slug": "the-thing",
+      "name": "The Thing (1982)"
     },
     {
       "slug": "the-silence-of-the-lambs",
@@ -99,12 +99,12 @@
       "name": "Get Out (2017)"
     },
     {
-      "slug": "the-innocents",
-      "name": "The Innocents (1961)"
-    },
-    {
       "slug": "what-we-do-in-the-shadows",
       "name": "What We Do in the Shadows (2014)"
+    },
+    {
+      "slug": "the-innocents",
+      "name": "The Innocents (1961)"
     },
     {
       "slug": "aliens",
@@ -127,16 +127,16 @@
       "name": "Godzilla (1954)"
     },
     {
-      "slug": "obsession-2025",
-      "name": "Obsession (2025)"
-    },
-    {
       "slug": "the-rocky-horror-picture-show",
       "name": "The Rocky Horror Picture Show (1975)"
     },
     {
       "slug": "the-phantom-carriage",
       "name": "The Phantom Carriage (1921)"
+    },
+    {
+      "slug": "obsession-2025",
+      "name": "Obsession (2025)"
     },
     {
       "slug": "kuroneko",
@@ -171,12 +171,12 @@
       "name": "Possession (1981)"
     },
     {
-      "slug": "let-the-right-one-in",
-      "name": "Let the Right One In (2008)"
-    },
-    {
       "slug": "peeping-tom",
       "name": "Peeping Tom (1960)"
+    },
+    {
+      "slug": "let-the-right-one-in",
+      "name": "Let the Right One In (2008)"
     },
     {
       "slug": "hour-of-the-wolf",
@@ -191,12 +191,12 @@
       "name": "The Vanishing (1988)"
     },
     {
-      "slug": "the-lighthouse-2019",
-      "name": "The Lighthouse (2019)"
-    },
-    {
       "slug": "alice-1988",
       "name": "Alice (1988)"
+    },
+    {
+      "slug": "the-lighthouse-2019",
+      "name": "The Lighthouse (2019)"
     },
     {
       "slug": "misery",
@@ -295,24 +295,24 @@
       "name": "Deep Red (1975)"
     },
     {
-      "slug": "jaws",
-      "name": "Jaws (1975)"
-    },
-    {
       "slug": "the-skeleton-of-mrs-morales",
       "name": "The Skeleton of Mrs. Morales (1960)"
+    },
+    {
+      "slug": "jaws",
+      "name": "Jaws (1975)"
     },
     {
       "slug": "repulsion",
       "name": "Repulsion (1965)"
     },
     {
-      "slug": "the-man-who-laughs",
-      "name": "The Man Who Laughs (1928)"
-    },
-    {
       "slug": "little-shop-of-horrors",
       "name": "Little Shop of Horrors (1986)"
+    },
+    {
+      "slug": "the-man-who-laughs",
+      "name": "The Man Who Laughs (1928)"
     },
     {
       "slug": "humanist-vampire-seeking-consenting-suicidal-person",
@@ -343,12 +343,12 @@
       "name": "Witchhammer (1970)"
     },
     {
-      "slug": "the-invisible-man",
-      "name": "The Invisible Man (1933)"
-    },
-    {
       "slug": "kotoko",
       "name": "Kotoko (2011)"
+    },
+    {
+      "slug": "the-invisible-man",
+      "name": "The Invisible Man (1933)"
     },
     {
       "slug": "jacobs-ladder",
@@ -427,12 +427,12 @@
       "name": "An American Werewolf in London (1981)"
     },
     {
-      "slug": "frankenstein-2025",
-      "name": "Frankenstein (2025)"
-    },
-    {
       "slug": "gamera-3-revenge-of-iris",
       "name": "Gamera 3: Revenge of Iris (1999)"
+    },
+    {
+      "slug": "frankenstein-2025",
+      "name": "Frankenstein (2025)"
     },
     {
       "slug": "the-unknown",
@@ -475,12 +475,16 @@
       "name": "Nosferatu the Vampyre (1979)"
     },
     {
+      "slug": "in-the-mouth-of-madness",
+      "name": "In the Mouth of Madness (1994)"
+    },
+    {
       "slug": "eraserhead",
       "name": "Eraserhead (1977)"
     },
     {
-      "slug": "in-the-mouth-of-madness",
-      "name": "In the Mouth of Madness (1994)"
+      "slug": "resident-evil-2026",
+      "name": "Resident Evil (2026)"
     },
     {
       "slug": "a-chinese-ghost-story",
@@ -511,24 +515,24 @@
       "name": "Thirst (2009)"
     },
     {
-      "slug": "a-page-of-madness",
-      "name": "A Page of Madness (1926)"
-    },
-    {
       "slug": "rapture-1979",
       "name": "Rapture (1979)"
+    },
+    {
+      "slug": "a-page-of-madness",
+      "name": "A Page of Madness (1926)"
     },
     {
       "slug": "night-of-the-demon",
       "name": "Night of the Demon (1957)"
     },
     {
-      "slug": "the-boxers-omen",
-      "name": "The Boxer&#039;s Omen (1983)"
-    },
-    {
       "slug": "elvira-mistress-of-the-dark",
       "name": "Elvira: Mistress of the Dark (1988)"
+    },
+    {
+      "slug": "the-boxers-omen",
+      "name": "The Boxer&#039;s Omen (1983)"
     },
     {
       "slug": "the-skin-i-live-in",
@@ -555,12 +559,12 @@
       "name": "Don&#039;t Look Now (1973)"
     },
     {
-      "slug": "day-of-the-dead",
-      "name": "Day of the Dead (1985)"
-    },
-    {
       "slug": "death-becomes-her",
       "name": "Death Becomes Her (1992)"
+    },
+    {
+      "slug": "day-of-the-dead",
+      "name": "Day of the Dead (1985)"
     },
     {
       "slug": "the-texas-chain-saw-massacre",
@@ -571,20 +575,12 @@
       "name": "Frankenstein (1931)"
     },
     {
-      "slug": "teenage-sex-and-death-at-camp-miasma",
-      "name": "Teenage Sex and Death at Camp Miasma (2026)"
+      "slug": "bones-and-all",
+      "name": "Bones and All (2022)"
     },
     {
       "slug": "re-animator",
       "name": "Re-Animator (1985)"
-    },
-    {
-      "slug": "resident-evil-2026",
-      "name": "Resident Evil (2026)"
-    },
-    {
-      "slug": "bones-and-all",
-      "name": "Bones and All (2022)"
     },
     {
       "slug": "vampyr",
@@ -615,12 +611,12 @@
       "name": "Dead of Night (1945)"
     },
     {
-      "slug": "american-psycho",
-      "name": "American Psycho (2000)"
-    },
-    {
       "slug": "who-can-kill-a-child",
       "name": "Who Can Kill a Child? (1976)"
+    },
+    {
+      "slug": "american-psycho",
+      "name": "American Psycho (2000)"
     },
     {
       "slug": "images",
@@ -635,12 +631,16 @@
       "name": "The Phantom of the Opera (1925)"
     },
     {
+      "slug": "bram-stokers-dracula",
+      "name": "Bram Stoker&#039;s Dracula (1992)"
+    },
+    {
       "slug": "tenebre",
       "name": "Tenebre (1982)"
     },
     {
-      "slug": "bram-stokers-dracula",
-      "name": "Bram Stoker&#039;s Dracula (1992)"
+      "slug": "dantes-inferno-1911",
+      "name": "Dante&#039;s Inferno (1911)"
     },
     {
       "slug": "the-birds",
@@ -649,10 +649,6 @@
     {
       "slug": "little-otik",
       "name": "Little Otik (2000)"
-    },
-    {
-      "slug": "dantes-inferno-1911",
-      "name": "Dante&#039;s Inferno (1911)"
     },
     {
       "slug": "midsommar",
@@ -671,16 +667,16 @@
       "name": "Blood and Black Lace (1964)"
     },
     {
-      "slug": "the-substance",
-      "name": "The Substance (2024)"
+      "slug": "28-days-later",
+      "name": "28 Days Later (2002)"
     },
     {
       "slug": "suspiria-2018",
       "name": "Suspiria (2018)"
     },
     {
-      "slug": "28-days-later",
-      "name": "28 Days Later (2002)"
+      "slug": "the-substance",
+      "name": "The Substance (2024)"
     },
     {
       "slug": "hush-hush-sweet-charlotte",
@@ -689,6 +685,10 @@
     {
       "slug": "cemetery-man",
       "name": "Cemetery Man (1994)"
+    },
+    {
+      "slug": "teenage-sex-and-death-at-camp-miasma",
+      "name": "Teenage Sex and Death at Camp Miasma (2026)"
     },
     {
       "slug": "sick-of-myself",
@@ -715,28 +715,28 @@
       "name": "A Tale of Two Sisters (2003)"
     },
     {
-      "slug": "martin",
-      "name": "Martin (1977)"
-    },
-    {
       "slug": "tales-from-the-hood",
       "name": "Tales from the Hood (1995)"
     },
     {
-      "slug": "army-of-darkness",
-      "name": "Army of Darkness (1992)"
+      "slug": "martin",
+      "name": "Martin (1977)"
     },
     {
       "slug": "the-bird-with-the-crystal-plumage",
       "name": "The Bird with the Crystal Plumage (1970)"
     },
     {
-      "slug": "pearl-2022",
-      "name": "Pearl (2022)"
+      "slug": "army-of-darkness",
+      "name": "Army of Darkness (1992)"
     },
     {
       "slug": "frenzy",
       "name": "Frenzy (1972)"
+    },
+    {
+      "slug": "pearl-2022",
+      "name": "Pearl (2022)"
     },
     {
       "slug": "godzilla-mothra-and-king-ghidorah-giant-monsters-all-out-attack",
@@ -751,48 +751,48 @@
       "name": "Altered States (1980)"
     },
     {
-      "slug": "pulse-2001",
-      "name": "Pulse (2001)"
+      "slug": "tumbbad",
+      "name": "Tumbbad (2018)"
     },
     {
       "slug": "cold-fish",
       "name": "Cold Fish (2010)"
     },
     {
-      "slug": "tumbbad",
-      "name": "Tumbbad (2018)"
-    },
-    {
-      "slug": "blind-beast",
-      "name": "Blind Beast (1969)"
-    },
-    {
-      "slug": "white-dog",
-      "name": "White Dog (1982)"
+      "slug": "pulse-2001",
+      "name": "Pulse (2001)"
     },
     {
       "slug": "strange-circus",
       "name": "Strange Circus (2005)"
     },
     {
-      "slug": "ghost-story-of-yotsuya",
-      "name": "Ghost Story of Yotsuya (1959)"
+      "slug": "white-dog",
+      "name": "White Dog (1982)"
     },
     {
-      "slug": "the-bad-seed",
-      "name": "The Bad Seed (1956)"
+      "slug": "blind-beast",
+      "name": "Blind Beast (1969)"
+    },
+    {
+      "slug": "ghost-story-of-yotsuya",
+      "name": "Ghost Story of Yotsuya (1959)"
     },
     {
       "slug": "the-golem-how-he-came-into-the-world",
       "name": "The Golem: How He Came Into the World (1920)"
     },
     {
-      "slug": "the-day-of-the-beast",
-      "name": "The Day of the Beast (1995)"
+      "slug": "the-bad-seed",
+      "name": "The Bad Seed (1956)"
     },
     {
       "slug": "poison-for-the-fairies",
       "name": "Poison for the Fairies (1986)"
+    },
+    {
+      "slug": "the-day-of-the-beast",
+      "name": "The Day of the Beast (1995)"
     },
     {
       "slug": "rec",
@@ -803,16 +803,16 @@
       "name": "Saw (2004)"
     },
     {
-      "slug": "leviticus-2026",
-      "name": "Leviticus (2026)"
-    },
-    {
       "slug": "encounters-of-the-spooky-kind",
       "name": "Encounters of the Spooky Kind (1980)"
     },
     {
       "slug": "i-walked-with-a-zombie",
       "name": "I Walked with a Zombie (1943)"
+    },
+    {
+      "slug": "leviticus-2026",
+      "name": "Leviticus (2026)"
     },
     {
       "slug": "the-lost-boys",
@@ -823,12 +823,12 @@
       "name": "Gozu (2003)"
     },
     {
-      "slug": "bring-her-back",
-      "name": "Bring Her Back (2025)"
-    },
-    {
       "slug": "gemini",
       "name": "Gemini (1999)"
+    },
+    {
+      "slug": "bring-her-back",
+      "name": "Bring Her Back (2025)"
     },
     {
       "slug": "angel-heart",
@@ -891,12 +891,12 @@
       "name": "Anguish (1987)"
     },
     {
-      "slug": "ginger-snaps",
-      "name": "Ginger Snaps (2000)"
-    },
-    {
       "slug": "the-devils-advocate",
       "name": "The Devil&#039;s Advocate (1997)"
+    },
+    {
+      "slug": "ginger-snaps",
+      "name": "Ginger Snaps (2000)"
     },
     {
       "slug": "nosferatu-2024",
@@ -927,12 +927,12 @@
       "name": "The Ugly Stepsister (2025)"
     },
     {
-      "slug": "in-a-glass-cage",
-      "name": "In a Glass Cage (1986)"
-    },
-    {
       "slug": "celia",
       "name": "Celia (1989)"
+    },
+    {
+      "slug": "in-a-glass-cage",
+      "name": "In a Glass Cage (1986)"
     },
     {
       "slug": "theatre-of-blood",
@@ -951,6 +951,14 @@
       "name": "Gremlins (1984)"
     },
     {
+      "slug": "pizza-2012",
+      "name": "Pizza (2012)"
+    },
+    {
+      "slug": "chandramukhi",
+      "name": "Chandramukhi (2005)"
+    },
+    {
       "slug": "ganja-hess",
       "name": "Ganja &amp; Hess (1973)"
     },
@@ -959,36 +967,24 @@
       "name": "A Quiet Place (2018)"
     },
     {
-      "slug": "chandramukhi",
-      "name": "Chandramukhi (2005)"
-    },
-    {
       "slug": "the-spiral-staircase",
       "name": "The Spiral Staircase (1946)"
-    },
-    {
-      "slug": "pizza-2012",
-      "name": "Pizza (2012)"
     },
     {
       "slug": "the-masque-of-the-red-death",
       "name": "The Masque of the Red Death (1964)"
     },
     {
-      "slug": "mad-love",
-      "name": "Mad Love (1935)"
-    },
-    {
       "slug": "the-hidden",
       "name": "The Hidden (1987)"
     },
     {
-      "slug": "marrowbone",
-      "name": "Marrowbone (2017)"
+      "slug": "mad-love",
+      "name": "Mad Love (1935)"
     },
     {
-      "slug": "dressed-to-kill-1980",
-      "name": "Dressed to Kill (1980)"
+      "slug": "marrowbone",
+      "name": "Marrowbone (2017)"
     },
     {
       "slug": "the-hitcher",
@@ -999,8 +995,12 @@
       "name": "The Blob (1988)"
     },
     {
-      "slug": "unicorn-wars",
-      "name": "Unicorn Wars (2022)"
+      "slug": "dressed-to-kill-1980",
+      "name": "Dressed to Kill (1980)"
+    },
+    {
+      "slug": "ring-1998",
+      "name": "Ring (1998)"
     }
   ]
 }
