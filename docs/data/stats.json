@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-28",
+  "generated_at": "2026-10-05",
   "username": "osvajorge",
   "totals": {
     "films": 856,
@@ -2852,7 +2852,7 @@
     {
       "id": "letterboxd-top-500",
       "title": "Letterboxd Top 500",
-      "seen": 95,
+      "seen": 94,
       "total": 500
     },
     {
@@ -2972,10 +2972,10 @@
     ],
     "rewatch_rate": 0.015,
     "watchlist": {
-      "size": 1032,
-      "median_age_days": 1161,
+      "size": 1033,
+      "median_age_days": 1168,
       "conversion_rate": 0.018,
-      "estimated_date_share": 0.011
+      "estimated_date_share": 0.012
     },
     "heatmap": [
       {
@@ -6593,7 +6593,7 @@
     },
     "life_in_days": {
       "days": 65.2,
-      "would_end_on": "2026-12-02"
+      "would_end_on": "2026-12-09"
     },
     "extremes": {
       "shortest": {
