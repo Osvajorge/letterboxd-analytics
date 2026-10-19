@@ -51,12 +51,12 @@
       "name": "Forrest Gump (1994)"
     },
     {
-      "slug": "fight-club",
-      "name": "Fight Club (1999)"
-    },
-    {
       "slug": "inception",
       "name": "Inception (2010)"
+    },
+    {
+      "slug": "fight-club",
+      "name": "Fight Club (1999)"
     },
     {
       "slug": "the-empire-strikes-back",
@@ -247,12 +247,12 @@
       "name": "Raiders of the Lost Ark (1981)"
     },
     {
-      "slug": "the-odyssey-2026",
-      "name": "The Odyssey (2026)"
-    },
-    {
       "slug": "spider-man-into-the-spider-verse",
       "name": "Spider-Man: Into the Spider-Verse (2018)"
+    },
+    {
+      "slug": "the-odyssey-2026",
+      "name": "The Odyssey (2026)"
     },
     {
       "slug": "the-lives-of-others",
@@ -327,12 +327,12 @@
       "name": "3 Idiots (2009)"
     },
     {
-      "slug": "das-boot",
-      "name": "Das Boot (1981)"
-    },
-    {
       "slug": "braveheart",
       "name": "Braveheart (1995)"
+    },
+    {
+      "slug": "das-boot",
+      "name": "Das Boot (1981)"
     },
     {
       "slug": "princess-mononoke",
@@ -355,6 +355,10 @@
       "name": "Capernaum (2018)"
     },
     {
+      "slug": "attack-on-titan-the-last-attack",
+      "name": "Attack on Titan: THE LAST ATTACK (2024)"
+    },
+    {
       "slug": "singin-in-the-rain",
       "name": "Singin&#039; in the Rain (1952)"
     },
@@ -365,10 +369,6 @@
     {
       "slug": "joker-2019",
       "name": "Joker (2019)"
-    },
-    {
-      "slug": "attack-on-titan-the-last-attack",
-      "name": "Attack on Titan: THE LAST ATTACK (2024)"
     },
     {
       "slug": "toy-story-3",
@@ -467,20 +467,20 @@
       "name": "Amélie (2001)"
     },
     {
-      "slug": "vertigo",
-      "name": "Vertigo (1958)"
-    },
-    {
       "slug": "to-kill-a-mockingbird",
       "name": "To Kill a Mockingbird (1962)"
     },
     {
-      "slug": "citizen-kane",
-      "name": "Citizen Kane (1941)"
-    },
-    {
       "slug": "indiana-jones-and-the-last-crusade",
       "name": "Indiana Jones and the Last Crusade (1989)"
+    },
+    {
+      "slug": "vertigo",
+      "name": "Vertigo (1958)"
+    },
+    {
+      "slug": "citizen-kane",
+      "name": "Citizen Kane (1941)"
     },
     {
       "slug": "the-sting",
@@ -499,12 +499,12 @@
       "name": "The Truman Show (1998)"
     },
     {
-      "slug": "1917",
-      "name": "1917 (2019)"
-    },
-    {
       "slug": "the-wolf-of-wall-street",
       "name": "The Wolf of Wall Street (2013)"
+    },
+    {
+      "slug": "1917",
+      "name": "1917 (2019)"
     },
     {
       "slug": "snatch",
@@ -535,12 +535,12 @@
       "name": "Bicycle Thieves (1948)"
     },
     {
-      "slug": "woman-in-the-dunes",
-      "name": "Woman in the Dunes (1964)"
-    },
-    {
       "slug": "judgment-at-nuremberg",
       "name": "Judgment at Nuremberg (1961)"
+    },
+    {
+      "slug": "woman-in-the-dunes",
+      "name": "Woman in the Dunes (1964)"
     },
     {
       "slug": "jurassic-park",
@@ -595,12 +595,12 @@
       "name": "Ran (1985)"
     },
     {
-      "slug": "casino",
-      "name": "Casino (1995)"
-    },
-    {
       "slug": "the-thing",
       "name": "The Thing (1982)"
+    },
+    {
+      "slug": "casino",
+      "name": "Casino (1995)"
     },
     {
       "slug": "no-country-for-old-men",
@@ -643,16 +643,16 @@
       "name": "Finding Nemo (2003)"
     },
     {
-      "slug": "demon-slayer-kimetsu-no-yaiba-infinity-castle",
-      "name": "Demon Slayer: Kimetsu no Yaiba Infinity Castle (2025)"
+      "slug": "klaus",
+      "name": "Klaus (2019)"
     },
     {
       "slug": "project-hail-mary",
       "name": "Project Hail Mary (2026)"
     },
     {
-      "slug": "klaus",
-      "name": "Klaus (2019)"
+      "slug": "demon-slayer-kimetsu-no-yaiba-infinity-castle",
+      "name": "Demon Slayer: Kimetsu no Yaiba Infinity Castle (2025)"
     },
     {
       "slug": "yojimbo",
@@ -703,12 +703,12 @@
       "name": "Dead Poets Society (1989)"
     },
     {
-      "slug": "the-best-of-youth",
-      "name": "The Best of Youth (2003)"
-    },
-    {
       "slug": "inside-out-2015",
       "name": "Inside Out (2015)"
+    },
+    {
+      "slug": "the-best-of-youth",
+      "name": "The Best of Youth (2003)"
     },
     {
       "slug": "trainspotting",
@@ -779,12 +779,12 @@
       "name": "Gran Torino (2008)"
     },
     {
-      "slug": "raging-bull",
-      "name": "Raging Bull (1980)"
-    },
-    {
       "slug": "12-years-a-slave",
       "name": "12 Years a Slave (2013)"
+    },
+    {
+      "slug": "raging-bull",
+      "name": "Raging Bull (1980)"
     },
     {
       "slug": "how-to-train-your-dragon",
@@ -847,12 +847,16 @@
       "name": "The Gold Rush (1925)"
     },
     {
+      "slug": "mary-and-max",
+      "name": "Mary and Max (2009)"
+    },
+    {
       "slug": "sherlock-jr",
       "name": "Sherlock Jr. (1924)"
     },
     {
-      "slug": "mary-and-max",
-      "name": "Mary and Max (2009)"
+      "slug": "the-wages-of-fear",
+      "name": "The Wages of Fear (1953)"
     },
     {
       "slug": "the-deer-hunter",
@@ -863,16 +867,12 @@
       "name": "Logan (2017)"
     },
     {
-      "slug": "the-wages-of-fear",
-      "name": "The Wages of Fear (1953)"
+      "slug": "pirates-of-the-caribbean-the-curse-of-the-black-pearl",
+      "name": "Pirates of the Caribbean: The Curse of the Black Pearl (2003)"
     },
     {
       "slug": "rocky",
       "name": "Rocky (1976)"
-    },
-    {
-      "slug": "pirates-of-the-caribbean-the-curse-of-the-black-pearl",
-      "name": "Pirates of the Caribbean: The Curse of the Black Pearl (2003)"
     },
     {
       "slug": "the-general",
@@ -895,12 +895,12 @@
       "name": "Maharaja (2024)"
     },
     {
-      "slug": "spotlight",
-      "name": "Spotlight (2015)"
-    },
-    {
       "slug": "the-sound-of-music",
       "name": "The Sound of Music (1965)"
+    },
+    {
+      "slug": "spotlight",
+      "name": "Spotlight (2015)"
     },
     {
       "slug": "jai-bhim",
@@ -947,12 +947,12 @@
       "name": "The Iron Giant (1999)"
     },
     {
-      "slug": "room-2015",
-      "name": "Room (2015)"
-    },
-    {
       "slug": "the-exorcist",
       "name": "The Exorcist (1973)"
+    },
+    {
+      "slug": "room-2015",
+      "name": "Room (2015)"
     },
     {
       "slug": "hotel-rwanda",
@@ -987,10 +987,6 @@
       "name": "My Father and My Son (2005)"
     },
     {
-      "slug": "the-chaos-class-failed-the-class",
-      "name": "The Chaos Class Failed the Class (1976)"
-    },
-    {
       "slug": "the-passion-of-joan-of-arc",
       "name": "The Passion of Joan of Arc (1928)"
     },
@@ -999,8 +995,12 @@
       "name": "Drishyam (2015)"
     },
     {
-      "slug": "autumn-sonata",
-      "name": "Autumn Sonata (1978)"
+      "slug": "gangs-of-wasseypur-part-1",
+      "name": "Gangs of Wasseypur – Part 1 (2012)"
+    },
+    {
+      "slug": "andhadhun",
+      "name": "Andhadhun (2018)"
     }
   ]
 }
