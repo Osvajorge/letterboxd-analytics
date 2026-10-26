@@ -235,6 +235,10 @@
       "name": "The Voice of Hind Rajab (2025)"
     },
     {
+      "slug": "la-bola-negra",
+      "name": "La Bola Negra (2026)"
+    },
+    {
       "slug": "farewell-my-concubine",
       "name": "Farewell My Concubine (1993)"
     },
@@ -311,12 +315,12 @@
       "name": "Nights of Cabiria (1957)"
     },
     {
-      "slug": "stalker",
-      "name": "Stalker (1979)"
-    },
-    {
       "slug": "an-elephant-sitting-still",
       "name": "An Elephant Sitting Still (2018)"
+    },
+    {
+      "slug": "stalker",
+      "name": "Stalker (1979)"
     },
     {
       "slug": "se7en",
@@ -329,10 +333,6 @@
     {
       "slug": "apur-sansar",
       "name": "Apur Sansar (1959)"
-    },
-    {
-      "slug": "la-bola-negra",
-      "name": "La Bola Negra (2026)"
     },
     {
       "slug": "z",
@@ -443,12 +443,12 @@
       "name": "The Departed (2006)"
     },
     {
-      "slug": "the-thing",
-      "name": "The Thing (1982)"
-    },
-    {
       "slug": "singin-in-the-rain",
       "name": "Singin&#039; in the Rain (1952)"
+    },
+    {
+      "slug": "the-thing",
+      "name": "The Thing (1982)"
     },
     {
       "slug": "army-of-shadows",
@@ -511,12 +511,12 @@
       "name": "Three Colours: Red (1994)"
     },
     {
-      "slug": "ordet",
-      "name": "Ordet (1955)"
-    },
-    {
       "slug": "to-be-or-not-to-be",
       "name": "To Be or Not to Be (1942)"
+    },
+    {
+      "slug": "ordet",
+      "name": "Ordet (1955)"
     },
     {
       "slug": "the-young-girls-of-rochefort",
@@ -539,24 +539,24 @@
       "name": "The Celebration (1998)"
     },
     {
-      "slug": "late-spring",
-      "name": "Late Spring (1949)"
-    },
-    {
       "slug": "the-elephant-man",
       "name": "The Elephant Man (1980)"
+    },
+    {
+      "slug": "late-spring",
+      "name": "Late Spring (1949)"
     },
     {
       "slug": "taste-of-cherry",
       "name": "Taste of Cherry (1997)"
     },
     {
-      "slug": "mommy-2014",
-      "name": "Mommy (2014)"
-    },
-    {
       "slug": "pather-panchali",
       "name": "Pather Panchali (1955)"
+    },
+    {
+      "slug": "mommy-2014",
+      "name": "Mommy (2014)"
     },
     {
       "slug": "rocco-and-his-brothers",
@@ -591,20 +591,20 @@
       "name": "Landscape in the Mist (1988)"
     },
     {
-      "slug": "city-lights",
-      "name": "City Lights (1931)"
-    },
-    {
       "slug": "dog-day-afternoon",
       "name": "Dog Day Afternoon (1975)"
     },
     {
-      "slug": "before-sunset",
-      "name": "Before Sunset (2004)"
+      "slug": "city-lights",
+      "name": "City Lights (1931)"
     },
     {
       "slug": "the-prestige",
       "name": "The Prestige (2006)"
+    },
+    {
+      "slug": "before-sunset",
+      "name": "Before Sunset (2004)"
     },
     {
       "slug": "psycho",
@@ -615,12 +615,12 @@
       "name": "Mirror (1975)"
     },
     {
-      "slug": "wings-of-desire",
-      "name": "Wings of Desire (1987)"
-    },
-    {
       "slug": "the-green-mile",
       "name": "The Green Mile (1999)"
+    },
+    {
+      "slug": "wings-of-desire",
+      "name": "Wings of Desire (1987)"
     },
     {
       "slug": "chinatown",
@@ -663,12 +663,12 @@
       "name": "Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb (1964)"
     },
     {
-      "slug": "tampopo",
-      "name": "Tampopo (1985)"
-    },
-    {
       "slug": "malcolm-x-1992",
       "name": "Malcolm X (1992)"
+    },
+    {
+      "slug": "tampopo",
+      "name": "Tampopo (1985)"
     },
     {
       "slug": "song-of-the-sea",
@@ -691,12 +691,16 @@
       "name": "The Cremator (1969)"
     },
     {
+      "slug": "life-and-nothing-more",
+      "name": "Life, and Nothing More… (1992)"
+    },
+    {
       "slug": "samurai-rebellion",
       "name": "Samurai Rebellion (1967)"
     },
     {
-      "slug": "life-and-nothing-more",
-      "name": "Life, and Nothing More… (1992)"
+      "slug": "dersu-uzala",
+      "name": "Dersu Uzala (1975)"
     },
     {
       "slug": "before-sunrise",
@@ -705,10 +709,6 @@
     {
       "slug": "werckmeister-harmonies",
       "name": "Werckmeister Harmonies (2000)"
-    },
-    {
-      "slug": "dersu-uzala",
-      "name": "Dersu Uzala (1975)"
     },
     {
       "slug": "the-400-blows",
@@ -731,12 +731,12 @@
       "name": "The Hunt (2012)"
     },
     {
-      "slug": "m",
-      "name": "M (1931)"
-    },
-    {
       "slug": "the-fall",
       "name": "The Fall (2006)"
+    },
+    {
+      "slug": "m",
+      "name": "M (1931)"
     },
     {
       "slug": "look-back-2024",
@@ -759,12 +759,12 @@
       "name": "Opening Night (1977)"
     },
     {
-      "slug": "cure",
-      "name": "Cure (1997)"
-    },
-    {
       "slug": "casablanca",
       "name": "Casablanca (1942)"
+    },
+    {
+      "slug": "cure",
+      "name": "Cure (1997)"
     },
     {
       "slug": "bicycle-thieves",
@@ -787,12 +787,12 @@
       "name": "Kizumonogatari Part 3: Reiketsu (2017)"
     },
     {
-      "slug": "akira",
-      "name": "Akira (1988)"
-    },
-    {
       "slug": "ace-in-the-hole",
       "name": "Ace in the Hole (1951)"
+    },
+    {
+      "slug": "akira",
+      "name": "Akira (1988)"
     },
     {
       "slug": "sorcerer",
@@ -831,32 +831,36 @@
       "name": "The Tale of The Princess Kaguya (2013)"
     },
     {
-      "slug": "i-swear",
-      "name": "I Swear (2025)"
-    },
-    {
-      "slug": "la-notte",
-      "name": "La Notte (1961)"
-    },
-    {
       "slug": "saving-private-ryan",
       "name": "Saving Private Ryan (1998)"
+    },
+    {
+      "slug": "i-swear",
+      "name": "I Swear (2025)"
     },
     {
       "slug": "kamikaze-girls",
       "name": "Kamikaze Girls (2004)"
     },
     {
+      "slug": "la-notte",
+      "name": "La Notte (1961)"
+    },
+    {
       "slug": "tokyo-godfathers",
       "name": "Tokyo Godfathers (2003)"
+    },
+    {
+      "slug": "network",
+      "name": "Network (1976)"
     },
     {
       "slug": "throne-of-blood",
       "name": "Throne of Blood (1957)"
     },
     {
-      "slug": "network",
-      "name": "Network (1976)"
+      "slug": "the-devils",
+      "name": "The Devils (1971)"
     },
     {
       "slug": "rififi",
@@ -875,28 +879,28 @@
       "name": "Double Indemnity (1944)"
     },
     {
-      "slug": "nostalgia-1983",
-      "name": "Nostalgia (1983)"
+      "slug": "the-sound-of-music",
+      "name": "The Sound of Music (1965)"
     },
     {
       "slug": "mulholland-drive",
       "name": "Mulholland Drive (2001)"
     },
     {
-      "slug": "the-sound-of-music",
-      "name": "The Sound of Music (1965)"
+      "slug": "nostalgia-1983",
+      "name": "Nostalgia (1983)"
     },
     {
       "slug": "better-days-2019",
       "name": "Better Days (2019)"
     },
     {
-      "slug": "8-half",
-      "name": "8½ (1963)"
-    },
-    {
       "slug": "the-first-slam-dunk",
       "name": "The First Slam Dunk (2022)"
+    },
+    {
+      "slug": "8-half",
+      "name": "8½ (1963)"
     },
     {
       "slug": "la-dolce-vita",
@@ -915,12 +919,12 @@
       "name": "For a Few Dollars More (1965)"
     },
     {
-      "slug": "ugetsu",
-      "name": "Ugetsu (1953)"
-    },
-    {
       "slug": "wolfwalkers",
       "name": "Wolfwalkers (2020)"
+    },
+    {
+      "slug": "ugetsu",
+      "name": "Ugetsu (1953)"
     },
     {
       "slug": "a-moment-of-innocence",
@@ -943,20 +947,20 @@
       "name": "Anatomy of a Murder (1959)"
     },
     {
-      "slug": "the-face-of-another",
-      "name": "The Face of Another (1966)"
-    },
-    {
       "slug": "the-best-years-of-our-lives",
       "name": "The Best Years of Our Lives (1946)"
     },
     {
-      "slug": "alien",
-      "name": "Alien (1979)"
+      "slug": "the-face-of-another",
+      "name": "The Face of Another (1966)"
     },
     {
       "slug": "the-secret-in-their-eyes",
       "name": "The Secret in Their Eyes (2009)"
+    },
+    {
+      "slug": "alien",
+      "name": "Alien (1979)"
     },
     {
       "slug": "marcel-the-shell-with-shoes-on-2021",
@@ -967,72 +971,76 @@
       "name": "Quo Vadis, Aida? (2020)"
     },
     {
-      "slug": "umberto-d",
-      "name": "Umberto D. (1952)"
-    },
-    {
       "slug": "vada-chennai",
       "name": "Vada Chennai (2018)"
     },
     {
-      "slug": "modern-times",
-      "name": "Modern Times (1936)"
-    },
-    {
-      "slug": "dreams",
-      "name": "Dreams (1990)"
+      "slug": "umberto-d",
+      "name": "Umberto D. (1952)"
     },
     {
       "slug": "inception",
       "name": "Inception (2010)"
     },
     {
-      "slug": "the-king-of-comedy",
-      "name": "The King of Comedy (1982)"
+      "slug": "dreams",
+      "name": "Dreams (1990)"
     },
     {
       "slug": "meiyazhagan",
       "name": "Meiyazhagan (2024)"
     },
     {
+      "slug": "modern-times",
+      "name": "Modern Times (1936)"
+    },
+    {
       "slug": "capernaum",
       "name": "Capernaum (2018)"
+    },
+    {
+      "slug": "the-king-of-comedy",
+      "name": "The King of Comedy (1982)"
     },
     {
       "slug": "eternal-sunshine-of-the-spotless-mind",
       "name": "Eternal Sunshine of the Spotless Mind (2004)"
     },
     {
-      "slug": "metropolis",
-      "name": "Metropolis (1927)"
-    },
-    {
       "slug": "sweet-smell-of-success",
       "name": "Sweet Smell of Success (1957)"
+    },
+    {
+      "slug": "macario",
+      "name": "Macario (1960)"
     },
     {
       "slug": "your-name",
       "name": "Your Name. (2016)"
     },
     {
-      "slug": "kes",
-      "name": "Kes (1969)"
-    },
-    {
-      "slug": "the-third-man",
-      "name": "The Third Man (1949)"
+      "slug": "metropolis",
+      "name": "Metropolis (1927)"
     },
     {
       "slug": "millennium-actress",
       "name": "Millennium Actress (2001)"
     },
     {
+      "slug": "the-third-man",
+      "name": "The Third Man (1949)"
+    },
+    {
+      "slug": "kes",
+      "name": "Kes (1969)"
+    },
+    {
       "slug": "amour",
       "name": "Amour (2012)"
     },
     {
-      "slug": "macario",
-      "name": "Macario (1960)"
+      "slug": "children-of-heaven",
+      "name": "Children of Heaven (1997)"
     },
     {
       "slug": "the-grand-budapest-hotel",
@@ -1045,14 +1053,6 @@
     {
       "slug": "a-taxi-driver",
       "name": "A Taxi Driver (2017)"
-    },
-    {
-      "slug": "children-of-heaven",
-      "name": "Children of Heaven (1997)"
-    },
-    {
-      "slug": "the-devils",
-      "name": "The Devils (1971)"
     },
     {
       "slug": "turtles-can-fly",
@@ -1079,12 +1079,12 @@
       "name": "A Silent Voice: The Movie (2016)"
     },
     {
-      "slug": "the-life-and-death-of-colonel-blimp",
-      "name": "The Life and Death of Colonel Blimp (1943)"
-    },
-    {
       "slug": "hope-2013",
       "name": "Hope (2013)"
+    },
+    {
+      "slug": "the-life-and-death-of-colonel-blimp",
+      "name": "The Life and Death of Colonel Blimp (1943)"
     },
     {
       "slug": "son-of-the-white-mare",
@@ -1095,40 +1095,40 @@
       "name": "Trainspotting (1996)"
     },
     {
-      "slug": "winter-light",
-      "name": "Winter Light (1963)"
-    },
-    {
       "slug": "poetry",
       "name": "Poetry (2010)"
     },
     {
-      "slug": "persepolis",
-      "name": "Persepolis (2007)"
+      "slug": "winter-light",
+      "name": "Winter Light (1963)"
     },
     {
       "slug": "thelma-louise",
       "name": "Thelma &amp; Louise (1991)"
     },
     {
+      "slug": "persepolis",
+      "name": "Persepolis (2007)"
+    },
+    {
       "slug": "2001-a-space-odyssey",
       "name": "2001: A Space Odyssey (1968)"
-    },
-    {
-      "slug": "mysterious-skin",
-      "name": "Mysterious Skin (2004)"
-    },
-    {
-      "slug": "pulp-fiction",
-      "name": "Pulp Fiction (1994)"
     },
     {
       "slug": "to-live",
       "name": "To Live (1994)"
     },
     {
+      "slug": "mysterious-skin",
+      "name": "Mysterious Skin (2004)"
+    },
+    {
       "slug": "the-lion-king",
       "name": "The Lion King (1994)"
+    },
+    {
+      "slug": "pulp-fiction",
+      "name": "Pulp Fiction (1994)"
     },
     {
       "slug": "kagemusha",
@@ -1139,12 +1139,12 @@
       "name": "Ratatouille (2007)"
     },
     {
-      "slug": "dancer-in-the-dark",
-      "name": "Dancer in the Dark (2000)"
-    },
-    {
       "slug": "the-deer-hunter",
       "name": "The Deer Hunter (1978)"
+    },
+    {
+      "slug": "dancer-in-the-dark",
+      "name": "Dancer in the Dark (2000)"
     },
     {
       "slug": "kwaidan",
@@ -1195,20 +1195,20 @@
       "name": "HAIKYU!! The Dumpster Battle (2024)"
     },
     {
-      "slug": "time-of-the-gypsies",
-      "name": "Time of the Gypsies (1988)"
+      "slug": "in-the-name-of-the-father-1993",
+      "name": "In the Name of the Father (1993)"
     },
     {
       "slug": "the-young-and-the-damned",
       "name": "The Young and the Damned (1950)"
     },
     {
-      "slug": "in-the-name-of-the-father-1993",
-      "name": "In the Name of the Father (1993)"
-    },
-    {
       "slug": "embrace-of-the-serpent",
       "name": "Embrace of the Serpent (2015)"
+    },
+    {
+      "slug": "time-of-the-gypsies",
+      "name": "Time of the Gypsies (1988)"
     },
     {
       "slug": "le-samourai",
@@ -1223,16 +1223,16 @@
       "name": "The Shining (1980)"
     },
     {
+      "slug": "azur-asmar-the-princes-quest",
+      "name": "Azur &amp; Asmar: The Princes&#039; Quest (2006)"
+    },
+    {
       "slug": "kumbalangi-nights",
       "name": "Kumbalangi Nights (2019)"
     },
     {
       "slug": "an-autumn-afternoon",
       "name": "An Autumn Afternoon (1962)"
-    },
-    {
-      "slug": "azur-asmar-the-princes-quest",
-      "name": "Azur &amp; Asmar: The Princes&#039; Quest (2006)"
     },
     {
       "slug": "unforgiven",
@@ -1259,10 +1259,6 @@
       "name": "The White Ribbon (2009)"
     },
     {
-      "slug": "nirvanna-the-band-the-show-the-movie",
-      "name": "Nirvanna the Band the Show the Movie (2025)"
-    },
-    {
       "slug": "drive-my-car",
       "name": "Drive My Car (2021)"
     },
@@ -1275,12 +1271,16 @@
       "name": "The Children&#039;s Hour (1961)"
     },
     {
+      "slug": "the-taste-of-tea",
+      "name": "The Taste of Tea (2004)"
+    },
+    {
       "slug": "shame",
       "name": "Shame (1968)"
     },
     {
-      "slug": "the-taste-of-tea",
-      "name": "The Taste of Tea (2004)"
+      "slug": "nirvanna-the-band-the-show-the-movie",
+      "name": "Nirvanna the Band the Show the Movie (2025)"
     },
     {
       "slug": "rosemarys-baby",
@@ -1289,6 +1289,10 @@
     {
       "slug": "rrr",
       "name": "RRR (2022)"
+    },
+    {
+      "slug": "big-world-2024",
+      "name": "Big World (2024)"
     },
     {
       "slug": "raging-bull",
@@ -1303,20 +1307,16 @@
       "name": "Night Is Short, Walk On Girl (2017)"
     },
     {
+      "slug": "gladiator-2000",
+      "name": "Gladiator (2000)"
+    },
+    {
       "slug": "comrades-almost-a-love-story",
       "name": "Comrades, Almost a Love Story (1996)"
     },
     {
       "slug": "boogie-nights",
       "name": "Boogie Nights (1997)"
-    },
-    {
-      "slug": "gladiator-2000",
-      "name": "Gladiator (2000)"
-    },
-    {
-      "slug": "big-world-2024",
-      "name": "Big World (2024)"
     },
     {
       "slug": "roman-holiday",
@@ -1363,10 +1363,6 @@
       "name": "Nausicaä of the Valley of the Wind (1984)"
     },
     {
-      "slug": "the-man-who-sleeps",
-      "name": "The Man Who Sleeps (1974)"
-    },
-    {
       "slug": "cria",
       "name": "Cria! (1976)"
     },
@@ -1375,12 +1371,16 @@
       "name": "Like Father, Like Son (2013)"
     },
     {
-      "slug": "hard-boiled",
-      "name": "Hard Boiled (1992)"
-    },
-    {
       "slug": "coraline",
       "name": "Coraline (2009)"
+    },
+    {
+      "slug": "the-man-who-sleeps",
+      "name": "The Man Who Sleeps (1974)"
+    },
+    {
+      "slug": "hard-boiled",
+      "name": "Hard Boiled (1992)"
     },
     {
       "slug": "north-by-northwest",
@@ -1391,6 +1391,10 @@
       "name": "Joyland (2022)"
     },
     {
+      "slug": "vampire-hunter-d-bloodlust",
+      "name": "Vampire Hunter D: Bloodlust (2000)"
+    },
+    {
       "slug": "what-ever-happened-to-baby-jane",
       "name": "What Ever Happened to Baby Jane? (1962)"
     },
@@ -1399,16 +1403,12 @@
       "name": "Stand by Me (1986)"
     },
     {
-      "slug": "good-morning",
-      "name": "Good Morning (1959)"
-    },
-    {
       "slug": "hamnet",
       "name": "Hamnet (2025)"
     },
     {
-      "slug": "vampire-hunter-d-bloodlust",
-      "name": "Vampire Hunter D: Bloodlust (2000)"
+      "slug": "good-morning",
+      "name": "Good Morning (1959)"
     },
     {
       "slug": "moonlight-2016",
@@ -1423,12 +1423,12 @@
       "name": "Full Metal Jacket (1987)"
     },
     {
-      "slug": "klaus",
-      "name": "Klaus (2019)"
-    },
-    {
       "slug": "little-women-2019",
       "name": "Little Women (2019)"
+    },
+    {
+      "slug": "klaus",
+      "name": "Klaus (2019)"
     },
     {
       "slug": "my-neighbor-totoro",
@@ -1443,16 +1443,16 @@
       "name": "Grand Illusion (1937)"
     },
     {
+      "slug": "threads",
+      "name": "Threads (1984)"
+    },
+    {
       "slug": "the-turin-horse",
       "name": "The Turin Horse (2011)"
     },
     {
       "slug": "diabolique-1955",
       "name": "Diabolique (1955)"
-    },
-    {
-      "slug": "threads",
-      "name": "Threads (1984)"
     },
     {
       "slug": "the-conformist",
@@ -1463,12 +1463,12 @@
       "name": "Ivan&#039;s Childhood (1962)"
     },
     {
-      "slug": "playtime",
-      "name": "PlayTime (1967)"
-    },
-    {
       "slug": "whisper-of-the-heart",
       "name": "Whisper of the Heart (1995)"
+    },
+    {
+      "slug": "playtime",
+      "name": "PlayTime (1967)"
     },
     {
       "slug": "all-the-presidents-men",
@@ -1483,20 +1483,20 @@
       "name": "Rashomon (1950)"
     },
     {
-      "slug": "forrest-gump",
-      "name": "Forrest Gump (1994)"
-    },
-    {
       "slug": "amores-perros",
       "name": "Amores Perros (2000)"
     },
     {
-      "slug": "tokyo-sonata",
-      "name": "Tokyo Sonata (2008)"
+      "slug": "forrest-gump",
+      "name": "Forrest Gump (1994)"
     },
     {
       "slug": "winter-sleep",
       "name": "Winter Sleep (2014)"
+    },
+    {
+      "slug": "tokyo-sonata",
+      "name": "Tokyo Sonata (2008)"
     },
     {
       "slug": "it-happened-one-night",
@@ -1507,20 +1507,20 @@
       "name": "The Long Goodbye (1973)"
     },
     {
-      "slug": "citizen-kane",
-      "name": "Citizen Kane (1941)"
-    },
-    {
       "slug": "ernest-celestine",
       "name": "Ernest &amp; Celestine (2012)"
     },
     {
-      "slug": "mind-game",
-      "name": "Mind Game (2004)"
+      "slug": "citizen-kane",
+      "name": "Citizen Kane (1941)"
     },
     {
       "slug": "blue-giant",
       "name": "Blue Giant (2023)"
+    },
+    {
+      "slug": "mind-game",
+      "name": "Mind Game (2004)"
     },
     {
       "slug": "pixote",
@@ -1531,16 +1531,20 @@
       "name": "All Quiet on the Western Front (1930)"
     },
     {
+      "slug": "3-idiots",
+      "name": "3 Idiots (2009)"
+    },
+    {
       "slug": "memento",
       "name": "Memento (2000)"
     },
     {
-      "slug": "the-matrix",
-      "name": "The Matrix (1999)"
-    },
-    {
       "slug": "a-prophet",
       "name": "A Prophet (2009)"
+    },
+    {
+      "slug": "the-matrix",
+      "name": "The Matrix (1999)"
     },
     {
       "slug": "lilya-4-ever",
@@ -1549,10 +1553,6 @@
     {
       "slug": "memoir-of-a-snail",
       "name": "Memoir of a Snail (2024)"
-    },
-    {
-      "slug": "3-idiots",
-      "name": "3 Idiots (2009)"
     },
     {
       "slug": "the-shop-around-the-corner",
@@ -1571,48 +1571,48 @@
       "name": "Céline and Julie Go Boating (1974)"
     },
     {
-      "slug": "the-grapes-of-wrath",
-      "name": "The Grapes of Wrath (1940)"
-    },
-    {
       "slug": "silenced",
       "name": "Silenced (2011)"
     },
     {
-      "slug": "the-general",
-      "name": "The General (1926)"
+      "slug": "the-grapes-of-wrath",
+      "name": "The Grapes of Wrath (1940)"
     },
     {
       "slug": "the-cook-the-thief-his-wife-her-lover",
       "name": "The Cook, the Thief, His Wife &amp; Her Lover (1989)"
     },
     {
-      "slug": "cleo-from-5-to-7",
-      "name": "Cléo from 5 to 7 (1962)"
-    },
-    {
-      "slug": "in-a-lonely-place",
-      "name": "In a Lonely Place (1950)"
+      "slug": "the-general",
+      "name": "The General (1926)"
     },
     {
       "slug": "day-for-night",
       "name": "Day for Night (1973)"
     },
     {
-      "slug": "12-years-a-slave",
-      "name": "12 Years a Slave (2013)"
+      "slug": "in-a-lonely-place",
+      "name": "In a Lonely Place (1950)"
+    },
+    {
+      "slug": "cleo-from-5-to-7",
+      "name": "Cléo from 5 to 7 (1962)"
     },
     {
       "slug": "mulan",
       "name": "Mulan (1998)"
     },
     {
-      "slug": "cries-and-whispers",
-      "name": "Cries and Whispers (1972)"
-    },
-    {
       "slug": "carandiru",
       "name": "Carandiru (2003)"
+    },
+    {
+      "slug": "12-years-a-slave",
+      "name": "12 Years a Slave (2013)"
+    },
+    {
+      "slug": "cries-and-whispers",
+      "name": "Cries and Whispers (1972)"
     },
     {
       "slug": "mother-2009",
@@ -1631,16 +1631,16 @@
       "name": "Touch of Evil (1958)"
     },
     {
-      "slug": "all-about-lily-chou-chou",
-      "name": "All About Lily Chou-Chou (2001)"
-    },
-    {
       "slug": "american-history-x",
       "name": "American History X (1998)"
     },
     {
       "slug": "short-term-12-2013",
       "name": "Short Term 12 (2013)"
+    },
+    {
+      "slug": "all-about-lily-chou-chou",
+      "name": "All About Lily Chou-Chou (2001)"
     },
     {
       "slug": "a-dogs-will",
@@ -1655,44 +1655,48 @@
       "name": "Sunrise: A Song of Two Humans (1927)"
     },
     {
-      "slug": "rome-open-city",
-      "name": "Rome, Open City (1945)"
+      "slug": "the-great-escape",
+      "name": "The Great Escape (1963)"
     },
     {
       "slug": "black-swan",
       "name": "Black Swan (2010)"
     },
     {
-      "slug": "the-great-escape",
-      "name": "The Great Escape (1963)"
-    },
-    {
-      "slug": "through-the-olive-trees",
-      "name": "Through the Olive Trees (1994)"
+      "slug": "rome-open-city",
+      "name": "Rome, Open City (1945)"
     },
     {
       "slug": "who-killed-captain-alex",
       "name": "Who Killed Captain Alex? (2010)"
     },
     {
-      "slug": "the-green-ray",
-      "name": "The Green Ray (1986)"
+      "slug": "through-the-olive-trees",
+      "name": "Through the Olive Trees (1994)"
     },
     {
       "slug": "gueros",
       "name": "Güeros (2014)"
     },
     {
-      "slug": "love-streams",
-      "name": "Love Streams (1984)"
+      "slug": "to-wong-foo-thanks-for-everything-julie-newmar",
+      "name": "To Wong Foo, Thanks for Everything! Julie Newmar (1995)"
+    },
+    {
+      "slug": "the-green-ray",
+      "name": "The Green Ray (1986)"
     },
     {
       "slug": "phantom-thread",
       "name": "Phantom Thread (2017)"
     },
     {
-      "slug": "to-wong-foo-thanks-for-everything-julie-newmar",
-      "name": "To Wong Foo, Thanks for Everything! Julie Newmar (1995)"
+      "slug": "love-streams",
+      "name": "Love Streams (1984)"
+    },
+    {
+      "slug": "a-bronx-tale",
+      "name": "A Bronx Tale (1993)"
     },
     {
       "slug": "spring-summer-fall-winter-and-spring",
@@ -1703,10 +1707,6 @@
       "name": "Mad Max: Fury Road (2015)"
     },
     {
-      "slug": "a-bronx-tale",
-      "name": "A Bronx Tale (1993)"
-    },
-    {
       "slug": "rio-bravo",
       "name": "Rio Bravo (1959)"
     },
@@ -1715,12 +1715,12 @@
       "name": "Brokeback Mountain (2005)"
     },
     {
-      "slug": "the-fire-within",
-      "name": "The Fire Within (1963)"
-    },
-    {
       "slug": "cool-hand-luke",
       "name": "Cool Hand Luke (1967)"
+    },
+    {
+      "slug": "the-fire-within",
+      "name": "The Fire Within (1963)"
     },
     {
       "slug": "the-ox-bow-incident",
@@ -1735,44 +1735,44 @@
       "name": "Star Wars (1977)"
     },
     {
-      "slug": "on-the-waterfront",
-      "name": "On the Waterfront (1954)"
-    },
-    {
       "slug": "how-to-train-your-dragon",
       "name": "How to Train Your Dragon (2010)"
+    },
+    {
+      "slug": "on-the-waterfront",
+      "name": "On the Waterfront (1954)"
     },
     {
       "slug": "la-strada",
       "name": "La Strada (1954)"
     },
     {
-      "slug": "after-life",
-      "name": "After Life (1998)"
+      "slug": "dial-m-for-murder",
+      "name": "Dial M for Murder (1954)"
     },
     {
       "slug": "mustang-2015",
       "name": "Mustang (2015)"
     },
     {
-      "slug": "dial-m-for-murder",
-      "name": "Dial M for Murder (1954)"
+      "slug": "pink-floyd-the-wall",
+      "name": "Pink Floyd: The Wall (1982)"
+    },
+    {
+      "slug": "after-life",
+      "name": "After Life (1998)"
     },
     {
       "slug": "society-of-the-snow",
       "name": "Society of the Snow (2023)"
     },
     {
-      "slug": "pink-floyd-the-wall",
-      "name": "Pink Floyd: The Wall (1982)"
+      "slug": "the-intouchables",
+      "name": "The Intouchables (2011)"
     },
     {
       "slug": "fallen-angels",
       "name": "Fallen Angels (1995)"
-    },
-    {
-      "slug": "the-intouchables",
-      "name": "The Intouchables (2011)"
     },
     {
       "slug": "the-second-mother",
@@ -1787,32 +1787,32 @@
       "name": "Scarface (1983)"
     },
     {
-      "slug": "raiders-of-the-lost-ark",
-      "name": "Raiders of the Lost Ark (1981)"
+      "slug": "i-dream-in-another-language",
+      "name": "I Dream in Another Language (2017)"
     },
     {
-      "slug": "oppenheimer-2023",
-      "name": "Oppenheimer (2023)"
+      "slug": "raiders-of-the-lost-ark",
+      "name": "Raiders of the Lost Ark (1981)"
     },
     {
       "slug": "12th-fail",
       "name": "12th Fail (2023)"
     },
     {
-      "slug": "mr-smith-goes-to-washington",
-      "name": "Mr. Smith Goes to Washington (1939)"
+      "slug": "oppenheimer-2023",
+      "name": "Oppenheimer (2023)"
     },
     {
       "slug": "my-fathers-shadow-2025",
       "name": "My Father&#039;s Shadow (2025)"
     },
     {
-      "slug": "i-dream-in-another-language",
-      "name": "I Dream in Another Language (2017)"
+      "slug": "mr-smith-goes-to-washington",
+      "name": "Mr. Smith Goes to Washington (1939)"
     },
     {
-      "slug": "the-virgin-spring",
-      "name": "The Virgin Spring (1960)"
+      "slug": "pans-labyrinth",
+      "name": "Pan&#039;s Labyrinth (2006)"
     },
     {
       "slug": "nashville",
@@ -1823,48 +1823,48 @@
       "name": "The Great Silence (1968)"
     },
     {
-      "slug": "synecdoche-new-york",
-      "name": "Synecdoche, New York (2008)"
-    },
-    {
       "slug": "the-return",
       "name": "The Return (2003)"
     },
     {
-      "slug": "pans-labyrinth",
-      "name": "Pan&#039;s Labyrinth (2006)"
+      "slug": "the-virgin-spring",
+      "name": "The Virgin Spring (1960)"
+    },
+    {
+      "slug": "synecdoche-new-york",
+      "name": "Synecdoche, New York (2008)"
     },
     {
       "slug": "love-letter",
       "name": "Love Letter (1995)"
     },
     {
-      "slug": "sentimental-value-2025",
-      "name": "Sentimental Value (2025)"
-    },
-    {
       "slug": "harry-potter-and-the-prisoner-of-azkaban",
       "name": "Harry Potter and the Prisoner of Azkaban (2004)"
     },
     {
-      "slug": "midnight-cowboy",
-      "name": "Midnight Cowboy (1969)"
+      "slug": "sentimental-value-2025",
+      "name": "Sentimental Value (2025)"
     },
     {
       "slug": "phantom-of-the-paradise",
       "name": "Phantom of the Paradise (1974)"
     },
     {
+      "slug": "midnight-cowboy",
+      "name": "Midnight Cowboy (1969)"
+    },
+    {
       "slug": "punishment-park",
       "name": "Punishment Park (1971)"
     },
     {
-      "slug": "the-spirit-of-the-beehive",
-      "name": "The Spirit of the Beehive (1973)"
-    },
-    {
       "slug": "monty-python-and-the-holy-grail",
       "name": "Monty Python and the Holy Grail (1975)"
+    },
+    {
+      "slug": "the-spirit-of-the-beehive",
+      "name": "The Spirit of the Beehive (1973)"
     },
     {
       "slug": "redline",
@@ -1879,16 +1879,16 @@
       "name": "Kiki&#039;s Delivery Service (1989)"
     },
     {
-      "slug": "the-hidden-fortress",
-      "name": "The Hidden Fortress (1958)"
+      "slug": "theres-still-tomorrow",
+      "name": "There&#039;s Still Tomorrow (2023)"
     },
     {
       "slug": "pride-prejudice",
       "name": "Pride &amp; Prejudice (2005)"
     },
     {
-      "slug": "theres-still-tomorrow",
-      "name": "There&#039;s Still Tomorrow (2023)"
+      "slug": "the-hidden-fortress",
+      "name": "The Hidden Fortress (1958)"
     },
     {
       "slug": "eat-drink-man-woman",
@@ -1911,16 +1911,12 @@
       "name": "The Exterminating Angel (1962)"
     },
     {
-      "slug": "arrival-2016",
-      "name": "Arrival (2016)"
-    },
-    {
       "slug": "the-sword-of-doom",
       "name": "The Sword of Doom (1966)"
     },
     {
-      "slug": "hiroshima-mon-amour",
-      "name": "Hiroshima Mon Amour (1959)"
+      "slug": "arrival-2016",
+      "name": "Arrival (2016)"
     },
     {
       "slug": "alice-in-the-cities",
@@ -1931,20 +1927,20 @@
       "name": "Rope (1948)"
     },
     {
-      "slug": "the-wolf-house",
-      "name": "The Wolf House (2018)"
-    },
-    {
       "slug": "through-a-glass-darkly",
       "name": "Through a Glass Darkly (1961)"
     },
     {
-      "slug": "the-leopard",
-      "name": "The Leopard (1963)"
+      "slug": "hiroshima-mon-amour",
+      "name": "Hiroshima Mon Amour (1959)"
     },
     {
-      "slug": "the-conversation",
-      "name": "The Conversation (1974)"
+      "slug": "the-wolf-house",
+      "name": "The Wolf House (2018)"
+    },
+    {
+      "slug": "the-leopard",
+      "name": "The Leopard (1963)"
     },
     {
       "slug": "billy-elliot",
@@ -1955,16 +1951,16 @@
       "name": "Sanjuro (1962)"
     },
     {
-      "slug": "princes-and-princesses",
-      "name": "Princes and Princesses (2000)"
+      "slug": "the-conversation",
+      "name": "The Conversation (1974)"
     },
     {
       "slug": "us-and-them-2018",
       "name": "Us and Them (2018)"
     },
     {
-      "slug": "falling-in-love-like-in-movies",
-      "name": "Falling in Love Like in Movies (2023)"
+      "slug": "princes-and-princesses",
+      "name": "Princes and Princesses (2000)"
     },
     {
       "slug": "hundreds-of-beavers",
@@ -1975,6 +1971,10 @@
       "name": "3 Women (1977)"
     },
     {
+      "slug": "falling-in-love-like-in-movies",
+      "name": "Falling in Love Like in Movies (2023)"
+    },
+    {
       "slug": "the-gold-rush",
       "name": "The Gold Rush (1925)"
     },
@@ -1983,20 +1983,20 @@
       "name": "About Elly (2009)"
     },
     {
-      "slug": "nine-queens",
-      "name": "Nine Queens (2000)"
-    },
-    {
-      "slug": "close-2022",
-      "name": "Close (2022)"
-    },
-    {
       "slug": "little-fish-2020",
       "name": "Little Fish (2020)"
     },
     {
+      "slug": "nine-queens",
+      "name": "Nine Queens (2000)"
+    },
+    {
       "slug": "cowboy-bebop-the-movie",
       "name": "Cowboy Bebop: The Movie (2001)"
+    },
+    {
+      "slug": "close-2022",
+      "name": "Close (2022)"
     },
     {
       "slug": "once-upon-a-time-in-anatolia",

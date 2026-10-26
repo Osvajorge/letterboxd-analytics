@@ -13645,6 +13645,13 @@
   ],
   "watchlist": [
     {
+      "slug": "naza",
+      "title": "NAZA",
+      "year": 2026,
+      "added_date": "2026-10-26",
+      "added_date_estimated": true
+    },
+    {
       "slug": "rose-of-nevada",
       "title": "Rose of Nevada",
       "year": 2025,
@@ -15556,11 +15563,11 @@
       "added_date_estimated": false
     },
     {
-      "slug": "shut-up-and-play-the-hits",
-      "title": "Shut Up and Play the Hits",
+      "slug": "lcd-soundsystem-shut-up-and-play-the-hits",
+      "title": "LCD Soundsystem - Shut Up and Play the Hits",
       "year": 2012,
-      "added_date": "2023-11-29",
-      "added_date_estimated": false
+      "added_date": "2026-10-26",
+      "added_date_estimated": true
     },
     {
       "slug": "amazing-grace-2018",

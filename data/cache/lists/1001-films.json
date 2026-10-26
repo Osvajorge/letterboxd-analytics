@@ -3,20 +3,44 @@
   "path": "/gubarenko/list/1001-movies-you-must-see-before-you-die-latest/",
   "films": [
     {
-      "slug": "all-of-us-strangers",
-      "name": "All of Us Strangers (2023)"
+      "slug": "sirat-2025",
+      "name": "Sirāt (2025)"
+    },
+    {
+      "slug": "weapons-2025",
+      "name": "Weapons (2025)"
+    },
+    {
+      "slug": "sinners-2025",
+      "name": "Sinners (2025)"
+    },
+    {
+      "slug": "it-was-just-an-accident",
+      "name": "It Was Just an Accident (2025)"
+    },
+    {
+      "slug": "sorry-baby-2025",
+      "name": "Sorry, Baby (2025)"
+    },
+    {
+      "slug": "one-battle-after-another",
+      "name": "One Battle After Another (2025)"
+    },
+    {
+      "slug": "anora",
+      "name": "Anora (2024)"
+    },
+    {
+      "slug": "the-brutalist",
+      "name": "The Brutalist (2024)"
+    },
+    {
+      "slug": "sing-sing-2023",
+      "name": "Sing Sing (2023)"
     },
     {
       "slug": "the-zone-of-interest",
       "name": "The Zone of Interest (2023)"
-    },
-    {
-      "slug": "the-boy-and-the-heron",
-      "name": "The Boy and the Heron (2023)"
-    },
-    {
-      "slug": "poor-things-2023",
-      "name": "Poor Things (2023)"
     },
     {
       "slug": "oppenheimer-2023",
@@ -27,36 +51,32 @@
       "name": "Barbie (2023)"
     },
     {
-      "slug": "killers-of-the-flower-moon",
-      "name": "Killers of the Flower Moon (2023)"
-    },
-    {
-      "slug": "talk-to-me-2022",
-      "name": "Talk to Me (2022)"
-    },
-    {
       "slug": "anatomy-of-a-fall",
       "name": "Anatomy of a Fall (2023)"
+    },
+    {
+      "slug": "rrr",
+      "name": "RRR (2022)"
     },
     {
       "slug": "aftersun",
       "name": "Aftersun (2022)"
     },
     {
-      "slug": "dune-2021",
-      "name": "Dune (2021)"
-    },
-    {
       "slug": "summer-of-soul-or-when-the-revolution-could",
       "name": "Summer of Soul (...Or, When the Revolution Could Not Be Televised) (2021)"
     },
     {
-      "slug": "drive-my-car",
-      "name": "Drive My Car (2021)"
+      "slug": "dune-2021",
+      "name": "Dune (2021)"
     },
     {
       "slug": "nomadland",
       "name": "Nomadland (2020)"
+    },
+    {
+      "slug": "drive-my-car",
+      "name": "Drive My Car (2021)"
     },
     {
       "slug": "quo-vadis-aida",
@@ -67,10 +87,6 @@
       "name": "Lovers Rock (2020)"
     },
     {
-      "slug": "rocks-2019",
-      "name": "Rocks (2019)"
-    },
-    {
       "slug": "portrait-of-a-lady-on-fire",
       "name": "Portrait of a Lady on Fire (2019)"
     },
@@ -79,24 +95,8 @@
       "name": "For Sama (2019)"
     },
     {
-      "slug": "booksmart",
-      "name": "Booksmart (2019)"
-    },
-    {
       "slug": "parasite-2019",
       "name": "Parasite (2019)"
-    },
-    {
-      "slug": "the-lighthouse-2019",
-      "name": "The Lighthouse (2019)"
-    },
-    {
-      "slug": "roma-2018",
-      "name": "Roma (2018)"
-    },
-    {
-      "slug": "phantom-thread",
-      "name": "Phantom Thread (2017)"
     },
     {
       "slug": "black-panther",
@@ -115,12 +115,12 @@
       "name": "Lady Bird (2017)"
     },
     {
-      "slug": "toni-erdmann",
-      "name": "Toni Erdmann (2016)"
-    },
-    {
       "slug": "moonlight-2016",
       "name": "Moonlight (2016)"
+    },
+    {
+      "slug": "toni-erdmann",
+      "name": "Toni Erdmann (2016)"
     },
     {
       "slug": "la-la-land",
@@ -327,10 +327,6 @@
       "name": "The Blair Witch Project (1999)"
     },
     {
-      "slug": "the-thin-red-line",
-      "name": "The Thin Red Line (1998)"
-    },
-    {
       "slug": "happiness",
       "name": "Happiness (1998)"
     },
@@ -341,6 +337,10 @@
     {
       "slug": "the-celebration",
       "name": "The Celebration (1998)"
+    },
+    {
+      "slug": "buffalo-66",
+      "name": "Buffalo &#039;66 (1998)"
     },
     {
       "slug": "rushmore",

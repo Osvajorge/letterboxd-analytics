@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-19",
+  "generated_at": "2026-10-26",
   "username": "osvajorge",
   "totals": {
     "films": 856,
@@ -2972,10 +2972,10 @@
     ],
     "rewatch_rate": 0.015,
     "watchlist": {
-      "size": 1033,
-      "median_age_days": 1182,
+      "size": 1034,
+      "median_age_days": 1189,
       "conversion_rate": 0.018,
-      "estimated_date_share": 0.012
+      "estimated_date_share": 0.014
     },
     "heatmap": [
       {
@@ -6593,7 +6593,7 @@
     },
     "life_in_days": {
       "days": 65.2,
-      "would_end_on": "2026-12-23"
+      "would_end_on": "2026-12-30"
     },
     "extremes": {
       "shortest": {
