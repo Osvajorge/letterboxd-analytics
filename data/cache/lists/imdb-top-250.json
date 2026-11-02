@@ -231,12 +231,12 @@
       "name": "Apocalypse Now (1979)"
     },
     {
-      "slug": "memento",
-      "name": "Memento (2000)"
-    },
-    {
       "slug": "avengers-infinity-war",
       "name": "Avengers: Infinity War (2018)"
+    },
+    {
+      "slug": "memento",
+      "name": "Memento (2000)"
     },
     {
       "slug": "dune-part-two",
@@ -251,12 +251,12 @@
       "name": "Spider-Man: Into the Spider-Verse (2018)"
     },
     {
-      "slug": "the-odyssey-2026",
-      "name": "The Odyssey (2026)"
-    },
-    {
       "slug": "the-lives-of-others",
       "name": "The Lives of Others (2006)"
+    },
+    {
+      "slug": "the-odyssey-2026",
+      "name": "The Odyssey (2026)"
     },
     {
       "slug": "sunset-boulevard",
@@ -347,16 +347,16 @@
       "name": "Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb (1964)"
     },
     {
+      "slug": "attack-on-titan-the-last-attack",
+      "name": "Attack on Titan: THE LAST ATTACK (2024)"
+    },
+    {
       "slug": "american-beauty",
       "name": "American Beauty (1999)"
     },
     {
       "slug": "capernaum",
       "name": "Capernaum (2018)"
-    },
-    {
-      "slug": "attack-on-titan-the-last-attack",
-      "name": "Attack on Titan: THE LAST ATTACK (2024)"
     },
     {
       "slug": "singin-in-the-rain",
@@ -419,12 +419,12 @@
       "name": "Scarface (1983)"
     },
     {
-      "slug": "reservoir-dogs",
-      "name": "Reservoir Dogs (1992)"
-    },
-    {
       "slug": "up",
       "name": "Up (2009)"
+    },
+    {
+      "slug": "reservoir-dogs",
+      "name": "Reservoir Dogs (1992)"
     },
     {
       "slug": "2001-a-space-odyssey",
@@ -463,20 +463,20 @@
       "name": "M (1931)"
     },
     {
-      "slug": "amelie",
-      "name": "Amélie (2001)"
+      "slug": "indiana-jones-and-the-last-crusade",
+      "name": "Indiana Jones and the Last Crusade (1989)"
     },
     {
       "slug": "to-kill-a-mockingbird",
       "name": "To Kill a Mockingbird (1962)"
     },
     {
-      "slug": "indiana-jones-and-the-last-crusade",
-      "name": "Indiana Jones and the Last Crusade (1989)"
-    },
-    {
       "slug": "vertigo",
       "name": "Vertigo (1958)"
+    },
+    {
+      "slug": "amelie",
+      "name": "Amélie (2001)"
     },
     {
       "slug": "citizen-kane",
@@ -491,16 +491,16 @@
       "name": "A Clockwork Orange (1971)"
     },
     {
-      "slug": "metropolis",
-      "name": "Metropolis (1927)"
-    },
-    {
       "slug": "the-truman-show",
       "name": "The Truman Show (1998)"
     },
     {
       "slug": "the-wolf-of-wall-street",
       "name": "The Wolf of Wall Street (2013)"
+    },
+    {
+      "slug": "metropolis",
+      "name": "Metropolis (1927)"
     },
     {
       "slug": "1917",
@@ -539,12 +539,12 @@
       "name": "Judgment at Nuremberg (1961)"
     },
     {
-      "slug": "woman-in-the-dunes",
-      "name": "Woman in the Dunes (1964)"
-    },
-    {
       "slug": "jurassic-park",
       "name": "Jurassic Park (1993)"
+    },
+    {
+      "slug": "woman-in-the-dunes",
+      "name": "Woman in the Dunes (1964)"
     },
     {
       "slug": "batman-begins",
@@ -583,12 +583,12 @@
       "name": "The Sixth Sense (1999)"
     },
     {
-      "slug": "the-kid",
-      "name": "The Kid (1921)"
-    },
-    {
       "slug": "all-about-eve",
       "name": "All About Eve (1950)"
+    },
+    {
+      "slug": "the-kid",
+      "name": "The Kid (1921)"
     },
     {
       "slug": "ran",
@@ -651,16 +651,16 @@
       "name": "Project Hail Mary (2026)"
     },
     {
-      "slug": "demon-slayer-kimetsu-no-yaiba-infinity-castle",
-      "name": "Demon Slayer: Kimetsu no Yaiba Infinity Castle (2025)"
-    },
-    {
       "slug": "yojimbo",
       "name": "Yojimbo (1961)"
     },
     {
       "slug": "the-elephant-man",
       "name": "The Elephant Man (1980)"
+    },
+    {
+      "slug": "demon-slayer-kimetsu-no-yaiba-infinity-castle",
+      "name": "Demon Slayer: Kimetsu no Yaiba Infinity Castle (2025)"
     },
     {
       "slug": "the-great-escape",
@@ -743,12 +743,12 @@
       "name": "The Wild Robot (2024)"
     },
     {
-      "slug": "warrior",
-      "name": "Warrior (2011)"
-    },
-    {
       "slug": "hacksaw-ridge",
       "name": "Hacksaw Ridge (2016)"
+    },
+    {
+      "slug": "warrior",
+      "name": "Warrior (2011)"
     },
     {
       "slug": "ratatouille",
@@ -783,12 +783,12 @@
       "name": "12 Years a Slave (2013)"
     },
     {
-      "slug": "raging-bull",
-      "name": "Raging Bull (1980)"
-    },
-    {
       "slug": "how-to-train-your-dragon",
       "name": "How to Train Your Dragon (2010)"
+    },
+    {
+      "slug": "raging-bull",
+      "name": "Raging Bull (1980)"
     },
     {
       "slug": "memories-of-murder",
@@ -855,24 +855,24 @@
       "name": "Sherlock Jr. (1924)"
     },
     {
-      "slug": "the-wages-of-fear",
-      "name": "The Wages of Fear (1953)"
-    },
-    {
-      "slug": "the-deer-hunter",
-      "name": "The Deer Hunter (1978)"
+      "slug": "pirates-of-the-caribbean-the-curse-of-the-black-pearl",
+      "name": "Pirates of the Caribbean: The Curse of the Black Pearl (2003)"
     },
     {
       "slug": "logan-2017",
       "name": "Logan (2017)"
     },
     {
-      "slug": "pirates-of-the-caribbean-the-curse-of-the-black-pearl",
-      "name": "Pirates of the Caribbean: The Curse of the Black Pearl (2003)"
-    },
-    {
       "slug": "rocky",
       "name": "Rocky (1976)"
+    },
+    {
+      "slug": "the-deer-hunter",
+      "name": "The Deer Hunter (1978)"
+    },
+    {
+      "slug": "the-wages-of-fear",
+      "name": "The Wages of Fear (1953)"
     },
     {
       "slug": "the-general",
@@ -887,10 +887,6 @@
       "name": "Tokyo Story (1953)"
     },
     {
-      "slug": "la-haine",
-      "name": "La Haine (1995)"
-    },
-    {
       "slug": "maharaja-2024",
       "name": "Maharaja (2024)"
     },
@@ -899,12 +895,16 @@
       "name": "The Sound of Music (1965)"
     },
     {
-      "slug": "spotlight",
-      "name": "Spotlight (2015)"
+      "slug": "la-haine",
+      "name": "La Haine (1995)"
     },
     {
       "slug": "jai-bhim",
       "name": "Jai Bhim (2021)"
+    },
+    {
+      "slug": "spotlight",
+      "name": "Spotlight (2015)"
     },
     {
       "slug": "the-terminator",
@@ -915,12 +915,12 @@
       "name": "Wild Strawberries (1957)"
     },
     {
-      "slug": "on-the-waterfront",
-      "name": "On the Waterfront (1954)"
-    },
-    {
       "slug": "the-best-years-of-our-lives",
       "name": "The Best Years of Our Lives (1946)"
+    },
+    {
+      "slug": "on-the-waterfront",
+      "name": "On the Waterfront (1954)"
     },
     {
       "slug": "the-third-man",
@@ -971,12 +971,12 @@
       "name": "Rush (2013)"
     },
     {
-      "slug": "stand-by-me",
-      "name": "Stand by Me (1986)"
-    },
-    {
       "slug": "the-battle-of-algiers",
       "name": "The Battle of Algiers (1966)"
+    },
+    {
+      "slug": "stand-by-me",
+      "name": "Stand by Me (1986)"
     },
     {
       "slug": "the-wizard-of-oz-1939",
@@ -987,20 +987,20 @@
       "name": "My Father and My Son (2005)"
     },
     {
-      "slug": "the-passion-of-joan-of-arc",
-      "name": "The Passion of Joan of Arc (1928)"
-    },
-    {
       "slug": "drishyam-2015",
       "name": "Drishyam (2015)"
+    },
+    {
+      "slug": "the-passion-of-joan-of-arc",
+      "name": "The Passion of Joan of Arc (1928)"
     },
     {
       "slug": "gangs-of-wasseypur-part-1",
       "name": "Gangs of Wasseypur – Part 1 (2012)"
     },
     {
-      "slug": "andhadhun",
-      "name": "Andhadhun (2018)"
+      "slug": "miracle-in-cell-no-7-2019-1",
+      "name": "Miracle in Cell No. 7 (2019)"
     }
   ]
 }
