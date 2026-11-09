@@ -43,12 +43,12 @@
       "name": "Camp de Thiaroye (1988)"
     },
     {
-      "slug": "sinners-2025",
-      "name": "Sinners (2025)"
-    },
-    {
       "slug": "mangrove-2020",
       "name": "Mangrove (2020)"
+    },
+    {
+      "slug": "sinners-2025",
+      "name": "Sinners (2025)"
     },
     {
       "slug": "west-indies-the-fugitive-slaves-of-liberty",
@@ -91,12 +91,12 @@
       "name": "Judas and the Black Messiah (2021)"
     },
     {
-      "slug": "personal-problems",
-      "name": "Personal Problems (1980)"
-    },
-    {
       "slug": "looking-for-langston",
       "name": "Looking for Langston (1989)"
+    },
+    {
+      "slug": "personal-problems",
+      "name": "Personal Problems (1980)"
     },
     {
       "slug": "lovers-rock-2020",
@@ -131,20 +131,20 @@
       "name": "Nickel Boys (2024)"
     },
     {
-      "slug": "moolaade",
-      "name": "Moolaadé (2003)"
-    },
-    {
       "slug": "killer-of-sheep",
       "name": "Killer of Sheep (1978)"
     },
     {
-      "slug": "the-little-girl-who-sold-the-sun",
-      "name": "The Little Girl Who Sold the Sun (1999)"
+      "slug": "moolaade",
+      "name": "Moolaadé (2003)"
     },
     {
       "slug": "if-i-go-will-they-miss-me-2026",
       "name": "If I Go Will They Miss Me (2026)"
+    },
+    {
+      "slug": "the-little-girl-who-sold-the-sun",
+      "name": "The Little Girl Who Sold the Sun (1999)"
     },
     {
       "slug": "blackkklansman",
@@ -175,12 +175,12 @@
       "name": "If Beale Street Could Talk (2018)"
     },
     {
-      "slug": "rye-lane",
-      "name": "Rye Lane (2023)"
-    },
-    {
       "slug": "deep-cover",
       "name": "Deep Cover (1992)"
+    },
+    {
+      "slug": "rye-lane",
+      "name": "Rye Lane (2023)"
     },
     {
       "slug": "paid-in-full-2002",
@@ -211,12 +211,12 @@
       "name": "Bamboozled (2000)"
     },
     {
-      "slug": "sometimes-in-april",
-      "name": "Sometimes in April (2005)"
-    },
-    {
       "slug": "coach-carter",
       "name": "Coach Carter (2005)"
+    },
+    {
+      "slug": "sometimes-in-april",
+      "name": "Sometimes in April (2005)"
     },
     {
       "slug": "crazy-world-2014",
@@ -227,28 +227,28 @@
       "name": "Sugar Cane Alley (1983)"
     },
     {
-      "slug": "losing-ground",
-      "name": "Losing Ground (1982)"
-    },
-    {
       "slug": "color-book",
       "name": "Color Book (2024)"
     },
     {
-      "slug": "25th-hour",
-      "name": "25th Hour (2002)"
-    },
-    {
-      "slug": "the-annihilation-of-fish",
-      "name": "The Annihilation of Fish (1999)"
+      "slug": "losing-ground",
+      "name": "Losing Ground (1982)"
     },
     {
       "slug": "on-becoming-a-guinea-fowl",
       "name": "On Becoming a Guinea Fowl (2024)"
     },
     {
+      "slug": "25th-hour",
+      "name": "25th Hour (2002)"
+    },
+    {
       "slug": "mars-one",
       "name": "Mars One (2022)"
+    },
+    {
+      "slug": "the-annihilation-of-fish",
+      "name": "The Annihilation of Fish (1999)"
     },
     {
       "slug": "one-way-or-another-1975",
@@ -283,6 +283,10 @@
       "name": "A Dessert for Constance (1981)"
     },
     {
+      "slug": "pressure-1975",
+      "name": "Pressure (1975)"
+    },
+    {
       "slug": "les-miserables-2019",
       "name": "Les Misérables (2019)"
     },
@@ -291,16 +295,16 @@
       "name": "Creed (2015)"
     },
     {
-      "slug": "pressure-1975",
-      "name": "Pressure (1975)"
+      "slug": "precious-2009",
+      "name": "Precious (2009)"
     },
     {
       "slug": "red-white-and-blue-2020",
       "name": "Red, White and Blue (2020)"
     },
     {
-      "slug": "precious-2009",
-      "name": "Precious (2009)"
+      "slug": "muna-moto",
+      "name": "Muna Moto (1975)"
     },
     {
       "slug": "chameleon-street",
@@ -327,12 +331,12 @@
       "name": "The Amazing Catfish (2013)"
     },
     {
-      "slug": "selma",
-      "name": "Selma (2014)"
-    },
-    {
       "slug": "exhibiting-forgiveness",
       "name": "Exhibiting Forgiveness (2024)"
+    },
+    {
+      "slug": "selma",
+      "name": "Selma (2014)"
     },
     {
       "slug": "a-thousand-and-one",
@@ -391,20 +395,20 @@
       "name": "Mo&#039; Better Blues (1990)"
     },
     {
-      "slug": "shame-2011",
-      "name": "Shame (2011)"
-    },
-    {
       "slug": "american-fiction",
       "name": "American Fiction (2023)"
     },
     {
-      "slug": "my-brothers-wedding",
-      "name": "My Brother&#039;s Wedding (1983)"
+      "slug": "shame-2011",
+      "name": "Shame (2011)"
     },
     {
       "slug": "white-chicks",
       "name": "White Chicks (2004)"
+    },
+    {
+      "slug": "my-brothers-wedding",
+      "name": "My Brother&#039;s Wedding (1983)"
     },
     {
       "slug": "sorry-to-bother-you",
@@ -413,10 +417,6 @@
     {
       "slug": "magazine-dreams",
       "name": "Magazine Dreams (2023)"
-    },
-    {
-      "slug": "one-false-move",
-      "name": "One False Move (1991)"
     },
     {
       "slug": "watermelon-man",
@@ -431,24 +431,28 @@
       "name": "Black Panther (2018)"
     },
     {
-      "slug": "the-boy-who-harnessed-the-wind",
-      "name": "The Boy Who Harnessed the Wind (2019)"
+      "slug": "one-false-move",
+      "name": "One False Move (1991)"
     },
     {
-      "slug": "queen-slim",
-      "name": "Queen &amp; Slim (2019)"
+      "slug": "the-boy-who-harnessed-the-wind",
+      "name": "The Boy Who Harnessed the Wind (2019)"
     },
     {
       "slug": "snow-on-tha-bluff",
       "name": "Snow on tha Bluff (2011)"
     },
     {
-      "slug": "a-bruddahs-mind",
-      "name": "A Bruddah&#039;s Mind (2020)"
+      "slug": "queen-slim",
+      "name": "Queen &amp; Slim (2019)"
     },
     {
       "slug": "tales-from-the-hood",
       "name": "Tales from the Hood (1995)"
+    },
+    {
+      "slug": "a-bruddahs-mind",
+      "name": "A Bruddah&#039;s Mind (2020)"
     },
     {
       "slug": "earth-mama",
@@ -479,16 +483,16 @@
       "name": "Till (2022)"
     },
     {
+      "slug": "aya-of-yop-city",
+      "name": "Aya of Yop City (2013)"
+    },
+    {
       "slug": "the-woman-king",
       "name": "The Woman King (2022)"
     },
     {
       "slug": "sankofa",
       "name": "Sankofa (1993)"
-    },
-    {
-      "slug": "aya-of-yop-city",
-      "name": "Aya of Yop City (2013)"
     },
     {
       "slug": "atlantics-2019",
@@ -507,28 +511,24 @@
       "name": "Yeelen (1987)"
     },
     {
-      "slug": "in-the-heart-of-the-world",
-      "name": "In the Heart of the World (2019)"
-    },
-    {
       "slug": "cooley-high",
       "name": "Cooley High (1975)"
     },
     {
-      "slug": "almas-rainbow",
-      "name": "Alma&#039;s Rainbow (1994)"
+      "slug": "in-the-heart-of-the-world",
+      "name": "In the Heart of the World (2019)"
     },
     {
       "slug": "young-soul-rebels",
       "name": "Young Soul Rebels (1991)"
     },
     {
-      "slug": "lumumba",
-      "name": "Lumumba (2000)"
-    },
-    {
       "slug": "rise-of-the-guardians",
       "name": "Rise of the Guardians (2012)"
+    },
+    {
+      "slug": "almas-rainbow",
+      "name": "Alma&#039;s Rainbow (1994)"
     },
     {
       "slug": "the-five-heartbeats",
@@ -539,12 +539,16 @@
       "name": "Belly (1998)"
     },
     {
+      "slug": "get-on-the-bus",
+      "name": "Get on the Bus (1996)"
+    },
+    {
       "slug": "professor-marston-and-the-wonder-women",
       "name": "Professor Marston and the Wonder Women (2017)"
     },
     {
-      "slug": "get-on-the-bus",
-      "name": "Get on the Bus (1996)"
+      "slug": "lumumba",
+      "name": "Lumumba (2000)"
     },
     {
       "slug": "nope",
@@ -563,10 +567,6 @@
       "name": "Top of the Heap (1972)"
     },
     {
-      "slug": "jackies-back",
-      "name": "Jackie&#039;s Back! (1999)"
-    },
-    {
       "slug": "fences-2016",
       "name": "Fences (2016)"
     },
@@ -575,12 +575,12 @@
       "name": "Love &amp; Basketball (2000)"
     },
     {
-      "slug": "the-day-i-met-you",
-      "name": "The Day I Met You (2023)"
+      "slug": "jackies-back",
+      "name": "Jackie&#039;s Back! (1999)"
     },
     {
-      "slug": "long-way-home",
-      "name": "Long Way Home (2018)"
+      "slug": "the-day-i-met-you",
+      "name": "The Day I Met You (2023)"
     },
     {
       "slug": "the-great-debaters",
@@ -591,40 +591,48 @@
       "name": "Destiny (1997)"
     },
     {
-      "slug": "rosewood",
-      "name": "Rosewood (1997)"
-    },
-    {
-      "slug": "he-got-game",
-      "name": "He Got Game (1998)"
-    },
-    {
-      "slug": "novitiate",
-      "name": "Novitiate (2017)"
+      "slug": "dao-2026",
+      "name": "Dao (2026)"
     },
     {
       "slug": "ganja-hess",
       "name": "Ganja &amp; Hess (1973)"
     },
     {
-      "slug": "dao-2026",
-      "name": "Dao (2026)"
+      "slug": "long-way-home",
+      "name": "Long Way Home (2018)"
+    },
+    {
+      "slug": "he-got-game",
+      "name": "He Got Game (1998)"
+    },
+    {
+      "slug": "rosewood",
+      "name": "Rosewood (1997)"
+    },
+    {
+      "slug": "novitiate",
+      "name": "Novitiate (2017)"
     },
     {
       "slug": "ceddo",
       "name": "Ceddo (1977)"
     },
     {
+      "slug": "congo-boy",
+      "name": "Congo Boy (2026)"
+    },
+    {
       "slug": "the-learning-tree",
       "name": "The Learning Tree (1969)"
     },
     {
-      "slug": "us-2019",
-      "name": "Us (2019)"
-    },
-    {
       "slug": "shes-gotta-have-it",
       "name": "She&#039;s Gotta Have It (1986)"
+    },
+    {
+      "slug": "us-2019",
+      "name": "Us (2019)"
     },
     {
       "slug": "buck-and-the-preacher",
@@ -655,48 +663,52 @@
       "name": "Antwone Fisher (2002)"
     },
     {
-      "slug": "michael-2026",
-      "name": "Michael (2026)"
-    },
-    {
       "slug": "friday",
       "name": "Friday (1995)"
     },
     {
-      "slug": "the-wood",
-      "name": "The Wood (1999)"
+      "slug": "michael-2026",
+      "name": "Michael (2026)"
     },
     {
       "slug": "juice",
       "name": "Juice (1992)"
     },
     {
-      "slug": "living-2022",
-      "name": "Living (2022)"
-    },
-    {
       "slug": "i-like-it-like-that",
       "name": "I Like It Like That (1994)"
+    },
+    {
+      "slug": "the-wood",
+      "name": "The Wood (1999)"
+    },
+    {
+      "slug": "living-2022",
+      "name": "Living (2022)"
     },
     {
       "slug": "a-screaming-man",
       "name": "A Screaming Man (2010)"
     },
     {
+      "slug": "dead-presidents",
+      "name": "Dead Presidents (1995)"
+    },
+    {
       "slug": "farewell-amor",
       "name": "Farewell Amor (2020)"
     },
     {
-      "slug": "lingui-the-sacred-bonds",
-      "name": "Lingui, the Sacred Bonds (2021)"
+      "slug": "welcome-ii-the-terrordome",
+      "name": "Welcome II the Terrordome (1995)"
     },
     {
       "slug": "rafiki-2018",
       "name": "Rafiki (2018)"
     },
     {
-      "slug": "dead-presidents",
-      "name": "Dead Presidents (1995)"
+      "slug": "lingui-the-sacred-bonds",
+      "name": "Lingui, the Sacred Bonds (2021)"
     },
     {
       "slug": "brother-2022",
@@ -709,10 +721,6 @@
     {
       "slug": "the-secret-life-of-bees",
       "name": "The Secret Life of Bees (2008)"
-    },
-    {
-      "slug": "welcome-ii-the-terrordome",
-      "name": "Welcome II the Terrordome (1995)"
     },
     {
       "slug": "creed-ii",
@@ -731,6 +739,10 @@
       "name": "The Double (2013)"
     },
     {
+      "slug": "clarissa-2026",
+      "name": "Clarissa (2026)"
+    },
+    {
       "slug": "suncoast",
       "name": "Suncoast (2024)"
     },
@@ -747,20 +759,20 @@
       "name": "You Will Die at Twenty (2019)"
     },
     {
-      "slug": "bruiser-2022",
-      "name": "Bruiser (2022)"
-    },
-    {
       "slug": "moffie",
       "name": "Moffie (2019)"
     },
     {
-      "slug": "baadasssss",
-      "name": "Baadasssss! (2003)"
-    },
-    {
       "slug": "men-of-honor",
       "name": "Men of Honor (2000)"
+    },
+    {
+      "slug": "bruiser-2022",
+      "name": "Bruiser (2022)"
+    },
+    {
+      "slug": "baadasssss",
+      "name": "Baadasssss! (2003)"
     },
     {
       "slug": "miss-juneteenth",
@@ -779,16 +791,16 @@
       "name": "Pretty Red Dress (2022)"
     },
     {
-      "slug": "neptune-frost",
-      "name": "Neptune Frost (2021)"
-    },
-    {
       "slug": "roll-bounce",
       "name": "Roll Bounce (2005)"
     },
     {
       "slug": "our-father-the-devil",
       "name": "Our Father, the Devil (2021)"
+    },
+    {
+      "slug": "neptune-frost",
+      "name": "Neptune Frost (2021)"
     },
     {
       "slug": "fear-of-a-black-hat",
@@ -799,12 +811,12 @@
       "name": "ATL (2006)"
     },
     {
-      "slug": "origin-2023-1",
-      "name": "Origin (2023)"
-    },
-    {
       "slug": "the-last-tree",
       "name": "The Last Tree (2019)"
+    },
+    {
+      "slug": "origin-2023-1",
+      "name": "Origin (2023)"
     },
     {
       "slug": "the-harder-they-fall-2021",
@@ -867,24 +879,24 @@
       "name": "Clemency (2019)"
     },
     {
-      "slug": "girl-6",
-      "name": "Girl 6 (1996)"
-    },
-    {
-      "slug": "the-burial-of-kojo",
-      "name": "The Burial of Kojo (2018)"
-    },
-    {
       "slug": "the-equalizer",
       "name": "The Equalizer (2014)"
+    },
+    {
+      "slug": "rags",
+      "name": "Rags (2012)"
+    },
+    {
+      "slug": "girl-6",
+      "name": "Girl 6 (1996)"
     },
     {
       "slug": "swing-kids",
       "name": "Swing Kids (1993)"
     },
     {
-      "slug": "rags",
-      "name": "Rags (2012)"
+      "slug": "the-burial-of-kojo",
+      "name": "The Burial of Kojo (2018)"
     },
     {
       "slug": "the-bloodiest",
@@ -895,12 +907,12 @@
       "name": "Zola (2020)"
     },
     {
-      "slug": "middle-of-nowhere-2012",
-      "name": "Middle of Nowhere (2012)"
-    },
-    {
       "slug": "marshall",
       "name": "Marshall (2017)"
+    },
+    {
+      "slug": "middle-of-nowhere-2012",
+      "name": "Middle of Nowhere (2012)"
     },
     {
       "slug": "night-of-the-kings",
@@ -911,32 +923,32 @@
       "name": "Shaft (1971)"
     },
     {
-      "slug": "trouble-man",
-      "name": "Trouble Man (1972)"
-    },
-    {
       "slug": "an-oversimplification-of-her-beauty",
       "name": "An Oversimplification of Her Beauty (2012)"
+    },
+    {
+      "slug": "trouble-man",
+      "name": "Trouble Man (1972)"
     },
     {
       "slug": "imperial-dreams",
       "name": "Imperial Dreams (2014)"
     },
     {
-      "slug": "the-glass-shield",
-      "name": "The Glass Shield (1994)"
-    },
-    {
       "slug": "dear-white-people",
       "name": "Dear White People (2014)"
     },
     {
-      "slug": "gridlockd",
-      "name": "Gridlock&#039;d (1997)"
+      "slug": "the-glass-shield",
+      "name": "The Glass Shield (1994)"
     },
     {
       "slug": "the-butler",
       "name": "The Butler (2013)"
+    },
+    {
+      "slug": "gridlockd",
+      "name": "Gridlock&#039;d (1997)"
     },
     {
       "slug": "omen-2023",
@@ -971,10 +983,6 @@
       "name": "Soul Food (1997)"
     },
     {
-      "slug": "within-our-gates",
-      "name": "Within Our Gates (1920)"
-    },
-    {
       "slug": "law-abiding-citizen",
       "name": "Law Abiding Citizen (2009)"
     },
@@ -983,24 +991,16 @@
       "name": "Cotton Comes to Harlem (1970)"
     },
     {
-      "slug": "saloum",
-      "name": "Saloum (2021)"
+      "slug": "within-our-gates",
+      "name": "Within Our Gates (1920)"
     },
     {
       "slug": "felicite-2017",
       "name": "Félicité (2017)"
     },
     {
-      "slug": "sylvies-love",
-      "name": "Sylvie&#039;s Love (2020)"
-    },
-    {
-      "slug": "the-burial",
-      "name": "The Burial (2023)"
-    },
-    {
-      "slug": "brown-sugar",
-      "name": "Brown Sugar (2002)"
+      "slug": "saloum",
+      "name": "Saloum (2021)"
     }
   ]
 }
