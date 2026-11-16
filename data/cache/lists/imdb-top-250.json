@@ -263,10 +263,6 @@
       "name": "Witness for the Prosecution (1957)"
     },
     {
-      "slug": "the-odyssey-2026",
-      "name": "The Odyssey (2026)"
-    },
-    {
       "slug": "paths-of-glory",
       "name": "Paths of Glory (1957)"
     },
@@ -297,6 +293,10 @@
     {
       "slug": "avengers-endgame",
       "name": "Avengers: Endgame (2019)"
+    },
+    {
+      "slug": "the-odyssey-2026",
+      "name": "The Odyssey (2026)"
     },
     {
       "slug": "good-will-hunting",
@@ -349,6 +349,10 @@
     {
       "slug": "attack-on-titan-the-last-attack",
       "name": "Attack on Titan: THE LAST ATTACK (2024)"
+    },
+    {
+      "slug": "wildwood-2026",
+      "name": "Wildwood (2026)"
     },
     {
       "slug": "american-beauty",
@@ -447,12 +451,12 @@
       "name": "Full Metal Jacket (1987)"
     },
     {
-      "slug": "a-separation",
-      "name": "A Separation (2011)"
-    },
-    {
       "slug": "i-swear",
       "name": "I Swear (2025)"
+    },
+    {
+      "slug": "a-separation",
+      "name": "A Separation (2011)"
     },
     {
       "slug": "die-hard",
@@ -475,12 +479,12 @@
       "name": "Amélie (2001)"
     },
     {
-      "slug": "citizen-kane",
-      "name": "Citizen Kane (1941)"
-    },
-    {
       "slug": "vertigo",
       "name": "Vertigo (1958)"
+    },
+    {
+      "slug": "citizen-kane",
+      "name": "Citizen Kane (1941)"
     },
     {
       "slug": "the-sting",
@@ -491,20 +495,20 @@
       "name": "The Truman Show (1998)"
     },
     {
-      "slug": "a-clockwork-orange",
-      "name": "A Clockwork Orange (1971)"
-    },
-    {
       "slug": "the-wolf-of-wall-street",
       "name": "The Wolf of Wall Street (2013)"
     },
     {
-      "slug": "metropolis",
-      "name": "Metropolis (1927)"
+      "slug": "a-clockwork-orange",
+      "name": "A Clockwork Orange (1971)"
     },
     {
       "slug": "1917",
       "name": "1917 (2019)"
+    },
+    {
+      "slug": "metropolis",
+      "name": "Metropolis (1927)"
     },
     {
       "slug": "snatch",
@@ -543,12 +547,12 @@
       "name": "Jurassic Park (1993)"
     },
     {
-      "slug": "woman-in-the-dunes",
-      "name": "Woman in the Dunes (1964)"
-    },
-    {
       "slug": "batman-begins",
       "name": "Batman Begins (2005)"
+    },
+    {
+      "slug": "woman-in-the-dunes",
+      "name": "Woman in the Dunes (1964)"
     },
     {
       "slug": "oppenheimer-2023",
@@ -659,12 +663,12 @@
       "name": "The Elephant Man (1980)"
     },
     {
-      "slug": "demon-slayer-kimetsu-no-yaiba-infinity-castle",
-      "name": "Demon Slayer: Kimetsu no Yaiba Infinity Castle (2025)"
-    },
-    {
       "slug": "the-great-escape",
       "name": "The Great Escape (1963)"
+    },
+    {
+      "slug": "demon-slayer-kimetsu-no-yaiba-infinity-castle",
+      "name": "Demon Slayer: Kimetsu no Yaiba Infinity Castle (2025)"
     },
     {
       "slug": "monty-python-and-the-holy-grail",
@@ -707,16 +711,16 @@
       "name": "Inside Out (2015)"
     },
     {
-      "slug": "the-best-of-youth",
-      "name": "The Best of Youth (2003)"
-    },
-    {
       "slug": "harry-potter-and-the-deathly-hallows-part-2",
       "name": "Harry Potter and the Deathly Hallows: Part 2 (2011)"
     },
     {
       "slug": "trainspotting",
       "name": "Trainspotting (1996)"
+    },
+    {
+      "slug": "the-best-of-youth",
+      "name": "The Best of Youth (2003)"
     },
     {
       "slug": "three-billboards-outside-ebbing-missouri",
@@ -779,12 +783,12 @@
       "name": "Gran Torino (2008)"
     },
     {
-      "slug": "12-years-a-slave",
-      "name": "12 Years a Slave (2013)"
-    },
-    {
       "slug": "how-to-train-your-dragon",
       "name": "How to Train Your Dragon (2010)"
+    },
+    {
+      "slug": "12-years-a-slave",
+      "name": "12 Years a Slave (2013)"
     },
     {
       "slug": "raging-bull",
@@ -859,20 +863,20 @@
       "name": "Pirates of the Caribbean: The Curse of the Black Pearl (2003)"
     },
     {
-      "slug": "logan-2017",
-      "name": "Logan (2017)"
-    },
-    {
       "slug": "rocky",
       "name": "Rocky (1976)"
     },
     {
-      "slug": "the-wages-of-fear",
-      "name": "The Wages of Fear (1953)"
+      "slug": "logan-2017",
+      "name": "Logan (2017)"
     },
     {
       "slug": "the-deer-hunter",
       "name": "The Deer Hunter (1978)"
+    },
+    {
+      "slug": "the-wages-of-fear",
+      "name": "The Wages of Fear (1953)"
     },
     {
       "slug": "the-general",
@@ -883,12 +887,12 @@
       "name": "Mr. Smith Goes to Washington (1939)"
     },
     {
-      "slug": "tokyo-story",
-      "name": "Tokyo Story (1953)"
-    },
-    {
       "slug": "maharaja-2024",
       "name": "Maharaja (2024)"
+    },
+    {
+      "slug": "tokyo-story",
+      "name": "Tokyo Story (1953)"
     },
     {
       "slug": "jai-bhim",
@@ -911,12 +915,12 @@
       "name": "The Terminator (1984)"
     },
     {
-      "slug": "wild-strawberries",
-      "name": "Wild Strawberries (1957)"
-    },
-    {
       "slug": "the-best-years-of-our-lives",
       "name": "The Best Years of Our Lives (1946)"
+    },
+    {
+      "slug": "wild-strawberries",
+      "name": "Wild Strawberries (1957)"
     },
     {
       "slug": "on-the-waterfront",
@@ -997,10 +1001,6 @@
     {
       "slug": "gangs-of-wasseypur-part-1",
       "name": "Gangs of Wasseypur – Part 1 (2012)"
-    },
-    {
-      "slug": "miracle-in-cell-no-7-2019-1",
-      "name": "Miracle in Cell No. 7 (2019)"
     }
   ]
 }
