@@ -123,12 +123,12 @@
       "name": "Star Wars (1977)"
     },
     {
-      "slug": "spirited-away",
-      "name": "Spirited Away (2001)"
-    },
-    {
       "slug": "gladiator-2000",
       "name": "Gladiator (2000)"
+    },
+    {
+      "slug": "spirited-away",
+      "name": "Spirited Away (2001)"
     },
     {
       "slug": "the-pianist",
@@ -287,20 +287,16 @@
       "name": "High and Low (1963)"
     },
     {
-      "slug": "12th-fail",
-      "name": "12th Fail (2023)"
-    },
-    {
       "slug": "avengers-endgame",
       "name": "Avengers: Endgame (2019)"
     },
     {
-      "slug": "the-odyssey-2026",
-      "name": "The Odyssey (2026)"
-    },
-    {
       "slug": "good-will-hunting",
       "name": "Good Will Hunting (1997)"
+    },
+    {
+      "slug": "12th-fail",
+      "name": "12th Fail (2023)"
     },
     {
       "slug": "coco-2017",
@@ -323,6 +319,10 @@
       "name": "Your Name. (2016)"
     },
     {
+      "slug": "the-odyssey-2026",
+      "name": "The Odyssey (2026)"
+    },
+    {
       "slug": "3-idiots",
       "name": "3 Idiots (2009)"
     },
@@ -339,6 +339,10 @@
       "name": "Princess Mononoke (1997)"
     },
     {
+      "slug": "wildwood-2026",
+      "name": "Wildwood (2026)"
+    },
+    {
       "slug": "oldboy",
       "name": "Oldboy (2003)"
     },
@@ -349,10 +353,6 @@
     {
       "slug": "attack-on-titan-the-last-attack",
       "name": "Attack on Titan: THE LAST ATTACK (2024)"
-    },
-    {
-      "slug": "wildwood-2026",
-      "name": "Wildwood (2026)"
     },
     {
       "slug": "american-beauty",
@@ -387,12 +387,12 @@
       "name": "Come and See (1985)"
     },
     {
-      "slug": "requiem-for-a-dream",
-      "name": "Requiem for a Dream (2000)"
-    },
-    {
       "slug": "incendies",
       "name": "Incendies (2010)"
+    },
+    {
+      "slug": "requiem-for-a-dream",
+      "name": "Requiem for a Dream (2000)"
     },
     {
       "slug": "ikiru",
@@ -463,12 +463,12 @@
       "name": "Die Hard (1988)"
     },
     {
-      "slug": "m",
-      "name": "M (1931)"
-    },
-    {
       "slug": "indiana-jones-and-the-last-crusade",
       "name": "Indiana Jones and the Last Crusade (1989)"
+    },
+    {
+      "slug": "m",
+      "name": "M (1931)"
     },
     {
       "slug": "to-kill-a-mockingbird",
@@ -551,12 +551,12 @@
       "name": "Batman Begins (2005)"
     },
     {
-      "slug": "woman-in-the-dunes",
-      "name": "Woman in the Dunes (1964)"
-    },
-    {
       "slug": "oppenheimer-2023",
       "name": "Oppenheimer (2023)"
+    },
+    {
+      "slug": "woman-in-the-dunes",
+      "name": "Woman in the Dunes (1964)"
     },
     {
       "slug": "for-a-few-dollars-more",
@@ -607,12 +607,12 @@
       "name": "Casino (1995)"
     },
     {
-      "slug": "no-country-for-old-men",
-      "name": "No Country for Old Men (2007)"
-    },
-    {
       "slug": "prisoners",
       "name": "Prisoners (2013)"
+    },
+    {
+      "slug": "no-country-for-old-men",
+      "name": "No Country for Old Men (2007)"
     },
     {
       "slug": "top-gun-maverick",
@@ -643,12 +643,12 @@
       "name": "The Treasure of the Sierra Madre (1948)"
     },
     {
-      "slug": "finding-nemo",
-      "name": "Finding Nemo (2003)"
-    },
-    {
       "slug": "klaus",
       "name": "Klaus (2019)"
+    },
+    {
+      "slug": "finding-nemo",
+      "name": "Finding Nemo (2003)"
     },
     {
       "slug": "project-hail-mary",
@@ -767,12 +767,12 @@
       "name": "Million Dollar Baby (2004)"
     },
     {
-      "slug": "children-of-heaven",
-      "name": "Children of Heaven (1997)"
-    },
-    {
       "slug": "fargo",
       "name": "Fargo (1996)"
+    },
+    {
+      "slug": "children-of-heaven",
+      "name": "Children of Heaven (1997)"
     },
     {
       "slug": "my-neighbor-totoro",
@@ -791,12 +791,12 @@
       "name": "12 Years a Slave (2013)"
     },
     {
-      "slug": "raging-bull",
-      "name": "Raging Bull (1980)"
-    },
-    {
       "slug": "memories-of-murder",
       "name": "Memories of Murder (2003)"
+    },
+    {
+      "slug": "raging-bull",
+      "name": "Raging Bull (1980)"
     },
     {
       "slug": "the-grand-budapest-hotel",
@@ -815,12 +815,12 @@
       "name": "Blade Runner (1982)"
     },
     {
-      "slug": "gone-girl",
-      "name": "Gone Girl (2014)"
-    },
-    {
       "slug": "ford-v-ferrari",
       "name": "Ford v Ferrari (2019)"
+    },
+    {
+      "slug": "gone-girl",
+      "name": "Gone Girl (2014)"
     },
     {
       "slug": "jaws",
@@ -839,12 +839,12 @@
       "name": "Spider-Man: No Way Home (2021)"
     },
     {
-      "slug": "wild-tales",
-      "name": "Wild Tales (2014)"
-    },
-    {
       "slug": "a-silent-voice-the-movie",
       "name": "A Silent Voice: The Movie (2016)"
+    },
+    {
+      "slug": "wild-tales",
+      "name": "Wild Tales (2014)"
     },
     {
       "slug": "the-gold-rush",
@@ -859,12 +859,12 @@
       "name": "Sherlock Jr. (1924)"
     },
     {
-      "slug": "pirates-of-the-caribbean-the-curse-of-the-black-pearl",
-      "name": "Pirates of the Caribbean: The Curse of the Black Pearl (2003)"
-    },
-    {
       "slug": "rocky",
       "name": "Rocky (1976)"
+    },
+    {
+      "slug": "pirates-of-the-caribbean-the-curse-of-the-black-pearl",
+      "name": "Pirates of the Caribbean: The Curse of the Black Pearl (2003)"
     },
     {
       "slug": "logan-2017",
@@ -895,12 +895,12 @@
       "name": "Tokyo Story (1953)"
     },
     {
-      "slug": "jai-bhim",
-      "name": "Jai Bhim (2021)"
-    },
-    {
       "slug": "the-sound-of-music",
       "name": "The Sound of Music (1965)"
+    },
+    {
+      "slug": "jai-bhim",
+      "name": "Jai Bhim (2021)"
     },
     {
       "slug": "la-haine",
@@ -967,12 +967,12 @@
       "name": "Platoon (1986)"
     },
     {
-      "slug": "the-seventh-seal",
-      "name": "The Seventh Seal (1957)"
-    },
-    {
       "slug": "rush-2013",
       "name": "Rush (2013)"
+    },
+    {
+      "slug": "the-seventh-seal",
+      "name": "The Seventh Seal (1957)"
     },
     {
       "slug": "the-battle-of-algiers",
